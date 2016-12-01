@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+<<<<<<< 6769074c7201741445be6d053965dbc97aa5a388
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",
     "@angular/core": "^2.3.1",
@@ -48,5 +49,6 @@
     "typescript": "~2.0.3"
 //    "webdriver-manager": "10.2.5",
 //    "webpack-dev-server": "^1.16.2"
+
   }
 }
