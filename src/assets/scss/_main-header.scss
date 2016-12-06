@@ -21,7 +21,7 @@ img.logo {
     margin-top: 16px;
 }
 
-.md-menu.salsah-project-selection {
+.md-menu-panel.salsah-project-selection {
     max-width: 420px;
     div {
         min-height: 32px;
@@ -38,6 +38,11 @@ img.logo {
         span.salsah-admin-button {
             right: 12px;
             position: absolute;
+            md-icon {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
         }
     }
 }

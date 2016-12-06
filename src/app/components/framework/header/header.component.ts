@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     currentProject: Object = {
         name: 'SALSAH',
         title: 'System for Annotation and Linkage of Sources in Arts and Humanities',
-        logo: './assets/img/salsah-logo.png',
+        logo: './assets/images/salsah-logo.png',
         login: 'http://salsah.org',
     };
 
@@ -112,13 +112,16 @@ export class HeaderComponent implements OnInit {
         icon: 'add',
         menuItems: [
             {
-                text: 'New resource'
+                text: 'New resource',
+                icon: 'note_add'
             },
             {
-                text: 'New collection'
+                text: 'New collection',
+                icon: 'library_add'
             },
             {
-                text: 'New project'
+                text: 'New project',
+                icon: 'add'
             }
 
         ]
