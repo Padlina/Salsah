@@ -12,6 +12,11 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+md-toolbar {
+    @include box-shadow-bottom();
+}
+
+
 .fill-remaining-space {
     flex: 1 1 auto
 }
@@ -45,4 +50,22 @@ img.logo {
 
         }
     }
+}
+
+/*
+    Overlay element:
+    it hides the content of salsah in the case of
+    modal pop-ups or dropdown animations
+*/
+
+salsah-overlay {
+    width: 100vw;
+    height: 100vh;
+    z-index: -5;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: none;
 }

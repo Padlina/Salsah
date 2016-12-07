@@ -19,8 +19,9 @@ input[type="search"]::-webkit-search-results-decoration {
     display: none;
 }
 
+
 .simple-search-panel {
-    width: 560px;
+    width: $search-width;
     height: 40px;
     border-radius: 4px;
     background-color: white;
@@ -64,4 +65,16 @@ input[type="search"]::-webkit-search-results-decoration {
     button.suffix {
         float: right;
     }
+}
+
+.extended-search-panel {
+    width: $search-width;
+    min-height: $search-height;
+    background-color: white;
+//    @include box-shadow();
+    position: absolute;
+    top: 60px;
+    z-index: -1;
+    border-radius: $border-radius;
+    display: none;
 }

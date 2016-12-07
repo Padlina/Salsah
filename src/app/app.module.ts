@@ -28,6 +28,8 @@ import { MaterialModule } from '@angular/material';
 //
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/framework/header/header.component';
+import { OverlayComponent } from './components/framework/overlay/overlay.component';
+
 import { VideoObjectComponent } from './components/object/video-object/video-object.component';
 import { SimpleSearchComponent } from './components/search/simple-search/simple-search.component';
 import { SearchComponent } from './components/search/search.component';
@@ -44,6 +46,7 @@ import { ResultsViewComponent } from './components/view/results-view/results-vie
 //
 import { SearchService } from './services/search.service';
 import { CenterElementDirective } from './directives/center-element.directive';
+
 
 
 //
@@ -65,6 +68,7 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         HeaderComponent,
+        OverlayComponent,
         VideoObjectComponent,
         SimpleSearchComponent,
         SearchComponent,

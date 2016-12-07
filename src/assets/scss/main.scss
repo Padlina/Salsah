@@ -12,9 +12,11 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-@import 'error';
-@import 'main-header';
+@import 'mixins';
+@import 'config';
+@import 'framework';
 @import 'search';
+@import 'error';
 
 body {
     margin: 0;
