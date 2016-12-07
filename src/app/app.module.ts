@@ -30,6 +30,7 @@ import { MaterialModule } from '@angular/material';
 import { ResourcesService } from './services/resources.service';
 import { SearchService } from './services/search.service';
 import { VocabulariesService } from './services/vocabularies.service';
+import { BaseOntologyService } from './components/admin/ontology/base-ontology.service';
 
 //
 // import all directives
@@ -116,7 +117,6 @@ const appRoutes: Routes = [
                 component: ResourcesAdminComponent
             },
             { path: '**', component: PageNotFoundComponent }
-
         ]
 
     },
@@ -169,10 +169,11 @@ const appRoutes: Routes = [
         ResourcesService,
         SearchService,
         VocabulariesService
-
+        BaseOntologyService,
     ],
     bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }
 

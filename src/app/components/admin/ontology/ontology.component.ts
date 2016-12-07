@@ -13,6 +13,9 @@
  * */
 
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
+import { BaseOntologyService } from './base-ontology.service';
+
 
 @Component({
   selector: 'salsah-ontology',
@@ -21,23 +24,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OntologyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private baseOntologyService: BaseOntologyService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+      var simpleTxt = this.baseOntologyService.textResource();
   }
+
 
     /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
     /* Developer object: just a sample to create a default resources dropdown menu*/
     /*                                                          */
 
+
+  private simpleTxt = 'simple text';
+
+
     // default resources
+
 
     addResource: Object = {
         name: 'Resource Type',
         icon: 'add',
         menuItems: [
             {
-                text: 'Simple Text',
+                text: this.simpleTxt,
                 icon: 'view_headline',
                 routerLink: '/'
             },
@@ -91,3 +101,15 @@ export class OntologyComponent implements OnInit {
 
 
 }
+
+/*
+export class BaseOntologyService{
+
+    private jsonUrl = 'app/components/admin/ontology/json';  // URL to json
+
+    constructor(private http: Http) { }
+
+    getResources(): Promise<BaseResources[]>
+
+}
+*/

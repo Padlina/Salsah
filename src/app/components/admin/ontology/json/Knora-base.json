@@ -1,0 +1,76 @@
+{
+
+    "userdata": {
+        "email": null,
+        "username": null,
+        "firstname": null,
+        "projects_info": [ ],
+        "user_id": null,
+        "lastname": null,
+        "token": null,
+        "active_project": null,
+        "projects": null,
+        "lang": "en",
+        "password": null
+    },
+    "subjects": [
+        {
+            "iconlabel": "Book",
+            "valuetype_id": [
+                "http://www.w3.org/2000/01/rdf-schema#label",
+                "http://www.knora.org/ontology/knora-base#TextValue"
+            ],
+            "preview_nx": 32,
+            "icontitle": "Book",
+            "preview_ny": 32,
+            "obj_id": "http://data.knora.org/9311a421b501",
+            "iconsrc": "http://localhost:3335/project-icons/incunabula/book.gif",
+            "preview_path": "http://localhost:3335/project-icons/incunabula/book.gif",
+            "rights": 1,
+            "value": [
+                "Bereitung zu dem Heiligen Sakrament",
+                "Woodcuts. On the printers and date, see Sack(Freiburg). Assigned to Furter in Goff (about 1493)"
+            ],
+            "valuelabel": [
+                "Label",
+                "Note"
+            ]
+        },
+        {
+            "iconlabel": "Book",
+            "valuetype_id": [
+                "http://www.w3.org/2000/01/rdf-schema#label",
+                "http://www.knora.org/ontology/knora-base#TextValue"
+            ],
+            "preview_nx": 32,
+            "icontitle": "Book",
+            "preview_ny": 32,
+            "obj_id": "http://data.knora.org/ff17e5ef9601",
+            "iconsrc": "http://localhost:3335/project-icons/incunabula/book.gif",
+            "preview_path": "http://localhost:3335/project-icons/incunabula/book.gif",
+            "rights": 1,
+            "value": [
+                "Zeitglöcklein des Lebens und Leidens Christi",
+                "A copy in the Basel University Library has a rubricator's date 1490. Woodcuts"
+            ],
+            "valuelabel": [
+                "Label",
+                "Note"
+            ]
+        }
+    ],
+    "thumb_max": {
+        "nx": 32,
+        "ny": 32
+    },
+    "nhits": "2",
+    "paging": [
+        {
+            "current": true,
+            "start_at": 0,
+            "show_nrows": 2
+        }
+    ],
+    "status": 0
+
+}
