@@ -12,7 +12,10 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import { Component, HostListener, OnInit, Input, animate, state, style, transition, trigger } from '@angular/core';
+import {
+    Component, HostListener, OnInit, Input, animate, state, style, transition, trigger,
+    ElementRef
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -26,7 +29,7 @@ import { ActivatedRoute, Router } from '@angular/router';
                 state('true', style({display: 'block'})),
                 transition(
                     'false <=> true', [
-                        animate(500)
+                        animate(5000)
                     ]
                 )
             ]),
@@ -43,8 +46,6 @@ import { ActivatedRoute, Router } from '@angular/router';
     ]
 })
 
-@HostListener('window:keydown', ['$event'])
-
 
 export class SearchComponent implements OnInit {
 
@@ -59,23 +60,29 @@ export class SearchComponent implements OnInit {
 
     private activeElement: boolean = false;
     private panelSize: string = 'large';
-    private showExtended: string = 'false';
+    private showExtended: boolean = false;
 
     private simpleSearch(searchQuery: string) {
         this.router.navigate(['/search/' + this._searchQuery], {relativeTo: this.route});
     }
 
-    constructor(private route: ActivatedRoute, private router: Router) { }
+    constructor(private route: ActivatedRoute, private router: Router, private _eleRef: ElementRef) { }
 
 //    constructor() {}
 
     ngOnInit() {
     }
+    @HostListener('document:click', ['$event'])
+    public onClick(event) {
+        if(!this._eleRef.nativeElement.contains(event.target)) {
+            this.noFocus();
+        }
+    }
 
 
     onFocus() {
 //        this.panelSize = 'large';
-        this.showExtended = 'true';
+        this.showExtended = true;
 
 //        this.panelSize = (this.panelSize === 'large') ? 'small' : 'large';
 
@@ -83,9 +90,11 @@ export class SearchComponent implements OnInit {
     }
 
     noFocus() {
-        this.panelSize = 'small';
+//        this.panelSize = 'small';
+        this.showExtended = false;
     }
 
+    @HostListener('window:keydown', ['$event'])
     onKey(event: any) {
         this._searchQuery = event.target.value;
         if (this._searchQuery) {

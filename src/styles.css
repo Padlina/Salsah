@@ -6,5 +6,5 @@
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 
 /* own style setting */
-@import 'assets/css/main.css';
+@import 'assets/css/main.min.css';
 

@@ -12,13 +12,16 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { JsonConvert } from 'json2typescript';
 
 import { SearchService } from '../../_services';
 import { SearchResponseJson } from '../../_services';
+
+//import { ResourceViewComponent } from '../resource-view/resource-view.component';
+//import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
 
 @Component({
     selector: 'salsah-results-view',
@@ -35,7 +38,11 @@ export class ResultsViewComponent implements OnInit {
     private grid: boolean = false;
 
     constructor(private _searchService: SearchService,
-                private _route: ActivatedRoute) {
+                private _route: ActivatedRoute,
+                private route: ActivatedRoute,
+                private router: Router,
+                //private _dialog: MdDialog,
+                private viewContainerRef: ViewContainerRef) {
     }
 
     ngOnInit() {
@@ -82,11 +89,30 @@ export class ResultsViewComponent implements OnInit {
         }
     }
 
-    public openResource(id: string, item: any): void {
-        alert('Here we want to open the resource ' + id + ' as a modal dialog');
+    public openResource(id: string): void {
+        console.log(id);
+        console.log(encodeURIComponent(id));
+
+        this.router.navigate(['/resources/' + encodeURIComponent(id)], {relativeTo: this.route});
+
+//        alert('Here we want to open the resource ' + id + ' as a modal dialog');
+        /*
+        let dialogRef: MdDialogRef<ResourceViewComponent>;
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.viewContainerRef;
+
+        console.log(ResourceViewComponent);
+        console.log(config);
+        console.log(encodeURIComponent(id));
+
+        dialogRef = this._dialog.open(ResourceViewComponent, config);
+        */
     }
 
     public previewError(event: Event, preview_path: string): void {
+        console.log(event);
+        console.log(preview_path);
+
 
     }
 
