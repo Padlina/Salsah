@@ -109,11 +109,9 @@ export class ResultsViewComponent implements OnInit {
         */
     }
 
-    public previewError(event: Event, preview_path: string): void {
-        console.log(event);
-        console.log(preview_path);
-
-
+    public previewError($event: {event: Event, path: string}): void {
+        console.log($event.event);
+        console.log($event.path);
     }
 
     public toggleResourceSelection(): void {

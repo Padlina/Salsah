@@ -35,9 +35,10 @@ export class ListViewComponent implements OnInit {
 
   openResource(id){
         this.openRequest.emit(id);
-  }
-  previewError(){
-        this.errorRequest.emit(event);
-  }
+    }
+
+    previewError(event: Event, path: string) {
+        this.errorRequest.emit({event, path});
+    }
 
 }

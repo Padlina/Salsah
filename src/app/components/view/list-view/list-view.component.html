@@ -13,7 +13,7 @@
             <span (click)="openResource(item.obj_id)">{{item.valuelabel[0]}}:
                                 <strong>{{item.value[0]}}</strong> &mdash;
                             </span>
-            <a routerLink="/resources/{{item.obj_id}}">{{item.obj_id}}</a>
+            <a (click)="openResource(item.obj_id)">{{item.obj_id}}</a>
         </p>
         <p md-line (click)="openResource(item.obj_id)" >{{item.valuelabel[1]}}: {{item.value[1]}}</p>
     </md-list-item>
