@@ -37,11 +37,11 @@ export class ResourcesService {
 
     private extractData(res: Response) {
         try {
-            console.log(res.json());
+            // console.log(res.json());
             return JsonConvert.deserializeObject(res.json(), ResourcesResponseJson);
         } catch (e) {
             // console.log(e);
-            return Observable.throw('Data error in salsah\'s search service.');
+            return Observable.throw('Data error in salsah\'s resources service.');
         }
     }
     private handleError (error: any) {
