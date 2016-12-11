@@ -1,5 +1,5 @@
 <md-list>
-    <md-list-item *ngFor="let item of searchResponse" >
+    <md-list-item *ngFor="let item of searchResponse?.subjects" >
         <img md-list-avatar [src]="item.preview_path" (click)="openResource(item.obj_id)" (error)="previewError($event, item.preview_path)" />
         <p md-line>
             <button md-icon-button  class="resource-icon">

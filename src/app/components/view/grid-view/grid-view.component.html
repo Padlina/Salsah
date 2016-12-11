@@ -1,5 +1,5 @@
 <md-grid-list cols="3" gutterSize="12px">
-    <md-grid-tile *ngFor="let item of searchResponse" (click)="openResource(item.obj_id)">
+    <md-grid-tile *ngFor="let item of searchResponse?.subjects" (click)="openResource(item.obj_id)">
         <img [src]="item.preview_path" (error)="previewError($event, item.preview_path)" />
         <p>{{item.value[0]}}</p>
     </md-grid-tile>

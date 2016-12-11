@@ -13,7 +13,7 @@
  * */
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { SubjectJson } from '../../_services';
+import { SearchResponseJson } from '../../_services';
 
 @Component({
   selector: 'salsah-list-view',
@@ -22,7 +22,7 @@ import { SubjectJson } from '../../_services';
 })
 
 export class ListViewComponent implements OnInit {
-    @Input() searchResponse: SubjectJson[];
+    @Input() searchResponse: SearchResponseJson;
     @Output() openRequest = new EventEmitter<any>();
     @Output() errorRequest = new EventEmitter<any>();
 

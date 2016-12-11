@@ -13,10 +13,10 @@
     <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
 
     <div *ngIf="list" class="list-view">
-        <salsah-list-view [searchResponse]="searchResponse?.subjects" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-list-view>
+        <salsah-list-view [searchResponse]="searchResponse" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-list-view>
     </div>
 
     <div *ngIf="grid" class="grid-view">
-        <salsah-grid-view [searchResponse]="searchResponse?.subjects" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-grid-view>
+        <salsah-grid-view [searchResponse]="searchResponse" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-grid-view>
     </div>
 </div>
