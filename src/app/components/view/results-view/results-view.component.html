@@ -17,11 +17,6 @@
     </div>
 
     <div *ngIf="grid" class="grid-view">
-        <md-grid-list cols="3" gutterSize="12px">
-            <md-grid-tile *ngFor="let item of searchResponse?.subjects" >
-                <img [src]="item.preview_path" (error)="previewError($event)" />
-                <p>{{item.value[0]}}</p>
-            </md-grid-tile>
-        </md-grid-list>
+        <salsah-grid-view [searchResponse]="searchResponse?.subjects" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-grid-view>
     </div>
 </div>
