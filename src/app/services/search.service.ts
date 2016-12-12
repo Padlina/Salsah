@@ -25,13 +25,13 @@ import { SearchResponseJson } from './api-objects/search-response-json';
 @Injectable()
 export class SearchService {
 
-    constructor(private http: Http) { }
+    constructor(private _http: Http) { }
 
     private searchType: string = 'fulltext';
 
     getData(searchString: string): Observable<SearchResponseJson> {
         let projectData: string = `${AppConfig.API_ENDPOINT}` + 'search/' + searchString + '?searchtype=' + this.searchType;
-        return this.http.get(projectData)
+        return this._http.get(projectData)
             .map(this.extractData)
             .catch(this.handleError);
     }
@@ -45,10 +45,10 @@ export class SearchService {
             return Observable.throw('Data error in salsah\'s search service.');
         }
     }
-    private handleError (error: any) {
+
+    private handleError(error: any) {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         return Observable.throw(errMsg);
     }
-
 }
