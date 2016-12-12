@@ -15,7 +15,6 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { JsonConvert } from 'json2typescript';
 
 import { SearchService } from '../../_services';
 import { SearchResponseJson } from '../../_services';
@@ -38,7 +37,6 @@ export class ResultsViewComponent implements OnInit {
     private grid: boolean = false;
 
     constructor(private _searchService: SearchService,
-                private _route: ActivatedRoute,
                 private route: ActivatedRoute,
                 private router: Router,
                 //private _dialog: MdDialog,
@@ -47,7 +45,8 @@ export class ResultsViewComponent implements OnInit {
 
     ngOnInit() {
 //        this.getResults();
-        this._route.params.forEach((params: Params) => {
+        console.log(this.route.params);
+        this.route.params.forEach((params: Params) => {
             let query = params['query'];
             this._searchService.getData(query)
                 .subscribe(
@@ -60,12 +59,6 @@ export class ResultsViewComponent implements OnInit {
                 );
         });
 
-        //
-        // Json convert error handling
-        //
-//        JsonConvert.debugMode = true;
-//        JsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
-//        JsonConvert.valueCheckingMode = JsonConvert.ValueCheckingMode.DISALLOW_NULL; // never allow null
     }
 
 

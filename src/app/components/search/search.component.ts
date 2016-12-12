@@ -13,17 +13,17 @@
  * */
 
 import {
-    Component, HostListener, OnInit, Input, animate, state, style, transition, trigger,
+    Component, HostListener, OnInit, animate, state, style, transition, trigger,
     ElementRef
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
     selector: 'salsah-search',
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.css'],
     animations: [
-        trigger('visibility',
+        trigger('dropdown',
             [
                 state('false, void', style({display: 'none'})),
                 state('true', style({display: 'block'})),
@@ -49,29 +49,39 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class SearchComponent implements OnInit {
 
-    private searchSetting: any = {
-        'placeholder': 'Search'
-    };
-
-
 
     private _searchQuery: string;
-    private defaultView: string = 'list';
+    private _searchLabel: string = 'Search';
+    private _searchFocus: boolean;
+    private _panelSize: string = 'large';
 
-    private activeElement: boolean = false;
-    private panelSize: string = 'large';
-    private showExtended: boolean = false;
+
+
+//    private _searchQuery: string;
+//    private activeElement: boolean = false;
+
+
+//    private defaultView: string = 'list';
+
+
+//    private panelSize: string = 'large';
+//    private showExtended: boolean = false;
 
     private simpleSearch(searchQuery: string) {
         this.router.navigate(['/search/' + this._searchQuery], {relativeTo: this.route});
     }
 
-    constructor(private route: ActivatedRoute, private router: Router, private _eleRef: ElementRef) { }
-
-//    constructor() {}
+    constructor(private route: ActivatedRoute,
+                private router: Router,
+                private _eleRef: ElementRef) { }
 
     ngOnInit() {
+        console.log(this.route.params);
+        this.route.params.forEach((params: Params) => {
+            let query = params['query'];
+        });
     }
+
     @HostListener('document:click', ['$event'])
     public onClick(event) {
         if(!this._eleRef.nativeElement.contains(event.target)) {
@@ -79,53 +89,54 @@ export class SearchComponent implements OnInit {
         }
     }
 
-
-    onFocus() {
-//        this.panelSize = 'large';
-        this.showExtended = true;
-
-//        this.panelSize = (this.panelSize === 'large') ? 'small' : 'large';
-
-
-    }
-
-    noFocus() {
-//        this.panelSize = 'small';
-        this.showExtended = false;
-    }
-
     @HostListener('window:keydown', ['$event'])
     onKey(event: any) {
         this._searchQuery = event.target.value;
+
         if (this._searchQuery) {
-            this.activeElement = true;
+            this._searchFocus = true;
             // the ENTER key is active when the text input is not empty
             if (event.key === 'Enter' || event.keyCode === 13 || event.which === 13) {
                 this.simpleSearch(this._searchQuery);
+                this._searchFocus = false;
             }
         }
         else {
-            this.activeElement = false;
+            this._searchFocus = false;
         }
     }
 
-    doSearch(search_ele: HTMLElement) {
+
+
+    public onFocus() {
+        this._searchFocus = true;
+    }
+
+    public noFocus() {
+        this._searchFocus = false;
+    }
+
+
+    public doSearch(search_ele: HTMLElement) {
         if (this._searchQuery) {
             this.simpleSearch(this._searchQuery);
+            this._searchFocus = false;
         }
         else {
             search_ele.focus();
+            this._searchFocus = true;
         }
     }
 
-    clearSearch(search_ele: HTMLElement) {
+    public clearSearch(search_ele: HTMLElement) {
         if (this._searchQuery) {
             this._searchQuery = null;
-            this.activeElement = false;
             search_ele.focus();
+            this._searchFocus = true;
         }
         else {
             search_ele.focus();
+            this._searchFocus = false;
         }
     }
 
