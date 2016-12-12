@@ -15,13 +15,12 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { JsonConvert } from 'json2typescript';
 
 import { SearchService } from '../../_services';
 import { SearchResponseJson } from '../../_services';
 
-//import { ResourceViewComponent } from '../resource-view/resource-view.component';
-//import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
+// import { ResourceViewComponent } from '../resource-view/resource-view.component';
+// import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
 
 @Component({
     selector: 'salsah-results-view',
@@ -34,15 +33,35 @@ export class ResultsViewComponent implements OnInit {
     private errorMessage: string = undefined;
     public searchResponse: SearchResponseJson = new SearchResponseJson();
 
-    private list: boolean = true;
-    private grid: boolean = false;
+    selectedView: string = 'list';
+    viewOptions = [
+        {
+            name: 'list',
+            title: 'List',
+            isDisabled: false,
+            icon: 'view_headline'
+        },
+        {
+            name: 'grid',
+            title: 'Grid',
+            isDisabled: false,
+            icon: 'view_module'
+        },
+        {
+            name: 'table',
+            title: 'Table',
+            isDisabled: true,
+            icon: 'view_comfy'
+        }
+    ];
 
     constructor(private _searchService: SearchService,
                 private _route: ActivatedRoute,
                 private route: ActivatedRoute,
                 private router: Router,
-                //private _dialog: MdDialog,
-                private viewContainerRef: ViewContainerRef) {
+                // private _dialog: MdDialog,
+                // private viewContainerRef: ViewContainerRef
+                ) {
     }
 
     ngOnInit() {
@@ -66,27 +85,6 @@ export class ResultsViewComponent implements OnInit {
 //        JsonConvert.debugMode = true;
 //        JsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
 //        JsonConvert.valueCheckingMode = JsonConvert.ValueCheckingMode.DISALLOW_NULL; // never allow null
-    }
-
-
-    /**
-     *
-     * @param type
-     */
-    public toggleView(type: string): void {
-        switch (type) {
-            case 'list':
-                this.list = true;
-                this.grid = false;
-                break;
-            case 'grid':
-                this.list = false;
-                this.grid = true;
-                break;
-            default:
-                this.list = true;
-                this.grid = false;
-        }
     }
 
     public openResource(id: string): void {
