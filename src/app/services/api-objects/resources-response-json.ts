@@ -36,8 +36,8 @@ export class ResourcesResponseJson {
     @JsonProperty('status', Number)
     public status: number = undefined;
 
-    @JsonProperty('props', PropsJson)
-    public props: PropsJson = undefined;
+    @JsonProperty('props', [PropsJson])
+    public props: PropsJson[] = undefined;
 
     @JsonProperty('access', String)
     public access: string = undefined;
