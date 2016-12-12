@@ -56,7 +56,6 @@ export class ResultsViewComponent implements OnInit {
     ];
 
     constructor(private _searchService: SearchService,
-                private _route: ActivatedRoute,
                 private route: ActivatedRoute,
                 private router: Router,
                 // private _dialog: MdDialog,
@@ -66,7 +65,8 @@ export class ResultsViewComponent implements OnInit {
 
     ngOnInit() {
 //        this.getResults();
-        this._route.params.forEach((params: Params) => {
+        console.log(this.route.params);
+        this.route.params.forEach((params: Params) => {
             let query = params['query'];
             this._searchService.getData(query)
                 .subscribe(
@@ -79,12 +79,6 @@ export class ResultsViewComponent implements OnInit {
                 );
         });
 
-        //
-        // Json convert error handling
-        //
-//        JsonConvert.debugMode = true;
-//        JsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
-//        JsonConvert.valueCheckingMode = JsonConvert.ValueCheckingMode.DISALLOW_NULL; // never allow null
     }
 
     public openResource(id: string): void {
