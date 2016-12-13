@@ -19,8 +19,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SearchService } from '../../_services';
 import { SearchResponseJson } from '../../_services';
 
-//import { ResourceViewComponent } from '../resource-view/resource-view.component';
-//import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
+// import { ResourceViewComponent } from '../resource-view/resource-view.component';
+// import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
 
 @Component({
     selector: 'salsah-results-view',
@@ -33,14 +33,34 @@ export class ResultsViewComponent implements OnInit {
     private errorMessage: string = undefined;
     public searchResponse: SearchResponseJson = new SearchResponseJson();
 
-    private list: boolean = true;
-    private grid: boolean = false;
+    selectedView: string = 'list';
+    viewOptions = [
+        {
+            name: 'list',
+            title: 'List',
+            isDisabled: false,
+            icon: 'view_headline'
+        },
+        {
+            name: 'grid',
+            title: 'Grid',
+            isDisabled: false,
+            icon: 'view_module'
+        },
+        {
+            name: 'table',
+            title: 'Table',
+            isDisabled: true,
+            icon: 'view_comfy'
+        }
+    ];
 
     constructor(private _searchService: SearchService,
                 private route: ActivatedRoute,
                 private router: Router,
-                //private _dialog: MdDialog,
-                private viewContainerRef: ViewContainerRef) {
+                // private _dialog: MdDialog,
+                // private viewContainerRef: ViewContainerRef
+                ) {
     }
 
     ngOnInit() {
@@ -59,27 +79,6 @@ export class ResultsViewComponent implements OnInit {
                 );
         });
 
-    }
-
-
-    /**
-     *
-     * @param type
-     */
-    public toggleView(type: string): void {
-        switch (type) {
-            case 'list':
-                this.list = true;
-                this.grid = false;
-                break;
-            case 'grid':
-                this.list = false;
-                this.grid = true;
-                break;
-            default:
-                this.list = true;
-                this.grid = false;
-        }
     }
 
     public openResource(id: string): void {
@@ -102,11 +101,11 @@ export class ResultsViewComponent implements OnInit {
         */
     }
 
-    public previewError(event: Event, preview_path: string): void {
-        console.log(event);
-        console.log(preview_path);
+    public previewError($event: {event: Event, path: string}): void {
+        console.log($event.event);
+        console.log($event.path);
 
-
+//      TODO: error preview
     }
 
     public toggleResourceSelection(): void {

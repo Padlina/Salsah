@@ -12,7 +12,7 @@ export class ResinfoJson {
     public restype_label: string = undefined;
 
 //    "resclass_has_location": false,
-    @JsonProperty('stresclass_has_locationatus', Boolean)
+    @JsonProperty('resclass_has_location', Boolean)
     public resclass_has_location: boolean = undefined;
 
 //    "preview": null,
@@ -66,6 +66,4 @@ export class ResinfoJson {
 //    "restype_id": "http://www.knora.org/ontology/incunabula#book"
     @JsonProperty('restype_id', String)
     public restype_id: string = undefined;
-
-
 }

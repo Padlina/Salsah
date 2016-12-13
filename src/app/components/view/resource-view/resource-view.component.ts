@@ -30,13 +30,11 @@ import {ResourcesResponseJson} from '../../_services';
 
 export class ResourceViewComponent implements OnInit {
 
-
     private errorMessage: string = undefined;
     public resourcesResponse: ResourcesResponseJson = new ResourcesResponseJson();
 
-    constructor(private _resourcesService: ResourcesService,
-                private _route: ActivatedRoute
-                ) {
+    constructor( private _resourcesService: ResourcesService,
+                 private _route: ActivatedRoute ) {
 
     }
 

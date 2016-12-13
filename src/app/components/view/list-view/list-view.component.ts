@@ -12,9 +12,8 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SubjectJson } from '../../_services';
-//import {EventEmitter} from "events";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SearchResponseJson } from '../../_services';
 
 @Component({
   selector: 'salsah-list-view',
@@ -23,21 +22,21 @@ import { SubjectJson } from '../../_services';
 })
 
 export class ListViewComponent implements OnInit {
-
-  constructor() { }
-
-    @Input() searchResponse: SubjectJson[];
+    @Input() searchResponse: SearchResponseJson;
     @Output() openRequest = new EventEmitter<any>();
     @Output() errorRequest = new EventEmitter<any>();
 
-    ngOnInit() {
-  }
+    constructor() { }
 
-  openResource(id){
+    ngOnInit() {
+    }
+
+    openResource(id: string) {
         this.openRequest.emit(id);
-  }
-  previewError(){
-        this.errorRequest.emit(event);
-  }
+    }
+
+    previewError(event: Event, path: string) {
+        this.errorRequest.emit({event, path});
+    }
 
 }

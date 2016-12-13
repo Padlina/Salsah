@@ -3,26 +3,27 @@
         <span>Results: {{searchResponse?.nhits}}</span>
         <span class="fill-remaining-space"><!-- This fills the remaining space of the current row --></span>
         <!-- menu to switch the view: list, grid, table -->
-        <md-button-toggle-group name="alignment">
-            <md-button-toggle checked="true" value="list" title="List" (click)="toggleView('list')" ><md-icon>view_headline</md-icon></md-button-toggle>
-            <md-button-toggle value="grid" title="Grid" (click)="toggleView('grid')"><md-icon>view_module</md-icon></md-button-toggle>
-            <md-button-toggle value="table" title="Table" disabled><md-icon>view_comfy</md-icon></md-button-toggle>
+        <md-button-toggle-group name="alignment" [(ngModel)]="selectedView">
+            <md-button-toggle *ngFor="let view of viewOptions" [value]=view.name [title]=view.title [disabled]="view.isDisabled">
+                <md-icon>{{view.icon}}</md-icon>
+            </md-button-toggle>
         </md-button-toggle-group>
     </md-toolbar>
 </div>
 <div class="salsah-view-results">
     <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
 
-    <div *ngIf="list" class="list-view">
-        <salsah-list-view [searchResponse]="searchResponse?.subjects" (openRequest)="openResource($event)"></salsah-list-view>
+    <!-- TODO: is there a way to call the template depending on the selected View? the following does not work of course
+        <div *ngIf="searchResponse" class="{{selectedView}}-view">
+            <salsah-{{selectedView}}-view [searchResponse]="searchResponse" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-{{selectedView}}-view>
+        </div>
+        -->
+
+    <div *ngIf="selectedView=='list' && searchResponse" class="{{selectedView}}-view">
+        <salsah-list-view [searchResponse]="searchResponse" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-list-view>
     </div>
 
-    <div *ngIf="grid" class="grid-view">
-        <md-grid-list cols="3" gutterSize="12px">
-            <md-grid-tile *ngFor="let item of searchResponse?.subjects" >
-                <img [src]="item.preview_path" (error)="previewError($event)" />
-                <p>{{item.value[0]}}</p>
-            </md-grid-tile>
-        </md-grid-list>
+    <div *ngIf="selectedView=='grid' && searchResponse" class="{{selectedView}}-view">
+        <salsah-grid-view [searchResponse]="searchResponse" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-grid-view>
     </div>
 </div>

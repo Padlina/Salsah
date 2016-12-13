@@ -12,7 +12,8 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SearchResponseJson } from '../../_services';
 
 @Component({
   selector: 'salsah-grid-view',
@@ -21,10 +22,20 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class GridViewComponent implements OnInit {
+    @Input() searchResponse: SearchResponseJson;
+    @Output() openRequest = new EventEmitter<any>();
+    @Output() errorRequest = new EventEmitter<any>();
 
     constructor() { }
 
     ngOnInit() {
     }
 
+    openResource(id: string) {
+        this.openRequest.emit(id);
+    }
+
+    previewError(event: Event, path: string) {
+        this.errorRequest.emit({event, path});
+    }
 }

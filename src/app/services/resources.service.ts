@@ -25,32 +25,29 @@ import { ResourcesResponseJson } from './api-objects/resources-response-json';
 @Injectable()
 export class ResourcesService {
 
-    constructor(private http: Http) { }
+    constructor(private _http: Http) { }
 
 
     getData(uri: string): Observable<ResourcesResponseJson> {
         let resourceData: string = `${AppConfig.API_ENDPOINT}` + 'resources/' + uri;
-        return this.http.get(resourceData)
+        return this._http.get(resourceData)
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     private extractData(res: Response) {
         try {
-            console.log(res.json());
+            // console.log(res.json());
             return JsonConvert.deserializeObject(res.json(), ResourcesResponseJson);
         } catch (e) {
             // console.log(e);
-            return Observable.throw('Data error in salsah\'s search service.');
+            return Observable.throw('Data error in salsah\'s resources service.');
         }
     }
-    private handleError (error: any) {
+
+    private handleError(error: any) {
         let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         return Observable.throw(errMsg);
     }
-
 }
-
-
-
