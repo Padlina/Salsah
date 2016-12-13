@@ -17,7 +17,7 @@ import { JsonObject, JsonProperty } from 'json2typescript';
 import { UserdataJson } from './_userdata-json';
 import { ResinfoJson } from './_resinfo-json';
 import { ResdataJson } from './_resdata-json';
-import { PropsJson } from './_props-json';
+import { PropertyJson } from './_property-json';
 
 @JsonObject
 export class ResourcesResponseJson {
@@ -36,8 +36,8 @@ export class ResourcesResponseJson {
     @JsonProperty('status', Number)
     public status: number = undefined;
 
-    @JsonProperty('props', [PropsJson])
-    public props: PropsJson[] = undefined;
+    @JsonProperty('props', [PropertyJson])
+    public props: PropertyJson[] = undefined;
 
     @JsonProperty('access', String)
     public access: string = undefined;

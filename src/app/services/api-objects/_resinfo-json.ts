@@ -1,11 +1,12 @@
-import {JsonObject, JsonProperty} from 'json2typescript';
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { LocationJson } from './_location-json';
 
 @JsonObject
 export class ResinfoJson {
 
 //    "locations": null,
-    @JsonProperty('locations', null)
-    public locations: string = null;
+    @JsonProperty('locations', [LocationJson])
+    public locations: LocationJson[] = undefined;
 
 //    "restype_label": "Book",
     @JsonProperty('restype_label', String)
@@ -16,8 +17,8 @@ export class ResinfoJson {
     public resclass_has_location: boolean = undefined;
 
 //    "preview": null,
-    @JsonProperty('preview', null)
-    public preview: string = null;
+    @JsonProperty('preview', LocationJson)
+    public preview: LocationJson = undefined;
 
 //    "person_id": "http://data.knora.org/users/91e19f1e01",
     @JsonProperty('person_id', String)
@@ -60,8 +61,8 @@ export class ResinfoJson {
     public project_id: string = undefined;
 
 //    "locdata": null,
-    @JsonProperty('locdata', null)
-    public locdata: string = null;
+    @JsonProperty('locdata', LocationJson)
+    public locdata: LocationJson = undefined;
 
 //    "restype_id": "http://www.knora.org/ontology/incunabula#book"
     @JsonProperty('restype_id', String)
