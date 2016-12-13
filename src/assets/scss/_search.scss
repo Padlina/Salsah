@@ -27,14 +27,14 @@ input[type="search"]::-webkit-search-results-decoration {
     background-color: white;
     //    padding: 2px;
     &.small {
-        width: 560px;
+//        width: 560px;
     }
     &.large {
-        width: 600px;
+//        width: 600px;
     }
 
     input {
-        width: 520px;
+        width: $search-width - (2 * 48px);
         height: 38px;
         position: absolute;
         font-size: 14pt;
@@ -70,8 +70,8 @@ input[type="search"]::-webkit-search-results-decoration {
 .extended-search-panel {
     width: $search-width;
     min-height: $search-height;
-    background-color: green;
-//    @include box-shadow();
+    background-color: white;
+    @include box-shadow();
     position: absolute;
     top: 60px;
     z-index: -1;

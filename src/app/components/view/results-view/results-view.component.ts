@@ -12,7 +12,7 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ViewContainerRef, animate} from '@angular/core';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
@@ -32,6 +32,8 @@ export class ResultsViewComponent implements OnInit {
 
     private errorMessage: string = undefined;
     public searchResponse: SearchResponseJson = new SearchResponseJson();
+
+    public _isLoading: boolean = true;
 
     selectedView: string = 'list';
     viewOptions = [
@@ -57,7 +59,7 @@ export class ResultsViewComponent implements OnInit {
 
     constructor(private _searchService: SearchService,
                 private route: ActivatedRoute,
-                private router: Router,
+                private router: Router
                 // private _dialog: MdDialog,
                 // private viewContainerRef: ViewContainerRef
                 ) {
@@ -72,6 +74,7 @@ export class ResultsViewComponent implements OnInit {
                 .subscribe(
                     data => {
                         this.searchResponse = data;
+                        this._isLoading = false;
                     },
                     error => {
                         this.errorMessage = <any>error;

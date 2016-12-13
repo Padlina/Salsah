@@ -1,29 +1,42 @@
-<div class="salsah-results-header">
-    <md-toolbar>
+<div class="salsah-results-view wrapper">
+    <md-toolbar class="salsah-results-header">
         <span>Results: {{searchResponse?.nhits}}</span>
         <span class="fill-remaining-space"><!-- This fills the remaining space of the current row --></span>
         <!-- menu to switch the view: list, grid, table -->
         <md-button-toggle-group name="alignment" [(ngModel)]="selectedView">
-            <md-button-toggle *ngFor="let view of viewOptions" [value]=view.name [title]=view.title [disabled]="view.isDisabled">
+            <md-button-toggle *ngFor="let view of viewOptions" [value]=view.name [title]=view.title
+                              [disabled]="view.isDisabled">
                 <md-icon>{{view.icon}}</md-icon>
             </md-button-toggle>
         </md-button-toggle-group>
     </md-toolbar>
-</div>
-<div class="salsah-view-results">
-    <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
-
-    <!-- TODO: is there a way to call the template depending on the selected View? the following does not work of course
-        <div *ngIf="searchResponse" class="{{selectedView}}-view">
-            <salsah-{{selectedView}}-view [searchResponse]="searchResponse" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-{{selectedView}}-view>
+    <div class="salsah-results-buffer">
+        <div class="loading" *ngIf="_isLoading">
+            <md-progress-bar mode="indeterminate" ></md-progress-bar>
         </div>
-        -->
-
-    <div *ngIf="selectedView=='list' && searchResponse" class="{{selectedView}}-view">
-        <salsah-list-view [searchResponse]="searchResponse" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-list-view>
     </div>
+    <div class="salsah-results-content">
 
-    <div *ngIf="selectedView=='grid' && searchResponse" class="{{selectedView}}-view">
-        <salsah-grid-view [searchResponse]="searchResponse" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-grid-view>
+        <div class="error" *ngIf="errorMessage">
+            <md-card class="salsah-warning">
+                {{errorMessage}}
+            </md-card>
+        </div>
+
+        <!-- TODO: is there a way to call the template depending on the selected View? the following does not work of course
+            <div *ngIf="searchResponse" class="{{selectedView}}-view">
+                <salsah-{{selectedView}}-view [searchResponse]="searchResponse" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-{{selectedView}}-view>
+            </div>
+            -->
+
+        <div *ngIf="selectedView=='list' && searchResponse" class="{{selectedView}}-view">
+            <salsah-list-view [searchResponse]="searchResponse" (openRequest)="openResource($event)"
+                              (errorRequest)="previewError($event)"></salsah-list-view>
+        </div>
+
+        <div *ngIf="selectedView=='grid' && searchResponse" class="{{selectedView}}-view">
+            <salsah-grid-view [searchResponse]="searchResponse" (openRequest)="openResource($event)"
+                              (errorRequest)="previewError($event)"></salsah-grid-view>
+        </div>
     </div>
 </div>

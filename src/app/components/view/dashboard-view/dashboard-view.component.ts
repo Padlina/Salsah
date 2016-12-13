@@ -22,6 +22,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class DashboardViewComponent implements OnInit {
 
+    public salsahStartPage: string = "https://dhlab-basel.github.io/Salsah/";
+
     constructor() { }
 
       ngOnInit() {

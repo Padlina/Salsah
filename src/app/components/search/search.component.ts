@@ -25,13 +25,10 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
     animations: [
         trigger('dropdown',
             [
-                state('false, void', style({display: 'none'})),
-                state('true', style({display: 'block'})),
-                transition(
-                    'false <=> true', [
-                        animate(5000)
-                    ]
-                )
+                state('false', style({height: '0px', display: 'none'})),
+                state('true', style({height: '560px', display: 'block'})),
+                transition('false => true', animate('500ms ease-in')),
+                transition('true => false', animate('500ms ease-out'))
             ]),
         trigger('size',
             [
@@ -92,6 +89,10 @@ export class SearchComponent implements OnInit {
     @HostListener('window:keydown', ['$event'])
     onKey(event: any) {
         this._searchQuery = event.target.value;
+        if (event.key === 'TAB' || event.keyCode === 9 || event.which === 9) {
+            this.simpleSearch(this._searchQuery);
+            this._searchFocus = false;
+        }
 
         if (this._searchQuery) {
             this._searchFocus = true;
