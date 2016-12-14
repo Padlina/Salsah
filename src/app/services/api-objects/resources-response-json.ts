@@ -15,28 +15,31 @@
 import { JsonObject, JsonProperty } from 'json2typescript';
 
 import { UserdataJson } from './_userdata-json';
-import { SubjectJson } from './_subject-json';
-import { ThumbMaxJson } from './_thumb-max-json';
-import { PagingJson } from "./_paging-json";
+import { ResinfoJson } from './_resinfo-json';
+import { ResdataJson } from './_resdata-json';
+import { PropertyJson } from './_property-json';
 
 @JsonObject
-export class SearchResponseJson {
+export class ResourcesResponseJson {
     @JsonProperty('userdata', UserdataJson)
     public userdata: UserdataJson = undefined;
 
-    @JsonProperty('subjects', [SubjectJson])
-    public subjects: SubjectJson[] = undefined;
+    @JsonProperty('resinfo', ResinfoJson)
+    public resinfo: ResinfoJson = undefined;
 
-    @JsonProperty('thumb_max', ThumbMaxJson)
-    public thumb_max: ThumbMaxJson = undefined;
+    @JsonProperty('incoming', [String])
+    public incoming: string = undefined;
 
-    @JsonProperty('nhits', String)
-    public nhits: string = undefined;
-
-    @JsonProperty('paging', [PagingJson])
-    public paging: PagingJson[] = undefined;
+    @JsonProperty('resdata', ResdataJson)
+    public resdata: ResdataJson = undefined;
 
     @JsonProperty('status', Number)
     public status: number = undefined;
+
+    @JsonProperty('props', [PropertyJson])
+    public props: PropertyJson[] = undefined;
+
+    @JsonProperty('access', String)
+    public access: string = undefined;
 
 }

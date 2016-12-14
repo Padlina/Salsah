@@ -1,3 +1,20 @@
-<p>
-  list-view works!
-</p>
+<md-list>
+    <md-list-item *ngFor="let item of searchResponse?.subjects" >
+        <img md-list-avatar [src]="item.preview_path" (click)="openResource(item.obj_id)" (error)="previewError($event, item.preview_path)" />
+        <p md-line>
+            <button md-icon-button  class="resource-icon">
+                <!-- show the resource type icon -->
+
+                <md-icon (click)="toggleResourceSelection()">folder</md-icon>
+
+                <!-- behind the icon is a checkbox to select a resource -->
+                <md-checkbox [checked]="completed" (change)="completed = $event" hidden></md-checkbox>
+            </button>
+            <span (click)="openResource(item.obj_id)">{{item.valuelabel[0]}}:
+                                <strong>{{item.value[0]}}</strong> &mdash;
+                            </span>
+            <a (click)="openResource(item.obj_id)">{{item.obj_id}}</a>
+        </p>
+        <p md-line (click)="openResource(item.obj_id)" >{{item.valuelabel[1]}}: {{item.value[1]}}</p>
+    </md-list-item>
+</md-list>

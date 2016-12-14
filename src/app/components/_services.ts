@@ -12,5 +12,13 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+//
+// services
 export * from '../services/search.service';
+export * from '../services/resources.service';
+
+
+//
+// api objects
 export * from '../services/api-objects/search-response-json';
+export * from '../services/api-objects/resources-response-json';

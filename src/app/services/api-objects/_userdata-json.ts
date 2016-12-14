@@ -1,7 +1,7 @@
 import { JsonObject, JsonProperty } from 'json2typescript';
 
 @JsonObject
-export class UserDataJson {
+export class UserdataJson {
     @JsonProperty('email', null)
     public email: string = null;
 

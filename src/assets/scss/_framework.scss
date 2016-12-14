@@ -12,6 +12,23 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+md-toolbar.salsah-main-header {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    height: 64px;
+
+    .salsah-project-buttons {
+        .salsah-project-select-button {
+            position: relative;
+            top: -12px;
+
+        }
+    }
+
+}
+
+
 .fill-remaining-space {
     flex: 1 1 auto
 }
@@ -21,7 +38,7 @@ img.logo {
     margin-top: 16px;
 }
 
-.md-menu.salsah-project-selection {
+.md-menu-panel.salsah-project-selection {
     max-width: 420px;
     div {
         min-height: 32px;
@@ -38,6 +55,29 @@ img.logo {
         span.salsah-admin-button {
             right: 12px;
             position: absolute;
+            md-icon {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
         }
     }
+}
+
+/*
+    Overlay element:
+    it hides the content of salsah in the case of
+    modal pop-ups or dropdown animations
+*/
+
+salsah-overlay {
+    width: 100vw;
+    height: 100vh;
+    z-index: -5;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: none;
 }

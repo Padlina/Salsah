@@ -1,3 +1,25 @@
-<p>
-  grid-view works!
-</p>
+<!--
+<div class="demo-grid-list">
+    <md-card>
+        <md-card-title>Basic grid list</md-card-title>
+        <md-card-content class="demo-basic-list">
+            <md-grid-list cols="4" [rowHeight]="basicRowHeight">
+                <md-grid-tile> One </md-grid-tile>
+                <md-grid-tile> Two </md-grid-tile>
+                <md-grid-tile> Three </md-grid-tile>
+                <md-grid-tile> Four </md-grid-tile>
+            </md-grid-list>
+        </md-card-content>
+    </md-card>
+</div>
+-->
+
+<md-grid-list cols="3" gutterSize="12px">
+    <md-grid-tile md-card *ngFor="let item of searchResponse?.subjects" (click)="openResource(item.obj_id)">
+        <md-card>
+            <img md-card-lg-image [src]="item.preview_path" (error)="previewError($event, item.preview_path)" />
+            <p>{{item.valuelabel[0]}}: {{item.value[0]}}</p>
+            <p>{{item.valuelabel[1]}}: {{item.value[1]}}</p>
+        </md-card>
+    </md-grid-tile>
+</md-grid-list>

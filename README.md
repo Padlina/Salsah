@@ -82,6 +82,17 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## Style
+We're using precompiled [sass scss](http://sass-lang.com/).
+ 
+You have to compile it first. Go to the directory src/assets and run the sass command
+
+```
+cd src/assets
+
+sass --watch scss/main.scss:css/main.min.css --style compressed
+```
+
 
 ## Commit Message Schema
 
@@ -91,6 +102,7 @@ When writing commit messages, we stick to this schema:
 type (scope): subject
 body
 ```
+
 
 Types:
 
