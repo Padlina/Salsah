@@ -24,11 +24,15 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'salsah works!';
 
-    //
-    // Json convert error handling
-    //
+
+    constructor() {
+        //
+        // Json convert error handling
+        //
+
 //        JsonConvert.debugMode = true;
 //        JsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
 //        JsonConvert.valueCheckingMode = JsonConvert.ValueCheckingMode.DISALLOW_NULL; // never allow null
+    }
 
 }

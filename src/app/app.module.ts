@@ -41,6 +41,9 @@ import { DashboardViewComponent } from './components/view/dashboard-view/dashboa
 import { PageNotFoundComponent } from './components/framework/page-not-found/page-not-found.component';
 import { ResultsViewComponent } from './components/view/results-view/results-view.component';
 import { ResourceViewComponent } from './components/view/resource-view/resource-view.component';
+import { ProjectAdminComponent } from './components/admin/project-admin/project-admin.component';
+import { UserLoginComponent } from './components/admin/user-login/user-login.component';
+
 
 //
 // import all services
@@ -48,8 +51,9 @@ import { ResourceViewComponent } from './components/view/resource-view/resource-
 import { SearchService } from './services/search.service';
 import { ResourcesService } from './services/resources.service';
 
-
-
+//
+// import all directives
+//
 import { CenterElementDirective } from './directives/center-element.directive';
 
 
@@ -70,6 +74,10 @@ const appRoutes: Routes = [
         path: 'resources/:uri', // /:view',
         component: ResourceViewComponent    // default view for search results
     },
+    {
+        path: 'project/:project', // /:view',
+        component: ProjectAdminComponent    // default view for search results
+    },
     { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -89,7 +97,9 @@ const appRoutes: Routes = [
         PageNotFoundComponent,
         ResultsViewComponent,
         CenterElementDirective,
-        ResourceViewComponent
+        ResourceViewComponent,
+        ProjectAdminComponent,
+        UserLoginComponent
     ],
     imports: [
         BrowserModule,
