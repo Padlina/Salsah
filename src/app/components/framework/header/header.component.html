@@ -1,82 +1,15 @@
 <md-toolbar class="salsah-main-header">
-    <div class="salsah-project-buttons">
-        <span class="salsah-project-select-button">
-            <button md-icon-button [md-menu-trigger-for]="projectMenu">
-                <md-icon>keyboard_arrow_down</md-icon>
-            </button>
-            <md-menu #projectMenu="mdMenu" class="salsah-project-selection">
-                <button md-menu-item>
-                    <md-icon> add </md-icon>
-                    <span> New project </span>
-                </button>
-                <hr/>
-                <div *ngFor="let project of user.userProjects" md-menu-item>
-                    <span class="salsah-user-project">{{project.longname}}</span>
-                    <span *ngIf="project.admin" class="salsah-admin-button">
-                        <button md-icon-button>
-                            <md-icon>settings</md-icon>
-                        </button>
-                    </span>
-                </div>
-            </md-menu>
-        </span>
-        <!-- image of active/current project logo -->
-        <a href="/">
-            <img class="logo" src="{{ currentProject.logo }}" alt="{{ currentProject.name }}"
-                 title="{{ currentProject.title }}">
-        </a>
-    </div>
+    <!-- project buttons on the top left corner -->
+    <salsah-project-buttons [projects]="projects" [current]="currentProject"></salsah-project-buttons>
 
-    <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
 
     <!-- salsah specific search panel incl.
          simple and extended search menu -->
     <salsah-search></salsah-search>
 
-    <!-- This fills the remaining space of the current row -->
     <span class="fill-remaining-space"></span>
 
-    <!-- toolbar menu on the top right corner -->
-    <div class="salsah-toolbar-buttons">
-
-        <!-- add menu -->
-        <span class="add-menu">
-            <button md-icon-button [md-menu-trigger-for]="addMenu">
-                <md-icon>{{add.icon}}</md-icon>
-            </button>
-            <md-menu x-position="before" #addMenu="mdMenu">
-                <div *ngFor="let item of add.menuItems; let last=last">
-                    <button md-menu-item>
-                        <md-icon> {{item.icon}} </md-icon>
-                        <span> {{item.text}} </span>
-                    </button>
-                </div>
-            </md-menu>
-        </span>
-
-        <!-- documentation / wiki link button -->
-        <span class="documentation-menu">
-            <a md-icon-button href="http://dhlab-basel.github.io/Salsah" target="_blank">
-                <md-icon>{{documentation.icon}}</md-icon>
-            </a>
-        </span>
-
-        <!-- user profile menu -->
-        <span class="user-menu">
-            <button md-icon-button [md-menu-trigger-for]="userMenu">
-                <md-icon>{{user.icon}}</md-icon>
-            </button>
-            <md-menu x-position="before" #userMenu="mdMenu" class="salsah-user-menu">
-                <div *ngFor="let item of user.menuItems; let last=last">
-                    <hr *ngIf="last"/>
-                    <button md-menu-item>
-                        <md-icon> {{item.icon}} </md-icon>
-                        <span> {{item.text}} </span>
-                    </button>
-                </div>
-
-            </md-menu>
-        </span>
-    </div>
+    <!-- toolbar buttons on the top right corner -->
+    <salsah-toolbar-buttons [toolbar]="toolbar"></salsah-toolbar-buttons>
 </md-toolbar>
