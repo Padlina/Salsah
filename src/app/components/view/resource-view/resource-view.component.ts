@@ -19,6 +19,8 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ResourcesService} from '../../_services';
 import {ResourcesResponseJson} from '../../_services';
 
+import {PropertyJsonValue} from '../../_services';
+
 
 // import { MdDialogRef } from '@angular/material';
 
@@ -49,8 +51,27 @@ export class ResourceViewComponent implements OnInit {
             let query = params['uri'];
             this._resourcesService.getData(query)
                 .subscribe(
-                    data => {
+                    (data: ResourcesResponseJson) => {
                         this.resourcesResponse = data;
+/*
+                        for (let i in data.props) {
+                            console.log(data.props[i].guielement);
+                            console.log(data.props[i].values);
+                            switch(data.props[i].values) {
+                                case 'fileupload':
+                                    let valueNumbers: Number[] = data.props[i].getValuesAsNumbers();
+                                    break;
+
+                                case 'spinbox':
+                                    let valueStrings: String[] = data.props[i].getValuesAsStrings();
+                                    break;
+
+                                default:
+                                    let valueObjects: PropertyJsonValue[] = data.props[i].getValuesAsPropertyJsonValues();
+                            }
+
+                        }
+*/
                     },
                     error => {
                         this.errorMessage = <any>error;

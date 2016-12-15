@@ -22,3 +22,4 @@ export * from '../services/resources.service';
 // api objects
 export * from '../services/api-objects/search-response-json';
 export * from '../services/api-objects/resources-response-json';
+export * from '../services/api-objects/_property-json';

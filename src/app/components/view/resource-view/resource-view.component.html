@@ -1,13 +1,22 @@
-<p>
-  resource-view works!
-</p>
+<br><br><br><br>
+<div class="salsah-resource">
+    <h2>{{resourcesResponse.resinfo?.firstproperty}}</h2>
+    <div *ngFor="let img of resourcesResponse.resinfo?.locations">
+        <img [src]="img.path">
+    </div>
+
+
+</div>
+
 <!--
 <button type="button" md-button
         (click)="dialogRef.close()">Cancel</button>
 -->
 
 <!-- preview of received response -->
+<!--
 <pre>
     Have a look at resourceResponseJSON:
     {{resourcesResponse | json }}
 </pre>
+-->
