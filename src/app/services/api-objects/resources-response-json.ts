@@ -14,32 +14,25 @@
 
 import { JsonObject, JsonProperty } from 'json2typescript';
 
-import { UserdataJson } from './_userdata-json';
-import { ResinfoJson } from './_resinfo-json';
+import { BasicResponseJson } from './_basic-response-json';
 import { ResdataJson } from './_resdata-json';
+import { ResinfoJson } from './_resinfo-json';
 import { PropertyJson } from './_property-json';
 
 @JsonObject
-export class ResourcesResponseJson {
-    @JsonProperty('userdata', UserdataJson)
-    public userdata: UserdataJson = undefined;
-
+export class ResourcesResponseJson extends BasicResponseJson {
     @JsonProperty('resinfo', ResinfoJson)
     public resinfo: ResinfoJson = undefined;
 
     @JsonProperty('incoming', [String])
-    public incoming: string = undefined;
+    public incoming: string[] = undefined;
 
     @JsonProperty('resdata', ResdataJson)
     public resdata: ResdataJson = undefined;
-
-    @JsonProperty('status', Number)
-    public status: number = undefined;
 
     @JsonProperty('props', [PropertyJson])
     public props: PropertyJson[] = undefined;
 
     @JsonProperty('access', String)
     public access: string = undefined;
-
 }

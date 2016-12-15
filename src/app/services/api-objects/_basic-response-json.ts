@@ -14,24 +14,26 @@
 
 import { JsonObject, JsonProperty } from 'json2typescript';
 
-import { SubjectJson } from './_subject-json';
-import { BasicResponseJson } from './_basic-response-json';
-import { ThumbMaxJson } from './_thumb-max-json';
-import { PagingJson } from "./_paging-json";
+import { UserdataJson } from './_userdata-json';
 
+//
+// Basic members of the Knora API V1 response format.
+//
 @JsonObject
-    @JsonProperty('subjects', [SubjectJson])
-    public subjects: SubjectJson[] = undefined;
+export class BasicResponseJson {
 
-    @JsonProperty('thumb_max', ThumbMaxJson)
-    public thumb_max: ThumbMaxJson = undefined;
-export class SearchResponseJson extends BasicResponseJson {
+    //
+    // Knora status code
+    // @param: status: KnoraStatusCode
+    // TODO: change Number to KnoraStatusCode
+    //
+    @JsonProperty('status', Number)
+    public status: number = undefined;
 
-    @JsonProperty('nhits', String)
-    public nhits: string = undefined;
-
-    @JsonProperty('paging', [PagingJson])
-    public paging: PagingJson[] = undefined;
-
-
+    //
+    // The current user's data
+    // @param: userdata: userdata
+    //
+    @JsonProperty('userdata', UserdataJson)
+    public userdata: UserdataJson = undefined;
 }
