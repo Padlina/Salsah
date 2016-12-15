@@ -51,6 +51,9 @@ import { ResourcesService } from './services/resources.service';
 
 
 import { CenterElementDirective } from './directives/center-element.directive';
+import { ToolbarButtonsComponent } from './components/framework/header/components/toolbar-buttons/toolbar-buttons.component';
+import { ProjectButtonsComponent } from './components/framework/header/components/project-buttons/project-buttons.component';
+import { UserProjectsPipe } from './pipes/user-projects.pipe';
 
 
 
@@ -89,7 +92,10 @@ const appRoutes: Routes = [
         PageNotFoundComponent,
         ResultsViewComponent,
         CenterElementDirective,
-        ResourceViewComponent
+        ResourceViewComponent,
+        ToolbarButtonsComponent,
+        ProjectButtonsComponent,
+        UserProjectsPipe
     ],
     imports: [
         BrowserModule,
