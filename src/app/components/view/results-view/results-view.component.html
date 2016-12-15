@@ -1,7 +1,9 @@
 <div class="salsah-results-view wrapper">
     <md-toolbar class="salsah-results-header">
         <span>Results: {{searchResponse?.nhits}}</span>
+
         <span class="fill-remaining-space"><!-- This fills the remaining space of the current row --></span>
+
         <!-- menu to switch the view: list, grid, table -->
         <md-button-toggle-group name="alignment" [(ngModel)]="selectedView">
             <md-button-toggle *ngFor="let view of viewOptions" [value]=view.name [title]=view.title

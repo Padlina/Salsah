@@ -12,12 +12,12 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
-import {ResourcesService} from '../../_services';
-import {ResourcesResponseJson} from '../../_services';
+import { ResourcesService } from '../../_services';
+import { ResourcesResponseJson } from '../../_services';
 
 import {PropertyJsonValue} from '../../_services';
 
@@ -78,7 +78,6 @@ export class ResourceViewComponent implements OnInit {
                     }
                 );
         });
-        console.log(this.resourcesResponse);
     }
 
 }
