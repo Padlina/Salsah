@@ -56,6 +56,7 @@ import { ResourceViewComponent } from './components/view/resource-view/resource-
 import { ProjectAdminComponent } from './components/admin/project-admin/project-admin.component';
 import { UserLoginComponent } from './components/admin/user-login/user-login.component';
 import { FooterComponent } from './components/framework/footer/footer.component';
+import { ProjectViewComponent } from './components/view/project-view/project-view.component';
 
 
 //
@@ -76,7 +77,14 @@ const appRoutes: Routes = [
     },
     {
         path: 'project/:project', // /:view',
-        component: ProjectAdminComponent    // default view for search results
+        component: ProjectViewComponent,    // default view for projects (as a start page)
+        children: [
+            {
+                path: 'settings',
+                component: ProjectAdminComponent
+            }
+        ]
+
     },
     { path: '**', component: PageNotFoundComponent }
 ];
@@ -100,7 +108,8 @@ const appRoutes: Routes = [
         ResourceViewComponent,
         ProjectAdminComponent,
         UserLoginComponent,
-        FooterComponent
+        FooterComponent,
+        ProjectViewComponent
     ],
     imports: [
         BrowserModule,
