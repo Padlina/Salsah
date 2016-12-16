@@ -1,13 +1,44 @@
-<p>
-  resource-view works!
-</p>
+<!--
+    the template starts with an own component wrapper;
+    the class is equal to the component name,
+    and the prefix of the class name is 'salsah'
+-->
+<div class="salsah-resource-view">
+    <div class="salsah-component-header">
+        <!-- this component has a loader element -->
+        <div class="loading" *ngIf="_isLoading">
+            <md-progress-bar mode="indeterminate" ></md-progress-bar>
+        </div>
+    </div>
+
+    <div class="salsah-component-content">
+        <!-- if the api answers with an error, we show a message -->
+        <div class="error" *ngIf="errorMessage">
+            <md-card class="salsah-warning">
+                {{errorMessage}}
+            </md-card>
+        </div>
+
+        <!-- the main content of the component -->
+        <div class="salsah-resource">
+            <h2>{{resourcesResponse.resinfo?.firstproperty}}</h2>
+            <div *ngFor="let img of resourcesResponse.resinfo?.locations">
+                <img [src]="img.path">
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!--
 <button type="button" md-button
         (click)="dialogRef.close()">Cancel</button>
 -->
 
 <!-- preview of received response -->
+<!--
 <pre>
     Have a look at resourceResponseJSON:
     {{resourcesResponse | json }}
 </pre>
+-->

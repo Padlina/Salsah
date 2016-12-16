@@ -24,6 +24,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
 //
+// import all services
+//
+import { SearchService } from './services/search.service';
+import { ResourcesService } from './services/resources.service';
+
+//
+// import all directives
+//
+import { CenterElementDirective } from './directives/center-element.directive';
+
+
+//
 //  import all components
 //
 import { AppComponent } from './app.component';
@@ -43,19 +55,7 @@ import { ResultsViewComponent } from './components/view/results-view/results-vie
 import { ResourceViewComponent } from './components/view/resource-view/resource-view.component';
 import { ProjectAdminComponent } from './components/admin/project-admin/project-admin.component';
 import { UserLoginComponent } from './components/admin/user-login/user-login.component';
-
-
-//
-// import all services
-//
-import { SearchService } from './services/search.service';
-import { ResourcesService } from './services/resources.service';
-
-//
-// import all directives
-//
-import { CenterElementDirective } from './directives/center-element.directive';
-
+import { FooterComponent } from './components/framework/footer/footer.component';
 
 
 //
@@ -99,7 +99,8 @@ const appRoutes: Routes = [
         CenterElementDirective,
         ResourceViewComponent,
         ProjectAdminComponent,
-        UserLoginComponent
+        UserLoginComponent,
+        FooterComponent
     ],
     imports: [
         BrowserModule,
