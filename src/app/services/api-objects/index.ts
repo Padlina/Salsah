@@ -16,5 +16,5 @@ export * from './basic-message-components';
 export * from './search-response-formats';
 
 //TODO:
-export * from './resources-response-json';
+export * from './resource-response-formats/src/resource-full-response-json';
 export * from './vocabulary-response-json';

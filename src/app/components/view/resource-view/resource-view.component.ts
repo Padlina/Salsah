@@ -17,7 +17,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 
 import {ResourcesService} from '../../_services';
-import {ResourcesResponseJson} from '../../_services';
+import {ResourceFullResponseJson} from '../../_services';
 
 import {PropertyJsonValue} from '../../_services';
 
@@ -33,7 +33,7 @@ import {PropertyJsonValue} from '../../_services';
 export class ResourceViewComponent implements OnInit {
 
     private errorMessage: string = undefined;
-    public resourcesResponse: ResourcesResponseJson = new ResourcesResponseJson();
+    public resourcesResponse: ResourceFullResponseJson = new ResourceFullResponseJson();
 
     constructor( private _resourcesService: ResourcesService,
                  private _route: ActivatedRoute ) {
@@ -51,7 +51,7 @@ export class ResourceViewComponent implements OnInit {
             let query = params['uri'];
             this._resourcesService.getData(query)
                 .subscribe(
-                    (data: ResourcesResponseJson) => {
+                    (data: ResourceFullResponseJson) => {
                         this.resourcesResponse = data;
 /*
                         for (let i in data.props) {

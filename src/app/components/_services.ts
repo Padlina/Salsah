@@ -22,5 +22,5 @@ export * from '../services/resources.service';
 // api objects
 export * from '../services/api-objects';
 
-export * from '../services/api-objects/resources-response-json';
-export * from '../services/api-objects/_property-json';
+export * from '../services/api-objects/resource-response-formats/src/resource-full-response-json';
+export * from '../services/api-objects/resource-response-formats/src/property-json';

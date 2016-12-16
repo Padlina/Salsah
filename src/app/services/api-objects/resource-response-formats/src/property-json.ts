@@ -1,5 +1,5 @@
 import { JsonConvert, JsonObject, JsonProperty} from 'json2typescript';
-import { PropvalJson } from './_propval-json';
+import { PropvalJson } from '../../_propval-json';
 
 @JsonObject
 export class PropertyJsonValue {

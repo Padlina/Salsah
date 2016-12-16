@@ -1,5 +1,5 @@
 import { JsonObject, JsonProperty } from 'json2typescript';
-import { LocationJson } from './_location-json';
+import { LocationJson } from '../../_location-json';
 
 @JsonObject
 export class ResinfoJson {

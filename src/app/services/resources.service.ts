@@ -19,7 +19,7 @@ import { AppConfig } from '../app.config';
 
 import { JsonConvert } from 'json2typescript';
 
-import { ResourcesResponseJson } from './api-objects/resources-response-json';
+import { ResourceFullResponseJson } from './api-objects/resource-response-formats/src/resource-full-response-json';
 
 
 @Injectable()
@@ -28,7 +28,7 @@ export class ResourcesService {
     constructor(private _http: Http) { }
 
 
-    getData(uri: string): Observable<ResourcesResponseJson> {
+    getData(uri: string): Observable<ResourceFullResponseJson> {
         let resourceData: string = `${AppConfig.API_ENDPOINT}` + 'resources/' + uri;
         return this._http.get(resourceData)
             .map(this.extractData)
@@ -38,7 +38,7 @@ export class ResourcesService {
     private extractData(res: Response) {
         try {
             // console.log(res.json());
-            return JsonConvert.deserializeObject(res.json(), ResourcesResponseJson);
+            return JsonConvert.deserializeObject(res.json(), ResourceFullResponseJson);
         } catch (e) {
             // console.log(e);
             return Observable.throw('Data error in salsah\'s resources service.');
