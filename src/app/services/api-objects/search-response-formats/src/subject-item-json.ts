@@ -13,90 +13,88 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
+import { KnoraIRI, KnoraRights } from '../../basic-message-components';
 
-//
-// ...
-//
-
+/**
+ * Represents a search result item
+ */
 @JsonObject
 export class SubjectItemJson {
 
-    //
-    // Description of the resource's class
-    // @param iconlabel: string
-    //
+    /**
+     * Description of the resource's class
+     * @param iconlabel: string
+     */
     @JsonProperty('iconlabel', String)
     public iconlabel: string = undefined;
 
-    //
-    // Icon representing the resource's class
-    // @param iconsrc: string
-    //
+    /**
+     * Icon representing the resource's class
+     * @param iconsrc: string
+     */
     @JsonProperty('iconsrc', String)
     public iconsrc: string = undefined;
 
-    //
-    // Description of the resource's class
-    // @param icontitle: string
-    //
+    /**
+     * Description of the resource's class
+     * @param icontitle: string
+     */
     @JsonProperty('icontitle', String)
     public icontitle: string = undefined;
 
-    //
-    // Iri of the retrieved resource
-    // @param obj_id: KnoraIRI
-    // TODO
-    //
+    /**
+     * IRI of the retrieved resource
+     * @param obj_id: KnoraIRI
+     */
     @JsonProperty('obj_id', String)
-    public obj_id: string = undefined;
+    public obj_id: KnoraIRI = undefined;
 
-    //
-    // X dimension of the preview representation
-    // @param preview_nx: number
-    //
+    /**
+     * X dimension of the preview representation
+     * @param preview_nx: number
+     */
     @JsonProperty('preview_nx', Number)
     public preview_nx: number = undefined;
 
-    //
-    // Y dimension of the preview representation
-    // @param preview_ny: number
-    //
+    /**
+     * Y dimension of the preview representation
+     * @param preview_ny: number
+     */
     @JsonProperty('preview_ny', Number)
     public preview_ny: number = undefined;
 
-    //
-    // Path to a preview representation
-    // @param preview_path: string
-    //
+    /**
+     * Path to a preview representation
+     * @param preview_path: string
+     */
     @JsonProperty('preview_path', String)
     public preview_path: string = undefined;
 
-    //
-    // The user's permission on the retrieved resource
-    // @param rights: KnoraRights
-    // TODO
-    //
+    /**
+     * The user's permission on the retrieved resource
+     * @param rights: KnoraRights
+     */
     @JsonProperty('rights', Number)
-    public rights: number = undefined;
+    public rights: KnoraRights = undefined;
 
-    //
-    // Values of the retrieved resource
-    // @param value: Array<string>
-    //
+    /**
+     * Values of the retrieved resource
+     * @param value: Array<string>
+     */
     @JsonProperty('value', [String])
     public value: string[] = undefined;
 
-    //
-    // Labels of the retrieved resource's values
-    // @param valuelabel: Array<string>
-    //
+    /**
+     * Labels of the retrieved resource's values
+     * @param valuelabel: Array<string>
+     */
     @JsonProperty('valuelabel', [String])
     public valuelabel: string[] = undefined;
 
-    //
-    // IRIs of the value types of the resource's values
-    // @param valuetype_id: Array<KnoraIRI>
-    //
+    /**
+     * IRIs of the value types of the resource's values
+     * @param valuetype_id: Array<KnoraIRI>
+     */
     @JsonProperty('valuetype_id', [String])
-    public valuetype_id: string[] = undefined;
+    public valuetype_id: KnoraIRI[] = undefined;
 }

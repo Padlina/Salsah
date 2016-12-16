@@ -14,31 +14,14 @@
 
 import { JsonObject, JsonProperty } from 'json2typescript';
 
-//
-// Represents a page in a collection of pages.
-//
+/*
+ * Represents maximal dimensions of preview representations
+ */
 @JsonObject
-export class PagingItemJson {
+export class ThumbMaxJson {
+    @JsonProperty('nx', Number)
+    public nx: number = undefined;
 
-    //
-    // True if this item represents the
-    // current page of search results
-    // @param current: Boolean
-    //
-    @JsonProperty('current', Boolean)
-    public current: boolean = undefined;
-
-    //
-    // The number of results shown on the page
-    // @param show_nrows: number
-    //
-    @JsonProperty('show_nrows', Number)
-    public show_nrows: number = undefined;
-
-    //
-    // The index of the first search result on the page
-    // @param start_at: number
-    //
-    @JsonProperty('start_at', Number)
-    public start_at: number = undefined;
+    @JsonProperty('ny', Number)
+    public ny: number = undefined;
 }
