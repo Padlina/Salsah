@@ -41,6 +41,10 @@ import { DashboardViewComponent } from './components/view/dashboard-view/dashboa
 import { PageNotFoundComponent } from './components/framework/page-not-found/page-not-found.component';
 import { ResultsViewComponent } from './components/view/results-view/results-view.component';
 import { ResourceViewComponent } from './components/view/resource-view/resource-view.component';
+import { ToolbarButtonsComponent } from './components/framework/header/components/toolbar-buttons/toolbar-buttons.component';
+import { ProjectButtonsComponent } from './components/framework/header/components/project-buttons/project-buttons.component';
+import { UserProjectsPipe } from './pipes/user-projects.pipe';
+import { FooterComponent } from './components/framework/footer/footer.component';
 
 //
 // import all services
@@ -51,9 +55,9 @@ import { ResourcesService } from './services/resources.service';
 
 
 import { CenterElementDirective } from './directives/center-element.directive';
-import { ToolbarButtonsComponent } from './components/framework/header/components/toolbar-buttons/toolbar-buttons.component';
-import { ProjectButtonsComponent } from './components/framework/header/components/project-buttons/project-buttons.component';
-import { UserProjectsPipe } from './pipes/user-projects.pipe';
+
+
+
 
 
 
@@ -95,7 +99,8 @@ const appRoutes: Routes = [
         ResourceViewComponent,
         ToolbarButtonsComponent,
         ProjectButtonsComponent,
-        UserProjectsPipe
+        UserProjectsPipe,
+        FooterComponent
     ],
     imports: [
         BrowserModule,

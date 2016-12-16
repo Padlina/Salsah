@@ -73,7 +73,7 @@ export class SearchComponent implements OnInit {
                 private _eleRef: ElementRef) { }
 
     ngOnInit() {
-        console.log(this.route.params);
+//        console.log(this.route.params);
         this.route.params.forEach((params: Params) => {
             let query = params['query'];
         });

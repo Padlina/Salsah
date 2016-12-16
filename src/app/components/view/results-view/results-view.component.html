@@ -1,29 +1,39 @@
-<div class="salsah-results-view wrapper">
-    <md-toolbar class="salsah-results-header">
-        <span>Results: {{searchResponse?.nhits}}</span>
-
-        <span class="fill-remaining-space"><!-- This fills the remaining space of the current row --></span>
-
-        <!-- menu to switch the view: list, grid, table -->
-        <md-button-toggle-group name="alignment" [(ngModel)]="selectedView">
-            <md-button-toggle *ngFor="let view of viewOptions" [value]=view.name [title]=view.title
-                              [disabled]="view.isDisabled">
-                <md-icon>{{view.icon}}</md-icon>
-            </md-button-toggle>
-        </md-button-toggle-group>
-    </md-toolbar>
-    <div class="salsah-results-buffer">
+<!--
+    the template starts with an own component wrapper;
+    the class is equal to the component name,
+    and the prefix of the class name is 'salsah'
+-->
+<div class="salsah-results-view">
+    <div class="salsah-component-header">
+        <!-- this component has his own toolabr header -->
+        <md-toolbar class="salsah-results-header">
+            <span>Results: {{searchResponse?.nhits}}</span>
+            <span class="fill-remaining-space"><!-- This fills the remaining space of the current row --></span>
+            <!-- menu to switch the view: list, grid, table -->
+            <md-button-toggle-group name="alignment" [(ngModel)]="selectedView">
+                <md-button-toggle *ngFor="let view of viewOptions" [value]=view.name [title]=view.title
+                                  [disabled]="view.isDisabled">
+                    <md-icon>{{view.icon}}</md-icon>
+                </md-button-toggle>
+            </md-button-toggle-group>
+        </md-toolbar>
+        <!-- this component has a loader element -->
         <div class="loading" *ngIf="_isLoading">
             <md-progress-bar mode="indeterminate" ></md-progress-bar>
         </div>
     </div>
-    <div class="salsah-results-content">
 
+
+    <div class="salsah-component-content">
+
+        <!-- if the api answers with an error, we show a message -->
         <div class="error" *ngIf="errorMessage">
             <md-card class="salsah-warning">
                 {{errorMessage}}
             </md-card>
         </div>
+
+        <!-- the main content of the component -->
 
         <!-- TODO: is there a way to call the template depending on the selected View? the following does not work of course
             <div *ngIf="searchResponse" class="{{selectedView}}-view">

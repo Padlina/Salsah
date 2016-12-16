@@ -35,6 +35,8 @@ export class ResourceViewComponent implements OnInit {
     private errorMessage: string = undefined;
     public resourcesResponse: ResourcesResponseJson = new ResourcesResponseJson();
 
+    public _isLoading: boolean = true;
+
     constructor( private _resourcesService: ResourcesService,
                  private _route: ActivatedRoute ) {
 
@@ -53,6 +55,7 @@ export class ResourceViewComponent implements OnInit {
                 .subscribe(
                     (data: ResourcesResponseJson) => {
                         this.resourcesResponse = data;
+                        this._isLoading = false;
 /*
                         for (let i in data.props) {
                             console.log(data.props[i].guielement);
@@ -78,6 +81,7 @@ export class ResourceViewComponent implements OnInit {
                     }
                 );
         });
+//        console.log(this.resourcesResponse);
     }
 
 }
