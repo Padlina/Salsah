@@ -66,7 +66,7 @@ export class ResultsViewComponent implements OnInit {
 
     ngOnInit() {
 //        this.getResults();
-        console.log(this.route.params);
+//        console.log(this.route.params);
         this.route.params.forEach((params: Params) => {
             let query = params['query'];
             this._searchService.getData(query)
@@ -84,8 +84,6 @@ export class ResultsViewComponent implements OnInit {
     }
 
     public openResource(id: string): void {
-        console.log(id);
-        console.log(encodeURIComponent(id));
 
         this.router.navigate(['/resources/' + encodeURIComponent(id)], {relativeTo: this.route});
 
