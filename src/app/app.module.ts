@@ -51,6 +51,7 @@ import { ResourcesService } from './services/resources.service';
 
 
 import { CenterElementDirective } from './directives/center-element.directive';
+import { FooterComponent } from './components/framework/footer/footer.component';
 
 
 
@@ -89,7 +90,8 @@ const appRoutes: Routes = [
         PageNotFoundComponent,
         ResultsViewComponent,
         CenterElementDirective,
-        ResourceViewComponent
+        ResourceViewComponent,
+        FooterComponent
     ],
     imports: [
         BrowserModule,

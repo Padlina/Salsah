@@ -13,6 +13,41 @@
  * */
 
 
+.salsah-component-header {
+    position: fixed;
+    top: 64px;
+    width: 100vw;
+
+    md-toolbar {
+        z-index: 90;
+        padding-left: 64px;
+        padding-right: 64px;
+        @include box-shadow-bottom();
+    }
+    div.loading {
+
+    }
+}
+
+.salsah-component-content {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    .list-view {
+        .md-list-item {
+            height: 128px;
+            img {
+                border-radius: 0;
+                width: 128px;
+                height: 80%;
+                object-fit: cover;
+            }
+        }
+    }
+
+}
+
+
 .salsah-dashboard {
     width: 560px;
     img {
@@ -21,38 +56,4 @@
     }
 }
 
-.salsah-results-view {
-    md-toolbar.salsah-results-header {
-        position: fixed;
-        top: 64px;
-        z-index: 90;
-        @include box-shadow-bottom();
-        padding-left: 64px;
-        padding-right: 64px;
-    }
-    .salsah-results-buffer {
-        position: relative;
-        top: 128px;
-        width: 100%;
-    }
-    .salsah-results-content {
-        position: relative;
-        top: 132px;
-        max-width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-
-        .list-view {
-            .md-list-item {
-                height: 128px;
-                img {
-                    border-radius: 0;
-                    width: 128px;
-                    height: 80%;
-                    object-fit: cover;
-                }
-            }
-        }
-    }
-}
 
