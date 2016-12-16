@@ -12,6 +12,9 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+export * from './basic-message-components';
+export * from './search-response-formats';
+
+//TODO:
 export * from './resources-response-json';
-export * from './search-response-json';
 export * from './vocabulary-response-json';

@@ -16,8 +16,7 @@ import {Component, OnInit, ViewContainerRef, animate} from '@angular/core';
 
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { SearchService } from '../../_services';
-import { SearchResponseJson } from '../../_services';
+import { SearchService, SearchResponseJson } from '../../_services';
 
 // import { ResourceViewComponent } from '../resource-view/resource-view.component';
 // import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
@@ -72,7 +71,7 @@ export class ResultsViewComponent implements OnInit {
             let query = params['query'];
             this._searchService.getData(query)
                 .subscribe(
-                    data => {
+                    (data: SearchResponseJson) => {
                         this.searchResponse = data;
                         this._isLoading = false;
                     },

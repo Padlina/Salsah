@@ -19,7 +19,7 @@ import { AppConfig } from '../app.config';
 
 import { JsonConvert } from 'json2typescript';
 
-import { SearchResponseJson } from './api-objects/search-response-json';
+import { SearchResponseJson } from './api-objects';
 
 
 @Injectable()
