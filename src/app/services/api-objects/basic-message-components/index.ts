@@ -12,27 +12,18 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import { JsonObject, JsonProperty } from 'json2typescript';
+/**
+ *
+ *              BasicMessageComponents
+ *
+ * This module contains interfaces that are used by other modules
+ * (message components). It does not represent a particular API V1 request
+ * or response format.
+ */
 
-import { BasicResponseJson } from './basic-message-components';
-import { ResdataJson } from './_resdata-json';
-import { ResinfoJson } from './_resinfo-json';
-import { PropertyJson } from './_property-json';
+import { BasicResponseJson } from './src/basic-response-json';
+import { ProjectItemJson } from './src/project-item-json';
+import { UserdataJson } from './src/userdata-json';
+import { KnoraAccess, KnoraIRI, KnoraListNodeIRI, KnoraRights, KnoraStatusCode, KnoraValue } from './src/basic-type-aliases';
 
-@JsonObject
-export class ResourcesResponseJson extends BasicResponseJson {
-    @JsonProperty('resinfo', ResinfoJson)
-    public resinfo: ResinfoJson = undefined;
-
-    @JsonProperty('incoming', [String])
-    public incoming: string[] = undefined;
-
-    @JsonProperty('resdata', ResdataJson)
-    public resdata: ResdataJson = undefined;
-
-    @JsonProperty('props', [PropertyJson])
-    public props: PropertyJson[] = undefined;
-
-    @JsonProperty('access', String)
-    public access: string = undefined;
-}
+export { BasicResponseJson, KnoraAccess, KnoraIRI, KnoraListNodeIRI, KnoraRights, KnoraStatusCode, KnoraValue, ProjectItemJson, UserdataJson }

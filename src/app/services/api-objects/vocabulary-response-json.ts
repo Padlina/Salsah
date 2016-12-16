@@ -14,7 +14,7 @@
 
 import { JsonObject, JsonProperty } from 'json2typescript';
 
-import { BasicResponseJson } from './_basic-response-json';
+import { BasicResponseJson } from './basic-message-components';
 import { VocabularyItemJson } from './_vocabulary-item-json';
 
 @JsonObject

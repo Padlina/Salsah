@@ -13,27 +13,26 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
+import { UserdataJson } from './userdata-json';
+import { KnoraStatusCode } from './basic-type-aliases';
 
-import { UserdataJson } from './_userdata-json';
-
-//
-// Basic members of the Knora API V1 response format.
-//
+/**
+ * Basic members of the Knora API V1 response format.
+ */
 @JsonObject
 export class BasicResponseJson {
 
-    //
-    // Knora status code
-    // @param: status: KnoraStatusCode
-    // TODO: change Number to KnoraStatusCode
-    //
+    /**
+     * Knora status code
+     * @param status: KnoraStatusCode
+     */
     @JsonProperty('status', Number)
-    public status: number = undefined;
+    public status: KnoraStatusCode = undefined;
 
-    //
-    // The current user's data
-    // @param: userdata: userdata
-    //
+    /**
+     * The current user's data
+     * @param userdata: userdata
+     */
     @JsonProperty('userdata', UserdataJson)
     public userdata: UserdataJson = undefined;
 }

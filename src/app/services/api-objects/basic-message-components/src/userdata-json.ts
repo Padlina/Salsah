@@ -13,88 +13,89 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
+import {ProjectItemJson} from "./project-item-json";
 
-//
-// Represents the current user's data
-//
+/**
+ * Represents the current user's data
+ */
 @JsonObject
 export class UserdataJson {
 
-    //
-    // User's active project
-    // @param: active_project: string | null
-    //
+    /*
+     * User's active project
+     * @param active_project: string | null
+     */
     @JsonProperty('active_project', null)
     public active_project: string = undefined;
 
-    //
-    // User's email adress
-    // @param: email: string | null
-    //
+    /**
+     * User's email adress
+     * @param email: string | null
+     */
     @JsonProperty('email', null)
     public email: string = null;
 
-    //
-    // User's first name
-    // @param: firstname: string | null
-    //
+    /**
+     * User's first name
+     * @param firstname: string | null
+     */
     @JsonProperty('firstname', null)
     public firstname: string = undefined;
 
-    //
-    // User's preferred language
-    // @param: lang: string
-    //
+    /**
+     * User's preferred language
+     * @param lang: string
+     */
     @JsonProperty('lang', String)
     public lang: string = undefined;
 
-    //
-    // User's last name
-    // @param: lastname: string | null
-    //
+    /**
+     * User's last name
+     * @param lastname: string | null
+     */
     @JsonProperty('lastname', null)
     public lastname: string = undefined;
 
-    //
-    // obsolete
-    // @param: password: string | null
-    //
+    /**
+     * obsolete
+     * @param password: string | null
+     */
     @JsonProperty('password', null)
     public password: string = undefined;
 
-    //
-    // List of project IRIs the user is member of
-    // @param: projects: Array<string> | null
-    //
+    /**
+     * List of project IRIs the user is member of
+     * @param projects: Array<string> | null
+     */
     @JsonProperty('projects', null)
     public projects: string = undefined;
 
-    //
-    // List of project descriptions the user is member of
-    // @param: projects: Array<projectItem> | null
-    // TODO
-    //
-    @JsonProperty('projects_info', [String])
-    public projects_info: string[] = undefined;
+    /*
+     * List of project descriptions the user is member of
+     * @param projects: Array<projectItem> | null
+     * TODO
+     */
+    @JsonProperty('projects_info', [ProjectItemJson])
+    public projects_info: ProjectItemJson[] = undefined;
 
-    //
-    // Session token
-    // @param: token: string | null
-    //
+    /**
+     * Session token
+     * @param token: string | null
+     */
     @JsonProperty('token', null)
     public token: string = undefined;
 
-    //
-    // User's IRI
-    // @param: user_id: string | null
-    //
+    /**
+     * User's IRI
+     * @param user_id: string | null
+     */
     @JsonProperty('user_id', null)
     public user_id: string = undefined;
 
-    //
-    // User's unique name
-    // @param: username: string | null
-    //
+    /**
+     * User's unique name
+     * @param username: string | null
+     */
     @JsonProperty('username', null)
     public username: string = null;
 }
