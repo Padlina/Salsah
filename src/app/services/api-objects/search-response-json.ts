@@ -14,24 +14,44 @@
 
 import { JsonObject, JsonProperty } from 'json2typescript';
 
-import { SubjectJson } from './_subject-json';
 import { BasicResponseJson } from './_basic-response-json';
+import { SubjectItemJson } from './_subject-item-json';
 import { ThumbMaxJson } from './_thumb-max-json';
-import { PagingJson } from "./_paging-json";
+import { PagingItemJson } from './_paging-item-json';
 
+//
+//   Represents the response to a fulltext
+//   or an extended search
+//
+//   HTTP GET to http://host/v1/search/searchTerm?searchtype=fulltext
+//   [&filter_by_restype=resourceClassIRI][&filter_by_project=projectIRI][&show_nrows=Integer]{[&start_at=Integer]
+//
+//   HTTP GET to http://host/v1/search/?searchtype=extended
+//   [&filter_by_restype=resourceClassIRI][&filter_by_project=projectIRI][&filter_by_owner=userIRI]
+//   (&property_id=propertyTypeIRI&compop=comparisonOperator&searchval=searchValue)+[&show_nrows=Integer]{[&start_at=Integer]
+//
 @JsonObject
-    @JsonProperty('subjects', [SubjectJson])
-    public subjects: SubjectJson[] = undefined;
-
-    @JsonProperty('thumb_max', ThumbMaxJson)
-    public thumb_max: ThumbMaxJson = undefined;
 export class SearchResponseJson extends BasicResponseJson {
 
+    // Total number of hits
+    // @param nhits: string
     @JsonProperty('nhits', String)
     public nhits: string = undefined;
 
-    @JsonProperty('paging', [PagingJson])
-    public paging: PagingJson[] = undefined;
+    // Represents Information for paging.
+    // Go through all the results page by page
+    // (by going through the items of the array).
+    // @param paging: Array<pagingItem>
+    @JsonProperty('paging', [PagingItemJson])
+    public paging: PagingItemJson[] = undefined;
 
+    // List of search result items
+    // @param subjects: Array<subjectItem>
+    @JsonProperty('subjects', [SubjectItemJson])
+    public subjects: SubjectItemJson[] = undefined;
 
+    // maximal dimensions of preview representations
+    // @param thumb_max: object
+    @JsonProperty('thumb_max', ThumbMaxJson)
+    public thumb_max: ThumbMaxJson = undefined;
 }
