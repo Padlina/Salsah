@@ -12,8 +12,7 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import {Component, OnInit, ViewContainerRef, animate} from '@angular/core';
-
+import { Component, OnInit, ViewContainerRef, animate } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { SearchService, SearchResponseJson } from '../../_services';

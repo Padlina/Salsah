@@ -12,9 +12,9 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import {ActivatedRoute, Params, Router} from '@angular/router';
 import { ResourcesService, ResourceFullResponseJson } from '../../_services';
 
 // import {PropertyJsonValue} from '../../_services';
