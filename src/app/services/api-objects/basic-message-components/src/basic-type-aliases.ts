@@ -127,6 +127,12 @@ export type KnoraRights = integer;
 export type KnoraValue = integer|decimal|boolean|richtext|interval|date|color|KnoraIRI|URI|geometry|geoname|KnoraListNodeIRI;
 
 /**
+* Represents how a binary representation (location) can be accessed.
+* Either locally stored (file) or referenced from an external location (url)
+*/
+export type ProtocolOptions = 'file' | 'url';
+
+/**
  * String must be a hexadecimal RGB color code, e.g. "#4169E1"
  */
 type color = string;

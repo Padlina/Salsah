@@ -1,70 +1,143 @@
-import { JsonObject, JsonProperty } from 'json2typescript';
-import { LocationJson } from '../../_location-json';
+/* Copyright © 2016 Lukas Rosenthaler, André Kilchenmann, Andreas Aeschlimann,
+ * Sofia Georgakopoulou, Ivan Subotic, Benjamin Geer, Tobias Schweizer.
+ * This file is part of SALSAH.
+ * SALSAH is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * SALSAH is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * You should have received a copy of the GNU Affero General Public
+ * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
+ * */
 
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { KnoraIRI, LocationJson } from '../../basic-message-components';
+
+/**
+ * Represents information about a resource and its class.
+ */
 @JsonObject
 export class ResinfoJson {
 
-//    "locations": null,
-    @JsonProperty('locations', [LocationJson])
-    public locations: LocationJson[] = undefined;
-
-//    "restype_label": "Book",
-    @JsonProperty('restype_label', String)
-    public restype_label: string = undefined;
-
-//    "resclass_has_location": false,
-    @JsonProperty('resclass_has_location', Boolean)
-    public resclass_has_location: boolean = undefined;
-
-//    "preview": null,
-    @JsonProperty('preview', LocationJson)
-    public preview: LocationJson = undefined;
-
-//    "person_id": "http://data.knora.org/users/91e19f1e01",
-    @JsonProperty('person_id', String)
-    public person_id: string = undefined;
-
-//    "value_of": 0,
-    @JsonProperty('value_of', Number)
-    public value_of: number = undefined;
-
-//    "lastmod": "0000-00-00 00:00:00",
-    @JsonProperty('lastmod', String)
-    public lastmod: string = undefined;
-
-//    "resclass_name": "object",
-    @JsonProperty('resclass_name', String)
-    public resclass_name: string = undefined;
-
-//    "firstproperty": "Bereitung zu dem Heiligen Sakrament",
+    /**
+     * The resource's label
+     * @param firstproperty: string
+     */
     @JsonProperty('firstproperty', String)
     public firstproperty: string = undefined;
 
-//    "restype_iconsrc": "http://localhost:3335/project-icons/incunabula/book.gif",
-    @JsonProperty('restype_iconsrc', String)
-    public restype_iconsrc: string = undefined;
+    /**
+     * Date of last modification
+     * @param lastmod: string
+     */
+    @JsonProperty('lastmod', String)
+    public lastmod: string = undefined;
 
-//    "restype_name": "http://www.knora.org/ontology/incunabula#book",
-    @JsonProperty('restype_name', String)
-    public restype_name: string = undefined;
+    /**
+     * Digital representations of the resource
+     * @param locations: Array<locationItem>
+     */
+    @JsonProperty('locations', [LocationJson])
+    public locations: LocationJson[] = undefined;
 
-//    "regions": null,
-    @JsonProperty('regions', null)
-    public regions: string = null;
-
-//    "restype_description": "Diese Resource-Klasse beschreibt ein Buch",
-    @JsonProperty('restype_description', String)
-    public restype_description: string = undefined;
-
-//    "project_id": "http://data.knora.org/projects/77275339",
-    @JsonProperty('project_id', String)
-    public project_id: string = undefined;
-
-//    "locdata": null,
+    /**
+     * Full quality representation of the resource
+     * @param locdata: locationItem | null
+     */
     @JsonProperty('locdata', LocationJson)
     public locdata: LocationJson = undefined;
 
-//    "restype_id": "http://www.knora.org/ontology/incunabula#book"
+    /**
+     * The owner of the resource
+     * @param person_id: string
+     */
+    @JsonProperty('person_id', String)
+    public person_id: string = undefined;
+
+    /**
+     * Preview representation of the resource: Thumbnail or Icon
+     * @param preview: locationItem | null
+     */
+    @JsonProperty('preview', LocationJson)
+    public preview: LocationJson = undefined;
+
+    /**
+     * The project IRI the resource belongs to
+     * @param project_id: KnoraIRI
+     */
+    @JsonProperty('project_id', String)
+    public project_id: KnoraIRI = undefined;
+
+    /**
+     * Regions if there are any
+     * @param regions: Array<region>
+     * TODO: region has @type: [index: string]: PropJson | string
+     */
+    @JsonProperty('regions', [String])
+    public regions: string[] = null;
+
+    /**
+     * Indicates if there is a location (digital representation) attached
+     * @param resclass_has_location: boolean
+     */
+    @JsonProperty('resclass_has_location', Boolean)
+    public resclass_has_location: boolean = undefined;
+
+    /**
+     * The resource class's name
+     * @param resclass_name: string
+     */
+    @JsonProperty('resclass_name', String)
+    public resclass_name: string = undefined;
+
+    /**
+     * Description of the resource type
+     * @param restype_description: string
+     */
+    @JsonProperty('restype_description', String)
+    public restype_description: string = undefined;
+
+    /**
+     * The URL of an icon for the resource class
+     * @param restype_iconsrc: string
+     */
+    @JsonProperty('restype_iconsrc', String)
+    public restype_iconsrc: string = undefined;
+
+    /**
+     * The Knora IRI identifying the resource's class
+     * @param restype_id: KnoraIRI
+     */
     @JsonProperty('restype_id', String)
-    public restype_id: string = undefined;
+    public restype_id: KnoraIRI = undefined;
+
+    /**
+     * Label of the resource's class
+     * @param restype_label: string
+     * TODO: refactor restye_label & restype_name as RestypeJson??
+     * TODO: compare ResdataJson
+     * TODO: compare also resTypeItem in KnoraAPI
+     */
+    @JsonProperty('restype_label', String)
+    public restype_label: string = undefined;
+
+    /**
+     * The Knora IRI identifying the resource's class
+     * @param restype_name: KnoraIRI
+     * TODO: ISSUE QUESTION: what's the difference between restype_id and restype_name??
+     * TODO: see restye_label above
+     */
+    @JsonProperty('restype_name', String)
+    public restype_name: KnoraIRI = undefined;
+
+    /**
+     * Points to the parent resource in case the resource depends on it
+     * @param value_of: string | number
+     * TODO: expected type: string | number
+     * check: https://www.typescriptlang.org/docs/handbook/advanced-types.html
+     */
+    @JsonProperty('value_of', Number)
+    public value_of: number = undefined;
 }

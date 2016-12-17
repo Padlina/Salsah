@@ -14,11 +14,11 @@
 
 import { JsonObject, JsonProperty } from 'json2typescript';
 
-import { BasicResponseJson } from '../../basic-message-components';
+import { BasicResponseJson, KnoraAccess } from '../../basic-message-components';
+import { IncomingItemJson } from './incoming-item-json';
+import { PropertyJson } from './property-json';
 import { ResdataJson } from './resdata-json';
 import { ResinfoJson } from './resinfo-json';
-import { PropertyJson } from './property-json';
-import { KnoraAccess } from "../../basic-message-components";
 
 /**
  * Represents the Knora API V1 response to a full resource request.
@@ -40,12 +40,13 @@ export class ResourceFullResponseJson extends BasicResponseJson {
      * @param incoming: Array<incomingItem>
      * TODO
      */
-    @JsonProperty('incoming', [String])
-    public incoming: string[] = undefined;
+    @JsonProperty('incoming', [IncomingItemJson])
+    public incoming: IncomingItemJson[] = undefined;
 
     /**
      * The resource's properties
-     * @param [index: string]: property
+     * @param props: object
+     * @type [index: string]: property
      */
     @JsonProperty('props', [PropertyJson])
     public props: PropertyJson[] = undefined;
