@@ -45,9 +45,9 @@ import { ResourceViewComponent } from './components/view/resource-view/resource-
 //
 // import all services
 //
-import { SearchService } from './services/search.service';
 import { ResourcesService } from './services/resources.service';
-
+import { SearchService } from './services/search.service';
+import { VocabulariesService } from './services/vocabularies.service';
 
 
 import { CenterElementDirective } from './directives/center-element.directive';
@@ -107,8 +107,9 @@ const appRoutes: Routes = [
         ResourceViewComponent
     ],
     providers: [
+        ResourcesService,
         SearchService,
-        ResourcesService
+        VocabulariesService
     ],
     bootstrap: [AppComponent]
 })

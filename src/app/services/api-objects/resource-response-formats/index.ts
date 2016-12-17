@@ -12,13 +12,16 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import { JsonObject, JsonProperty } from 'json2typescript';
+/**
+ *
+ *              ResourceResponseFormats
+ *
+ * This module contains classes that represent responses to a resource GET request.
+ *
+ *
+ */
 
-import { BasicResponseJson } from './basic-message-components';
-import { VocabularyItemJson } from './_vocabulary-item-json';
+import { ResourceFullResponseJson } from './src/resource-full-response-json';
+import { VocabularyResponseJson } from './src/vocabulary-response-json';
 
-@JsonObject
-export class VocabularyResponseJson extends BasicResponseJson {
-  @JsonProperty('vocabularies', [VocabularyItemJson])
-  public vocabularies: VocabularyItemJson[] = undefined;
-}
+export { ResourceFullResponseJson, VocabularyResponseJson }

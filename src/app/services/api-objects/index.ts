@@ -12,9 +12,14 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+/**
+ *
+ * Export all (json2typesripted) classes
+ * from Knora API V1 Format modules
+ * for projectwide usage
+ *
+ */
+
 export * from './basic-message-components';
 export * from './search-response-formats';
-
-//TODO:
-export * from './resource-response-formats/src/resource-full-response-json';
-export * from './vocabulary-response-json';
+export * from './resource-response-formats';

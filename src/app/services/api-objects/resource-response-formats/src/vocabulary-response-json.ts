@@ -12,14 +12,23 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-//
-// services
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
+import { JsonObject, JsonProperty } from 'json2typescript';
 
-//
-// api objects
-export * from '../services/api-objects';
+import { BasicResponseJson } from '../../basic-message-components';
+import { VocabularyItemJson } from './vocabulary-item-json';
 
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+/**
+ * Represents the available vocabularies
+ *
+ * HTTP GET to http://host/v1/vocabularies
+ */
+@JsonObject
+export class VocabularyResponseJson extends BasicResponseJson {
+
+    /**
+     * ...
+     * @param Array<vocabulary>
+     */
+    @JsonProperty('vocabularies', [VocabularyItemJson])
+    public vocabularies: VocabularyItemJson[] = undefined;
+}

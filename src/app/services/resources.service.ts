@@ -19,7 +19,7 @@ import { AppConfig } from '../app.config';
 
 import { JsonConvert } from 'json2typescript';
 
-import { ResourceFullResponseJson } from './api-objects/resource-response-formats/src/resource-full-response-json';
+import { ResourceFullResponseJson } from './api-objects';
 
 
 @Injectable()
