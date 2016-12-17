@@ -15,11 +15,9 @@
 import {Component, OnInit} from '@angular/core';
 
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import { ResourcesService, ResourceFullResponseJson } from '../../_services';
 
-import {ResourcesService} from '../../_services';
-import {ResourceFullResponseJson} from '../../_services';
-
-import {PropertyJsonValue} from '../../_services';
+// import {PropertyJsonValue} from '../../_services';
 
 
 // import { MdDialogRef } from '@angular/material';
@@ -46,6 +44,14 @@ export class ResourceViewComponent implements OnInit {
      constructor(public dialogRef: MdDialogRef<ResourceViewComponent>) {
 
      }
+     */
+
+    /**
+     *
+     *      examples for resourceFullResponseRequests:
+     *      + Incoming values:  http://data.knora.org/c5b7c8d04902 [fullSearch: "Herr Krone", "i4v"]
+     *      + regions: http://www.salsah.org/api/resources/3550?resinfo=true&reqtype=context [couldn't find any regions in Knora Api v1 Test Data so far]
+     *
      */
 
     ngOnInit() {

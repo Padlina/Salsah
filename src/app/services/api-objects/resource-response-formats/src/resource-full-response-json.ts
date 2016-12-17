@@ -38,7 +38,6 @@ export class ResourceFullResponseJson extends BasicResponseJson {
     /**
      * Resources referring to the requested resource
      * @param incoming: Array<incomingItem>
-     * TODO
      */
     @JsonProperty('incoming', [IncomingItemJson])
     public incoming: IncomingItemJson[] = undefined;

@@ -13,7 +13,6 @@
  * */
 
 import { JsonConvert, JsonObject, JsonProperty} from 'json2typescript';
-import { PropvalJson } from '../../_propval-json';
 import { KnoraIRI, KnoraRights, LocationJson } from '../../basic-message-components';
 
 @JsonObject
@@ -165,6 +164,7 @@ export class PropertyJson {
      */
     @JsonProperty('valuetype_id', String)
     public valuetype_id: string = undefined;
+
 
     public getValuesAsPropertyJsonValues(): PropertyJsonValue[] {
         try {

@@ -14,6 +14,7 @@
 
 import { JsonObject, JsonProperty } from 'json2typescript';
 import { KnoraIRI, LocationJson } from '../../basic-message-components';
+import { PropJson } from './prop-json';
 
 /**
  * Represents information about a resource and its class.
@@ -73,10 +74,14 @@ export class ResinfoJson {
     /**
      * Regions if there are any
      * @param regions: Array<region>
-     * TODO: region has @type: [index: string]: PropJson | string
+     * TODO: region has @type: [index: string]: prop | string
+     * probably mistake? Salsah1 response for regions not identical with PropJson Response
+     * there we have: "comment / region_of / geometry / color / res_id / iconsrc"
+     * see e.g. http://www.salsah.org/api/resources/3550?resinfo=true&reqtype=context
+     * compare Knora Api Doc for "region"
      */
     @JsonProperty('regions', [String])
-    public regions: string[] = null;
+    public regions: string[] = undefined;
 
     /**
      * Indicates if there is a location (digital representation) attached
