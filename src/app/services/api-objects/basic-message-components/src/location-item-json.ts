@@ -19,7 +19,7 @@ import { ProtocolOptions } from './basic-type-aliases';
  * Binary representation of a resource (location)
  */
 @JsonObject
-export class LocationJson {
+export class LocationItemJson {
 
     /**
      * Duration of a movie or an audio file

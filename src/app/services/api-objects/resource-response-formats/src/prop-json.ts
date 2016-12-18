@@ -63,7 +63,7 @@ export class PropJson {
      * of this property type does not exist for
      * the requested resource, only the information
      * about the property type is returned.
-     * @param values: Array<propval>
+     * @param values: Array<propval> OPTIONAL
      */
     @JsonProperty('values', [PropvalJson], true)
     public values: PropvalJson[] = undefined;

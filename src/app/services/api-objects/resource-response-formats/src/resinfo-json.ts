@@ -13,7 +13,7 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
-import { KnoraIRI, LocationJson } from '../../basic-message-components';
+import { KnoraIRI, LocationItemJson } from '../../basic-message-components';
 import { PropJson } from './prop-json';
 
 /**
@@ -40,15 +40,15 @@ export class ResinfoJson {
      * Digital representations of the resource
      * @param locations: Array<locationItem>
      */
-    @JsonProperty('locations', [LocationJson])
-    public locations: LocationJson[] = undefined;
+    @JsonProperty('locations', [LocationItemJson])
+    public locations: LocationItemJson[] = undefined;
 
     /**
      * Full quality representation of the resource
      * @param locdata: locationItem | null
      */
-    @JsonProperty('locdata', LocationJson)
-    public locdata: LocationJson = undefined;
+    @JsonProperty('locdata', LocationItemJson)
+    public locdata: LocationItemJson = undefined;
 
     /**
      * The owner of the resource
@@ -61,8 +61,8 @@ export class ResinfoJson {
      * Preview representation of the resource: Thumbnail or Icon
      * @param preview: locationItem | null
      */
-    @JsonProperty('preview', LocationJson)
-    public preview: LocationJson = undefined;
+    @JsonProperty('preview', LocationItemJson)
+    public preview: LocationItemJson = undefined;
 
     /**
      * The project IRI the resource belongs to

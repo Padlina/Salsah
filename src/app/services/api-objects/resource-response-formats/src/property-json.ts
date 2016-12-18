@@ -13,7 +13,7 @@
  * */
 
 import { JsonConvert, JsonObject, JsonProperty} from 'json2typescript';
-import { KnoraIRI, KnoraRights, LocationJson } from '../../basic-message-components';
+import { KnoraIRI, KnoraRights, LocationItemJson } from '../../basic-message-components';
 
 @JsonObject
 export class PropertyJsonValue {
@@ -83,8 +83,8 @@ export class PropertyJson {
      * (when doing a full resource request)
      * @param locations: Array<locationItem> OPTIONAL
      */
-    @JsonProperty('locations', [LocationJson], true)
-    public locations: LocationJson[] = undefined;
+    @JsonProperty('locations', [LocationItemJson], true)
+    public locations: LocationItemJson[] = undefined;
 
     /**
      * The cardinality of this property type
