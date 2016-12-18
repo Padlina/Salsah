@@ -13,42 +13,58 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
-// import { PropJson } from './prop-json';
+import { KnoraIRI } from '../../basic-message-components';
+import { PropJson } from './prop-json';
 
 /**
  * Represents the regions attached to a resource
+ *
+ * A map of property types to property values and res_id and iconsrc
+ * @param indexable: [index:string]: prop | str
  */
 @JsonObject
 export class RegionJson {
 
     /**
-     *
-     * TODO: probably mistake? Salsah1 response for regions not identical with PropJson Response
-     * there we have: "comment / region_of / geometry / color / res_id / iconsrc"
-     * see e.g. http://www.salsah.org/api/resources/3550?resinfo=true&reqtype=context
-     * compare Knora Api Description for "region" here:
-     *
-     * A map of property types to property values and res_id and iconsrc
-     * @param indexable: [index:string]: prop | str
-     *
+     * ...
+     * @param [index: KnoraIRI]: prop
      */
-/*
-    @JsonProperty('color', String)
-    public color: string = undefined;
+    @JsonProperty('http://www.knora.org/ontology/knora-base#hasComment', PropJson)
+    public hasComment: PropJson = undefined;
 
-    @JsonProperty('comment', String)
-    public comment: string = undefined;
+    /**
+     * ...
+     * @param [index: KnoraIRI]: prop
+     */
+    @JsonProperty('http://www.knora.org/ontology/knora-base#hasColor', PropJson)
+    public hasColor: PropJson = undefined;
 
-    @JsonProperty('geometry', String)
-    public geometry: string = undefined;
 
+    /**
+     * ...
+     * @param iconsrc: string
+     */
     @JsonProperty('iconsrc', String)
     public iconsrc: string = undefined;
 
-    @JsonProperty('region_of', String)
-    public region_of: string = undefined;
-
+    /**
+     * ...
+     * @param res_id: KnoraIRI
+     */
     @JsonProperty('res_id', String)
-    public res_id: string = undefined;
-*/
+    public res_id: KnoraIRI = undefined;
+
+    /**
+     * ...
+     * @param [index: KnoraIRI]: prop
+     */
+    @JsonProperty('http://www.knora.org/ontology/knora-base#isRegionOf', PropJson)
+    public isRegionOf: PropJson = undefined;
+
+    /**
+     * ...
+     * @param [index: KnoraIRI]: prop
+     */
+    @JsonProperty('http://www.knora.org/ontology/knora-base#hasGeometry', PropJson)
+    public hasGeometry: PropJson = undefined;
 }

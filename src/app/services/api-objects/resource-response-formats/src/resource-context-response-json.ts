@@ -12,17 +12,24 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+import { JsonObject, JsonProperty } from 'json2typescript';
+
+import { BasicResponseJson } from '../../basic-message-components';
+import { ContextJson } from './context-json';
+
 /**
+ * Represents the Knora API V1 response to a context request
+ * (reqtype=context) with or without resinfo (resinfo=true).
  *
- *              ResourceResponseFormats
- *
- * This module contains classes that represent responses to a resource GET request.
- *
- *
+ * HTTP GET to http://host/v1/resources/resourceIRI?reqtype=context[&resinfo=true]
  */
+@JsonObject
+export class ResourceContextResponseJson extends BasicResponseJson {
 
-import { ResourceContextResponseJson } from './src/resource-context-response-json';
-import { ResourceFullResponseJson } from './src/resource-full-response-json';
-import { VocabularyResponseJson } from './src/vocabulary-response-json';
-
-export { ResourceFullResponseJson, ResourceContextResponseJson, VocabularyResponseJson }
+    /**
+     * Context of the requested resource
+     * @param resource_context: context
+     */
+    @JsonProperty('resource_context', ContextJson)
+    public resource_context: ContextJson = undefined;
+}

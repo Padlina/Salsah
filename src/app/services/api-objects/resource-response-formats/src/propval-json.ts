@@ -66,7 +66,9 @@ export class PropvalJson {
     /**
      * Typed representation of the value
      * @param value: KnoraValue
+     * TODO: check if it is possible to use a ValueJson class instead of undefine ??
      */
-    @JsonProperty('value', String)
+    @JsonProperty('value', undefined)
     public value: KnoraValue = undefined;
 }
+

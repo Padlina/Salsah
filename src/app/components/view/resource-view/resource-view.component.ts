@@ -49,8 +49,8 @@ export class ResourceViewComponent implements OnInit {
     /**
      *
      *      examples for resourceFullResponseRequests:
-     *      + Incoming values:  http://data.knora.org/c5b7c8d04902 [fullSearch: "Herr Krone", "i4v"]
-     *      + regions: http://www.salsah.org/api/resources/3550?resinfo=true&reqtype=context [couldn't find any regions in Knora Api v1 Test Data so far]
+     *      + Incoming values & regions:  http://data.knora.org/c5b7c8d04902 [fullSearch: "Herr Krone", "i4v"]
+     *      compare http://localhost:3333/v1/resources/http%3A%2F%2Fdata.knora.org%2Fc5b7c8d04902?reqtype=context&resinfo=true
      *
      */
 

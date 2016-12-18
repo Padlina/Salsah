@@ -13,7 +13,7 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
-import {ProjectItemJson} from "./project-item-json";
+import { ProjectItemJson } from './project-item-json';
 
 /**
  * Represents the current user's data
