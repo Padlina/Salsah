@@ -17,6 +17,7 @@ import { KnoraIRI, KnoraValue } from '../../basic-message-components';
 
 /**
  * Represents a property value (no parallel arrays)
+ * @used by PropJson
  */
 @JsonObject
 export class PropvalJson {

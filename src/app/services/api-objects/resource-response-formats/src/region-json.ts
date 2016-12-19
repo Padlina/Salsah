@@ -21,6 +21,7 @@ import { PropJson } from './prop-json';
  *
  * A map of property types to property values and res_id and iconsrc
  * @param indexable: [index:string]: prop | str
+ * @used by ResinfoJson
  */
 @JsonObject
 export class RegionJson {

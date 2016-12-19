@@ -30,6 +30,7 @@ export class PropertyJsonValue {
 
 /**
  * Represents a property (parallel arrays)
+ * @used by ResourceFullResponseJson
  */
 @JsonObject
 export class PropertyJson {

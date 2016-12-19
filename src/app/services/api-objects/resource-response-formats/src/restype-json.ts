@@ -19,6 +19,7 @@ import { PropertyDefinitionJson } from './property-definition-json';
 
 /**
  * Represents information about the requested resource class
+ * @used by ResourceTypeResponseJson
  */
 @JsonObject
 export class RestypeJson {

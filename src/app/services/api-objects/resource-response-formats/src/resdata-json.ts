@@ -17,6 +17,7 @@ import { KnoraIRI, KnoraRights } from '../../basic-message-components';
 
 /**
  * Represents information about a resource.
+ * @used by ResourceFullResponseJson
  */
 @JsonObject
 export class ResdataJson {

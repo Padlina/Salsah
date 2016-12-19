@@ -30,7 +30,12 @@ export class ResourcePropertiesResponseJson extends BasicResponseJson {
      * A map of property type IRIs to property instances
      * @param properties: object
      * * @type [index: string]: prop
+     * TODO
      */
     @JsonProperty('properties', [PropJson])
-    public properties: PropJson[] = undefined;
+    public properties: IndexedPropJson[] = undefined;
+}
+
+interface IndexedPropJson {
+    [index: string]: PropJson;
 }

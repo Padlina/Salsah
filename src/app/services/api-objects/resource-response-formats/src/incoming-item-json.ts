@@ -16,6 +16,10 @@ import { JsonObject, JsonProperty } from 'json2typescript';
 import { KnoraIRI } from '../../basic-message-components';
 import { ResinfoJson } from './resinfo-json';
 
+/**
+ * Represents a resource referring to the requested resource.
+ * @used by ResourceFullResponseJson
+ */
 @JsonObject
 export class IncomingItemJson {
 
@@ -44,6 +48,7 @@ export class IncomingItemJson {
 /**
  * Representation of the referring resource
  * @param ext_res_id: Object<id: KnoraIRI, pid: KnoraIRI>
+ * @used by IncomingItemJson
  */
 @JsonObject
 class ExtResIdJson {

@@ -17,6 +17,7 @@ import { ProtocolOptions } from './basic-type-aliases';
 
 /**
  * Binary representation of a resource (location)
+ * @used by ContextJson, PropertyJson, ResinfoJson
  */
 @JsonObject
 export class LocationItemJson {

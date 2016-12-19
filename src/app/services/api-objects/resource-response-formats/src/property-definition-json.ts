@@ -18,6 +18,7 @@ import { KnoraIRI } from '../../basic-message-components';
 
 /**
  * Represents information about a property type
+ * @used by PropertyTypesInResourceClassJson, RestypeJson
  */
 @JsonObject
 export class PropertyDefinitionJson {

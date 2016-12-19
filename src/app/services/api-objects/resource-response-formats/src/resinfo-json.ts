@@ -18,6 +18,7 @@ import { RegionJson } from './region-json';
 
 /**
  * Represents information about a resource and its class.
+ * @used by ContextJson, IncomingItemJson, ResourceFullResponseJson, ResourceInfoResponseJson
  */
 @JsonObject
 export class ResinfoJson {
@@ -74,6 +75,7 @@ export class ResinfoJson {
     /**
      * Regions if there are any
      * @param regions: Array<region>
+     * TODO: IndexedRegionJson [index:string]: RegionJson
      */
     @JsonProperty('regions', [RegionJson])
     public regions: RegionJson[] = undefined;

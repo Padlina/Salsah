@@ -18,6 +18,7 @@ import { PropvalJson } from './propval-json';
 
 /**
  * Represents a property (no parallel arrays)
+ * @used by RegionJson, ResourcePropertiesResponseJson
  */
 @JsonObject
 export class PropJson {

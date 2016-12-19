@@ -17,6 +17,7 @@ import { KnoraIRI } from '../../basic-message-components';
 
 /**
  * Represents a vocabulary
+ * @used by VocabularyResponseJson
  */
 @JsonObject
 export class VocabularyItemJson {
