@@ -24,8 +24,18 @@
 import { ResourceContextResponseJson } from './src/resource-context-response-json';
 import { ResourceFullResponseJson } from './src/resource-full-response-json';
 import { ResourceInfoResponseJson } from './src/resource-info-response-json';
+import { ResourcePropertiesResponseJson } from './src/resource-properties-response-json';
 import { ResourceRightsResponseJson } from './src/resource-rights-response-json';
 import { ResourceTypeResponseJson } from './src/resource-type-response-json';
 import { VocabularyResponseJson } from './src/vocabulary-response-json';
 
-export { ResourceContextResponseJson, ResourceFullResponseJson, ResourceInfoResponseJson, ResourceRightsResponseJson, ResourceTypeResponseJson, VocabularyResponseJson }
+
+export {
+    ResourceContextResponseJson,
+    ResourceFullResponseJson,
+    ResourceInfoResponseJson,
+    ResourcePropertiesResponseJson,
+    ResourceRightsResponseJson,
+    ResourceTypeResponseJson,
+    VocabularyResponseJson
+}
