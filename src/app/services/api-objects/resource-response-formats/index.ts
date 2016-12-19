@@ -21,21 +21,27 @@
  *
  */
 
+import { PropertyTypesInResourceClassResponseJson } from './src/property-types-in-resource-class-response-json';
 import { ResourceContextResponseJson } from './src/resource-context-response-json';
 import { ResourceFullResponseJson } from './src/resource-full-response-json';
 import { ResourceInfoResponseJson } from './src/resource-info-response-json';
+import { ResourceLabelSearchResponseJson } from './src/resource-label-search-response-json';
 import { ResourcePropertiesResponseJson } from './src/resource-properties-response-json';
 import { ResourceRightsResponseJson } from './src/resource-rights-response-json';
 import { ResourceTypeResponseJson } from './src/resource-type-response-json';
+import { ResourceTypesInVocabularyResponseJson } from './src/resource-types-in-vocabulary-response-json';
 import { VocabularyResponseJson } from './src/vocabulary-response-json';
 
 
 export {
+    PropertyTypesInResourceClassResponseJson,
     ResourceContextResponseJson,
     ResourceFullResponseJson,
     ResourceInfoResponseJson,
+    ResourceLabelSearchResponseJson,
     ResourcePropertiesResponseJson,
     ResourceRightsResponseJson,
     ResourceTypeResponseJson,
+    ResourceTypesInVocabularyResponseJson,
     VocabularyResponseJson
 }
