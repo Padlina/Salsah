@@ -15,6 +15,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { BaseOntologyService } from './base-ontology.service';
+import { BaseOntologyJson } from './api-objects/base-ontology-json';
 
 
 @Component({
@@ -24,10 +25,23 @@ import { BaseOntologyService } from './base-ontology.service';
 })
 export class OntologyComponent implements OnInit {
 
-  constructor(private baseOntologyService: BaseOntologyService) { }
+  constructor(private _baseOntologyService: BaseOntologyService) { }
+
+    private errorMessage: string = undefined;
+    public baseOntology: BaseOntologyJson = new BaseOntologyJson();
 
   ngOnInit(): void {
-      var simpleTxt = this.baseOntologyService.textResource();
+      //this should give me the terms from the resources I need from the json
+
+      this._baseOntologyService.getData('resources')
+          .subscribe(
+              data => {
+                  this.baseOntology = data;
+              },
+              error => {
+                  this.errorMessage = <any>error;
+              }
+          );
   }
 
 
