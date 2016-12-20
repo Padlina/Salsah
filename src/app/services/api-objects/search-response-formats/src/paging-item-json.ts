@@ -16,6 +16,7 @@ import { JsonObject, JsonProperty } from 'json2typescript';
 
 /**
  * Represents a page in a collection of pages.
+ * @used by SearchResponseJson
  */
 @JsonObject
 export class PagingItemJson {

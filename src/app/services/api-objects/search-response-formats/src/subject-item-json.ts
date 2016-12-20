@@ -17,6 +17,7 @@ import { KnoraIRI, KnoraRights } from '../../basic-message-components';
 
 /**
  * Represents a search result item
+ * @used by SearchResponseJson
  */
 @JsonObject
 export class SubjectItemJson {

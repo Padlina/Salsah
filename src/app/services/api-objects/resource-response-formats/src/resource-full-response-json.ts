@@ -13,7 +13,6 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
-
 import { BasicResponseJson, KnoraAccess } from '../../basic-message-components';
 import { IncomingItemJson } from './incoming-item-json';
 import { PropertyJson } from './property-json';

@@ -17,6 +17,7 @@ import { ProjectItemJson } from './project-item-json';
 
 /**
  * Represents the current user's data
+ * @used by BasicResponseJson
  */
 @JsonObject
 export class UserdataJson {

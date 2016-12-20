@@ -17,6 +17,7 @@ import { KnoraIRI, KnoraRights } from './basic-type-aliases';
 
 /**
  * Represents a Knora project
+ * @used by UserdataJson
  */
 @JsonObject
 export class ProjectItemJson {

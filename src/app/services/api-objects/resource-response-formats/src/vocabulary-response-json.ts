@@ -13,7 +13,6 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
-
 import { BasicResponseJson } from '../../basic-message-components';
 import { VocabularyItemJson } from './vocabulary-item-json';
 

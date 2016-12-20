@@ -13,7 +13,6 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
-
 import { BasicResponseJson, KnoraRights } from '../../basic-message-components';
 import { ResinfoJson } from './resinfo-json';
 

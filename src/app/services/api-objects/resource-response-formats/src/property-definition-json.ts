@@ -13,7 +13,6 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
-
 import { KnoraIRI } from '../../basic-message-components';
 
 /**

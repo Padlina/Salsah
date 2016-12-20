@@ -14,10 +14,10 @@
 
 /**
  *
- * Export all (json2typesripted) classes
- * from Knora API V1 Format modules
- * for projectwide usage
+ *                  API objects
  *
+ *  Export all classes from Knora API V1 format modules
+ *  for projectwide usage
  */
 
 export * from './basic-message-components';
