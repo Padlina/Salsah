@@ -12,19 +12,33 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-/**
- * services
- */
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
+import { JsonObject, JsonProperty } from 'json2typescript';
 
 /**
- * API objects
+ * Represents a page in a collection of pages.
+ * @used by SearchResponseJson
  */
-export * from '../services/api-objects';
+@JsonObject
+export class PagingItemJson {
 
+    /**
+     * True if this item represents the current page of search results
+     * @param current: Boolean
+     */
+    @JsonProperty('current', Boolean)
+    public current: boolean = undefined;
 
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+    /**
+     * The number of results shown on the page
+     * @param show_nrows: number
+     */
+    @JsonProperty('show_nrows', Number)
+    public show_nrows: number = undefined;
+
+    /**
+     * The index of the first search result on the page
+     * @param start_at: number
+     */
+    @JsonProperty('start_at', Number)
+    public start_at: number = undefined;
+}

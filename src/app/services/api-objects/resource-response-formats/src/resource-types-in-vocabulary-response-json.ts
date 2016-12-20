@@ -13,30 +13,23 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
+import { BasicResponseJson } from '../../basic-message-components';
+import { ResTypeItemJson } from './res-type-item-json';
 
-import { UserdataJson } from './_userdata-json';
-import { SubjectJson } from './_subject-json';
-import { ThumbMaxJson } from './_thumb-max-json';
-import { PagingJson } from "./_paging-json";
-
+/**
+ * Represents the Knora API V1 response to a
+ * resource type request for a vocabulary.
+ *
+ * HTTP GET to http://host/v1/resourcetypes?vocabulary=vocabularyIRI
+ */
 @JsonObject
-export class SearchResponseJson {
-    @JsonProperty('userdata', UserdataJson)
-    public userdata: UserdataJson = undefined;
+export class ResourceTypesInVocabularyResponseJson extends BasicResponseJson {
 
-    @JsonProperty('subjects', [SubjectJson])
-    public subjects: SubjectJson[] = undefined;
-
-    @JsonProperty('thumb_max', ThumbMaxJson)
-    public thumb_max: ThumbMaxJson = undefined;
-
-    @JsonProperty('nhits', String)
-    public nhits: string = undefined;
-
-    @JsonProperty('paging', [PagingJson])
-    public paging: PagingJson[] = undefined;
-
-    @JsonProperty('status', Number)
-    public status: number = undefined;
-
+    /**
+     * Lists the resource classes that are defined
+     * for the given vocabulary.
+     * @param resourcetypes: Array<resTypeItem>
+     */
+    @JsonProperty('resourcetypes', [ResTypeItemJson])
+    public resourcetypes: ResTypeItemJson[] = undefined;
 }

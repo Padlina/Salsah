@@ -13,33 +13,26 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
+import { UserdataJson } from './userdata-json';
+import { KnoraStatusCode } from './basic-type-aliases';
 
-import { UserdataJson } from './_userdata-json';
-import { ResinfoJson } from './_resinfo-json';
-import { ResdataJson } from './_resdata-json';
-import { PropertyJson } from './_property-json';
-
+/**
+ * Basic members of the Knora API V1 response format.
+ */
 @JsonObject
-export class ResourcesResponseJson {
+export class BasicResponseJson {
+
+    /**
+     * Knora status code
+     * @param status: KnoraStatusCode
+     */
+    @JsonProperty('status', Number)
+    public status: KnoraStatusCode = undefined;
+
+    /**
+     * The current user's data
+     * @param userdata: userdata
+     */
     @JsonProperty('userdata', UserdataJson)
     public userdata: UserdataJson = undefined;
-
-    @JsonProperty('resinfo', ResinfoJson)
-    public resinfo: ResinfoJson = undefined;
-
-    @JsonProperty('incoming', [String])
-    public incoming: string = undefined;
-
-    @JsonProperty('resdata', ResdataJson)
-    public resdata: ResdataJson = undefined;
-
-    @JsonProperty('status', Number)
-    public status: number = undefined;
-
-    @JsonProperty('props', [PropertyJson])
-    public props: PropertyJson[] = undefined;
-
-    @JsonProperty('access', String)
-    public access: string = undefined;
-
 }

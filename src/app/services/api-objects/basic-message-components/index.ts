@@ -13,18 +13,29 @@
  * */
 
 /**
- * services
+ *
+ *              BasicMessageComponents
+ *
+ * This module contains interfaces that are used by other modules
+ * (message components). It does not represent a particular API V1 request
+ * or response format.
  */
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
 
-/**
- * API objects
- */
-export * from '../services/api-objects';
+import { BasicResponseJson } from './src/basic-response-json';
+import { LocationItemJson } from './src/location-item-json';
+import { ProjectItemJson } from './src/project-item-json';
+import { UserdataJson } from './src/userdata-json';
+import { KnoraAccess, KnoraIRI, KnoraListNodeIRI, KnoraRights, KnoraStatusCode, KnoraValue } from './src/basic-type-aliases';
 
-
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+export {
+    BasicResponseJson,
+    KnoraAccess,
+    KnoraIRI,
+    KnoraListNodeIRI,
+    KnoraRights,
+    KnoraStatusCode,
+    KnoraValue,
+    LocationItemJson,
+    ProjectItemJson,
+    UserdataJson
+}

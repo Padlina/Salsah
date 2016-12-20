@@ -12,4 +12,14 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-export * from './search-response-json';
+/**
+ *
+ *                  API objects
+ *
+ *  Export all classes from Knora API V1 format modules
+ *  for projectwide usage
+ */
+
+export * from './basic-message-components';
+export * from './search-response-formats';
+export * from './resource-response-formats';

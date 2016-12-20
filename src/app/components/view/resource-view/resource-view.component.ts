@@ -12,14 +12,12 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import {ActivatedRoute, Params, Router} from '@angular/router';
+import { ResourcesService, ResourceFullResponseJson } from '../../_services';
 
-import {ResourcesService} from '../../_services';
-import {ResourcesResponseJson} from '../../_services';
-
-import {PropertyJsonValue} from '../../_services';
+// import {PropertyJsonValue} from '../../_services';
 
 
 // import { MdDialogRef } from '@angular/material';
@@ -33,7 +31,7 @@ import {PropertyJsonValue} from '../../_services';
 export class ResourceViewComponent implements OnInit {
 
     private errorMessage: string = undefined;
-    public resourcesResponse: ResourcesResponseJson = new ResourcesResponseJson();
+    public resourcesResponse: ResourceFullResponseJson = new ResourceFullResponseJson();
 
     public _isLoading: boolean = true;
 
@@ -48,12 +46,20 @@ export class ResourceViewComponent implements OnInit {
      }
      */
 
+    /**
+     *
+     *      examples for resourceFullResponseRequests:
+     *      + Incoming values & regions:  http://data.knora.org/c5b7c8d04902 [fullSearch: "Herr Krone", "i4v"]
+     *      compare http://localhost:3333/v1/resources/http%3A%2F%2Fdata.knora.org%2Fc5b7c8d04902?reqtype=context&resinfo=true
+     *
+     */
+
     ngOnInit() {
         this._route.params.forEach((params: Params) => {
             let query = params['uri'];
             this._resourcesService.getData(query)
                 .subscribe(
-                    (data: ResourcesResponseJson) => {
+                    (data: ResourceFullResponseJson) => {
                         this.resourcesResponse = data;
                         this._isLoading = false;
 /*

@@ -15,33 +15,33 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { AppConfig } from '../app.config';
-
 import { JsonConvert } from 'json2typescript';
 
-import { ResourceFullResponseJson } from './api-objects';
+import { AppConfig } from '../app.config';
 
+import { VocabularyResponseJson } from './api-objects';
 
 @Injectable()
-export class ResourcesService {
+export class VocabulariesService {
 
-    constructor(private _http: Http) { }
-
-
-    getData(uri: string): Observable<ResourceFullResponseJson> {
-        let resourceData: string = `${AppConfig.API_ENDPOINT}` + 'resources/' + uri;
-        return this._http.get(resourceData)
-            .map(this.extractData)
-            .catch(this.handleError);
+    constructor( private _http: Http ) {
+            JsonConvert.debugMode = true;
     }
+
+    getData(): Observable<VocabularyResponseJson> {
+        let vocabulariesData: string = `${AppConfig.API_ENDPOINT}` + 'vocabularies';
+            return this._http.get(vocabulariesData)
+                .map(this.extractData)
+                .catch(this.handleError);
+            }
 
     private extractData(res: Response) {
         try {
-            // console.log(res.json());
-            return JsonConvert.deserializeObject(res.json(), ResourceFullResponseJson);
+            console.log(res.json());
+            return JsonConvert.deserializeObject(res.json(), VocabularyResponseJson);
         } catch (e) {
-            // console.log(e);
-            return Observable.throw('Data error in salsah\'s resources service.');
+            console.log(e);
+            return Observable.throw('Data error in salsah\'s vocabulary service.');
         }
     }
 

@@ -12,19 +12,23 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-/**
- * services
- */
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { BasicResponseJson } from '../../basic-message-components';
+import { ContextJson } from './context-json';
 
 /**
- * API objects
+ * Represents the Knora API V1 response to a context request
+ * (reqtype=context) with or without resinfo (resinfo=true).
+ *
+ * HTTP GET to http://host/v1/resources/resourceIRI?reqtype=context[&resinfo=true]
  */
-export * from '../services/api-objects';
+@JsonObject
+export class ResourceContextResponseJson extends BasicResponseJson {
 
-
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+    /**
+     * Context of the requested resource
+     * @param resource_context: context
+     */
+    @JsonProperty('resource_context', ContextJson)
+    public resource_context: ContextJson = undefined;
+}

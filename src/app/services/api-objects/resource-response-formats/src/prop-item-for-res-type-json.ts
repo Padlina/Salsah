@@ -12,19 +12,27 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-/**
- * services
- */
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
+import { JsonObject, JsonProperty } from 'json2typescript';
 
 /**
- * API objects
+ * Represents a property type attached to a resource class.
+ * @used by ResTypeItemJson
  */
-export * from '../services/api-objects';
+@JsonObject
+export class PropItemForResTypeJson {
 
+    /**
+     * ...
+     * @param id: string
+     * TODO: change to KnoraIRI??
+     */
+    @JsonProperty('id', String)
+    public id: string = undefined;
 
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+    /**
+     * ...
+     * @param label: string
+     */
+    @JsonProperty('label', String)
+    public label: string = undefined;
+}

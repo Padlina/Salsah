@@ -12,19 +12,26 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-/**
- * services
+import { JsonObject, JsonProperty } from 'json2typescript';
+
+/*
+ * Represents maximal dimensions of preview representations
+ * @used by SearchResponseJson
  */
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
+@JsonObject
+export class ThumbMaxJson {
 
-/**
- * API objects
- */
-export * from '../services/api-objects';
+    /**
+     * X dimension of an image representation
+     * @param nx: number
+     */
+    @JsonProperty('nx', Number)
+    public nx: number = undefined;
 
-
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+    /**
+     * Y dimension of an image representation
+     * @param ny: number
+     */
+    @JsonProperty('ny', Number)
+    public ny: number = undefined;
+}
