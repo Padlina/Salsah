@@ -23,6 +23,13 @@
         padding-left: 64px;
         padding-right: 64px;
         @include box-shadow-bottom();
+
+        &.salsah-admin-header {
+            md-tab-group {
+                margin-bottom: -20px;
+            }
+        }
+    ;
     }
     div.loading {
 

@@ -57,6 +57,10 @@ import { ProjectAdminComponent } from './components/admin/project-admin/project-
 import { UserLoginComponent } from './components/admin/user-login/user-login.component';
 import { FooterComponent } from './components/framework/footer/footer.component';
 import { ProjectViewComponent } from './components/view/project-view/project-view.component';
+import { TeamAdminComponent } from './components/admin/team-admin/team-admin.component';
+import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
+import { AdminComponent } from './components/admin/admin.component';
+//import { ProjectComponent } from './components/admin/project/project.component';
 
 
 //
@@ -77,14 +81,30 @@ const appRoutes: Routes = [
     },
     {
         path: 'project/:project', // /:view',
-        component: ProjectViewComponent,    // default view for projects (as a start page)
+        component: ProjectViewComponent    // default view for projects (as a start page)
+    },
+    {
+        path: 'project/:project/settings',
+        component: AdminComponent,
+
         children: [
             {
-                path: 'settings',
+                path: '',
                 component: ProjectAdminComponent
+            },
+            {
+                path: 'team',
+                component: TeamAdminComponent
+            },
+            {
+                path: 'resources',
+                component: ResourcesAdminComponent
             }
+
+
         ]
 
+//                component: ProjectAdminComponent
     },
     { path: '**', component: PageNotFoundComponent }
 ];
@@ -109,7 +129,10 @@ const appRoutes: Routes = [
         ProjectAdminComponent,
         UserLoginComponent,
         FooterComponent,
-        ProjectViewComponent
+        ProjectViewComponent,
+        TeamAdminComponent,
+        ResourcesAdminComponent,
+        AdminComponent
     ],
     imports: [
         BrowserModule,
