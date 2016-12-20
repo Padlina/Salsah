@@ -18,11 +18,15 @@ export class BaseOntologyService {
 //    private txt = 'Simple text'; //test text
 
     constructor(private http: Http) { }
-
+    //
+    // getResources(){
+    //     return http.get('./json/Knora-base.json')
+    //         .map(response => response.json());
+    // }
 
     //this should create a function that I can call with a string (i.e. "resource") that signifies the part of the json I want to read and it gives me this string and its contents
-    getData(ontoString: string): Observable<BaseOntologyJson> {
-        let ontologyData: string = ontoString; // have to fix this  `${AppConfig.API_ENDPOINT}` + 'search/' + searchString + '?searchtype=' + this.searchType;
+    getData(): Observable<BaseOntologyJson> {
+        let ontologyData: string = './json/Knora-base.json';
         return this.http.get(ontologyData)
             .map(this.extractData)
             .catch(this.handleError);

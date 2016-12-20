@@ -33,7 +33,7 @@ export class OntologyComponent implements OnInit {
   ngOnInit(): void {
       //this should give me the terms from the resources I need from the json
 
-      this._baseOntologyService.getData('resources')
+      this._baseOntologyService.getData()
           .subscribe(
               data => {
                   this.baseOntology = data;
@@ -42,6 +42,7 @@ export class OntologyComponent implements OnInit {
                   this.errorMessage = <any>error;
               }
           );
+      console.log("I AM HERE");
   }
 
 
@@ -50,7 +51,7 @@ export class OntologyComponent implements OnInit {
     /*                                                          */
 
 
-  private simpleTxt = 'simple text';
+  private simpleTxt = 'simple text'
 
 
     // default resources

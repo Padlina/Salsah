@@ -42,6 +42,7 @@ import { CenterElementDirective } from './directives/center-element.directive';
 //
 import { LimitToPipe } from './pipes/limit-to.pipe';
 
+
 //
 //  import all components
 //
