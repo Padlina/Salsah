@@ -24,6 +24,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
 //
+// import all services
+//
+import { ResourcesService } from './services/resources.service';
+import { SearchService } from './services/search.service';
+import { VocabulariesService } from './services/vocabularies.service';
+
+//
+// import all directives
+//
+import { CenterElementDirective } from './directives/center-element.directive';
+
+//
 //  import all components
 //
 import { AppComponent } from './app.component';
@@ -41,18 +53,13 @@ import { DashboardViewComponent } from './components/view/dashboard-view/dashboa
 import { PageNotFoundComponent } from './components/framework/page-not-found/page-not-found.component';
 import { ResultsViewComponent } from './components/view/results-view/results-view.component';
 import { ResourceViewComponent } from './components/view/resource-view/resource-view.component';
-
-//
-// import all services
-//
-import { ResourcesService } from './services/resources.service';
-import { SearchService } from './services/search.service';
-import { VocabulariesService } from './services/vocabularies.service';
-
-
-import { CenterElementDirective } from './directives/center-element.directive';
+import { ProjectAdminComponent } from './components/admin/project-admin/project-admin.component';
+import { UserLoginComponent } from './components/admin/user-login/user-login.component';
 import { FooterComponent } from './components/framework/footer/footer.component';
-
+import { ProjectViewComponent } from './components/view/project-view/project-view.component';
+import { TeamAdminComponent } from './components/admin/team-admin/team-admin.component';
+import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 //
@@ -70,6 +77,37 @@ const appRoutes: Routes = [
     {
         path: 'resources/:uri', // /:view',
         component: ResourceViewComponent    // default view for search results
+    },
+    {
+        path: 'project/:project', // /:view',
+        component: ProjectViewComponent    // default view for projects (as a start page)
+    },
+    {
+        path: 'project/:project/settings',
+        component: AdminComponent,
+
+        children: [
+            {
+                path: '',
+                redirectTo: 'project',
+                pathMatch: 'full'
+            },
+            {
+                path: 'project',
+                component: ProjectAdminComponent
+            },
+            {
+                path: 'team',
+                component: TeamAdminComponent
+            },
+            {
+                path: 'resources',
+                component: ResourcesAdminComponent
+            },
+            { path: '**', component: PageNotFoundComponent }
+
+        ]
+
     },
     { path: '**', component: PageNotFoundComponent }
 ];
@@ -91,7 +129,13 @@ const appRoutes: Routes = [
         ResultsViewComponent,
         CenterElementDirective,
         ResourceViewComponent,
-        FooterComponent
+        ProjectAdminComponent,
+        UserLoginComponent,
+        FooterComponent,
+        ProjectViewComponent,
+        TeamAdminComponent,
+        ResourcesAdminComponent,
+        AdminComponent
     ],
     imports: [
         BrowserModule,

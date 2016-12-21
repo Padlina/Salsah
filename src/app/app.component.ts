@@ -14,25 +14,25 @@
 
 
 import {Component, OnInit} from '@angular/core';
-import { JsonConvert } from 'json2typescript';
+import {JsonConvert} from 'json2typescript';
 
 @Component({
-  selector: 'salsah-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'salsah-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'salsah works!';
+    title = 'salsah works!';
 
-  ngOnInit() {
-      //
-      // Json convert error handling
-      //
+
+    ngOnInit() {
+        //
+        // Json convert error handling
+        //
 //        JsonConvert.debugMode = true;
-      // JsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
-    JsonConvert.valueCheckingMode = JsonConvert.ValueCheckingMode.ALLOW_NULL; // never allow null
+        // JsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
+        JsonConvert.valueCheckingMode = JsonConvert.ValueCheckingMode.ALLOW_NULL; // never allow null
 
-  }
-
+    }
 
 }

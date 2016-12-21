@@ -27,6 +27,10 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
     }
 
+    selectProject(id: string): void {
+        console.log("Selected project has the id " + id);
+    }
+
     /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
     /* Developer object: just a sample to create a dummy header */
     /*                                                          */
