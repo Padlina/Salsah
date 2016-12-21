@@ -10,39 +10,50 @@ export class AdminComponent implements OnInit {
 
 //    public _isLoading: boolean = true;
 
-    public cur_tab: number = 0;
+    private url_params: any;
+    private cur_project: string;
+    private cur_path_array: string[];
+    private cur_tab: number = 0;
 
-    public admin: Object = {
-        nav: [
-            {
-                name: 'Project',
-                path: '/'
-            },
-            {
-                name: 'Team',
-                path: '/team'
-            },
-            {
-                name: 'Resources',
-                path: '/resources'
-            },
-            {
-                name: 'Advanced',
-                path: '/resources'
-            },
-
-        ]
-
-    };
+    public settings: any = [
+        {
+            name: 'Project',
+            path: '/'
+        },
+        {
+            name: 'Team',
+            path: '/team'
+        },
+        {
+            name: 'Resources',
+            path: '/resources'
+        },
+        {
+            name: 'Advanced',
+            path: '/resources'
+        }
+    ];
 
     constructor(private _route: ActivatedRoute, private _router: Router) {
+
 
     }
 
     ngOnInit() {
-//        console.log(this._route.params);
-        console.log(this._router.url);
-        /* TODO get the url and compare the activated route with the admin object and set the cur_tab from there!? */
+        this.url_params = this._route.params;
+        this.cur_project = this.url_params.value.project;
+
+        /*
+         * get the url route to set the active tab
+         */
+        this.cur_path_array = this._router.url.split( '/' );
+        if(this.cur_path_array[3] === 'settings' && this.cur_path_array[4]) {
+            for (let i=0; i < this.settings.length; i++) {
+                if (this.settings[i]['name'].toUpperCase() === this.cur_path_array[4].toUpperCase()) {
+                    this.cur_tab = i;
+                }
+            }
+        }
     }
 
 

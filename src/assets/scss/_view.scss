@@ -27,9 +27,11 @@
         &.salsah-admin-header {
             md-tab-group {
                 margin-bottom: -20px;
+                md-tab-header {
+                    border: 0;
+                }
             }
         }
-    ;
     }
     div.loading {
 
