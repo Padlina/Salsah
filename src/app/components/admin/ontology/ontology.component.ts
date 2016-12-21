@@ -17,7 +17,6 @@ import { Http } from '@angular/http';
 import { BaseOntologyService } from './base-ontology.service';
 import { BaseOntologyJson } from './api-objects/base-ontology-json';
 
-
 @Component({
   selector: 'salsah-ontology',
   templateUrl: './ontology.component.html',
@@ -30,29 +29,27 @@ export class OntologyComponent implements OnInit {
     private errorMessage: string = undefined;
     public baseOntology: BaseOntologyJson = new BaseOntologyJson();
 
-  ngOnInit(): void {
+    ngOnInit() {
       //this should give me the terms from the resources I need from the json
 
       this._baseOntologyService.getData()
           .subscribe(
               data => {
                   this.baseOntology = data;
+                  console.log(data.subjects[0].iconlabel);
               },
               error => {
                   this.errorMessage = <any>error;
               }
           );
-      console.log("I AM HERE");
+//     console.log("I AM HERE");
   }
-
 
     /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
     /* Developer object: just a sample to create a default resources dropdown menu*/
     /*                                                          */
 
-
-  private simpleTxt = 'simple text'
-
+    private simpleTxt = 'simple text'
 
     // default resources
 

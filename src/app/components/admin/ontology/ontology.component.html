@@ -1,5 +1,7 @@
 <div>
-    <h4>Add resource types to your project</h4>
+    <p>{{baseOntology?.resources?.username}}</p>
+
+ <!--   <h4>Add resource types to your project</h4>
         <span>
             {{addResource.name}}
             <button md-icon-button [md-menu-trigger-for]="resourceMenu">
@@ -15,6 +17,28 @@
                     </span>
             </md-menu>
         </span>
+
+    <br><br><br><br><br><br><br><br><br><br><br>
+-->
+    <h4>Add resource types to your project</h4>
+    <span>
+            {{baseOntology?.resources?.active_project}}
+            <button md-icon-button [md-menu-trigger-for]="resourceMenu2">
+                <md-icon>{{addResource.icon}}</md-icon>
+            </button>
+            <md-menu x-position="after" #resourceMenu2="mdMenu">
+                    <span *ngFor="let item2 of baseOntology?.resources?.projects_info; let last=last" md-menu-item>
+                        <span><hr *ngIf="last"/>
+
+                                <span>{{item2}}</span>
+
+                        </span>
+                    </span>
+            </md-menu>
+        </span>
+
+
+
 
 </div>
 

@@ -13,32 +13,22 @@ import { BaseOntologyJson } from './api-objects/base-ontology-json';
 @Injectable()
 export class BaseOntologyService {
 
-//    private resourcesUrl = './json/Knora-base.json';  // URL to ontology (don't use right now)
-
-//    private txt = 'Simple text'; //test text
-
     constructor(private http: Http) { }
-    //
-    // getResources(){
-    //     return http.get('./json/Knora-base.json')
-    //         .map(response => response.json());
-    // }
 
     //this should create a function that I can call with a string (i.e. "resource") that signifies the part of the json I want to read and it gives me this string and its contents
     getData(): Observable<BaseOntologyJson> {
-        let ontologyData: string = './json/Knora-base.json';
+        let ontologyData: string = 'http://localhost/Resource.json';
         return this.http.get(ontologyData)
             .map(this.extractData)
             .catch(this.handleError);
     }
-
     private extractData(res: Response) {
         try {
             // console.log(res.json());
             return JsonConvert.deserializeObject(res.json(), BaseOntologyJson);
         } catch (e) {
             // console.log(e);
-            return Observable.throw('Data error in salsah\'s search service.');
+            return Observable.throw('Data error in salsah\'s ontology service.');
         }
     }
     private handleError (error: any) {
@@ -47,14 +37,6 @@ export class BaseOntologyService {
         return Observable.throw(errMsg);
     }
 
-
-
-/*    textResource(){
-        return this.http.get(this.resourcesUrl);
-    }
-
-    getResources(): void{}
-*/
 }
 
 
