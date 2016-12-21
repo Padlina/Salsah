@@ -12,12 +12,15 @@
         <span class="fill-remaining-space"></span>
 
         <!-- Tab menu -->
-        <md-tab-group [selectedIndex]="cur_tab">
-            <md-tab *ngFor="let item of settings" [label]="item.name" [routerLink]="item.path" (click)="gotoSettings(item.path)" >
-
-            </md-tab>
-        </md-tab-group>
-
+        <nav class="salsah-tab-group">
+            <button md-button
+                    class="salsah-tab-item"
+                    *ngFor="let item of settings, let i = index"
+                    [routerLink]="item.path"
+                    [routerLinkActive]="['active']">
+                {{item.name}}
+            </button>
+        </nav>
 
         <!-- This fills the remaining space of the current row -->
         <span class="fill-remaining-space"></span>

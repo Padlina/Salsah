@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'salsah-team-admin',
@@ -7,15 +7,11 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class TeamAdminComponent implements OnInit {
 
-    @Output() tabRequest = new EventEmitter<any>();
-
-    public tab_id: number = 1;
 
     constructor() {
     }
 
     ngOnInit() {
-        this.tabRequest.emit(this.tab_id);
     }
 
 }

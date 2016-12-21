@@ -60,7 +60,6 @@ import { ProjectViewComponent } from './components/view/project-view/project-vie
 import { TeamAdminComponent } from './components/admin/team-admin/team-admin.component';
 import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
 import { AdminComponent } from './components/admin/admin.component';
-//import { ProjectComponent } from './components/admin/project/project.component';
 
 
 //
@@ -90,6 +89,11 @@ const appRoutes: Routes = [
         children: [
             {
                 path: '',
+                redirectTo: 'project',
+                pathMatch: 'full'
+            },
+            {
+                path: 'project',
                 component: ProjectAdminComponent
             },
             {
@@ -99,12 +103,11 @@ const appRoutes: Routes = [
             {
                 path: 'resources',
                 component: ResourcesAdminComponent
-            }
-
+            },
+            { path: '**', component: PageNotFoundComponent }
 
         ]
 
-//                component: ProjectAdminComponent
     },
     { path: '**', component: PageNotFoundComponent }
 ];
