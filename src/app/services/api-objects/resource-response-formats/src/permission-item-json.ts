@@ -12,19 +12,26 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-/**
- * services
- */
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
+import { JsonObject, JsonProperty } from 'json2typescript';
 
 /**
- * API objects
+ * Represents a permission assertion for the current user.
+ * @used by ... ??
  */
-export * from '../services/api-objects';
+@JsonObject
+export class PermissionItemJson {
 
+    /**
+     * User group that the permission level is granted to
+     * @param granted_to: string
+     */
+    @JsonProperty('granted_to', String)
+    public granted_to: string = undefined;
 
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+    /**
+     * Permission level
+     * @param permission: string
+     */
+    @JsonProperty('permission', String)
+    public permission: string = undefined;
+}

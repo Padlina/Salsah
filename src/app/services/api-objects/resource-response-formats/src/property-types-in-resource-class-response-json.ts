@@ -12,19 +12,24 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-/**
- * services
- */
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { BasicResponseJson } from '../../basic-message-components';
+import { PropertyDefinitionJson } from './property-definition-json';
 
 /**
- * API objects
+ * Represents a list of property types
+ * for the requested resource class or vocabulary.
+ *
+ * HTTP GET to http://host/v1/propertylists?restype=resourceClassIRI
  */
-export * from '../services/api-objects';
+@JsonObject
+export class PropertyTypesInResourceClassResponseJson extends BasicResponseJson {
 
-
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+    /**
+     * Lists the property types the indicated resource class
+     * or vocabulary may have.
+     * @param properties: Array<propertyDefinition>
+     */
+    @JsonProperty('properties', [PropertyDefinitionJson])
+    public properties: PropertyDefinitionJson[] = undefined;
+}

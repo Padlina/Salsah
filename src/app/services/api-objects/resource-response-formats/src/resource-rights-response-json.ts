@@ -12,19 +12,22 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-/**
- * services
- */
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { BasicResponseJson } from '../../basic-message-components';
 
 /**
- * API objects
+ * Represents the Knora API V1 response to a resource rights request
+ * (reqtype=rights).
+ *
+ * HTTP GET to http://host/v1/resources/resourceIRI?reqtype=rights
  */
-export * from '../services/api-objects';
+@JsonObject
+export class ResourceRightsResponseJson extends BasicResponseJson {
 
-
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+    /**
+     * The current user's permissions on the resource
+     * @param rights: number TODO: change to KnoraRights??
+     */
+    @JsonProperty('rights', Number)
+    public rights: number = undefined;
+}

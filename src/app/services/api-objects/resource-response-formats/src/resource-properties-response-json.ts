@@ -12,19 +12,29 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-/**
- * services
- */
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { BasicResponseJson } from '../../basic-message-components';
+import { PropJson } from './prop-json';
 
 /**
- * API objects
+ * Represents the Knora API V1 response to a properties request for
+ * a resource. This response just returns a resource's properties.
+ *
+ * HTTP GET to http://host/v1/properties/resourceIRI
  */
-export * from '../services/api-objects';
+@JsonObject
+export class ResourcePropertiesResponseJson extends BasicResponseJson {
 
+    /**
+     * A map of property type IRIs to property instances
+     * @param properties: object
+     * * @type [index: string]: prop
+     * TODO
+     */
+    @JsonProperty('properties', [PropJson])
+    public properties: IndexedPropJson[] = undefined;
+}
 
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+interface IndexedPropJson {
+    [index: string]: PropJson;
+}

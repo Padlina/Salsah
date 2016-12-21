@@ -26,14 +26,14 @@ import { MaterialModule } from '@angular/material';
 //
 // import all services
 //
-import { SearchService } from './services/search.service';
 import { ResourcesService } from './services/resources.service';
+import { SearchService } from './services/search.service';
+import { VocabulariesService } from './services/vocabularies.service';
 
 //
 // import all directives
 //
 import { CenterElementDirective } from './directives/center-element.directive';
-
 
 //
 //  import all components
@@ -148,8 +148,9 @@ const appRoutes: Routes = [
         ResourceViewComponent
     ],
     providers: [
+        ResourcesService,
         SearchService,
-        ResourcesService
+        VocabulariesService
     ],
     bootstrap: [AppComponent]
 })
