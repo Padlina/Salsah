@@ -16,6 +16,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { BaseOntologyService } from './base-ontology.service';
 import { BaseOntologyJson } from './api-objects/base-ontology-json';
+import { KnoraBaseJson } from './api-objects/knora-base-json';
 
 @Component({
   selector: 'salsah-ontology',
@@ -27,22 +28,39 @@ export class OntologyComponent implements OnInit {
   constructor(private _baseOntologyService: BaseOntologyService) { }
 
     private errorMessage: string = undefined;
-    public baseOntology: BaseOntologyJson = new BaseOntologyJson();
+    // public baseOntology: BaseOntologyJson = new BaseOntologyJson();
+    public knoraBase: KnoraBaseJson = new KnoraBaseJson();
+    public res: any = undefined;
+
 
     ngOnInit() {
       //this should give me the terms from the resources I need from the json
 
-      this._baseOntologyService.getData()
-          .subscribe(
-              data => {
-                  this.baseOntology = data;
-                  console.log(data.subjects[0].iconlabel);
-              },
-              error => {
-                  this.errorMessage = <any>error;
-              }
-          );
-//     console.log("I AM HERE");
+      // this works with the json file Resource.json and base-ontology-json.ts
+      // this._baseOntologyService.getData()
+      //     .subscribe(
+      //         data => {
+      //             this.baseOntology = data;
+      //             console.log(data.subjects[0].iconlabel);
+      //         },
+      //         error => {
+      //             this.errorMessage = <any>error;
+      //         }
+      //     );
+
+        this._baseOntologyService.getData()
+            .subscribe(
+                data => {
+                    this.knoraBase = data;
+                    console.log(data.classes.resource[13]);
+                    this.res = data.classes.resource[13];
+                },
+                error => {
+                    this.errorMessage = <any>error;
+                }
+            );
+
+ //    console.log("I AM HERE");
   }
 
     /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */

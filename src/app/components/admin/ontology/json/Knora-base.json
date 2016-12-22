@@ -1,44 +1,49 @@
 {
-    "knoraBase": {
-        "classes": [
+    "classes": {
+        "resource": [
             "Annotation",
-            "AudioFileValue",
-            "AudioRepresentation",
             "ColorBase",
+            "DateBase",
+            "ExternalResource",
+            "DecimalBase",
+            "Institution",
+            "IntBase",
+            "BooleanBase",
+            "UriBase",
+            "IntervalBase",
+            "LinkObj",
+            "ListNode",
+            "Region",
+            "Resource"
+        ],
+        "representation": [
+            "AudioRepresentation",
+            "DDDrepresentation",
+            "DocumentRepresentation",
+            "MovingImageRepresentation",
+            "Representation"
+        ],
+        "value": [
+            "AudioFileValue",
             "ColorValue",
             "DDDFileValue",
-            "DDDrepresentation",
-            "DateBase",
             "DateValue",
             "DocumentFileValue",
-            "DocumentRepresentation",
             "ExternalResValue",
-            "ExternalResource",
             "FileValue",
-            "DecimalBase",
             "DecimalValue",
             "GeomValue",
             "GeonameValue",
-            "Institution",
-            "IntBase",
             "IntValue",
-            "BooleanBase",
             "BooleanValue",
-            "UriBase",
             "UriValue",
-            "IntervalBase",
             "IntervalValue",
-            "LinkObj",
             "LinkValue",
-            "ListNode",
             "ListValue",
-            "MovingImageFileValue",
-            "MovingImageRepresentation",
-            "Region",
-            "Representation",
-            "Resource"
-        ],
-        "properties": [
+            "MovingImageFileValue"
+        ]
+    },
+    "properties": [
             "resourceProperty",
             "subjectClassConstraint",
             "objectClassConstraint",
@@ -93,7 +98,6 @@
             "hasIAFIdentifier",
             "hasBirthDate",
             "hasDeathDate"
-        ]
-    }
+    ]
 }
 

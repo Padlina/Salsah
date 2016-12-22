@@ -20,23 +20,42 @@
 
     <br><br><br><br><br><br><br><br><br><br><br>
 -->
+<!-- // this works with the json file Resource.json and base-ontology-json.ts
+        <h4>Add resource types to your project</h4>
+        <span>
+                {{baseOntology?.resources?.active_project}}
+                <button md-icon-button [md-menu-trigger-for]="resourceMenu2">
+                    <md-icon>{{addResource.icon}}</md-icon>
+                </button>
+                <md-menu x-position="after" #resourceMenu2="mdMenu">
+                        <span *ngFor="let item2 of baseOntology?.resources?.projects_info; let last=last" md-menu-item>
+                            <span><hr *ngIf="last"/>
+
+                                    <span>{{item2}}</span>
+
+                            </span>
+                        </span>
+                </md-menu>
+            </span>
+ -->
+
     <h4>Add resource types to your project</h4>
     <span>
-            {{baseOntology?.resources?.active_project}}
-            <button md-icon-button [md-menu-trigger-for]="resourceMenu2">
-                <md-icon>{{addResource.icon}}</md-icon>
-            </button>
-            <md-menu x-position="after" #resourceMenu2="mdMenu">
-                    <span *ngFor="let item2 of baseOntology?.resources?.projects_info; let last=last" md-menu-item>
-                        <span><hr *ngIf="last"/>
+        <span>Add new {{res}}</span>
 
-                                <span>{{item2}}</span>
+        <button md-icon-button [md-menu-trigger-for]="resourceMenu2">
+            <md-icon>{{addResource.icon}}</md-icon>
+        </button>
+        <md-menu x-position="after" #resourceMenu2="mdMenu">
+            <span *ngFor="let item2 of knoraBase?.classes?.representation; let last=last" md-menu-item>
+                <span><hr *ngIf="last"/>
 
-                        </span>
-                    </span>
-            </md-menu>
-        </span>
+                    <span>{{item2}}</span>
 
+                </span>
+            </span>
+        </md-menu>
+    </span>
 
 
 
