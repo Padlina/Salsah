@@ -27,17 +27,23 @@ export class HeaderComponent implements OnInit {
 
     constructor() {}
 
+    onSelectProject(id: string) {
+        console.log('Selected project has the id ' + id);
+    }
+
     ngOnInit() {
 
-        /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-        /* Developer object: just a sample to create a dummy header */
-        /*                                                          */
+    /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+    /* Developer object: just a sample to create a dummy header */
+    /*                                                          */
 
         // default project settings
 
+    /*
         let user: Object = {
-            // TODO: decide how userdata shall be made available/saved to Salsah
+            // TODO: decide how userdata shall be made available/saved in Salsah
         };
+    */
 
         // object for projectButtons
         this.projects = [

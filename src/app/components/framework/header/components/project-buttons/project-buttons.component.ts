@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
     selector: 'salsah-project-buttons',
@@ -8,10 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProjectButtonsComponent implements OnInit {
     @Input() projects: Object[];
     @Input() current: Object;
+    @Output() selectRequest: EventEmitter<any> = new EventEmitter();
 
     constructor() { }
 
     ngOnInit() {
     }
 
+    selectProject(id: string) {
+        this.selectRequest.emit(id);
+    }
 }

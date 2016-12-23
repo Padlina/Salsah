@@ -24,42 +24,46 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
 //
+// import all services
+//
+import { ResourcesService } from './services/resources.service';
+import { SearchService } from './services/search.service';
+import { VocabulariesService } from './services/vocabularies.service';
+
+//
+// import all directives
+//
+import { CenterElementDirective } from './directives/center-element.directive';
+
+import { UserProjectsPipe } from './pipes/user-projects.pipe';
+
+//
 //  import all components
 //
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/framework/header/header.component';
 import { OverlayComponent } from './components/framework/overlay/overlay.component';
 
-import { VideoObjectComponent } from './components/object/video-object/video-object.component';
-import { SimpleSearchComponent } from './components/search/simple-search/simple-search.component';
-import { SearchComponent } from './components/search/search.component';
+import { AdminComponent } from './components/admin/admin.component';
 import { ExtendedSearchComponent } from './components/search/extended-search/extended-search.component';
+import { DashboardViewComponent } from './components/view/dashboard-view/dashboard-view.component';
+import { FooterComponent } from './components/framework/footer/footer.component';
 import { GridViewComponent } from './components/view/grid-view/grid-view.component';
 import { ListViewComponent } from './components/view/list-view/list-view.component';
-import { TableViewComponent } from './components/view/table-view/table-view.component';
-import { DashboardViewComponent } from './components/view/dashboard-view/dashboard-view.component';
 import { PageNotFoundComponent } from './components/framework/page-not-found/page-not-found.component';
-import { ResultsViewComponent } from './components/view/results-view/results-view.component';
-import { ResourceViewComponent } from './components/view/resource-view/resource-view.component';
-import { ToolbarButtonsComponent } from './components/framework/header/components/toolbar-buttons/toolbar-buttons.component';
+import { ProjectAdminComponent } from './components/admin/project-admin/project-admin.component';
 import { ProjectButtonsComponent } from './components/framework/header/components/project-buttons/project-buttons.component';
-import { UserProjectsPipe } from './pipes/user-projects.pipe';
-import { FooterComponent } from './components/framework/footer/footer.component';
-
-//
-// import all services
-//
-import { SearchService } from './services/search.service';
-import { ResourcesService } from './services/resources.service';
-
-
-
-import { CenterElementDirective } from './directives/center-element.directive';
-
-
-
-
-
+import { ProjectViewComponent } from './components/view/project-view/project-view.component';
+import { ResourceViewComponent } from './components/view/resource-view/resource-view.component';
+import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
+import { ResultsViewComponent } from './components/view/results-view/results-view.component';
+import { SearchComponent } from './components/search/search.component';
+import { SimpleSearchComponent } from './components/search/simple-search/simple-search.component';
+import { TableViewComponent } from './components/view/table-view/table-view.component';
+import { TeamAdminComponent } from './components/admin/team-admin/team-admin.component';
+import { ToolbarButtonsComponent } from './components/framework/header/components/toolbar-buttons/toolbar-buttons.component';
+import { UserLoginComponent } from './components/admin/user-login/user-login.component';
+import { VideoObjectComponent } from './components/object/video-object/video-object.component';
 
 //
 // define all routes
@@ -76,6 +80,37 @@ const appRoutes: Routes = [
     {
         path: 'resources/:uri', // /:view',
         component: ResourceViewComponent    // default view for search results
+    },
+    {
+        path: 'project/:project', // /:view',
+        component: ProjectViewComponent    // default view for projects (as a start page)
+    },
+    {
+        path: 'project/:project/settings',
+        component: AdminComponent,
+
+        children: [
+            {
+                path: '',
+                redirectTo: 'project',
+                pathMatch: 'full'
+            },
+            {
+                path: 'project',
+                component: ProjectAdminComponent
+            },
+            {
+                path: 'team',
+                component: TeamAdminComponent
+            },
+            {
+                path: 'resources',
+                component: ResourcesAdminComponent
+            },
+            { path: '**', component: PageNotFoundComponent }
+
+        ]
+
     },
     { path: '**', component: PageNotFoundComponent }
 ];
@@ -100,7 +135,13 @@ const appRoutes: Routes = [
         ToolbarButtonsComponent,
         ProjectButtonsComponent,
         UserProjectsPipe,
-        FooterComponent
+        ProjectAdminComponent,
+        UserLoginComponent,
+        FooterComponent,
+        ProjectViewComponent,
+        TeamAdminComponent,
+        ResourcesAdminComponent,
+        AdminComponent
     ],
     imports: [
         BrowserModule,
@@ -109,15 +150,10 @@ const appRoutes: Routes = [
         MaterialModule.forRoot(),
         RouterModule.forRoot(appRoutes)
     ],
-    exports: [
-       ResourceViewComponent
-    ],
-    entryComponents: [
-        ResourceViewComponent
-    ],
     providers: [
+        ResourcesService,
         SearchService,
-        ResourcesService
+        VocabulariesService
     ],
     bootstrap: [AppComponent]
 })

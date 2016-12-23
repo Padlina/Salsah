@@ -11,31 +11,31 @@
             </button>
             <hr/>
             <!-- filter user projects -->
-            <div *ngFor="let project of (projects | userProjects)" md-menu-item [class.salsah-note]="project.shortname === current.shortname">
-                <span class="salsah-user-project">{{ project.longname }}</span>
-                <span *ngIf="project?.admin" class="salsah-admin-button">
-                    <button md-icon-button>
-                        <md-icon>settings</md-icon>
-                    </button>
-                </span>
-            </div>
-            <hr/>
-            <span>Show all projects</span>
-            <!-- show all available projects -->
-            <div *ngFor="let project of projects" md-menu-item>
-                <span class="salsah-user-project">{{ project.longname }}</span>
-                <span *ngIf="project.admin" class="salsah-admin-button">
-                    <button md-icon-button>
-                        <md-icon>settings</md-icon>
-                    </button>
-                </span>
-            </div>
+                <div *ngFor="let project of (projects | userProjects)" md-menu-item [class.salsah-note]="project?.shortname === current?.shortname" (click)="selectProject(project?.project_id)">
+                    <span class="salsah-user-project">{{ project?.longname }}</span>
+                    <span *ngIf="project?.admin" class="salsah-admin-button">
+                        <button md-icon-button routerLink="/project/{{project?.shortname}}/settings">
+                            <md-icon>settings</md-icon>
+                        </button>
+                    </span>
+                </div>
+                <hr/>
+                <span>Show all projects</span>
+                <!-- show all available projects -->
+                <div *ngFor="let project of projects" md-menu-item (click)="selectProject(project?.project_id)">
+                    <span class="salsah-user-project">{{ project?.longname }}</span>
+                    <span *ngIf="project?.admin" class="salsah-admin-button">
+                        <button md-icon-button>
+                            <md-icon>settings</md-icon>
+                        </button>
+                    </span>
+                </div>
         </md-menu>
     </span>
     <!-- image of active/current project logo -->
     <a href="/">
-        <img class="logo" src="{{ current.logo }}" alt="{{ current.shortname }}"
-             title="{{ current.longname }}">
+        <img class="logo" src="{{ current?.logo }}" alt="{{ current?.shortname }}"
+             title="{{ current?.longname }}">
     </a>
 </div>
 

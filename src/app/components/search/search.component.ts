@@ -48,35 +48,30 @@ export class SearchComponent implements OnInit {
 
 
     private _searchQuery: string;
-    private _searchLabel: string = 'Search';
     private _searchFocus: boolean;
     private _panelSize: string = 'large';
+    private url_params: any;
 
+    private cur_query_array: string[];
 
-
-//    private _searchQuery: string;
-//    private activeElement: boolean = false;
-
+    private _searchLabel: string = 'Search';
 
 //    private defaultView: string = 'list';
-
 
 //    private panelSize: string = 'large';
 //    private showExtended: boolean = false;
 
     private simpleSearch(searchQuery: string) {
-        this.router.navigate(['/search/' + this._searchQuery], {relativeTo: this.route});
+        this._router.navigate(['/search/' + this._searchQuery], {relativeTo: this._route});
     }
 
-    constructor(private route: ActivatedRoute,
-                private router: Router,
+    constructor(private _route: ActivatedRoute,
+                private _router: Router,
                 private _eleRef: ElementRef) { }
 
     ngOnInit() {
-//        console.log(this.route.params);
-        this.route.params.forEach((params: Params) => {
-            let query = params['query'];
-        });
+
+
     }
 
     @HostListener('document:click', ['$event'])
