@@ -36,6 +36,11 @@ import { VocabulariesService } from './services/vocabularies.service';
 import { CenterElementDirective } from './directives/center-element.directive';
 
 //
+// import all pipes
+//
+import { LimitToPipe } from './pipes/limit-to.pipe';
+
+//
 //  import all components
 //
 import { AppComponent } from './app.component';
@@ -135,7 +140,8 @@ const appRoutes: Routes = [
         ProjectViewComponent,
         TeamAdminComponent,
         ResourcesAdminComponent,
-        AdminComponent
+        AdminComponent,
+        LimitToPipe
     ],
     imports: [
         BrowserModule,
