@@ -1,7 +1,7 @@
 <md-toolbar>
     <div class="salsah-project-buttons">
         <span class="salsah-project-select-button">
-            <button md-icon-button [md-menu-trigger-for]="projectMenu">
+            <button md-icon-button [mdMenuTriggerFor]="projectMenu">
                 <md-icon>keyboard_arrow_down</md-icon>
             </button>
             <md-menu #projectMenu="mdMenu" class="salsah-project-selection">
@@ -42,10 +42,10 @@
 
         <!-- add menu -->
         <span class="add-menu">
-            <button md-icon-button [md-menu-trigger-for]="addMenu">
+            <button md-icon-button [mdMenuTriggerFor]="addMenu">
                 <md-icon>{{add.icon}}</md-icon>
             </button>
-            <md-menu x-position="before" #addMenu="mdMenu">
+            <md-menu #addMenu="mdMenu">
                 <div *ngFor="let item of add.menuItems; let last=last">
                     <button md-menu-item>
                         <md-icon> {{item.icon}} </md-icon>
@@ -64,10 +64,10 @@
 
         <!-- user profile menu -->
         <span class="user-menu">
-            <button md-icon-button [md-menu-trigger-for]="userMenu">
+            <button md-icon-button [mdMenuTriggerFor]="userMenu">
                 <md-icon>{{user.icon}}</md-icon>
             </button>
-            <md-menu x-position="before" #userMenu="mdMenu" class="salsah-user-menu">
+            <md-menu #userMenu="mdMenu" class="salsah-user-menu">
                 <div *ngFor="let item of user.menuItems; let last=last">
                     <hr *ngIf="last"/>
                     <button md-menu-item>

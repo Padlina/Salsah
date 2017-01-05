@@ -11,7 +11,7 @@ It is developed by the [Digital Humanities Lab](http://www.dhlab.unibas.ch/) at 
 
 Salsah is [free software](http://www.gnu.org/philosophy/free-sw.en.html), released under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl-3.0.en.html).
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.19-3.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24
 
 You will find more information about Salsah and the documentation (guideline) for developers on: 
 
@@ -20,34 +20,35 @@ You will find more information about Salsah and the documentation (guideline) fo
 
 ## Developer Environment
 
-
-### Developer Install
-
-#### Using angular-cli
-Make sure you are using at least Node 4 or a higher version (as well as NPM 3 or higher). You also should use the default behaviour of NPM 3 or higher (not nesting `node_modules`), else angular-cli is running into issues.
+### Using angular-cli
+**Prerequisites**
+Angular-cli and the the Salsah app  have dependencies that require Node 4 or higher, together with NPM 3 or higher.
 
 Check `npm config list -l` for option `legacy-bundling = false`
 
-If this option is set to `true` (what forces node-modules to be installed within nested directories), use the `--legacy-bundling` flag when installing angular-cli or globally set back your npm config to its default behaviour (`npm set legacy-bundling=false`). See this [SO article concerning legacy-bundling](http://stackoverflow.com/a/35227212).
+`npm config list -l | grep legacy-bundling`
 
-Install [angular-cli](https://github.com/angular/angular-cli).
+If this option is set to `true` (what forces node-modules to be installed within nested directories), use the `--legacy-bundling` flag when installing angular-cli or globally set back your npm config to its default behaviour (`npm set legacy-bundling=false`). See this [Stackoverflow article concerning legacy-bundling](http://stackoverflow.com/a/35227212).
 
-#### Installing project
+
+**Install [angular-cli](https://github.com/angular/angular-cli)**
+
+`npm install -g angular-cli`
+
+### Installing package dependencies
 After forking the Salsah code, you have to install the node package dependencies:
 
 Check `npm config get production`
 
-If `production` is set to `true` (= production environment), running `npm install` will skip `devDependencies` of your `package.json`. This is not recommended because you will have to install all `devDependencies` seperately (see this [SO article](http://stackoverflow.com/a/35098833)).
+If `production` is set to `true` (= production environment), running `npm install` will skip `devDependencies` of your `package.json`. This is not recommended because you will have to install all `devDependencies` seperately (see this [Stackoverflow article](http://stackoverflow.com/a/35098833)).
 
 Run `npm install` inside your Salsah project folder.
 
-If there are still some problems during the installation, try to install the following packages:
+If there are still some problems during the installation, try to install the angular-cli locally:
 
-    npm install @types/node
+`npm install --save-dev angular-cli@1.0.0-beta.24`
 
-    npm install webpack-dev-server
-
-#### Updating angular-cli
+#### Updating angular-cli and the package dependencies
 If you want to update `angular-cli` to a new version, carefully follow the instructions described [here](https://github.com/angular/angular-cli#updating-angular-cli). `ng init` at the end of the update process may have destructive consequences for your existing project files. Make sure not to overwrite them by accident. When asked, use option `d` for each file to check the diffs between your files and the updated default files.
 
 ### Development server
@@ -85,12 +86,10 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
 ## Style
 We're using precompiled [sass scss](http://sass-lang.com/).
  
-You have to compile it first. Go to the directory src/assets and run the sass command
+If you're changing something in the salsah scss files, you have to compile them with the following command:
 
 ```
-cd src/assets
-
-sass --watch scss/main.scss:css/main.min.css --style compressed
+sass --watch src/assets/scss/main.scss:src/assets/css/main.min.css --style compressed
 ```
 
 
