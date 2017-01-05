@@ -14,12 +14,20 @@
 </div>
 -->
 
-<md-grid-list cols="3" gutterSize="12px">
-    <md-grid-tile md-card *ngFor="let item of searchResponse?.subjects" (click)="openResource(item.obj_id)">
+<md-grid-list cols="3" gutterSize="12px" rowHeight="320px">
+    <md-grid-tile *ngFor="let item of searchResponse?.subjects" (click)="openResource(item.obj_id)">
         <md-card>
-            <img md-card-lg-image [src]="item.preview_path" (error)="previewError($event, item.preview_path)" />
-            <p>{{item.valuelabel[0]}}: {{item.value[0]}}</p>
-            <p>{{item.valuelabel[1]}}: {{item.value[1]}}</p>
+            <img md-card-image class="preview" [src]="item.preview_path" (error)="previewError($event, item.preview_path)" />
+            <md-card-content>
+                <md-card-title>{{item.value[0]}}</md-card-title>
+                <md-card-subtitle>{{item.valuelabel[1]}}<br> {{item.value[1] | limitTo: 120}}</md-card-subtitle>
+            </md-card-content>
+            <!--
+            <md-card-actions>
+                <button md-button>LIKE</button>
+                <button md-button>SHARE</button>
+            </md-card-actions>
+            -->
         </md-card>
     </md-grid-tile>
 </md-grid-list>

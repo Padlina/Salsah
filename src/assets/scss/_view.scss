@@ -78,6 +78,22 @@
             }
         }
     }
+    .grid-view {
+        md-card {
+            cursor: pointer;
+            margin: 6px;
+            img.preview {
+                height: 120px;
+                object-fit: cover;
+            }
+            p.prop-val {
+
+                &.second {
+
+                }
+            }
+        }
+    }
 
 }
 
