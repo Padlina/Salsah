@@ -71,6 +71,27 @@
                 height: 80%;
                 object-fit: cover;
             }
+            .md-list-text {
+                [md-line] {
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+    .grid-view {
+        md-card {
+            cursor: pointer;
+            margin: 6px;
+            img.preview {
+                height: 120px;
+                object-fit: cover;
+            }
+            p.prop-val {
+
+                &.second {
+
+                }
+            }
         }
     }
 

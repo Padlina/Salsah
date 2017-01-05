@@ -3,11 +3,11 @@
     <span *ngFor="let tool of toolbar" class="{{ tool?.name }}-menu">
         <span *ngIf="tool?.menu" >
             <!-- trigger button -->
-            <button md-icon-button [md-menu-trigger-for]="menu">
+            <button md-icon-button [mdMenuTriggerFor]="menu">
                 <md-icon>{{ tool.icon }}</md-icon>
             </button>
             <!-- menu -->
-            <md-menu x-position="before" #menu="mdMenu">
+            <md-menu #menu="mdMenu">
                 <div *ngFor="let item of tool.menuItems">
                     <hr *ngIf="item?.divider"/>
                     <button md-menu-item>
