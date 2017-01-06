@@ -1,3 +1,43 @@
-<p>
-  user-login works!
-</p>
+<salsah-overlay class="fullscreen"></salsah-overlay>
+
+<md-card class="salsah-login">
+    <md-card-header>
+        <md-card-title>
+            {{login.title | uppercase }}
+        </md-card-title>
+    </md-card-header>
+
+    <md-card-content class="login">
+        <form class="example-form">
+            <!-- Username -->
+            <md-input-container class="full-width">
+                <md-icon md-prefix>person</md-icon>
+                <input md-input [placeholder]="login.name" autofocus>
+            </md-input-container>
+            <br><br><br>
+            <!-- Password -->
+            <md-input-container class="full-width">
+                <md-icon md-prefix>lock</md-icon>
+                <input md-input type="password" [placeholder]="login.pw">
+            </md-input-container>
+            <br><br><br>
+            <!-- Button: Login -->
+            <div class="button-row full-width">
+                <button md-button class="full-width login">{{login.button | uppercase}}</button>
+            </div>
+        </form>
+
+
+
+    </md-card-content>
+
+    <md-card-content class="sign_up">
+        <br>
+        <h4>{{signup.title | uppercase}}</h4>
+        <h5>{{signup.subtitle}}</h5>
+        <div class="button-row full-width">
+            <button md-button class="full-width">{{signup.button | uppercase}}</button>
+        </div>
+    </md-card-content>
+
+</md-card>
