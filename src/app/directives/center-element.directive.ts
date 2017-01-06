@@ -1,28 +1,29 @@
-import {Directive, ElementRef, Renderer, HostListener, NgZone} from '@angular/core';
+import {Directive, ElementRef, Renderer, HostListener, NgZone, OnInit} from '@angular/core';
 
 @Directive({
     selector: '[salsahCenterElement]'
 })
-export class CenterElementDirective {
+export class CenterElementDirective implements OnInit {
 
 
-    constructor(private el: ElementRef, private renderer: Renderer, ngZone: NgZone) {
+    constructor(private el: ElementRef, private renderer: Renderer, private ngZone: NgZone) {
         window.onresize = (e) => {
             ngZone.run(() => {
                 this.centering();
             });
         };
-        window.onload = (e) => {
-            ngZone.run(() => {
-                this.centering();
-            });
-        };
+
 
     }
 
 
+    ngOnInit() {
+        this.centering();
+    }
+
+
     private centering() {
-        let posTopVal: number = Math.round(((window.innerHeight - this.el.nativeElement.offsetHeight) / 2)); //5 * 3));
+        let posTopVal: number = Math.round(((window.innerHeight - this.el.nativeElement.offsetHeight) / 2 )); //5 * 3));
         let posLeftVal: number = Math.round(((window.innerWidth - this.el.nativeElement.offsetWidth) / 2 ));
 
         let posTop: string = Math.max(75, posTopVal) + 'px';
