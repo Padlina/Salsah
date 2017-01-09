@@ -11,45 +11,54 @@ It is developed by the [Digital Humanities Lab](http://www.dhlab.unibas.ch/) at 
 
 Salsah is [free software](http://www.gnu.org/philosophy/free-sw.en.html), released under the [GNU Affero General Public License](http://www.gnu.org/licenses/agpl-3.0.en.html).
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24
+The project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24 (will be updated from time to time!)
 
-You will find more information about Salsah and the documentation (guideline) for developers on: 
+You will find more information about Salsah and the developers guideline on: 
 
 **[https://dhlab-basel.github.io/Salsah/](https://dhlab-basel.github.io/Salsah/)**
 
 
 ## Developer Environment
 
-### Using angular-cli
-**Prerequisites**
-Angular-cli and the the Salsah app  have dependencies that require Node 4 or higher, together with NPM 3 or higher.
+### Prerequisites
 
-Check `npm config list -l` for option `legacy-bundling = false`
+We're developing the Salsah app with Angular-cli, which requires [Node](https://nodejs.org/en/download/) 4 or higher with [NPM](https://www.npmjs.com) 4 or higher. Update NPM to the latest version with `npm install -g npm@latest` 
 
-`npm config list -l | grep legacy-bundling`
+**Install [angular-cli](https://github.com/angular/angular-cli) globally**
 
-If this option is set to `true` (what forces node-modules to be installed within nested directories), use the `--legacy-bundling` flag when installing angular-cli or globally set back your npm config to its default behaviour (`npm set legacy-bundling=false`). See this [Stackoverflow article concerning legacy-bundling](http://stackoverflow.com/a/35227212).
+`npm install -g angular-cli@1.0.0-beta.24`
+
+If there are some permission issues, try to fix the writing rights in node with `sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}`
+
+### Node package dependencies 
+After cloning the Salsah code, install the node packages from the Salsah root directory with
+
+`npm install`
+
+### Start the Salsah app
+With `ng serve` the Salsah app starts on [localhost:4200](http://localhost:4200)
+
+It could happen, that ng can't resolve some specific packages. In that case install angular-cli direct in the salsah app: 
+`npm install -g angular-cli@1.0.0-beta.24`
 
 
-**Install [angular-cli](https://github.com/angular/angular-cli)**
+If the installation or the start interrupts, please check our additional installation solution [here](https://dhlab-basel.github.io/Salsah/documentation/guidelines/rst/salsah2/installation/index.html#issues-with-angular-cli).
 
-`npm install -g angular-cli`
 
-### Installing package dependencies
-After forking the Salsah code, you have to install the node package dependencies:
+#### Updating Salsah packages
+From time to time we grab the latest npm packages for Salsah. Especially because Angular-cli is still in a beta state.
+So we recommend to update packages from the Salsah root.
 
-Check `npm config get production`
+```
+rm -rf node_modules dist tmp
+npm install
+npm install --save-dev angular-cli@1.0.0-beta.24
 
-If `production` is set to `true` (= production environment), running `npm install` will skip `devDependencies` of your `package.json`. This is not recommended because you will have to install all `devDependencies` seperately (see this [Stackoverflow article](http://stackoverflow.com/a/35098833)).
+```
 
-Run `npm install` inside your Salsah project folder.
+Please also check the Angular-cli update process [here](https://github.com/angular/angular-cli#updating-angular-cli).
+ But be careful with the `ng init` at the end!!!
 
-If there are still some problems during the installation, try to install the angular-cli locally:
-
-`npm install --save-dev angular-cli@1.0.0-beta.24`
-
-#### Updating angular-cli and the package dependencies
-If you want to update `angular-cli` to a new version, carefully follow the instructions described [here](https://github.com/angular/angular-cli#updating-angular-cli). `ng init` at the end of the update process may have destructive consequences for your existing project files. Make sure not to overwrite them by accident. When asked, use option `d` for each file to check the diffs between your files and the updated default files.
 
 ### Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -84,9 +93,9 @@ Before running the tests make sure you are serving the app via `ng serve`.
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## Style
-We're using precompiled [sass scss](http://sass-lang.com/).
+We're working with precompiled [sass scss](http://sass-lang.com/).
  
-If you're changing something in the salsah scss files, you have to compile them with the following command:
+If you're changing something in the salsah scss files, you have to compile the main file with the following command:
 
 ```
 sass --watch src/assets/scss/main.scss:src/assets/css/main.min.css --style compressed
