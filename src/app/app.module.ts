@@ -76,6 +76,10 @@ const appRoutes: Routes = [
         component: DashboardViewComponent
     },
     {
+        path: 'login',
+        component: UserLoginComponent
+    },
+    {
         path: 'search/:query', // /:view',
         component: ResultsViewComponent    // default view for search results
     },
