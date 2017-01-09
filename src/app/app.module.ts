@@ -57,7 +57,7 @@ import { GridViewComponent } from './components/view/grid-view/grid-view.compone
 import { ListViewComponent } from './components/view/list-view/list-view.component';
 import { PageNotFoundComponent } from './components/framework/page-not-found/page-not-found.component';
 import { ProjectAdminComponent } from './components/admin/project-admin/project-admin.component';
-import { ProjectButtonsComponent } from './components/framework/header/components/project-buttons/project-buttons.component';
+import { ProjectButtonsComponent } from './components/framework/header/project-buttons/project-buttons.component';
 import { ProjectViewComponent } from './components/view/project-view/project-view.component';
 import { ResourceViewComponent } from './components/view/resource-view/resource-view.component';
 import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
@@ -66,7 +66,7 @@ import { SearchComponent } from './components/search/search.component';
 import { SimpleSearchComponent } from './components/search/simple-search/simple-search.component';
 import { TableViewComponent } from './components/view/table-view/table-view.component';
 import { TeamAdminComponent } from './components/admin/team-admin/team-admin.component';
-import { ToolbarButtonsComponent } from './components/framework/header/components/toolbar-buttons/toolbar-buttons.component';
+import { ToolbarButtonsComponent } from './components/framework/header/toolbar-buttons/toolbar-buttons.component';
 import { UserLoginComponent } from './components/admin/user-login/user-login.component';
 import { VideoObjectComponent } from './components/object/video-object/video-object.component';
 
