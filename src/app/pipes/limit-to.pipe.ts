@@ -20,6 +20,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class LimitToPipe implements PipeTransform {
 
     transform(value: any, length: number): any {
+        if(!length) length = 120;
         value = value.substring(0, length);
         return value + '...';
     }
