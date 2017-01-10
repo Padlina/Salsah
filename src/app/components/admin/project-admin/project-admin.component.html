@@ -1,14 +1,11 @@
 
 <md-list class="salsah-component-content">
-    <h2 md-header>This is just a test! It's a preview, not the end product </h2>
-</md-list>
-<md-grid-list cols="4" rowHeight="250px" class="salsah-component-content">
+    <h2 md-header>Project XYZ </h2>
 
-    <md-grid-tile
-        *ngFor="let tile of tiles"
-        [colspan]="tile.cols"
-        [rowspan]="tile.rows"
-        [style.background]="tile.color">
-        {{tile.text}}
-    </md-grid-tile>
-</md-grid-list>
+    <h3 md-subheader>Description</h3>
+    <md-list-item>
+        <p>{{description}}</p>
+    </md-list-item>
+
+</md-list>
+

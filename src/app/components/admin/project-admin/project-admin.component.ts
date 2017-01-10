@@ -21,12 +21,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectAdminComponent implements OnInit {
 
-    public tiles = [
-        {text: 'Project info', cols: 3, rows: 1, color: 'lightblue'},
-        {text: 'Quick links', cols: 1, rows: 2, color: 'lightgreen'},
-        {text: 'dashboard info 1', cols: 1, rows: 1, color: 'lightpink'},
-        {text: 'dashboard info 2', cols: 2, rows: 1, color: '#DDBDF1'},
-    ];
+    public description: string = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr,  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr,  sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.";
 
   constructor() { }
 

@@ -12,7 +12,8 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewContainerRef, animate } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
     selector: 'salsah-admin',
@@ -42,12 +43,21 @@ export class AdminComponent implements OnInit {
         }
     ];
 
-    constructor() {
+    public cur_project: string = "SALSAH";
 
-    }
+    constructor(private route: ActivatedRoute,
+                private router: Router
+    ) { }
 
     ngOnInit() {
 
+        this.route.params.forEach((params: Params) => {
+            this.cur_project = params['project'];
+        });
+
+        if(this.cur_project === 'new') {
+            alert("Create a new project!?");
+        }
     }
 
 }
