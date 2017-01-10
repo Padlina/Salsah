@@ -36,5 +36,6 @@ Thumbs.db
 
 # docs
 docs/env
+docs/.idea
 docs/_build
 docs/_format_docu

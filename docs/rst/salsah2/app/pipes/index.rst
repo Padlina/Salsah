@@ -11,20 +11,20 @@
     You should have received a copy of the GNU Affero General Public
     License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
 
-.. _salsah2:
+************
+SALSAH pipes
+************
 
-########
-SALSAH 2
-########
-
-SALSAH - System for Annotation and Linkage of Sources in Arts and Humanities
-
-..  toctree::
+.. toctree::
     :maxdepth: 2
 
-    introduction/index
-    installation/index
-    app/components/index
-    app/directives/index
-    app/services/index
-    app/pipes/index
+
+If it's necessary we have to build our own pipes (angular filters). Before building a pipe, please check, if there's existing already one in angular
+
+
+
+LimitTo
+-------
+Transforms a string to a predefined length of characters and adds three points to the end [...]. The default length value is 120.
+
+    {{ string | limitTo [: number]}}
