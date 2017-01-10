@@ -65,6 +65,7 @@ import { ProjectViewComponent } from './components/view/project-view/project-vie
 import { TeamAdminComponent } from './components/admin/team-admin/team-admin.component';
 import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { NewResourceComponent } from './components/admin/resources-admin/new-resource/new-resource.component';
 
 
 //
@@ -145,7 +146,8 @@ const appRoutes: Routes = [
         TeamAdminComponent,
         ResourcesAdminComponent,
         AdminComponent,
-        LimitToPipe
+        LimitToPipe,
+        NewResourceComponent
     ],
     imports: [
         BrowserModule,
