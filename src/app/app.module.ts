@@ -21,6 +21,7 @@ import { RouterModule, Routes } from '@angular/router';
 //
 // import the material design modules
 //
+import {platformBrowserDynamic} from "@angular/platform-browser-dynamic";
 import { MaterialModule } from '@angular/material';
 
 //
@@ -46,7 +47,6 @@ import { LimitToPipe } from './pipes/limit-to.pipe';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/framework/header/header.component';
 import { OverlayComponent } from './components/framework/overlay/overlay.component';
-
 import { VideoObjectComponent } from './components/object/video-object/video-object.component';
 import { SimpleSearchComponent } from './components/search/simple-search/simple-search.component';
 import { SearchComponent } from './components/search/search.component';
@@ -66,6 +66,7 @@ import { TeamAdminComponent } from './components/admin/team-admin/team-admin.com
 import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NewResourceComponent } from './components/admin/resources-admin/new-resource/new-resource.component';
+import { OntologyComponent } from './components/admin/ontology/ontology.component';
 
 
 //
@@ -122,6 +123,7 @@ const appRoutes: Routes = [
     { path: '**', component: PageNotFoundComponent }
 ];
 
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -147,7 +149,8 @@ const appRoutes: Routes = [
         ResourcesAdminComponent,
         AdminComponent,
         LimitToPipe,
-        NewResourceComponent
+        NewResourceComponent,
+        OntologyComponent
     ],
     imports: [
         BrowserModule,
@@ -166,8 +169,11 @@ const appRoutes: Routes = [
         ResourcesService,
         SearchService,
         VocabulariesService
+
     ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

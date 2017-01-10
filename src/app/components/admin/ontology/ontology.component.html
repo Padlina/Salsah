@@ -1,0 +1,23 @@
+<div>
+    <h4>Add resource types to your project</h4>
+        <span>
+            {{addResource.name}}
+            <button md-icon-button [md-menu-trigger-for]="resourceMenu">
+                <md-icon>{{addResource.icon}}</md-icon>
+            </button>
+            <md-menu x-position="after" #resourceMenu="mdMenu">
+                    <span *ngFor="let item of addResource.menuItems; let last=last" md-menu-item>
+                        <span><hr *ngIf="last"/>
+                            <a href="{{item.routerLink}}">
+                                <md-icon>{{item.icon}}</md-icon><span>{{item.text}}</span>
+                            </a>
+                        </span>
+                    </span>
+            </md-menu>
+        </span>
+
+</div>
+
+
+
+

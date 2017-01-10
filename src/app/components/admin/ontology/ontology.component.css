@@ -1,0 +1,14 @@
+div {
+    height: 200px;
+    width: 400px;
+    background: white;
+
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: large;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -150px;
+    margin-left: -250px;
+}
