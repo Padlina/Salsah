@@ -83,13 +83,11 @@ export class SearchComponent implements OnInit {
 
     @HostListener('window:keydown', ['$event'])
     onKey(event: any) {
-//         this._searchQuery = event.target.value;
-        /*
+        this._searchQuery = event.target.value;
         if (event.key === 'TAB' || event.keyCode === 9 || event.which === 9) {
             this.simpleSearch(this._searchQuery);
             this._searchFocus = false;
         }
-        */
 
         if (this._searchQuery) {
             this._searchFocus = true;

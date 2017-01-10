@@ -65,6 +65,9 @@ import { ProjectViewComponent } from './components/view/project-view/project-vie
 import { TeamAdminComponent } from './components/admin/team-admin/team-admin.component';
 import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { UserAdminComponent } from './components/admin/user-admin/user-admin.component';
+import { NewProjectComponent } from './components/admin/project-admin/new-project/new-project.component';
+import { NewUserComponent } from './components/admin/user-admin/new-user/new-user.component';
 
 
 //
@@ -80,15 +83,19 @@ const appRoutes: Routes = [
         component: UserLoginComponent
     },
     {
-        path: 'search/:query', // /:view',
+        path: 'search/:query',
         component: ResultsViewComponent    // default view for search results
     },
     {
-        path: 'resources/:uri', // /:view',
+        path: 'resources/:uri',
         component: ResourceViewComponent    // default view for search results
     },
     {
-        path: 'project/:project', // /:view',
+        path: 'new',
+        component: NewProjectComponent
+    },
+    {
+        path: 'project/:project',
         component: ProjectViewComponent    // default view for projects (as a start page)
     },
     {
@@ -118,6 +125,10 @@ const appRoutes: Routes = [
         ]
 
     },
+    {
+        path: 'user/:name',
+        component: UserAdminComponent
+    },
     { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -145,7 +156,10 @@ const appRoutes: Routes = [
         TeamAdminComponent,
         ResourcesAdminComponent,
         AdminComponent,
-        LimitToPipe
+        LimitToPipe,
+        UserAdminComponent,
+        NewProjectComponent,
+        NewUserComponent
     ],
     imports: [
         BrowserModule,
