@@ -44,15 +44,15 @@
         <!-- If I want a specific part of an array from a json object I should get it already at the ontology component (here: res) -->
         <span>Add new {{res}}</span>
 
-        <button md-icon-button [md-menu-trigger-for]="resourceMenu2">
+        <button md-icon-button [md-menu-trigger-for]="resourceMenu">
             <md-icon>{{addResource.icon}}</md-icon>
         </button>
-        <md-menu x-position="after" #resourceMenu2="mdMenu">
+        <md-menu x-position="after" #resourceMenu="mdMenu">
          <!-- For a complete array, I can get the json object here, using ? to make up for undefined objects -->
-            <span *ngFor="let item2 of knoraBase?.classes?.representation; let last=last" md-menu-item>
+            <span *ngFor="let item of knoraBase?.classes?.representation; let last=last" md-menu-item>
                 <span><hr *ngIf="last"/>
 
-                    <span>{{item2}}</span>
+                    <span>{{item}}</span>
 
                 </span>
             </span>
