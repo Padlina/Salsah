@@ -12,20 +12,25 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-/**
- * services
- */
-export * from '../services/projects.service';
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/vocabularies.service';
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { BasicResponseJson } from './basic-response-json';
+import { ProjectItemJson } from './project-item-json';
+
 
 /**
- * API objects
+ * Represents the response to a fulltext or an extended search
+ *
+ * HTTP GET to http://host/v1/projects
+ *
  */
-export * from '../services/api-objects';
 
+@JsonObject
+export class ProjectsJson extends BasicResponseJson {
+    /**
+     * List of search project items
+     * @param projects: Array<projectItem>
+     */
+    @JsonProperty('projects', [ProjectItemJson])
+    public projects: ProjectItemJson[] = undefined;
 
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+}

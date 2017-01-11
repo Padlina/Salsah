@@ -15,11 +15,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'salsah-project-view',
-  templateUrl: './project-view.component.html',
-  styleUrls: ['./project-view.component.css']
+  selector: 'salsah-projects-detail-view',
+  templateUrl: './projects-detail-view.component.html',
+  styleUrls: ['./projects-detail-view.component.css']
 })
-export class ProjectViewComponent implements OnInit {
+export class ProjectsDetailViewComponent implements OnInit {
 
     public tiles = [
         {text: 'Project info', cols: 3, rows: 1, color: 'lightblue'},

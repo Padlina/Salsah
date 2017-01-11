@@ -24,6 +24,7 @@
 import { BasicResponseJson } from './src/basic-response-json';
 import { LocationItemJson } from './src/location-item-json';
 import { ProjectItemJson } from './src/project-item-json';
+import { ProjectsJson } from './src/projects-json';
 import { UserdataJson } from './src/userdata-json';
 import { KnoraAccess, KnoraIRI, KnoraListNodeIRI, KnoraRights, KnoraStatusCode, KnoraValue } from './src/basic-type-aliases';
 
@@ -36,6 +37,7 @@ export {
     KnoraStatusCode,
     KnoraValue,
     LocationItemJson,
+    ProjectsJson,
     ProjectItemJson,
     UserdataJson
 }
