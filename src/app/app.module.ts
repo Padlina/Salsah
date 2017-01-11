@@ -86,22 +86,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'search/:query',
-        component: ResultsViewComponent,
-        children: [
-            {
-                path: '',
-                redirectTo: 'list',
-                pathMatch: 'full'
-            },
-            {
-                path: 'list',
-                component: ListViewComponent
-            },
-            {
-                path: 'grid',
-                component: GridViewComponent
-            }
-        ]
+        component: ResultsViewComponent
     },
     {
         path: 'resources/:uri',
