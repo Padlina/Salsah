@@ -16,35 +16,29 @@ import { Component, OnInit, ViewContainerRef, animate } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
-    selector: 'salsah-admin',
-    templateUrl: './admin.component.html',
-    styleUrls: ['./admin.component.css']
+  selector: 'salsah-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class AdminComponent implements OnInit {
-
-//    public _isLoading: boolean = true;
-
+export class UserComponent implements OnInit {
 
     public menu: any = [
         {
-            name: 'Project',
-            path: 'project'
+            name: 'Profile',
+            path: 'profile'
         },
         {
-            name: 'Team',
-            path: 'team'
+            name: 'Projects',
+            path: 'projects'
         },
         {
-            name: 'Resources',
-            path: 'resources'
-        },
-        {
-            name: 'Advanced',
-            path: 'advanced'
+            name: 'Collections',
+            path: 'collections'
         }
+
     ];
 
-    public cur_project: string = "SALSAH";
+    public username: string;
 
     constructor(private route: ActivatedRoute,
                 private router: Router
@@ -53,11 +47,11 @@ export class AdminComponent implements OnInit {
     ngOnInit() {
 
         this.route.params.forEach((params: Params) => {
-            this.cur_project = params['project'];
+            this.username = params['user'];
         });
 
-        if(this.cur_project === 'new') {
-            alert("Create a new project!?");
+        if(this.username === 'new') {
+            alert("Create new user!?");
         }
     }
 

@@ -70,7 +70,7 @@
             <md-menu #userMenu="mdMenu" class="salsah-user-menu">
                 <div *ngFor="let item of user.menuItems; let last=last">
                     <hr *ngIf="last"/>
-                    <button md-menu-item>
+                    <button md-menu-item [routerLink]="item.routerLink">
                         <md-icon> {{item.icon}} </md-icon>
                         <span> {{item.text}} </span>
                     </button>

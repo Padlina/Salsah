@@ -48,26 +48,25 @@ export class HeaderComponent implements OnInit {
         icon: 'person',
         menuItems: [
             {
-                text: 'Activity',
-                //icon: 'playlist_add_check'
-                icon: 'done',
-                routerLink: '/gridview'
+                text: 'Projects',
+                icon: 'assignment',
+                routerLink: '/user/username/projects'
             },
             {
                 text: 'Collections',
                 icon: 'bookmark_outline',
-                routerLink: '/'
+                routerLink: '/user/username/collections'
             },
             {
                 text: 'Profile',
                 //icon: 'account_box'
                 icon: 'fingerprint',
-                routerLink: '/'
+                routerLink: '/user/username'
             },
             {
                 text: 'Sign out',
                 icon: 'power_settings_new',
-                routerLink: '/'
+                routerLink: '/login'
             }
         ],
         userProjects: [

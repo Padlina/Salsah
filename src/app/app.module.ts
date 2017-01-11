@@ -68,7 +68,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { UserAdminComponent } from './components/admin/user-admin/user-admin.component';
 import { NewProjectComponent } from './components/admin/project-admin/new-project/new-project.component';
 import { NewUserComponent } from './components/admin/user-admin/new-user/new-user.component';
-
+import { UserComponent } from './components/user/user.component';
+import { ProfileSettingsComponent } from './components/user/profile-settings/profile-settings.component';
+import { CollectionsSettingsComponent } from './components/user/collections-settings/collections-settings.component';
 
 //
 // define all routes
@@ -84,7 +86,22 @@ const appRoutes: Routes = [
     },
     {
         path: 'search/:query',
-        component: ResultsViewComponent    // default view for search results
+        component: ResultsViewComponent,
+        children: [
+            {
+                path: '',
+                redirectTo: 'list',
+                pathMatch: 'full'
+            },
+            {
+                path: 'list',
+                component: ListViewComponent
+            },
+            {
+                path: 'grid',
+                component: GridViewComponent
+            }
+        ]
     },
     {
         path: 'resources/:uri',
@@ -95,11 +112,11 @@ const appRoutes: Routes = [
         component: NewProjectComponent
     },
     {
-        path: 'project/:project',
-        component: ProjectViewComponent    // default view for projects (as a start page)
+        path: 'project/:project',           // project dashboard / public overview
+        component: ProjectViewComponent
     },
     {
-        path: 'project/:project/settings',
+        path: 'project/:project/settings',  // project, team and resources (ontology) administration
         component: AdminComponent,
 
         children: [
@@ -121,13 +138,42 @@ const appRoutes: Routes = [
                 component: ResourcesAdminComponent
             },
             { path: '**', component: PageNotFoundComponent }
-
         ]
+    },
 
+    {
+        path: 'user/:user',  // user profile and collections administration
+        component: UserComponent,
+
+        children: [
+            {
+                path: '',
+                redirectTo: 'profile',
+                pathMatch: 'full'
+            },
+            {
+                path: 'profile',
+                component: ProfileSettingsComponent
+            },
+            {
+                path: 'collections',
+                component: CollectionsSettingsComponent
+            },
+            { path: '**', component: PageNotFoundComponent }
+        ]
     },
     {
-        path: 'user/:name',
+        path: 'user/:name/collections',         // user dashboard / public overview
+        component: GridViewComponent
+    },
+    {
+        path: 'user/:name/collections/:id',         // user dashboard / public overview
+        component: ResourceViewComponent
+    },
+    {
+        path: 'user/:name/settings',
         component: UserAdminComponent
+
     },
     { path: '**', component: PageNotFoundComponent }
 ];
@@ -159,7 +205,10 @@ const appRoutes: Routes = [
         LimitToPipe,
         UserAdminComponent,
         NewProjectComponent,
-        NewUserComponent
+        NewUserComponent,
+        UserComponent,
+        ProfileSettingsComponent,
+        CollectionsSettingsComponent
     ],
     imports: [
         BrowserModule,
