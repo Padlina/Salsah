@@ -17,6 +17,7 @@
     position: fixed;
     top: 64px;
     width: 100vw;
+    z-index: 99;
 
     md-toolbar {
         z-index: 90;
@@ -62,6 +63,7 @@
     max-width: 960px;
     margin-left: auto;
     margin-right: auto;
+    z-index: 0;
     .list-view {
         .md-list-item {
             height: 128px;

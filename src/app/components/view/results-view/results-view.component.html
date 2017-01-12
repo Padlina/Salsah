@@ -16,6 +16,7 @@
                     <md-icon>{{view.icon}}</md-icon>
                 </md-button-toggle>
             </md-button-toggle-group>
+
         </md-toolbar>
         <!-- this component has a loader element -->
         <div class="loading" *ngIf="_isLoading">
@@ -34,13 +35,6 @@
         </div>
 
         <!-- the main content of the component -->
-
-        <!-- TODO: is there a way to call the template depending on the selected View? the following does not work of course
-            <div *ngIf="searchResponse" class="{{selectedView}}-view">
-                <salsah-{{selectedView}}-view [searchResponse]="searchResponse" (openRequest)="openResource($event)" (errorRequest)="previewError($event)"></salsah-{{selectedView}}-view>
-            </div>
-            -->
-
         <div *ngIf="selectedView=='list' && searchResponse" class="{{selectedView}}-view">
             <salsah-list-view [searchResponse]="searchResponse" (openRequest)="openResource($event)"
                               (errorRequest)="previewError($event)"></salsah-list-view>
@@ -50,5 +44,6 @@
             <salsah-grid-view [searchResponse]="searchResponse" (openRequest)="openResource($event)"
                               (errorRequest)="previewError($event)"></salsah-grid-view>
         </div>
+
     </div>
 </div>

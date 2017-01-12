@@ -65,7 +65,41 @@ export class HeaderComponent implements OnInit {
                 project_id: '19',
                 longname: 'Bruno Manser Fonds',
                 active: false,
-                logo: '',
+                logo: ''
+            }
+        ];
+
+    let user: Object = {
+        name: '',
+        icon: 'person',
+        menuItems: [
+            {
+                text: 'Projects',
+                icon: 'assignment',
+                routerLink: '/user/username/projects'
+            },
+            {
+                text: 'Collections',
+                icon: 'bookmark_outline',
+                routerLink: '/user/username/collections'
+            },
+            {
+                text: 'Profile',
+                //icon: 'account_box'
+                icon: 'fingerprint',
+                routerLink: '/user/username'
+            },
+            {
+                text: 'Sign out',
+                icon: 'power_settings_new',
+                routerLink: '/login'
+            }
+        ],
+        userProjects: [
+            {
+                id: "19",
+                shortname: "BMF",
+                longname: "Bruno Manser Fonds",
                 admin: true
             },
             {
@@ -118,7 +152,8 @@ export class HeaderComponent implements OnInit {
                 logo: '',
                 admin: true
             }
-        ];
+        ]
+    };
 
         this.currentProject = this.projects[0]; // SALSAH
 

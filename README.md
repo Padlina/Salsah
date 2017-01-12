@@ -39,7 +39,7 @@ After cloning the Salsah code, install the node packages from the Salsah root di
 With `ng serve` the Salsah app starts on [localhost:4200](http://localhost:4200)
 
 It could happen, that ng can't resolve some specific packages. In that case install angular-cli direct in the salsah app: 
-`npm install -g angular-cli@1.0.0-beta.24`
+`npm install angular-cli@1.0.0-beta.24`
 
 
 If the installation or the start interrupts, please check our additional installation solution [here](https://dhlab-basel.github.io/Salsah/documentation/guidelines/rst/salsah2/installation/index.html#issues-with-angular-cli).
@@ -47,16 +47,15 @@ If the installation or the start interrupts, please check our additional install
 
 #### Updating Salsah packages
 From time to time we grab the latest npm packages for Salsah. Especially because Angular-cli is still in a beta state.
-So we recommend to update packages from the Salsah root.
+We recommend to reinstall the packages with the following commands.
 
 ```
 rm -rf node_modules dist tmp
 npm install
-npm install --save-dev angular-cli@1.0.0-beta.24
 
 ```
 
-Please also check the Angular-cli update process [here](https://github.com/angular/angular-cli#updating-angular-cli).
+In any case of trouble, please also check the Angular-cli update process [here](https://github.com/angular/angular-cli#updating-angular-cli).
  But be careful with the `ng init` at the end!!!
 
 

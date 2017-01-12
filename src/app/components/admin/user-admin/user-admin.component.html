@@ -1,0 +1,19 @@
+
+<md-list class="salsah-component-content">
+    <h2 md-header>{{user.username}} </h2>
+
+    <h3 md-subheader>Description</h3>
+    <md-list-item>
+        <md-input-container md-line class="full-width">
+            <md-icon md-prefix>person</md-icon>
+            <input md-input [placeholder]="userform.username" [value]="user.username">
+        </md-input-container>
+
+        <md-input-container md-line class="full-width">
+            <md-icon md-prefix>mail</md-icon>
+            <input md-input [placeholder]="userform.email" [value]="user.email">
+        </md-input-container>
+    </md-list-item>
+
+</md-list>
+

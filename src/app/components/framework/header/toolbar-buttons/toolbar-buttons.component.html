@@ -1,7 +1,7 @@
 <div class="salsah-toolbar-buttons">
     <!-- components menus -->
     <span *ngFor="let tool of toolbar" class="{{ tool?.name }}-menu">
-        <span *ngIf="tool?.menu" >
+        <span *ngIf="tool.menu" >
             <!-- trigger button -->
             <button md-icon-button [mdMenuTriggerFor]="menu">
                 <md-icon>{{ tool.icon }}</md-icon>
@@ -9,15 +9,15 @@
             <!-- menu -->
             <md-menu #menu="mdMenu">
                 <div *ngFor="let item of tool.menuItems">
-                    <hr *ngIf="item?.divider"/>
-                    <button md-menu-item>
+                    <hr *ngIf="item.divider"/>
+                    <button md-menu-item [routerLink]="item.routerLink">
                         <span><md-icon>{{ item.icon }}</md-icon>{{ item.label }}</span>
                     </button>
                 </div>
             </md-menu>
         </span>
         <!-- link if no menu -->
-        <a *ngIf!="tool?.menu" md-icon-button href="{{ tool?.link }}" target="_blank"><md-icon>{{ tool.icon }}</md-icon>
+        <a *ngIf!="tool.menu" md-icon-button href="{{ tool.link }}" target="_blank"><md-icon>{{ tool.icon }}</md-icon>
         </a>
      </span>
 </div>
