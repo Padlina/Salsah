@@ -21,55 +21,29 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-    public projects: Object[];
-    public currentProject: Object;
-    public toolbar: Object[];
-
-    constructor() {}
-
-    onSelectProject(id: string) {
-        console.log('Selected project has the id ' + id);
+    constructor() {
     }
 
     ngOnInit() {
+    }
+
+    onSelectProject(id: string): void {
+        console.log("Selected project has the id " + id);
+    }
 
     /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
     /* Developer object: just a sample to create a dummy header */
     /*                                                          */
 
-        // default project settings
+    // default project settings
+    currentProject: Object = {
+        name: 'SALSAH',
+        title: 'System for Annotation and Linkage of Sources in Arts and Humanities',
+        logo: './assets/images/salsah-logo.png',
+        login: 'http://salsah.org',
+    };
 
-    /*
-        let user: Object = {
-            // TODO: decide how userdata shall be made available/saved in Salsah
-        };
-    */
-
-        // object for projectButtons
-        this.projects = [
-            {
-                shortname: 'SALSAH',
-                description: '',
-                uri: '',
-                project_id: '',
-                longname: 'System for Annotation and Linkage of Sources in Arts and Humanities',
-                active: true,
-                logo: './assets/images/salsah-logo.png',
-                admin: false,
-                login: 'http://salsah.org',
-            },
-            {
-                shortname: 'BMF',
-                description: '',
-                uri: '',
-                project_id: '19',
-                longname: 'Bruno Manser Fonds',
-                active: false,
-                logo: ''
-            }
-        ];
-
-    let user: Object = {
+    user: Object = {
         name: '',
         icon: 'person',
         menuItems: [
@@ -103,126 +77,89 @@ export class HeaderComponent implements OnInit {
                 admin: true
             },
             {
-                shortname: 'sgv',
-                description: '',
-                uri: '',
-                project_id: '18',
-                longname: 'Bilddatenbank der Schweizerischen Gesellschaft für Volkskunde',
-                active: true,
-                logo: '',
+                id: "18",
+                shortname: "sgv",
+                longname: "Bilddatenbank der Schweizerischen Gesellschaft für Volkskunde",
                 admin: true
             },
             {
-                shortname: 'travis',
-                description: '',
-                uri: '',
-                project_id: '21',
-                longname: 'trAVis',
-                active: false,
-                logo: '',
+                id: "21",
+                shortname: "travis",
+                longname: "trAVis",
                 admin: false
             },
             {
-                shortname: 'kuhaba',
-                description: '',
-                uri: '',
-                project_id: '12',
-                longname: 'Fotosammlung der Kunsthalle Basel',
-                active: false,
-                logo: '',
+                id: "12",
+                shortname: "kuhaba",
+                longname: "Fotosammlung der Kunsthalle Basel",
                 admin: false
             },
             {
-                shortname: 'dhlab-web',
-                description: '',
-                uri: '',
-                project_id: '25',
-                longname: 'Digital Humanities Lab',
-                active: false,
-                logo: '',
+                id: "25",
+                shortname: "dhlab-web",
+                longname: "Digital Humanities Lab",
                 admin: true
             },
             {
-                shortname: 'smp',
-                description: '',
-                uri: '',
-                project_id: '26',
-                longname: 'SALSAH Movie Player',
-                active: false,
-                logo: '',
+                id: "26",
+                shortname: "smp",
+                longname: "SALSAH Movie Player",
                 admin: true
             }
         ]
+
     };
 
-        this.currentProject = this.projects[0]; // SALSAH
-
-        // object for toolbarButtons
-        this.toolbar = [
+    add: Object = {
+        name: '',
+        icon: 'add',
+        menuItems: [
             {
-                name: 'add',
-                label: 'Add new elements',
-                icon: 'add',
-                menu: 'addMenu',
-                menuItems: [
-                    {
-                        label: 'New resource',
-                        icon: 'note_add',
-                        link: ''
-                    },
-                    {
-                        label: 'New collection',
-                        icon: 'library_add',
-                        link: ''
-                    },
-                    {
-                        label: 'New project',
-                        icon: 'add',
-                        link: ''
-                    }
-                ]
+                text: 'New resource',
+                icon: 'note_add'
             },
             {
-                name: 'documentation',
-                label: 'Documentation',
-                icon: 'help',
-                menu: false,
-                link: 'http://dhlab-basel.github.io/Salsah'
+                text: 'New collection',
+                icon: 'library_add'
             },
             {
-                name: 'user',
-                label: 'User',
-                icon: 'person',
-                menu: 'userMenu',
-                menuItems: [
-                    {
-                        label: 'Activity',
-                        // icon: 'playlist_add_check'
-                        icon: 'done',
-                        routerLink: '/gridview'
-                    },
-                    {
-                        label: 'Collections',
-                        icon: 'bookmark_outline',
-                        routerLink: '/'
-                    },
-                    {
-                        label: 'Profile',
-                        // icon: 'account_box'
-                        icon: 'fingerprint',
-                        routerLink: '/'
-                    },
-                    {
-                        label: 'Sign out',
-                        icon: 'power_settings_new',
-                        routerLink: '/',
-                        divider: 'true'
-                    }
-                ],
+                text: 'New project',
+                icon: 'add'
             }
-        ];
 
-        /*                                                          */
-        /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-    }
+        ]
+    };
+
+    documentation: Object = {
+        title: '',
+        icon: 'help',
+        link: ''
+    };
+
+    navigation: Object[] = [
+        {
+            'name': 'add',
+            'icon': 'add_circle',
+            'title': 'Add new elements',
+            'menu': true,
+            'menu-items': [
+                {
+                    'name': '',
+                    'icon': '',
+                    'text': '',
+                    'linke': ''
+                }
+            ]
+        },
+        {
+            'name': 'help',
+            'icon': 'help',
+            'title': 'Documentation',
+            'menu': false,
+            'link': ''
+        }
+    ];
+
+    /*                                                          */
+    /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
 }

@@ -1,6 +1,6 @@
 <md-toolbar>
     <!-- project buttons on the top left corner -->
-    <salsah-project-buttons [projects]="projects" [current]="currentProject" (selectRequest)="onSelectProject($event)"></salsah-project-buttons>
+    <salsah-project-buttons [projects]="user.userProjects" [currentProject]="currentProject" (selectRequest)="onSelectProject($event)"></salsah-project-buttons>
 
     <span class="fill-remaining-space"></span>
 
@@ -11,5 +11,5 @@
     <span class="fill-remaining-space"></span>
 
     <!-- toolbar buttons on the top right corner -->
-    <salsah-toolbar-buttons [toolbar]="toolbar"></salsah-toolbar-buttons>
+    <salsah-toolbar-buttons [add]="add" [documentation]="documentation" [user]="user"></salsah-toolbar-buttons>
 </md-toolbar>

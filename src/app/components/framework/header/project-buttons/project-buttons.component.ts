@@ -7,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ProjectButtonsComponent implements OnInit {
     @Input() projects: Object[];
-    @Input() current: Object;
+    @Input() currentProject: Object;
     @Output() selectRequest: EventEmitter<any> = new EventEmitter();
 
     constructor() { }

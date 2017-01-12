@@ -6,7 +6,9 @@ import { Component, Input, OnInit } from '@angular/core';
     styleUrls: ['./toolbar-buttons.component.css']
 })
 export class ToolbarButtonsComponent implements OnInit {
-    @Input() toolbar: Object[];
+    @Input() add: Object;
+    @Input() documentation: Object;
+    @Input() user: Object
 
     constructor() { }
 
