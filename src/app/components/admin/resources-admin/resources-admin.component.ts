@@ -12,7 +12,10 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+
 import { Component, OnInit } from '@angular/core';
+import {MdDialog, MdDialogRef} from '@angular/material';
+import { NewResourceComponent} from './new-resource/new-resource.component';
 
 @Component({
   selector: 'salsah-resources-admin',
@@ -21,9 +24,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResourcesAdminComponent implements OnInit {
 
-  constructor() { }
+    //open select new resource dialog
+    selectedOption: string;
+
+    constructor(public dialog: MdDialog) { }
+
+    openResourceForm() {
+        let dialogRef = this.dialog.open(NewResourceComponent);
+        dialogRef.afterClosed().subscribe(result => {
+            this.selectedOption = result;
+        });
+    }
+
 
   ngOnInit() {
   }
 
 }
+
+

@@ -1,6 +1,7 @@
 .example-radio-group {
     display: inline-flex;
     flex-direction: column;
+    height: 250px;
 }
 
 .example-radio-button {
@@ -8,7 +9,6 @@
 }
 
 .example-selected-value {
-    margin: 10px 0;
-    color: #b2dfdb;
+    margin: 15px 0;
 }
 

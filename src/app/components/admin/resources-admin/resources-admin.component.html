@@ -1,12 +1,15 @@
-<!-- salsah-resources-admin -->
-
+<!-- salsah-resources-admin <salsah-ontology></salsah-ontology>
+-->
 <md-list class="salsah-component-content">
     <h2 md-header>Organize your resources</h2>
+
     <md-list-item>
-        <button md-button>
+        <button md-button (click)="openResourceForm()">      <!-- with (click)="openResourceForm()", the new resource form should appear. The code for that is in new-resource.component.html-->
             <md-icon> add </md-icon>
             <span> Add new resource </span>
         </button>
+        <!-- No need to add here the selector tag containing the component for the form that creates a new resource, the "openResourceForm()" function opens the NewResourceComponent html -->
+
     </md-list-item>
     <br>
     <md-divider></md-divider>
@@ -33,3 +36,7 @@
     </md-list-item>
 </md-list>
 
+
+<!-- this is the old "select resource type" button, which reads the contents from the json on the server
+<salsah-ontology></salsah-ontology>
+-->

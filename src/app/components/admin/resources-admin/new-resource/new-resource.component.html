@@ -1,3 +1,59 @@
-<p>
-  new-resource works!
-</p>
+<md-radio-group class="example-radio-group" [(ngModel)]="newResource">
+    <md-radio-button class="example-radio-button" *ngFor="let item of knoraBase?.classes?.representation; let last=last" [value]="item">
+        <span><hr *ngIf="last"/>
+            {{item}}
+        </span>
+    </md-radio-button>
+</md-radio-group>
+
+<div class="example-selected-value">You selected: {{newResource}}</div>
+    <span>
+        <button md-button (click)="selectResourceProperties()">Next</button>
+    </span>
+
+
+
+
+<!--
+
+<form class="example-form">
+    <md-input-container class="example-full-width">
+        <input md-input placeholder="Project" disabled value="BMF">
+    </md-input-container>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td><md-input-container class="example-full-width">
+            <input md-input placeholder="Project Owner">
+        </md-input-container></td>
+        <td><md-input-container class="example-full-width">
+            <input md-input placeholder="Project ID" disabled value="01">
+        </md-input-container></td>
+    </tr></table>
+
+    <p>
+        <md-input-container class="example-full-width">
+            <input md-input placeholder="Institute">
+        </md-input-container>
+        <md-input-container class="example-full-width">
+            <input md-input placeholder="Address">
+        </md-input-container>
+    </p>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td><md-input-container class="example-full-width">
+            <input md-input #day maxlength="2" placeholder="Day">
+            <md-hint align="start">{{day.value.length}} / 2</md-hint>
+        </md-input-container></td>
+        <td><md-input-container class="example-full-width">
+            <input md-input #month maxlength="2" placeholder="Month">
+            <md-hint align="start">{{month.value.length}} / 2</md-hint>
+        </md-input-container></td>
+        <td><md-input-container class="example-full-width">
+            <input md-input #year maxlength="4" placeholder="Year">
+            <md-hint align="start">{{year.value.length}} / 4</md-hint>
+        </md-input-container></td>
+    </tr></table>
+</form>
+
+
+-->

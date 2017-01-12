@@ -1,0 +1,10 @@
+<md-radio-group class="example-radio-group" style="overflow: scroll;" [(ngModel)]="selectedProperties" >
+    <md-radio-button class="example-radio-button" *ngFor="let item of knoraBase?.properties" [value]="item">
+        {{item}}
+    </md-radio-button>
+</md-radio-group>
+<span>
+    <button md-button (click)="selectResourceProperties()">Next</button>
+</span>
+
+<div class="example-selected-value">You selected: {{selectedProperties}}</div>
