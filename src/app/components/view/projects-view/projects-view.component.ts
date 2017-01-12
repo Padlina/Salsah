@@ -14,7 +14,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ProjectsService, ProjectsJson } from '../../_services';
+import { ProjectsService, ProjectsJson, ProjectItemJson } from '../../_services';
 
 @Component({
   selector: 'salsah-projects-view',
@@ -24,9 +24,12 @@ import { ProjectsService, ProjectsJson } from '../../_services';
 export class ProjectsViewComponent implements OnInit {
 
     private errorMessage: string = undefined;
-    public projectsResponse: ProjectsJson = new ProjectsJson();
+    public projectsListResponse: ProjectsJson = new ProjectsJson();
+    public projectResponse: ProjectItemJson = new ProjectItemJson();
 
     public _isLoading: boolean = true;
+
+    public project: string;
 
     constructor( private _projectsService: ProjectsService,
                  private route: ActivatedRoute,
@@ -35,16 +38,43 @@ export class ProjectsViewComponent implements OnInit {
     }
 
     ngOnInit() {
-        this._projectsService.getData()
-            .subscribe(
-                (data: ProjectsJson) => {
-                    this.projectsResponse = data;
-                    this._isLoading = false;
-                },
-                error => {
-                    this.errorMessage = <any>error;
-                }
-            )
+        // projects list or single project?
+
+        this.route.params.forEach((params: Params) => {
+            this.project = params['project'];
+            if(this.project !== undefined) {
+                // show the project
+                this._projectsService.getProject(this.project)
+                    .subscribe(
+                        (data: ProjectItemJson) => {
+                            this.projectResponse = data;
+                            this._isLoading = false;
+                        },
+                        error => {
+                            this.errorMessage = <any>error;
+                        }
+                    )
+            }
+            else {
+                // show the list of projects
+                this._projectsService.getProjectsList()
+                    .subscribe(
+                        (data: ProjectsJson) => {
+                            this.projectsListResponse = data;
+                            this._isLoading = false;
+                        },
+                        error => {
+                            this.errorMessage = <any>error;
+                        }
+                    )
+            }
+
+
+        });
+
+
+
+
     }
 
     public openProject(id: string): void {

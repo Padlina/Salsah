@@ -1,6 +1,41 @@
+<div class="salsah-component-header">
+    <!-- this component has his own toolbar header -->
+    <md-toolbar class="salsah-helper-header">
+        <!-- project selector -->
+        <span mdTooltip="Dropdown menu to select a projects." mdTooltipPosition="above">
+            <md-chip-list class="md-chip-list-stacked">
+                <md-chip selected="true" color="accent">
+                    Project selection
+                </md-chip>
+            </md-chip-list>
+        </span>
+        <span class="fill-remaining-space"><!-- This fills the remaining space of the current row --></span>
+        <!-- search panel -->
+        <span mdTooltip="The search panel is for a simple (fulltext) and the extended search" mdTooltipPosition="above">
+            <md-chip-list class="md-chip-list-stacked">
+                <md-chip selected="true" color="accent">
+                    Search panel
+                </md-chip>
+            </md-chip-list>
+        </span>
+        <span class="fill-remaining-space"><!-- This fills the remaining space of the current row --></span>
+        <!-- toolbar menu -->
+        <span mdTooltip="Buttons to add things, get help and manage the users profile." mdTooltipPosition="above">
+            <md-chip-list class="md-chip-list-stacked">
+                <md-chip selected="true" color="accent">
+                    Main tools
+                </md-chip>
+            </md-chip-list>
+        </span>
+    </md-toolbar>
+    <!-- this component has a loader element -->
+    <div class="loading" *ngIf="_isLoading">
+        <md-progress-bar mode="indeterminate" ></md-progress-bar>
+    </div>
+</div>
 
 <md-grid-list cols="4" rowHeight="250px" class="salsah-component-content salsah-dashboard">
-    <md-grid-tile  colspan="4" rowspan="4">
+    <md-grid-tile  colspan="4" rowspan="2">
 
         <md-card>
             <img md-card-xl-image class="salsah-main-logo" src="assets/images/salsah-logo.png">

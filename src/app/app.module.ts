@@ -103,8 +103,8 @@ const appRoutes: Routes = [
         component: ProjectsViewComponent
     },
     {
-        path: 'project/:project',           // project dashboard / public overview
-        component: ProjectsDetailViewComponent
+        path: 'projects/:project',           // project dashboard / public overview
+        component: ProjectsViewComponent
     },
     {
         path: 'project/:project/settings',  // project, team and resources (ontology) administration
@@ -149,6 +149,10 @@ const appRoutes: Routes = [
             {
                 path: 'collections',
                 component: CollectionsSettingsComponent
+            },
+            {
+                path: 'projects',
+                component: ProjectsViewComponent
             },
             { path: '**', component: PageNotFoundComponent }
         ]

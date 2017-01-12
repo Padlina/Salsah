@@ -20,20 +20,38 @@ import { AppConfig } from '../app.config';
 import { JsonConvert } from 'json2typescript';
 
 import { ProjectsJson } from './api-objects';
+import { ProjectItemJson } from './api-objects';
 
 @Injectable()
 export class ProjectsService {
 
     constructor(private _http: Http) { }
 
-    getData(): Observable<ProjectsJson> {
-        let projectData: string = `${AppConfig.API_ENDPOINT}` + 'projects';
+    getProject(uri: string): Observable<ProjectItemJson> {
+        let projectData: string = `${AppConfig.API_ENDPOINT}` + 'projects/' + uri;
         return this._http.get(projectData)
-            .map(this.extractData)
+            .map(this.extractProjectData)
             .catch(this.handleError);
     }
 
-    private extractData(res: Response) {
+    private extractProjectData(res: Response) {
+        try {
+            // console.log(res.json());
+            return JsonConvert.deserializeObject(res.json(), ProjectItemJson);
+        } catch (e) {
+            // console.log(e);
+            return Observable.throw('Data error in salsah\'s projects service.');
+        }
+    }
+
+    getProjectsList(): Observable<ProjectsJson> {
+        let projectsList: string = `${AppConfig.API_ENDPOINT}` + 'projects';
+        return this._http.get(projectsList)
+            .map(this.extractProjectsList)
+            .catch(this.handleError);
+    }
+
+    private extractProjectsList(res: Response) {
         try {
             // console.log(res.json());
             return JsonConvert.deserializeObject(res.json(), ProjectsJson);
@@ -42,6 +60,7 @@ export class ProjectsService {
             return Observable.throw('Data error in salsah\'s projects service.');
         }
     }
+
 
     private handleError(error: any) {
         let errMsg = (error.message) ? error.message :

@@ -21,8 +21,13 @@ export class LimitToPipe implements PipeTransform {
 
     transform(value: any, length: number): any {
         if(!length) length = 120;
-        value = value.substring(0, length);
-        return value + '...';
+
+        value = (value.length <= length) ? value : value.substring(0, length) + '...';
+
+        return value;
+
+
+
     }
 
 }

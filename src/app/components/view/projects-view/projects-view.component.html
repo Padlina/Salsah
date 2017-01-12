@@ -4,11 +4,9 @@
     and the prefix of the class name is 'salsah'
 -->
 <div class="salsah-projects-view">
-    <div class="salsah-component-header">
-        <!-- this component has a loader element -->
-        <div class="loading" *ngIf="_isLoading">
-            <md-progress-bar mode="indeterminate" ></md-progress-bar>
-        </div>
+    <!-- this component has a loader element -->
+    <div class="loading" *ngIf="_isLoading">
+        <md-progress-bar mode="indeterminate" ></md-progress-bar>
     </div>
 
     <div class="salsah-component-content">
@@ -19,15 +17,23 @@
             </md-card>
         </div>
 
-        <!-- the main content of the component -->
-        <div class="salsah-projects">
+        <!-- list of projects -->
+        <div class="salsah-projects-list" *ngIf="!project && projectsListResponse">
             <md-list>
-                <md-list-item *ngFor="let project of projectsResponse?.projects" (click)=openProject(project.id)>
+                <md-list-item *ngFor="let project of projectsListResponse?.projects" (click)=openProject(project.id)>
 
                     <p md-line>{{project.longname}}</p>
                 </md-list-item>
             </md-list>
-
+        </div>
+        <!-- single project -->
+        <div class="salsah-projects-item" *ngIf="project && projectResponse">
+            Hallo Welt
+            <md-card>
+                <md-card-header>
+                    {{projectResponse.project_info?.id}}
+                </md-card-header>
+            </md-card>
         </div>
     </div>
 </div>
