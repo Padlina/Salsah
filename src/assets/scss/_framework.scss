@@ -99,12 +99,11 @@ salsah-overlay {
 //
 main.salsah-main-content {
     position: absolute;
-    top: 64px;
+    top: 128px;
     width: 100vw;
-    height: 100vh;
-    padding-top: 64px;
-    padding-bottom: 64px;
-    overflow-x: scroll;
+    height: calc(100% - 152px);
+    overflow-x: hidden;
+    overflow-y: auto;
 
 }
 
@@ -117,15 +116,16 @@ main.salsah-main-content {
 footer.salsah-main-footer {
     position: fixed;
     bottom: 0;
-    height: 26px;
+    height: 24px;
     width: 100vw;
     background-color: rgba(whitesmoke, 0.91);
 
     p {
         font-size: 10px;
+        font-weight: 300;
         text-align: center;
         color: dimgrey;
-        padding-bottom: 3px;
+        letter-spacing: 2px;
         a {
             text-decoration: none;
             color: inherit;

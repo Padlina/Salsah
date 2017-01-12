@@ -14,13 +14,13 @@
 </div>
 -->
 
-<md-grid-list cols="3" gutterSize="12px" rowHeight="320px">
+<md-grid-list cols="3" gutterSize="12px" rowHeight="480px">
     <md-grid-tile *ngFor="let item of searchResponse?.subjects" (click)="openResource(item.obj_id)">
         <md-card>
-            <img md-card-image class="preview" [src]="item.preview_path" (error)="previewError($event, item.preview_path)" />
+            <img md-card-image class="salsah-preview-image" [src]="item.preview_path" (error)="previewError($event, item.preview_path)" />
             <md-card-content>
-                <md-card-title>{{item.value[0]}}</md-card-title>
-                <md-card-subtitle>{{item.valuelabel[1]}}<br> {{item.value[1] | limitTo: 120}}</md-card-subtitle>
+                <md-card-title>{{item.value[0] | limitTo:40}}</md-card-title>
+                <md-card-subtitle class="salsah-preview-text">{{item.valuelabel[1]}}<br> {{item.value[1] | slice:0:120}}</md-card-subtitle>
             </md-card-content>
             <!--
             <md-card-actions>

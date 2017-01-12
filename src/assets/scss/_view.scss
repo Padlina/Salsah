@@ -59,11 +59,18 @@
     }
 }
 
+.salsah-results-view {
+    padding-top: 48px;
+    padding-bottom: 48px;
+}
+
+
 .salsah-component-content {
     max-width: 960px;
     margin-left: auto;
     margin-right: auto;
     z-index: 0;
+
     .list-view {
         .md-list-item {
             height: 128px;
@@ -84,9 +91,14 @@
         md-card {
             cursor: pointer;
             margin: 6px;
-            img.preview {
-                height: 120px;
+            .salsah-preview-image {
+                height: 240px;
                 object-fit: cover;
+            }
+            .salsah-preview-text {
+                &:after {
+                    content: '...';
+                }
             }
             p.prop-val {
 
