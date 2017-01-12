@@ -22,7 +22,8 @@
         <!-- the main content of the component -->
         <div class="salsah-projects">
             <md-list>
-                <md-list-item *ngFor="let project of projectsResponse?.projects">
+                <md-list-item *ngFor="let project of projectsResponse?.projects" (click)=openProject(project.id)>
+
                     <p md-line>{{project.longname}}</p>
                 </md-list-item>
             </md-list>

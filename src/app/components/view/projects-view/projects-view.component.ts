@@ -13,7 +13,7 @@
  * */
 
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProjectsService, ProjectsJson } from '../../_services';
 
 @Component({
@@ -28,7 +28,9 @@ export class ProjectsViewComponent implements OnInit {
 
     public _isLoading: boolean = true;
 
-    constructor( private _projectsService: ProjectsService ) {
+    constructor( private _projectsService: ProjectsService,
+                 private route: ActivatedRoute,
+                 private router: Router) {
 
     }
 
@@ -43,6 +45,10 @@ export class ProjectsViewComponent implements OnInit {
                     this.errorMessage = <any>error;
                 }
             )
+    }
+
+    public openProject(id: string): void {
+        this.router.navigate(['/projects/' + encodeURIComponent(id)], {relativeTo: this.route});
     }
 
 }

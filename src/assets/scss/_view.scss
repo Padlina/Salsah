@@ -101,9 +101,27 @@
 
 
 .salsah-dashboard {
-    width: 560px;
-    img {
-        width: 360px;
+    md-card {
+        margin: 2px;
+    }
+
+    md-grid-tile {
+        ::content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    }
+
+    .salsah-component-header {
+        position: relative;
+        top: 0;
+        width: auto;
+    }
+
+    img.salsah-main-logo {
+        width: 320px;
         height: auto;
     }
 }
