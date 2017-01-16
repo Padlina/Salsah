@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewProjectComponent implements OnInit {
 
+    public form: any = {        // TODO: create a language json file or db file for multilingual use
+        project: {
+            name: 'Project name',
+            description: 'Description'
+        }
+    };
+
   constructor() { }
 
   ngOnInit() {

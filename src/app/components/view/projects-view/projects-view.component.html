@@ -1,0 +1,53 @@
+<!--
+    the template starts with an own component wrapper;
+    the class is equal to the component name,
+    and the prefix of the class name is 'salsah'
+-->
+<div class="salsah-projects-view">
+    <!-- this component has a loader element -->
+    <div class="loading" *ngIf="_isLoading">
+        <md-progress-bar mode="indeterminate" ></md-progress-bar>
+    </div>
+
+    <div class="salsah-component-content">
+        <!-- if the api answers with an error, we show a message -->
+        <div class="error" *ngIf="errorMessage">
+            <md-card class="salsah-warning">
+                {{errorMessage}}
+            </md-card>
+        </div>
+
+        <!-- list of projects -->
+        <div class="salsah-projects-list" *ngIf="!project && projectsListResponse">
+            <md-list>
+                <md-list-item *ngFor="let project of projectsListResponse?.projects" (click)=openProject(project.id)>
+
+                    <p md-line>{{project.longname}}</p>
+                </md-list-item>
+            </md-list>
+        </div>
+        <!-- single project -->
+        <div class="salsah-projects-item" *ngIf="project && projectsDetailResponse">
+
+            <md-card>
+                <md-card-header>
+                    {{projectsDetailResponse?.project_info?.id}}
+                </md-card-header>
+            </md-card>
+        </div>
+    </div>
+</div>
+
+
+<!--
+<button type="button" md-button
+        (click)="dialogRef.close()">Cancel</button>
+-->
+
+<!-- preview of received response -->
+<!--
+<pre>
+    Have a look at resourceResponseJSON:
+    {{resourcesResponse | json }}
+</pre>
+-->

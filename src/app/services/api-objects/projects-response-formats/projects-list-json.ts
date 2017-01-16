@@ -12,15 +12,25 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { BasicResponseJson } from '../basic-message-components/src/basic-response-json';
+import { ProjectItemJson } from '../basic-message-components/src/project-item-json';
+
+
 /**
+ * Represents the response to a fulltext or an extended search
  *
- *                  API objects
+ * HTTP GET to http://host/v1/projects
  *
- *  Export all classes from Knora API V1 format modules
- *  for projectwide usage
  */
 
-export * from './basic-message-components';
-export * from './projects-response-formats';
-export * from './resource-response-formats';
-export * from './search-response-formats';
+@JsonObject
+export class ProjectsListJson extends BasicResponseJson {
+    /**
+     * List of search project items
+     * @param projects: Array<projectItem>
+     */
+    @JsonProperty('projects', [ProjectItemJson])
+    public projects: ProjectItemJson[] = undefined;
+
+}

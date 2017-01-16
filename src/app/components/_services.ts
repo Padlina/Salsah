@@ -15,6 +15,7 @@
 /**
  * services
  */
+export * from '../services/projects.service';
 export * from '../services/resources.service';
 export * from '../services/search.service';
 export * from '../services/vocabularies.service';

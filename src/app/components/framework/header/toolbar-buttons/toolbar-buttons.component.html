@@ -1,3 +1,4 @@
+<!-- toolbar menu on the top right corner -->
 <div class="salsah-toolbar-buttons">
 
     <!-- add menu -->
@@ -7,7 +8,7 @@
             </button>
             <md-menu #addMenu="mdMenu">
                 <div *ngFor="let item of add.menuItems; let last=last">
-                    <button md-menu-item>
+                    <button md-menu-item [routerLink]="item.routerLink">
                         <md-icon> {{item.icon}} </md-icon>
                         <span> {{item.text}} </span>
                     </button>
