@@ -70,7 +70,6 @@ import { AdminComponent } from './components/admin/admin.component';
 import { NewResourceComponent } from './components/admin/resources-admin/new-resource/new-resource.component';
 import { OntologyComponent } from './components/admin/ontology/ontology.component';
 import { DocumentObjectComponent } from './components/object/document-object/document-object.component';
-import { SelectPropertiesComponent } from './components/admin/resources-admin/new-resource/select-properties/select-properties.component';
 
 
 //
@@ -153,8 +152,7 @@ const appRoutes: Routes = [
         AdminComponent,
         LimitToPipe,
         NewResourceComponent,
-        OntologyComponent,
-        SelectPropertiesComponent
+        OntologyComponent
     ],
     imports: [
         BrowserModule,
@@ -168,8 +166,7 @@ const appRoutes: Routes = [
     ],
     entryComponents: [
         ResourceViewComponent,
-        NewResourceComponent,
-        SelectPropertiesComponent
+        NewResourceComponent
     ],
     providers: [
         ResourcesService,

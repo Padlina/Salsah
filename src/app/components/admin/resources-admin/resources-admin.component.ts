@@ -37,7 +37,8 @@ export class ResourcesAdminComponent implements OnInit {
     }
 
 
-  ngOnInit() {
+
+        ngOnInit() {
   }
 
 }

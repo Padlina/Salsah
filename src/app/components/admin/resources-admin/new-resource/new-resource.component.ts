@@ -3,7 +3,6 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 import { OntologyComponent } from 'app/components/admin/ontology/ontology.component';
 import { BaseOntologyService } from 'app/components/admin/ontology/base-ontology.service';
 import { KnoraBaseJson } from 'app/components/admin/ontology/api-objects/knora-base-json';
-import { SelectPropertiesComponent } from './select-properties/select-properties.component';
 
 @Component({
   selector: 'salsah-new-resource',
@@ -15,15 +14,22 @@ export class NewResourceComponent implements OnInit {
               public dialogRef: MdDialogRef<NewResourceComponent>,
               private _baseOntologyService: BaseOntologyService) { }
 
+    //counter
+    private counter: number = 0;
+
     //Open next Properties dialogue
     selectedOption: string;
 
-    selectResourceProperties() {
-        let dialogRef = this.dialog.open(SelectPropertiesComponent);
-        dialogRef.afterClosed().subscribe(result => {
-            this.selectedOption = result;
-        });
+
+
+    openDialogPage(cntr: number) {
+        this.counter = cntr + 1;
     }
+
+    saveInputData(){
+        let dialogRef = this.dialog.closeAll();
+    }
+
 
     //Get data from base ontology json
     private errorMessage: string = undefined;
@@ -44,4 +50,5 @@ export class NewResourceComponent implements OnInit {
             );
     }
 }
+
 
