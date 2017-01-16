@@ -21,5 +21,6 @@
  */
 
 export * from './basic-message-components';
-export * from './search-response-formats';
+export * from './projects-response-formats';
 export * from './resource-response-formats';
+export * from './search-response-formats';

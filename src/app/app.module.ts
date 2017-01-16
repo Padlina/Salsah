@@ -72,7 +72,6 @@ import { UserComponent } from './components/user/user.component';
 import { ProfileSettingsComponent } from './components/user/profile-settings/profile-settings.component';
 import { CollectionsSettingsComponent } from './components/user/collections-settings/collections-settings.component';
 import { ProjectsViewComponent } from './components/view/projects-view/projects-view.component';
-import { ProjectsDetailViewComponent } from './components/view/projects-detail-view/projects-detail-view.component';
 
 //
 // define all routes
@@ -150,6 +149,10 @@ const appRoutes: Routes = [
                 path: 'collections',
                 component: CollectionsSettingsComponent
             },
+/*            {
+                path: 'collections/:name',
+                component: ResourceViewComponent
+            }, */
             {
                 path: 'projects',
                 component: ProjectsViewComponent
@@ -162,7 +165,7 @@ const appRoutes: Routes = [
         component: GridViewComponent
     },
     {
-        path: 'user/:name/collections/:id',         // user dashboard / public overview
+        path: 'user/:name/collections/:id',        // TODO: check the right term on pinterest
         component: ResourceViewComponent
     },
     {
@@ -202,7 +205,6 @@ const appRoutes: Routes = [
         ProfileSettingsComponent,
         CollectionsSettingsComponent,
         ProjectsViewComponent,
-        ProjectsDetailViewComponent,
         CenterElementDirective,
         LimitToPipe
     ],

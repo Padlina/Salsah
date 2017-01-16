@@ -19,15 +19,15 @@ import { AppConfig } from '../app.config';
 
 import { JsonConvert } from 'json2typescript';
 
-import { ProjectsJson } from './api-objects';
-import { ProjectItemJson } from './api-objects';
+import { ProjectsListJson } from './api-objects';
+import { ProjectsDetailJson } from './api-objects';
 
 @Injectable()
 export class ProjectsService {
 
     constructor(private _http: Http) { }
 
-    getProject(uri: string): Observable<ProjectItemJson> {
+    getProject(uri: string): Observable<ProjectsDetailJson> {
         let projectData: string = `${AppConfig.API_ENDPOINT}` + 'projects/' + uri;
         return this._http.get(projectData)
             .map(this.extractProjectData)
@@ -37,14 +37,14 @@ export class ProjectsService {
     private extractProjectData(res: Response) {
         try {
             // console.log(res.json());
-            return JsonConvert.deserializeObject(res.json(), ProjectItemJson);
+            return JsonConvert.deserializeObject(res.json(), ProjectsDetailJson);
         } catch (e) {
             // console.log(e);
             return Observable.throw('Data error in salsah\'s projects service.');
         }
     }
 
-    getProjectsList(): Observable<ProjectsJson> {
+    getProjectsList(): Observable<ProjectsListJson> {
         let projectsList: string = `${AppConfig.API_ENDPOINT}` + 'projects';
         return this._http.get(projectsList)
             .map(this.extractProjectsList)
@@ -54,7 +54,7 @@ export class ProjectsService {
     private extractProjectsList(res: Response) {
         try {
             // console.log(res.json());
-            return JsonConvert.deserializeObject(res.json(), ProjectsJson);
+            return JsonConvert.deserializeObject(res.json(), ProjectsListJson);
         } catch (e) {
             // console.log(e);
             return Observable.throw('Data error in salsah\'s projects service.');

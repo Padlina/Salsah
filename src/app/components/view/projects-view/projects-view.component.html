@@ -27,11 +27,11 @@
             </md-list>
         </div>
         <!-- single project -->
-        <div class="salsah-projects-item" *ngIf="project && projectResponse">
-            Hallo Welt
+        <div class="salsah-projects-item" *ngIf="project && projectsDetailResponse">
+
             <md-card>
                 <md-card-header>
-                    {{projectResponse.project_info?.id}}
+                    {{projectsDetailResponse?.project_info?.id}}
                 </md-card-header>
             </md-card>
         </div>
