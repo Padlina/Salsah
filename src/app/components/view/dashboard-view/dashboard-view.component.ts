@@ -22,11 +22,14 @@ import { Component, OnInit } from '@angular/core';
 
 export class DashboardViewComponent implements OnInit {
 
+    public _isLoading: boolean = true;
+
     public salsahStartPage: string = "https://dhlab-basel.github.io/Salsah/";
 
     constructor() { }
 
-      ngOnInit() {
-  }
+    ngOnInit() {
+        this._isLoading = false;
+    }
 
 }

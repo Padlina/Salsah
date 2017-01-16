@@ -116,15 +116,18 @@ export class HeaderComponent implements OnInit {
         menuItems: [
             {
                 text: 'New resource',
-                icon: 'note_add'
+                icon: 'note_add',
+                routerLink: 'add'
             },
             {
                 text: 'New collection',
-                icon: 'library_add'
+                icon: 'library_add',
+                routerLink: 'collection/new'
             },
             {
                 text: 'New project',
-                icon: 'add'
+                icon: 'add',
+                routerLink: 'new'
             }
 
         ]

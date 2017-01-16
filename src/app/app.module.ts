@@ -26,6 +26,7 @@ import { MaterialModule } from '@angular/material';
 //
 // import all services
 //
+import { ProjectsService } from './services/projects.service';
 import { ResourcesService } from './services/resources.service';
 import { SearchService } from './services/search.service';
 import { VocabulariesService } from './services/vocabularies.service';
@@ -61,7 +62,6 @@ import { ResourceViewComponent } from './components/view/resource-view/resource-
 import { ProjectAdminComponent } from './components/admin/project-admin/project-admin.component';
 import { UserLoginComponent } from './components/admin/user-login/user-login.component';
 import { FooterComponent } from './components/framework/footer/footer.component';
-import { ProjectViewComponent } from './components/view/project-view/project-view.component';
 import { TeamAdminComponent } from './components/admin/team-admin/team-admin.component';
 import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -71,6 +71,7 @@ import { NewUserComponent } from './components/admin/user-admin/new-user/new-use
 import { UserComponent } from './components/user/user.component';
 import { ProfileSettingsComponent } from './components/user/profile-settings/profile-settings.component';
 import { CollectionsSettingsComponent } from './components/user/collections-settings/collections-settings.component';
+import { ProjectsViewComponent } from './components/view/projects-view/projects-view.component';
 
 //
 // define all routes
@@ -97,8 +98,12 @@ const appRoutes: Routes = [
         component: NewProjectComponent
     },
     {
-        path: 'project/:project',           // project dashboard / public overview
-        component: ProjectViewComponent
+        path: 'projects',           // project dashboard / public overview
+        component: ProjectsViewComponent
+    },
+    {
+        path: 'projects/:project',           // project dashboard / public overview
+        component: ProjectsViewComponent
     },
     {
         path: 'project/:project/settings',  // project, team and resources (ontology) administration
@@ -144,6 +149,14 @@ const appRoutes: Routes = [
                 path: 'collections',
                 component: CollectionsSettingsComponent
             },
+/*            {
+                path: 'collections/:name',
+                component: ResourceViewComponent
+            }, */
+            {
+                path: 'projects',
+                component: ProjectsViewComponent
+            },
             { path: '**', component: PageNotFoundComponent }
         ]
     },
@@ -152,7 +165,7 @@ const appRoutes: Routes = [
         component: GridViewComponent
     },
     {
-        path: 'user/:name/collections/:id',         // user dashboard / public overview
+        path: 'user/:name/collections/:id',        // TODO: check the right term on pinterest
         component: ResourceViewComponent
     },
     {
@@ -178,22 +191,22 @@ const appRoutes: Routes = [
         DashboardViewComponent,
         PageNotFoundComponent,
         ResultsViewComponent,
-        CenterElementDirective,
         ResourceViewComponent,
         ProjectAdminComponent,
         UserLoginComponent,
         FooterComponent,
-        ProjectViewComponent,
         TeamAdminComponent,
         ResourcesAdminComponent,
         AdminComponent,
-        LimitToPipe,
         UserAdminComponent,
         NewProjectComponent,
         NewUserComponent,
         UserComponent,
         ProfileSettingsComponent,
-        CollectionsSettingsComponent
+        CollectionsSettingsComponent,
+        ProjectsViewComponent,
+        CenterElementDirective,
+        LimitToPipe
     ],
     imports: [
         BrowserModule,
@@ -209,6 +222,7 @@ const appRoutes: Routes = [
         ResourceViewComponent
     ],
     providers: [
+        ProjectsService,
         ResourcesService,
         SearchService,
         VocabulariesService
