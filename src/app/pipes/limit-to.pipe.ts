@@ -27,7 +27,6 @@ export class LimitToPipe implements PipeTransform {
         return value;
 
 
-
     }
 
 }
