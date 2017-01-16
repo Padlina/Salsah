@@ -31,6 +31,9 @@
 
     <md-dialog-actions>
         <span>
+                <button md-button *ngIf="counter<3 && counter >0" class="back-button" (click)="goBack(counter)">Back</button>
+        </span>
+        <span>
                 <button md-button *ngIf="counter<3" class="next-button" (click)="openDialogPage(counter)">Next</button>
                 <button md-button *ngIf="counter==3" class="safe-button" (click)="saveInputData()">Save</button>
         </span>

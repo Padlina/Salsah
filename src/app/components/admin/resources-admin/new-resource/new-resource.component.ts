@@ -26,6 +26,11 @@ export class NewResourceComponent implements OnInit {
         this.counter = cntr + 1;
     }
 
+    goBack(cntr: number) {
+        this.counter = cntr - 1;
+    }
+
+
     saveInputData(){
         let dialogRef = this.dialog.closeAll();
     }
