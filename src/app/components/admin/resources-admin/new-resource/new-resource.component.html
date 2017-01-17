@@ -1,7 +1,6 @@
     <md-dialog-content>
         <div *ngIf="counter == 0">
             <md-radio-group  class="resources-group" [(ngModel)]="newResource">
-
                 <md-radio-button  class="resource-button" *ngFor="let item of knoraBase?.classes?.representation; let last=last" [value]="item">
                     <span><hr *ngIf="last"/>
                         {{item}}
@@ -11,13 +10,23 @@
             </md-radio-group>
         </div>
 
-        <div *ngIf="counter == 1">
+<!--        <div *ngIf="counter == 1">
             <md-radio-group class="properties-group"  [(ngModel)]="newProperty">
-                <md-radio-button class="property-button" *ngFor="let item of knoraBase?.properties" [value]="item">
+                <md-checkbox class="property-button" *ngFor="let item of knoraBase?.properties" [(ngModel)]="sth">
                     {{item}}
-                </md-radio-button>
+                </md-checkbox>
                 <div class="resource-value">You selected: {{newProperty}}</div>
             </md-radio-group>
+        </div>
+-->
+
+        <div *ngIf="counter == 1">
+            <md-list *ngFor="let item of knoraBase?.properties">
+                <md-checkbox>
+                    {{item}}
+                </md-checkbox>
+            </md-list>
+<!--        <div class="resource-value">You selected: {{newProperty}}</div>-->
         </div>
 
         <div *ngIf="counter == 2">
@@ -31,54 +40,54 @@
 
     <md-dialog-actions>
         <span>
-                <button md-button *ngIf="counter<3 && counter >0" class="back-button" (click)="goBack(counter)">Back</button>
+            <button md-button *ngIf="counter<3 && counter >0" class="back-button" (click)="goBack(counter)">Back</button>
         </span>
         <span>
-                <button md-button *ngIf="counter<3" class="next-button" (click)="openDialogPage(counter)">Next</button>
-                <button md-button *ngIf="counter==3" class="safe-button" (click)="saveInputData()">Save</button>
+            <button md-button *ngIf="counter<3" class="next-button" (click)="openDialogPage(counter)">Next</button>
+            <button md-button *ngIf="counter==3" class="save-button" (click)="saveInputData()">Save</button>
         </span>
     </md-dialog-actions>
 
-<!--
+            <!--
 
-<form class="example-form">
-    <md-input-container class="example-full-width">
-        <input md-input placeholder="Project" disabled value="BMF">
-    </md-input-container>
+            <form class="example-form">
+                <md-input-container class="example-full-width">
+                    <input md-input placeholder="Project" disabled value="BMF">
+                </md-input-container>
 
-    <table class="example-full-width" cellspacing="0"><tr>
-        <td><md-input-container class="example-full-width">
-            <input md-input placeholder="Project Owner">
-        </md-input-container></td>
-        <td><md-input-container class="example-full-width">
-            <input md-input placeholder="Project ID" disabled value="01">
-        </md-input-container></td>
-    </tr></table>
+                <table class="example-full-width" cellspacing="0"><tr>
+                    <td><md-input-container class="example-full-width">
+                        <input md-input placeholder="Project Owner">
+                    </md-input-container></td>
+                    <td><md-input-container class="example-full-width">
+                        <input md-input placeholder="Project ID" disabled value="01">
+                    </md-input-container></td>
+                </tr></table>
 
-    <p>
-        <md-input-container class="example-full-width">
-            <input md-input placeholder="Institute">
-        </md-input-container>
-        <md-input-container class="example-full-width">
-            <input md-input placeholder="Address">
-        </md-input-container>
-    </p>
+                <p>
+                    <md-input-container class="example-full-width">
+                        <input md-input placeholder="Institute">
+                    </md-input-container>
+                    <md-input-container class="example-full-width">
+                        <input md-input placeholder="Address">
+                    </md-input-container>
+                </p>
 
-    <table class="example-full-width" cellspacing="0"><tr>
-        <td><md-input-container class="example-full-width">
-            <input md-input #day maxlength="2" placeholder="Day">
-            <md-hint align="start">{{day.value.length}} / 2</md-hint>
-        </md-input-container></td>
-        <td><md-input-container class="example-full-width">
-            <input md-input #month maxlength="2" placeholder="Month">
-            <md-hint align="start">{{month.value.length}} / 2</md-hint>
-        </md-input-container></td>
-        <td><md-input-container class="example-full-width">
-            <input md-input #year maxlength="4" placeholder="Year">
-            <md-hint align="start">{{year.value.length}} / 4</md-hint>
-        </md-input-container></td>
-    </tr></table>
-</form>
+                <table class="example-full-width" cellspacing="0"><tr>
+                    <td><md-input-container class="example-full-width">
+                        <input md-input #day maxlength="2" placeholder="Day">
+                        <md-hint align="start">{{day.value.length}} / 2</md-hint>
+                    </md-input-container></td>
+                    <td><md-input-container class="example-full-width">
+                        <input md-input #month maxlength="2" placeholder="Month">
+                        <md-hint align="start">{{month.value.length}} / 2</md-hint>
+                    </md-input-container></td>
+                    <td><md-input-container class="example-full-width">
+                        <input md-input #year maxlength="4" placeholder="Year">
+                        <md-hint align="start">{{year.value.length}} / 4</md-hint>
+                    </md-input-container></td>
+                </tr></table>
+            </form>
 
 
--->
+            -->

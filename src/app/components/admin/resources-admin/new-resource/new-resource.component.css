@@ -11,18 +11,3 @@
     margin: 10px 0;
     color: #b2dfdb;
 }
-
-.properties-group {
-    display: inline-flex;
-    flex-direction: column;
-    height: 250px;
-}
-
-.property-button {
-    margin: 5px;
-}
-
-.property-value {
-    margin: 15px 0;
-}
-
