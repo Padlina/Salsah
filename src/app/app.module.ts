@@ -27,6 +27,7 @@ import { MaterialModule } from '@angular/material';
 // import other third party modules
 //
 import { NgUploaderModule } from 'ngx-uploader';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 //
 // import all services
@@ -219,7 +220,8 @@ const appRoutes: Routes = [
         HttpModule,
         MaterialModule.forRoot(),
         RouterModule.forRoot(appRoutes),
-        NgUploaderModule
+        NgUploaderModule,
+        CKEditorModule
     ],
     exports: [
        ResourceViewComponent
