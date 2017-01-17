@@ -1,28 +1,67 @@
 <div class="salsah-component-content">
     <md-card class="salsah-login">
+        <form class="new-project-form">
         <md-card-header>
             <md-card-title>
                 {{form.project.title}}
             </md-card-title>
         </md-card-header>
         <md-card-content class="project">
-            <form class="new-project-form">
+
                 <md-input-container class="full-width">
-                    <input md-input [placeholder]="form.project.name" autofocus>
+                    <input md-input [placeholder]="form.project.name" autofocus required>
                 </md-input-container>
+
+                <md-input-container class="full-width">
+                    <input md-input [placeholder]="form.project.shortname" required>
+                </md-input-container>
+
                 <md-input-container class="full-width">
                     <textarea md-input [placeholder]="form.project.description" rows="8"></textarea>
                 </md-input-container>
 
+                <h4>file upload example from codepen</h4>
+                <div class="file-upload-wrapper" data-text="Select your file!">
+                    <input name="file-upload-field" type="file" class="file-upload-field" value="">
+                </div>
 
-            </form>
+                <h4>own file upload</h4>
+                <input type="file" accept="image/*" class="salsah-upload-field" [placeholder]="form.project.logo">
+
+                <h4>ngX file upload</h4>
+                <!-- app.component.html -->
+                <div md-button>Select your logo</div>
+                <input type="file"
+                       ngFileSelect
+                       [options]="options"
+                       (onUpload)="handleUpload($event)"
+                       (beforeUpload)="beforeUpload($event)"
+                        class="file-upload-field"
+                       (click)="browseFile()"
+                >
+
+                <!-- drag & drop file example-->
+                <div ngFileDrop
+                     [options]="options"
+                     (onUpload)="handleUpload($event)"
+                     [ngClass]="{'file-over': hasBaseDropZoneOver}"
+                     (onFileOver)="fileOverBase($event)"
+                     (beforeUpload)="beforeUpload($event)">
+                    Drag'n'drop
+                </div>
+
+                <div>
+                    Response: {{ uploadFile | json }}
+                </div>
+
+
         </md-card-content>
+        <md-card-actions>
+            <button md-raised-button type="submit" class="save-buttton md-primary">Save</button>
+            <button md-raised-button type="reset" class="save-buttton md-primary">reset</button>
+        </md-card-actions>
+        </form>
     </md-card>
-    <p>
-        new-project form here
-    </p>
-
-    <button md-button>Next</button>
 
 </div>
 

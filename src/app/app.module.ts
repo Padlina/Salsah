@@ -24,6 +24,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
 //
+// import other third party modules
+//
+import { NgUploaderModule } from 'ngx-uploader';
+
+//
 // import all services
 //
 import { ProjectsService } from './services/projects.service';
@@ -213,7 +218,8 @@ const appRoutes: Routes = [
         FormsModule,
         HttpModule,
         MaterialModule.forRoot(),
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes),
+        NgUploaderModule
     ],
     exports: [
        ResourceViewComponent
