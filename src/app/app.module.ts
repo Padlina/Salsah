@@ -35,6 +35,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { ProjectsService } from './services/projects.service';
 import { ResourcesService } from './services/resources.service';
 import { SearchService } from './services/search.service';
+import { SessionService } from './services/session.service';
 import { VocabulariesService } from './services/vocabularies.service';
 
 //
@@ -233,6 +234,7 @@ const appRoutes: Routes = [
         ProjectsService,
         ResourcesService,
         SearchService,
+        SessionService,
         VocabulariesService
     ],
     bootstrap: [AppComponent]

@@ -69,7 +69,7 @@ export class UserdataJson {
      * @param projects: Array<string> | null
      */
     @JsonProperty('projects', null)
-    public projects: string = undefined;
+    public projects: string[] = undefined;
 
     /*
      * List of project descriptions the user is member of

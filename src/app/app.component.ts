@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
         // Json convert error handling
         //
 //        JsonConvert.debugMode = true;
-        // JsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
+//          JsonConvert.ignorePrimitiveChecks = false; // don't allow assigning number to string etc.
         JsonConvert.valueCheckingMode = JsonConvert.ValueCheckingMode.ALLOW_NULL; // never allow null
 
     }

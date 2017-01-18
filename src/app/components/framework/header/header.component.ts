@@ -14,22 +14,38 @@
 
 import {Component, OnInit} from '@angular/core';
 
+import { SessionService, SessionJson } from '../../_services';
+
 @Component({
     selector: 'salsah-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+    private errorMessage: string = undefined;
+    private session: SessionJson = new SessionJson();
 
-    constructor() {
+    constructor( private _sessionService: SessionService ) {
     }
 
     ngOnInit() {
+        this._sessionService.getSession()
+            .subscribe(
+                (data: SessionJson) => {
+                    this.session = data;
+                },
+                error => {
+                    this.errorMessage = <any>error;
+                }
+            )
     }
 
-    selectProject(id: string): void {
+    public selectProject(id: string): void {
         console.log("Selected project has the id " + id);
     }
+
+
+
 
     /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
     /* Developer object: just a sample to create a dummy header */

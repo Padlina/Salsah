@@ -15,6 +15,20 @@
                     <span> All public projects </span>
                 </button>
                 <hr/>
+                <div *ngFor="let project of session?.userdata?.projects_info" md-menu-item>
+                    <span class="salsah-user-project" (click)="selectProject(project.id)">{{project.longname}}</span>
+                    <span *ngIf="project.admin" class="salsah-admin-button">
+                        <button md-icon-button routerLink="/project/{{project.shortname}}/settings">
+                            <md-icon>settings</md-icon>
+                        </button>
+                    </span>
+                </div>
+                <div class="error" *ngIf="errorMessage">
+                    <md-card class="salsah-warning">
+                        {{errorMessage}}
+                    </md-card>
+                </div>
+                <hr/>
                 <div *ngFor="let project of user.userProjects" md-menu-item>
                     <span class="salsah-user-project" (click)="selectProject(project.id)">{{project.longname}}</span>
                     <span *ngIf="project.admin" class="salsah-admin-button">

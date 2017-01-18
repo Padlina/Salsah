@@ -12,21 +12,31 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-/**
- * services
- */
-export * from '../services/projects.service';
-export * from '../services/resources.service';
-export * from '../services/search.service';
-export * from '../services/session.service';
-export * from '../services/vocabularies.service';
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { BasicResponseJson } from '../../basic-message-components/src/basic-response-json';
+
+
 
 /**
- * API objects
+ * Represents the knora session
+ *
+ * HTTP GET to http://host/v1/session
+ *
  */
-export * from '../services/api-objects';
+
+@JsonObject
+export class SessionJson extends BasicResponseJson {
+
+    /**
+     * Message
+     * @param message: string
+     */
+    @JsonProperty('message', null)
+    public message: string = undefined;
+
+}
 
 
-// TODO: check if really needed seperately
-// TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-// export * from '../services/api-objects/resource-response-formats/src/property-json';
+
+
+
