@@ -1,0 +1,147 @@
+{
+    "resourcetypes": [
+        {
+            "id": "http://www.knora.org/ontology/anything#Thing",
+            "label": "Thing",
+            "properties": [
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasListItem",
+                    "label": "List element"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasOtherThing",
+                    "label": "Another thing"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasText",
+                    "label": "Text"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasDate",
+                    "label": "Date"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasInteger",
+                    "label": "Integer"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasDecimal",
+                    "label": "Decimal number"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasBoolean",
+                    "label": "Boolean value"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasUri",
+                    "label": "URI"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasInterval",
+                    "label": "Time interval"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasColor",
+                    "label": "Color"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasThingPicture",
+                    "label": "Picture of a thing"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#isPartOfOtherThing",
+                    "label": "is part of"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasBlueThing",
+                    "label": "A blue thing"
+                }
+            ]
+        },
+        {
+            "id": "http://www.knora.org/ontology/anything#ThingPicture",
+            "label": "Picture of a thing",
+            "properties": [
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasPictureTitle",
+                    "label": "Title"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/knora-base#hasStillImageFileValue",
+                    "label": "has image file"
+                }
+            ]
+        },
+        {
+            "id": "http://www.knora.org/ontology/anything#BlueThing",
+            "label": "Blue thing",
+            "properties": [
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasListItem",
+                    "label": "List element"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasOtherThing",
+                    "label": "Another thing"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasText",
+                    "label": "Text"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasDate",
+                    "label": "Date"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasInteger",
+                    "label": "Integer"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasDecimal",
+                    "label": "Decimal number"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasBoolean",
+                    "label": "Boolean value"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasUri",
+                    "label": "URI"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasInterval",
+                    "label": "Time interval"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasColor",
+                    "label": "Color"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasThingPicture",
+                    "label": "Picture of a thing"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#isPartOfOtherThing",
+                    "label": "is part of"
+                },
+                {
+                    "id": "http://www.knora.org/ontology/anything#hasBlueThing",
+                    "label": "A blue thing"
+                }
+            ]
+        }
+    ],
+    "userdata": {
+        "email": null,
+        "firstname": null,
+        "user_id": null,
+        "lastname": null,
+        "isActiveUser": null,
+        "token": null,
+        "active_project": null,
+        "lang": "en",
+        "password": null
+    },
+    "status": 0
+
+}
