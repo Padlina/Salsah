@@ -36,9 +36,15 @@ export class UserLoginComponent implements OnInit {
         button: "Contact us on how"
     };
 
-  constructor() { }
 
-  ngOnInit() {
-  }
+
+    constructor() { }
+
+    ngOnInit() {
+    }
+
+    onSubmit(lf: any): void {
+        console.log('you submitted value:', lf);
+    }
 
 }

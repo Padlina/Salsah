@@ -37,14 +37,7 @@ export class NewProjectComponent implements OnInit {
      * if everything's fine, send the data to the api
      * and change the view from create project to the project admin view
      */
-    saveProject(): void {
-//        console.log();
-//        this._router.navigate(['/project/' + ], {relativeTo: this._route});
-    }
 
-    resetProject(): void {
-        this._router.navigate(['/new'], {relativeTo: this._route});
-    }
     //
     // ngX file upload settings
     //

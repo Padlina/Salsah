@@ -67,6 +67,8 @@ import { PageNotFoundComponent } from './components/framework/page-not-found/pag
 import { ProjectAdminComponent } from './components/admin/project-admin/project-admin.component';
 import { ProjectButtonsComponent } from './components/framework/header/project-buttons/project-buttons.component';
 import { ResourceViewComponent } from './components/view/resource-view/resource-view.component';
+import { UserLoginComponent } from './components/user/user-login/user-login.component';
+
 import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
 import { ResultsViewComponent } from './components/view/results-view/results-view.component';
 import { SearchComponent } from './components/search/search.component';
@@ -74,7 +76,7 @@ import { SimpleSearchComponent } from './components/search/simple-search/simple-
 import { TableViewComponent } from './components/view/table-view/table-view.component';
 import { TeamAdminComponent } from './components/admin/team-admin/team-admin.component';
 import { ToolbarButtonsComponent } from './components/framework/header/toolbar-buttons/toolbar-buttons.component';
-import { UserLoginComponent } from './components/admin/user-login/user-login.component';
+
 import { VideoObjectComponent } from './components/object/video-object/video-object.component';
 
 import { UserAdminComponent } from './components/admin/user-admin/user-admin.component';
