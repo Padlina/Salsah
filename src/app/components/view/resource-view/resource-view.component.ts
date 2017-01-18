@@ -18,8 +18,6 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ResourcesService, ResourceFullResponseJson } from '../../_services';
 
 // import {PropertyJsonValue} from '../../_services';
-
-
 // import { MdDialogRef } from '@angular/material';
 
 @Component({
@@ -56,7 +54,7 @@ export class ResourceViewComponent implements OnInit {
 
     ngOnInit() {
         this._route.params.forEach((params: Params) => {
-            let query = params['uri'];
+            let query: string = params['uri'];
             this._resourcesService.getData(query)
                 .subscribe(
                     (data: ResourceFullResponseJson) => {

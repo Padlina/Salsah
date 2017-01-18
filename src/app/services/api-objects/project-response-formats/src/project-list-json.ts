@@ -13,8 +13,8 @@
  * */
 
 import { JsonObject, JsonProperty } from 'json2typescript';
-import { BasicResponseJson } from '../basic-message-components/src/basic-response-json';
-import { ProjectItemJson } from '../basic-message-components/src/project-item-json';
+import { BasicResponseJson } from '../../basic-message-components/src/basic-response-json';
+import { ProjectItemJson } from '../../basic-message-components/src/project-item-json';
 
 
 /**
@@ -25,7 +25,7 @@ import { ProjectItemJson } from '../basic-message-components/src/project-item-js
  */
 
 @JsonObject
-export class ProjectsListJson extends BasicResponseJson {
+export class ProjectListJson extends BasicResponseJson {
     /**
      * List of search project items
      * @param projects: Array<projectItem>

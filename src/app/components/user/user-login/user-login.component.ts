@@ -12,25 +12,39 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import { JsonObject, JsonProperty } from 'json2typescript';
-import { BasicResponseJson } from '../basic-message-components/src/basic-response-json';
-import { ProjectItemJson } from '../basic-message-components/src/project-item-json';
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'salsah-user-login',
+  templateUrl: './user-login.component.html',
+  styleUrls: ['./user-login.component.css']
+})
+export class UserLoginComponent implements OnInit {
+
+    public login = {
+        title:  "Already have an account?",
+        name:   "Username",
+        pw:     "Password",
+        button: "Login",
+        remember: "Remember me",
+        forgot_pw: "Forgot password?"
+    };
+
+    public signup = {
+        title:  "New to Salsah?",
+        subtitle: "Sign up to avail all of our services",
+        button: "Contact us on how"
+    };
 
 
-/**
- * Represents the response to a fulltext or an extended search
- *
- * HTTP GET to http://host/v1/projects
- *
- */
 
-@JsonObject
-export class ProjectsDetailJson extends BasicResponseJson {
-    /**
-     * List of search project items
-     * @param projects: Array<projectItem>
-     */
-    @JsonProperty('project_info', ProjectItemJson)
-    public project_info: ProjectItemJson = undefined;
+    constructor() { }
+
+    ngOnInit() {
+    }
+
+    onSubmit(lf: any): void {
+        console.log('you submitted value:', lf);
+    }
 
 }

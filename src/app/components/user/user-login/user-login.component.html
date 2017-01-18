@@ -14,22 +14,36 @@
     </md-card-header>
 
     <md-card-content class="login">
-        <form class="login-form">
+        <!-- This is the login form (lf) -->
+        <form class="login-form" #lf="ngForm" (ngSubmit)="onSubmit(lf.value)">
             <!-- Username -->
             <md-input-container class="full-width">
                 <md-icon md-prefix>person</md-icon>
-                <input md-input [placeholder]="login.name" autofocus>
+                <input
+                    md-input
+                    [placeholder]="login.name"
+                    autofocus
+                    required
+                    name="username"
+                    ngModel>
             </md-input-container>
             <br><br><br>
             <!-- Password -->
             <md-input-container class="full-width">
                 <md-icon md-prefix>lock</md-icon>
-                <input md-input type="password" [placeholder]="login.pw">
+                <input
+                    md-input
+                    type="password"
+                    [placeholder]="login.pw"
+                    name="pasword"
+                    required
+                    ngModel
+                >
             </md-input-container>
             <br><br><br>
             <!-- Button: Login -->
             <div class="button-row full-width">
-                <button md-button class="full-width login">{{login.button | uppercase}}</button>
+                <button md-raised-button type="submit" [disabled]="!lf.valid" class="full-width login md-primary">{{login.button | uppercase}}</button>
             </div>
         </form>
     </md-card-content>

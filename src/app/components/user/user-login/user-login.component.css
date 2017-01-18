@@ -43,11 +43,6 @@
     z-index: 150;
 }
 
-button.login {
-    background-color: #009688;
-    color: white;
-}
-
 md-card-content.sign_up {
     margin-top: 24px;
 }

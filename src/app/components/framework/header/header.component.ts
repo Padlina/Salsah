@@ -21,15 +21,13 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-    constructor() {
+    constructor( ) {
     }
 
     ngOnInit() {
+
     }
 
-    selectProject(id: string): void {
-        console.log("Selected project has the id " + id);
-    }
 
     /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
     /* Developer object: just a sample to create a dummy header */
@@ -165,6 +163,4 @@ export class HeaderComponent implements OnInit {
 
     /*                                                          */
     /* -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
-
-
 }

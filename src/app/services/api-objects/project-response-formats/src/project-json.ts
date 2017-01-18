@@ -12,13 +12,25 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-md-card.error {
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 200px;
-    img {
-        max-width: 420px;
-        object-fit: cover;
-    }
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { BasicResponseJson } from '../../basic-message-components/src/basic-response-json';
+import { ProjectItemJson } from '../../basic-message-components/src/project-item-json';
+
+
+/**
+ * Represents a knora project
+ *
+ * HTTP GET to http://host/v1/projects/projectIRI
+ *
+ */
+
+@JsonObject
+export class ProjectJson extends BasicResponseJson {
+    /**
+     * List of search project items
+     * @param projects: Array<projectItem>
+     */
+    @JsonProperty('project_info', ProjectItemJson)
+    public project_info: ProjectItemJson = undefined;
+
 }

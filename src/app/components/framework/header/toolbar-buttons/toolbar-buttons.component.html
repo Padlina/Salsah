@@ -1,0 +1,42 @@
+<!-- toolbar menu on the top right corner -->
+<div class="salsah-toolbar-buttons">
+
+    <!-- add menu -->
+    <span class="add-menu">
+            <button md-icon-button [mdMenuTriggerFor]="addMenu">
+                <md-icon>{{add.icon}}</md-icon>
+            </button>
+            <md-menu #addMenu="mdMenu">
+                <div *ngFor="let item of add.menuItems; let last=last">
+                    <button md-menu-item [routerLink]="item.routerLink">
+                        <md-icon> {{item.icon}} </md-icon>
+                        <span> {{item.text}} </span>
+                    </button>
+                </div>
+            </md-menu>
+        </span>
+
+    <!-- documentation / wiki link button -->
+    <span class="documentation-menu">
+            <a md-icon-button href="http://dhlab-basel.github.io/Salsah" target="_blank">
+                <md-icon>{{documentation.icon}}</md-icon>
+            </a>
+        </span>
+
+    <!-- user profile menu -->
+    <span class="user-menu">
+            <button md-icon-button [mdMenuTriggerFor]="userMenu">
+                <md-icon>{{user.icon}}</md-icon>
+            </button>
+            <md-menu #userMenu="mdMenu" class="salsah-user-menu">
+                <div *ngFor="let item of user.menuItems; let last=last">
+                    <hr *ngIf="last"/>
+                    <button md-menu-item [routerLink]="item.routerLink">
+                        <md-icon> {{item.icon}} </md-icon>
+                        <span> {{item.text}} </span>
+                    </button>
+                </div>
+
+            </md-menu>
+        </span>
+</div>
