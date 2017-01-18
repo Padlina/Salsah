@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ToolbarButtonsComponent implements OnInit {
     @Input() add: Object;
     @Input() documentation: Object;
-    @Input() user: Object
+    @Input() user: Object;
 
     constructor() { }
 

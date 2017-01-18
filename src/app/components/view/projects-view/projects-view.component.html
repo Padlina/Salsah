@@ -26,13 +26,21 @@
                 </md-list-item>
             </md-list>
         </div>
+
         <!-- single project -->
         <div class="salsah-projects-item" *ngIf="project && projectsDetailResponse">
 
-            <md-card>
+            <md-card class="fix-width no-shadow">
                 <md-card-header>
-                    {{projectsDetailResponse?.project_info?.id}}
+                    <md-card-subtitle>{{projectsDetailResponse?.project_info?.shortname}}</md-card-subtitle>
+                    <md-card-title>{{projectsDetailResponse?.project_info?.longname}}</md-card-title>
                 </md-card-header>
+                <md-card-content>
+                    {{projectsDetailResponse?.project_info?.description}}
+                </md-card-content>
+                <md-card-actions>
+
+                </md-card-actions>
             </md-card>
         </div>
     </div>

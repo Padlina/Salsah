@@ -12,13 +12,3 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-md-card.error {
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 200px;
-    img {
-        max-width: 420px;
-        object-fit: cover;
-    }
-}

@@ -24,11 +24,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 
 //
+// import other third party modules
+//
+import { NgUploaderModule } from 'ngx-uploader';
+import { CKEditorModule } from 'ng2-ckeditor';
+
+//
 // import all services
 //
 import { ProjectsService } from './services/projects.service';
 import { ResourcesService } from './services/resources.service';
 import { SearchService } from './services/search.service';
+import { SessionService } from './services/session.service';
 import { VocabulariesService } from './services/vocabularies.service';
 
 //
@@ -59,7 +66,6 @@ import { ListViewComponent } from './components/view/list-view/list-view.compone
 import { PageNotFoundComponent } from './components/framework/page-not-found/page-not-found.component';
 import { ProjectAdminComponent } from './components/admin/project-admin/project-admin.component';
 import { ProjectButtonsComponent } from './components/framework/header/project-buttons/project-buttons.component';
-import { ProjectViewComponent } from './components/view/project-view/project-view.component';
 import { ResourceViewComponent } from './components/view/resource-view/resource-view.component';
 import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
 import { ResultsViewComponent } from './components/view/results-view/results-view.component';
@@ -222,12 +228,15 @@ const appRoutes: Routes = [
         FormsModule,
         HttpModule,
         MaterialModule.forRoot(),
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes),
+        NgUploaderModule,
+        CKEditorModule
     ],
     providers: [
         ProjectsService,
         ResourcesService,
         SearchService,
+        SessionService,
         VocabulariesService
     ],
     bootstrap: [AppComponent]

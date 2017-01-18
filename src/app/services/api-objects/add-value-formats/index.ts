@@ -12,25 +12,3 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import { JsonObject, JsonProperty } from 'json2typescript';
-import { BasicResponseJson } from '../basic-message-components/src/basic-response-json';
-import { ProjectItemJson } from '../basic-message-components/src/project-item-json';
-
-
-/**
- * Represents the response to a fulltext or an extended search
- *
- * HTTP GET to http://host/v1/projects
- *
- */
-
-@JsonObject
-export class ProjectsListJson extends BasicResponseJson {
-    /**
-     * List of search project items
-     * @param projects: Array<projectItem>
-     */
-    @JsonProperty('projects', [ProjectItemJson])
-    public projects: ProjectItemJson[] = undefined;
-
-}

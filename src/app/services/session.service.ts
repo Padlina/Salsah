@@ -19,45 +19,28 @@ import { AppConfig } from '../app.config';
 
 import { JsonConvert } from 'json2typescript';
 
-import { ProjectListJson } from './api-objects';
-import { ProjectJson } from './api-objects';
+import { SessionJson } from './api-objects';
+
 
 @Injectable()
-export class ProjectsService {
+export class SessionService {
 
     constructor(private _http: Http) { }
 
-    getProject(uri: string): Observable<ProjectJson> {
-        let projectData: string = `${AppConfig.API_ENDPOINT}` + 'projects/' + uri;
-        return this._http.get(projectData)
-            .map(this.extractProjectData)
+    getSession(): Observable<SessionJson> {
+        let sessionData: string = `${AppConfig.API_ENDPOINT}` + 'session';
+        return this._http.get(sessionData)
+            .map(this.extractSessionData)
             .catch(this.handleError);
     }
 
-    private extractProjectData(res: Response) {
+    private extractSessionData(res: Response) {
         try {
             // console.log(res.json());
-            return JsonConvert.deserializeObject(res.json(), ProjectJson);
+            return JsonConvert.deserializeObject(res.json(), SessionJson);
         } catch (e) {
             // console.log(e);
-            return Observable.throw('Data error in salsah\'s projects service.');
-        }
-    }
-
-    getProjectsList(): Observable<ProjectListJson> {
-        let projectsList: string = `${AppConfig.API_ENDPOINT}` + 'projects';
-        return this._http.get(projectsList)
-            .map(this.extractProjectsList)
-            .catch(this.handleError);
-    }
-
-    private extractProjectsList(res: Response) {
-        try {
-            // console.log(res.json());
-            return JsonConvert.deserializeObject(res.json(), ProjectListJson);
-        } catch (e) {
-            // console.log(e);
-            return Observable.throw('Data error in salsah\'s projects service.');
+            return Observable.throw('Data error in salsah\'s session service.');
         }
     }
 

@@ -35,4 +35,5 @@ export class BasicResponseJson {
      */
     @JsonProperty('userdata', UserdataJson)
     public userdata: UserdataJson = undefined;
+
 }

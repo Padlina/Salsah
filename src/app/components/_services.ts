@@ -18,6 +18,7 @@
 export * from '../services/projects.service';
 export * from '../services/resources.service';
 export * from '../services/search.service';
+export * from '../services/session.service';
 export * from '../services/vocabularies.service';
 
 /**
@@ -28,4 +29,4 @@ export * from '../services/api-objects';
 
 // TODO: check if really needed seperately
 // TODO: if so, do export PropertyJson in api-objects/resource-response-formats/index.ts
-export * from '../services/api-objects/resource-response-formats/src/property-json';
+// export * from '../services/api-objects/resource-response-formats/src/property-json';

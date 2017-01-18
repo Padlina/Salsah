@@ -12,13 +12,31 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-md-card.error {
-    max-width: 420px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 200px;
-    img {
-        max-width: 420px;
-        object-fit: cover;
-    }
+import { JsonObject, JsonProperty } from 'json2typescript';
+import { BasicResponseJson } from '../../basic-message-components/src/basic-response-json';
+
+
+
+/**
+ * Represents the knora session
+ *
+ * HTTP GET to http://host/v1/session
+ *
+ */
+
+@JsonObject
+export class SessionJson extends BasicResponseJson {
+
+    /**
+     * Message
+     * @param message: string
+     */
+    @JsonProperty('message', null)
+    public message: string = undefined;
+
 }
+
+
+
+
+

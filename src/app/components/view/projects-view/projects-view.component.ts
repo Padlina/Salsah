@@ -14,7 +14,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ProjectsService, ProjectsListJson, ProjectsDetailJson } from '../../_services';
+import { ProjectsService, ProjectListJson, ProjectJson } from '../../_services';
 
 @Component({
   selector: 'salsah-projects-view',
@@ -24,8 +24,8 @@ import { ProjectsService, ProjectsListJson, ProjectsDetailJson } from '../../_se
 export class ProjectsViewComponent implements OnInit {
 
     private errorMessage: string = undefined;
-    public projectsListResponse: ProjectsListJson = new ProjectsListJson();
-    public projectsDetailResponse: ProjectsDetailJson = new ProjectsDetailJson();
+    public projectsListResponse: ProjectListJson = new ProjectListJson();
+    public projectsDetailResponse: ProjectJson = new ProjectJson();
 
     public _isLoading: boolean = true;
 
@@ -46,7 +46,7 @@ export class ProjectsViewComponent implements OnInit {
                 // show the project
                 this._projectsService.getProject(this.project)
                     .subscribe(
-                        (data: ProjectsDetailJson) => {
+                        (data: ProjectJson) => {
                             this.projectsDetailResponse = data;
                             this._isLoading = false;
                         },
@@ -59,7 +59,7 @@ export class ProjectsViewComponent implements OnInit {
                 // show the list of projects
                 this._projectsService.getProjectsList()
                     .subscribe(
-                        (data: ProjectsListJson) => {
+                        (data: ProjectListJson) => {
                             this.projectsListResponse = data;
                             this._isLoading = false;
                         },
