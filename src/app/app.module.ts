@@ -66,7 +66,7 @@ import { PageNotFoundComponent } from './components/framework/page-not-found/pag
 import { ResultsViewComponent } from './components/view/results-view/results-view.component';
 import { ResourceViewComponent } from './components/view/resource-view/resource-view.component';
 import { ProjectAdminComponent } from './components/admin/project-admin/project-admin.component';
-import { UserLoginComponent } from './components/admin/user-login/user-login.component';
+import { UserLoginComponent } from './components/user/user-login/user-login.component';
 import { FooterComponent } from './components/framework/footer/footer.component';
 import { TeamAdminComponent } from './components/admin/team-admin/team-admin.component';
 import { ResourcesAdminComponent } from './components/admin/resources-admin/resources-admin.component';
