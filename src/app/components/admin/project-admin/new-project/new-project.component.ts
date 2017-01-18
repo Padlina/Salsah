@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgUploaderOptions } from 'ngx-uploader';
-
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'salsah-new-project',
@@ -19,14 +19,32 @@ export class NewProjectComponent implements OnInit {
         }
     };
 
-    constructor() {
+    constructor(private _route: ActivatedRoute, private _router: Router) {
 
     }
 
     ngOnInit() {
     }
 
+    onSubmit(pf: any): void {
+        console.log('you submitted value:', pf);
+    }
 
+
+    /**
+     * saveProject()
+     * check validity of the data in the form
+     * if everything's fine, send the data to the api
+     * and change the view from create project to the project admin view
+     */
+    saveProject(): void {
+//        console.log();
+//        this._router.navigate(['/project/' + ], {relativeTo: this._route});
+    }
+
+    resetProject(): void {
+        this._router.navigate(['/new'], {relativeTo: this._route});
+    }
     //
     // ngX file upload settings
     //

@@ -73,6 +73,17 @@ body {
     text-align: right;
 }
 
-.passive {
+.passive, .archive, .warning {
     color: orangered;
+}
+
+md-card.no-shadow {
+    box-shadow: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+md-card.fix-width {
+    width: 100%;
+    max-width: 640px;
+    min-width: 480px;
 }
