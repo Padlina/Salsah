@@ -41,9 +41,9 @@ export class BaseOntologyService {
     // }
 
 
-    getData(): Observable<AnythingOntologyJson> {
-//        let ontologyData: string = 'http://localhost/Knora-base.json';
-        let ontologyData: string = 'http://localhost:3333/v1/resourcetypes?vocabulary=http%3A%2F%2Fwww.knora.org%2Fontology%2Fanything';
+    getData(): Observable<KnoraBaseJson> {
+        let ontologyData: string = 'http://localhost/Knora-base.json';
+//        let ontologyData: string = 'http://localhost:3333/v1/resourcetypes?vocabulary=http%3A%2F%2Fwww.knora.org%2Fontology%2Fanything';
         return this.http.get(ontologyData)
             .map(this.extractData)
             .catch(this.handleError);
@@ -51,7 +51,7 @@ export class BaseOntologyService {
     private extractData(res: Response) {
         try {
             // console.log(res.json());
-            return JsonConvert.deserializeObject(res.json(), AnythingOntologyJson);
+            return JsonConvert.deserializeObject(res.json(), KnoraBaseJson);
         } catch (e) {
             // console.log(e);
             return Observable.throw('Data error in salsah\'s ontology service.');

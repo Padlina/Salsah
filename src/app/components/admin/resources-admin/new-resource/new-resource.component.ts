@@ -3,7 +3,7 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 import { OntologyComponent } from 'app/components/admin/ontology/ontology.component';
 import { BaseOntologyService } from 'app/components/admin/ontology/base-ontology.service';
 import { KnoraBaseJson } from 'app/components/admin/ontology/api-objects/knora-base-json';
-import { AnythingOntologyJson } from 'app/components/admin/ontology/api-objects/anything-ontology-json';
+//import { AnythingOntologyJson } from 'app/components/admin/ontology/api-objects/anything-ontology-json';
 
 @Component({
   selector: 'salsah-new-resource',
@@ -39,7 +39,7 @@ export class NewResourceComponent implements OnInit {
 
     //Get data from base ontology json
     private errorMessage: string = undefined;
-    public knoraBase: AnythingOntologyJson = new AnythingOntologyJson();
+    public knoraBase: KnoraBaseJson = new KnoraBaseJson();
     public res: any = undefined;
 
     ngOnInit() {
@@ -47,8 +47,8 @@ export class NewResourceComponent implements OnInit {
             .subscribe(
                 data => {
                     this.knoraBase = data;
-                    console.log(data.resourcetypes[0].label);
-                    this.res = data.resourcetypes[0].label;
+                    console.log(data.classes.resource[13]);
+                    this.res = data.classes.resource[13];
                 },
                 error => {
                     this.errorMessage = <any>error;

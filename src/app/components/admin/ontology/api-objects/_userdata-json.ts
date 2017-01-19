@@ -29,6 +29,3 @@ export class UserdataJson {
     @JsonProperty('password', null)
     public password: string = null;
 }
-
-
-}

@@ -1,7 +1,7 @@
     <md-dialog-content>
         <div *ngIf="counter == 0">
             <md-radio-group  class="resources-group" [(ngModel)]="newResource">
-                <md-radio-button  class="resource-button" *ngFor="let item of knoraBase?.resourcetypes?.label; let last=last" [value]="item">
+                <md-radio-button  class="resource-button" *ngFor="let item of knoraBase?.classes?.representation; let last=last" [value]="item">
                     <span><hr *ngIf="last"/>
                         {{item}}
                     </span>
@@ -21,7 +21,7 @@
 -->
 
         <div *ngIf="counter == 1">
-            <md-list *ngFor="let item of knoraBase?.resourcetypes?.properties?.label" >
+            <md-list *ngFor="let item of knoraBase?.properties" >
                 <md-checkbox  [checked]="checked">
                     {{item}}
                 </md-checkbox>
