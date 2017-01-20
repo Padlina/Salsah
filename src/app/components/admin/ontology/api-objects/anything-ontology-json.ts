@@ -12,9 +12,9 @@ export class AnythingOntologyJson {
     public resourcetypes: ResourcetypesJson[] = undefined;
 
     @JsonProperty('userdata', UserdataJson)
-    public userdata: ResourcetypesJson = undefined;
+    public userdata: UserdataJson = undefined;
 
-    @JsonProperty('status', String)
-    public status: string = undefined;
+    @JsonProperty('status', Number)
+    public status: number = undefined;
 
 }

@@ -10,7 +10,7 @@ export class ResourcetypesJson {
     public label: string = undefined;
 
     @JsonProperty('properties', [PropertiesJson])
-    public properties: string[] = undefined;
+    public properties: PropertiesJson[] = undefined;
 
 
 }

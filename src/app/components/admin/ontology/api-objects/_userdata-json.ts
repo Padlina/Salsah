@@ -2,30 +2,30 @@ import { JsonObject, JsonProperty } from 'json2typescript';
 
 @JsonObject
 export class UserdataJson {
-    @JsonProperty('email', null)
-    public email: string = null;
+    @JsonProperty('email', String)
+    public email: string = undefined;
 
-    @JsonProperty('firstname', null)
+    @JsonProperty('firstname', String)
     public firstname: string = undefined;
 
-    @JsonProperty('user_id', null)
+    @JsonProperty('user_id', String)
     public user_id: string = undefined;
 
-    @JsonProperty('lastname', null)
+    @JsonProperty('lastname', String)
     public lastname: string = undefined;
 
-    @JsonProperty('isActiveUser', null)
+    @JsonProperty('isActiveUser', String)
     public isActiveUser: string = undefined;
 
-    @JsonProperty('token', null)
+    @JsonProperty('token', String)
     public token: string = undefined;
 
-    @JsonProperty('active_project', null)
+    @JsonProperty('active_project', String)
     public active_project: string = undefined;
 
     @JsonProperty('lang', String)
     public lang: string = undefined;
 
-    @JsonProperty('password', null)
-    public password: string = null;
+    @JsonProperty('password', String)
+    public password: string = undefined;
 }

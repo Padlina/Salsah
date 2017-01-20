@@ -3,7 +3,7 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 import { OntologyComponent } from 'app/components/admin/ontology/ontology.component';
 import { BaseOntologyService } from 'app/components/admin/ontology/base-ontology.service';
 import { KnoraBaseJson } from 'app/components/admin/ontology/api-objects/knora-base-json';
-//import { AnythingOntologyJson } from 'app/components/admin/ontology/api-objects/anything-ontology-json';
+import { AnythingOntologyJson } from 'app/components/admin/ontology/api-objects/anything-ontology-json';
 
 @Component({
   selector: 'salsah-new-resource',
@@ -18,13 +18,19 @@ export class NewResourceComponent implements OnInit {
     //counter
     private counter: number = 0;
 
+    //save the data
+    private resdata: string = undefined;
+
     //Open next Properties dialogue
     selectedOption: string;
 
 
 
-    openDialogPage(cntr: number) {
+    nextDialogPage(cntr: number, selectedResource: string) {
         this.counter = cntr + 1;
+        this.resdata = selectedResource;
+        console.log(selectedResource);
+        console.log(cntr);
     }
 
     goBack(cntr: number) {
@@ -39,16 +45,18 @@ export class NewResourceComponent implements OnInit {
 
     //Get data from base ontology json
     private errorMessage: string = undefined;
-    public knoraBase: KnoraBaseJson = new KnoraBaseJson();
-    public res: any = undefined;
+//    public knoraBase: KnoraBaseJson = new KnoraBaseJson();
+    public knoraBase: AnythingOntologyJson = new AnythingOntologyJson();
+    public resourceTypes: any = undefined;
 
     ngOnInit() {
         this._baseOntologyService.getData()
             .subscribe(
                 data => {
                     this.knoraBase = data;
-                    console.log(data.classes.resource[13]);
-                    this.res = data.classes.resource[13];
+//                    console.log(data.resourcetypes[0].properties[0].label);
+                    this.resourceTypes = data.resourcetypes;
+//                    console.log(this.resourceTypes[1].label);
                 },
                 error => {
                     this.errorMessage = <any>error;
