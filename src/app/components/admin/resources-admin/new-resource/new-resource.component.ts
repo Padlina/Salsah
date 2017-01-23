@@ -17,23 +17,48 @@ export class NewResourceComponent implements OnInit {
 
     //counter
     private counter: number = 0;
+    public newResource: any;
 
-    //save the data
-    private resdata: string = undefined;
+    // //save the data
+    // private resdata: string = undefined;
+    //
+    // //Open next Properties dialogue
+    // selectedOption: string;
+    //
+    //
+    //
+    // nextDialogPage(cntr: number, selectedResource: string) {
+    //     this.counter = cntr + 1;
+    //     this.resdata = selectedResource;
+    //     console.log(selectedResource);
+    //     console.log(cntr);
+    // }
+    //
+    // goBack(cntr: number) {
+    //     this.counter = cntr - 1;
+    // }
+    //
+    //
+    // saveInputData(){
+    //     let dialogRef = this.dialog.closeAll();
+    // }
 
-    //Open next Properties dialogue
-    selectedOption: string;
 
-
-
-    nextDialogPage(cntr: number, selectedResource: string) {
-        this.counter = cntr + 1;
-        this.resdata = selectedResource;
-        console.log(selectedResource);
-        console.log(cntr);
+    onSubmit(uf: any): void {
+        console.log('you submitted value:', uf);
+        this.dialog.closeAll();
     }
 
-    goBack(cntr: number) {
+
+    nextFormSection(cntr: number, e) {
+        e.preventDefault();
+        // show the next section
+        this.counter = cntr + 1;
+    }
+
+    prevFormSection(cntr: number, e) {
+        e.preventDefault();
+        // show the previous section
         this.counter = cntr - 1;
     }
 
@@ -56,6 +81,8 @@ export class NewResourceComponent implements OnInit {
                     this.knoraBase = data;
 //                    console.log(data.resourcetypes[0].properties[0].label);
                     this.resourceTypes = data.resourcetypes;
+//                    console.log(this.resourceTypes[1].label);
+//                    this.props = data.resourcetypes[0].properties;
 //                    console.log(this.resourceTypes[1].label);
                 },
                 error => {

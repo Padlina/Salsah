@@ -1,17 +1,92 @@
+<form class="salsah-form new-user-form" #uf="ngForm" (ngSubmit)="onSubmit(uf.value, uf.valid)">
+
+    <md-dialog-content>
+
+        <section [ngClass]="{show: counter===0, hide: counter!==0}">
+            Select resource type
+            <div>
+                <md-radio-group  class="resources-group" [(ngModel)]="newResource" name="resource">
+                    <md-radio-button  class="resource-button" *ngFor="let item of knoraBase?.resourcetypes" [value]="item.label">
+                        {{item.label}}
+                    </md-radio-button>
+                    <span><hr/>New Resource (Advanced) </span> <!--make this into a button that leads to the advanced page -->
+                </md-radio-group>
+                <div class="resource-value">You selected: {{newResource}}</div>
+            </div>
+        </section>
+
+        <section [ngClass]="{show: counter===1, hide: counter!==1}">
+            Select properties for {{newResource}}
+            <div *ngFor="let res of knoraBase?.resourcetypes" >
+                <div *ngIf="res.label==newResource" >
+                    <md-list *ngFor="let props of res.properties" >
+                        <md-checkbox  color="primary"
+                                      ngModel
+                                      [name]="props.label">
+                            {{props.label}}
+                        </md-checkbox>
+                    </md-list>
+                </div>
+            </div>
+        </section>
+
+        <section [ngClass]="{show: counter===2, hide: counter!==2}">
+            Third Element
+            <md-input-container class="full-width">
+                    <textarea md-input placeholder="Comments" rows="8" name="userComments"
+                              ngModel></textarea>
+            </md-input-container>
+        </section>
+
+    </md-dialog-content>
+
+    <md-dialog-actions>
+    <span class="back">
+        <button md-button
+                *ngIf="counter<3 && counter >0"
+                class="back-button"
+                (click)="prevFormSection(counter, $event)">
+            Back
+        </button>
+    </span>
+        <span class="next">
+        <button md-button
+                *ngIf="counter<3"
+                class="next-button"
+                [disabled]="!uf.valid"
+                (click)="nextFormSection(counter, $event)">
+            Next
+        </button>
+        <button md-button
+                md-dialog-close
+                *ngIf="counter==3"
+                class="cancel-button">
+            Cancel
+        </button>
+        <button type="submit"
+                md-raised-button
+                *ngIf="counter==3"
+                class="save-button md-primary">
+            Save
+        </button>
+    </span>
+    </md-dialog-actions>
+
+</form>
+
+<!-- <form>
     <md-dialog-content>
         <div *ngIf="counter == 0">
-            <md-radio-group  class="resources-group" [(ngModel)]="newResource">
-                <!--<md-radio-button  class="resource-button" *ngFor="let item of knoraBase?.classes?.representation; let last=last" [value]="item">-->
+            <md-radio-group  class="resources-group" [(ngModel)]="newResource" name="resource">
                 <md-radio-button  class="resource-button" *ngFor="let item of knoraBase?.resourcetypes" [value]="item">
                     {{item.label}}
                 </md-radio-button>
-                <span><hr/>New Resource (Advanced) </span> <!--make button that will direct to the advanced section -->
+                <span><hr/>New Resource (Advanced) </span>
                 <div class="resource-value">You selected: {{newResource}}</div>
             </md-radio-group>
         </div>
 
-        <div *ngIf="counter == 1">
-            <!--<md-list *ngFor="let item of knoraBase?.properties" >-->
+        <div *ngIf="counter == 1" [(ngModel)]="newProperty" name="property">
             <md-list *ngFor="let res of knoraBase?.resourcetypes" >
                 <md-list *ngFor="let props of res.properties" >
                     <md-checkbox  [checked]="checked">
@@ -19,15 +94,15 @@
                     </md-checkbox>
                 </md-list>
             </md-list>
-         </div>
+        </div>
 
-         <div *ngIf="counter == 2">
+        <div *ngIf="counter == 2">
              <md-radio-group>
                  <md-radio-button>
                      Finished!
                  </md-radio-button>
              </md-radio-group>
-         </div>
+        </div>
      </md-dialog-content>
 
      <md-dialog-actions>
@@ -39,3 +114,5 @@
              <button md-button *ngIf="counter==3" class="save-button" (click)="saveInputData()">Save</button>
          </span>
      </md-dialog-actions>
+ </form>
+-->
