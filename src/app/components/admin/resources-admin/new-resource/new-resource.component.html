@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <form class="salsah-form new-user-form" #uf="ngForm" (ngSubmit)="onSubmit(uf.value, uf.valid)">
 
     <md-dialog-content>
 
         <section [ngClass]="{show: counter===0, hide: counter!==0}">
-            Select resource type
+            <h3>Select resource type</h3>
             <div>
                 <md-radio-group  class="resources-group" [(ngModel)]="newResource" name="resource">
                     <md-radio-button  class="resource-button" *ngFor="let item of knoraBase?.resourcetypes" [value]="item.label">
@@ -16,12 +17,12 @@
         </section>
 
         <section [ngClass]="{show: counter===1, hide: counter!==1}">
-            Select properties for {{newResource}}
+            <h3>Select properties for {{newResource}}</h3>
             <div *ngFor="let res of knoraBase?.resourcetypes" >
                 <div *ngIf="res.label==newResource" >
                     <md-list *ngFor="let props of res.properties" >
                         <md-checkbox  color="primary"
-                                      ngModel
+                                      [(ngModel)]="props.checked"
                                       [name]="props.label">
                             {{props.label}}
                         </md-checkbox>
@@ -31,7 +32,49 @@
         </section>
 
         <section [ngClass]="{show: counter===2, hide: counter!==2}">
-            Third Element
+            <h3>You selected:</h3>
+            <div *ngFor="let res of knoraBase?.resourcetypes" >
+                <div *ngIf="res.label==newResource" >
+                    <i>Resource type:</i>
+                    <br>
+                    <b>{{res.label}}</b>
+                    <br><br>
+                    <i>Resource properties:</i>
+                    <div *ngFor="let props of res.properties" >
+                        <div *ngIf="props.checked==true" >
+                           <b> {{props.label}} </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section [ngClass]="{show: counter===3, hide: counter!==3}">
+            <h3>Chose the properties' permissions and occurance</h3>
+            <div *ngFor="let res of knoraBase?.resourcetypes" >
+                <div *ngIf="res.label==newResource" >
+                    <div *ngFor="let props of res.properties" >
+                        <div *ngIf="props.checked==true" >
+                            <br><b> {{props.label}} </b>
+                            <md-select class="card-style" placeholder="Occurance" ngModel="propCardinality" name="Cardinality"> <!--this doesn't work for each cardinality, because the name value is only saved here, before we go through the list of cardinalities and properties-->
+                                <md-option *ngFor="let card of cardinality" [value]="card.id">
+                                    {{card.label}}
+                                </md-option>
+                            </md-select>
+                            <md-select class="perm-style" placeholder="Permissions" ngModel name="Permissions">
+                                <md-option *ngFor="let perm of perms" [value]="perm.id">
+                                    {{perm.label}}
+                                </md-option>
+                            </md-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section [ngClass]="{show: counter===4, hide: counter!==4}">
+            Fourth Element
             <md-input-container class="full-width">
                     <textarea md-input placeholder="Comments" rows="8" name="userComments"
                               ngModel></textarea>
@@ -43,7 +86,7 @@
     <md-dialog-actions>
     <span class="back">
         <button md-button
-                *ngIf="counter<3 && counter >0"
+                *ngIf="counter<5 && counter >0"
                 class="back-button"
                 (click)="prevFormSection(counter, $event)">
             Back
@@ -51,7 +94,7 @@
     </span>
         <span class="next">
         <button md-button
-                *ngIf="counter<3"
+                *ngIf="counter<5"
                 class="next-button"
                 [disabled]="!uf.valid"
                 (click)="nextFormSection(counter, $event)">
@@ -59,13 +102,13 @@
         </button>
         <button md-button
                 md-dialog-close
-                *ngIf="counter==3"
+                *ngIf="counter==5"
                 class="cancel-button">
             Cancel
         </button>
         <button type="submit"
                 md-raised-button
-                *ngIf="counter==3"
+                *ngIf="counter==5"
                 class="save-button md-primary">
             Save
         </button>

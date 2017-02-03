@@ -11,3 +11,13 @@
     margin: 10px 0;
     color: #b2dfdb;
 }
+
+.card-style {
+    float: right;
+    margin: 0 10px;
+}
+
+.perm-style {
+    float: right;
+    margin: 0 10px;
+}

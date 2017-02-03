@@ -18,6 +18,8 @@ export class NewResourceComponent implements OnInit {
     //counter
     private counter: number = 0;
     public newResource: any;
+    public newProperty: any;
+    public propCardinality: any;
 
     // //save the data
     // private resdata: string = undefined;
@@ -43,7 +45,24 @@ export class NewResourceComponent implements OnInit {
     //     let dialogRef = this.dialog.closeAll();
     // }
 
+    //selector of cardinalities
+    cardinality = [
+        {id: 'card-0', label: '1'},
+        {id: 'card-1', label: '1 - n'},
+        {id: 'card-2', label: '0 - 1'},
+        {id: 'card-3', label: '0 - n'}
+    ];
 
+    //selector of permissions
+    perms = [
+        {id: 'perm-0', label: 'group 1'},
+        {id: 'perm-1', label: 'group 2'},
+        {id: 'perm-2', label: 'group 3'},
+        {id: 'perm-3', label: 'group 4'}
+    ];
+
+
+    //form functions
     onSubmit(uf: any): void {
         console.log('you submitted value:', uf);
         this.dialog.closeAll();
@@ -67,6 +86,9 @@ export class NewResourceComponent implements OnInit {
         let dialogRef = this.dialog.closeAll();
     }
 
+    //END form functions
+
+
 
     //Get data from base ontology json
     private errorMessage: string = undefined;
@@ -81,15 +103,14 @@ export class NewResourceComponent implements OnInit {
                     this.knoraBase = data;
 //                    console.log(data.resourcetypes[0].properties[0].label);
                     this.resourceTypes = data.resourcetypes;
-//                    console.log(this.resourceTypes[1].label);
-//                    this.props = data.resourcetypes[0].properties;
-//                    console.log(this.resourceTypes[1].label);
                 },
                 error => {
                     this.errorMessage = <any>error;
                 }
             );
     }
+
+
 }
 
 
