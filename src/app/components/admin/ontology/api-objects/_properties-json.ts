@@ -7,4 +7,7 @@ export class PropertiesJson {
 
     @JsonProperty('label', String)
     public label: string = undefined;
+
+    @JsonProperty('cardinality', String)
+    public cardinality: string = undefined;
 }

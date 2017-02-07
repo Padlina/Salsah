@@ -3,6 +3,7 @@
 
     <md-dialog-content>
 
+<!-- Step 1: Select resource type from a list of resources taken directly from the Knora base ontology (How do we include other ontologies / other properties? Do we simply read all possible resources within all ontologies?) -->
         <section [ngClass]="{show: counter===0, hide: counter!==0}">
             <h3>Select resource type</h3>
             <div>
@@ -10,12 +11,13 @@
                     <md-radio-button  class="resource-button" *ngFor="let item of knoraBase?.resourcetypes" [value]="item.label">
                         {{item.label}}
                     </md-radio-button>
-                    <span><hr/>New Resource (Advanced) </span> <!--make this into a button that leads to the advanced page -->
+                    <button md-button routerLink><hr/>New Resource (Advanced) </button> <!--make this into a button that leads to the advanced page -->
                 </md-radio-group>
                 <div class="resource-value">You selected: {{newResource}}</div>
             </div>
         </section>
 
+<!-- Step 2: Select the properties you need that correspond to your resource (how about adding properties from other resources? Go to advanced? -->
         <section [ngClass]="{show: counter===1, hide: counter!==1}">
             <h3>Select properties for {{newResource}}</h3>
             <div *ngFor="let res of knoraBase?.resourcetypes" >
@@ -31,6 +33,7 @@
             </div>
         </section>
 
+<!-- Step 3: Confirm your selection -->
         <section [ngClass]="{show: counter===2, hide: counter!==2}">
             <h3>You selected:</h3>
             <div *ngFor="let res of knoraBase?.resourcetypes" >
@@ -49,23 +52,30 @@
             </div>
         </section>
 
+<!-- Step 4: Set permissions for each property -->
         <section [ngClass]="{show: counter===3, hide: counter!==3}">
-            <h3>Chose the properties' permissions and occurance</h3>
+            <h3>Chose the properties' permissions</h3>
             <div *ngFor="let res of knoraBase?.resourcetypes" >
                 <div *ngIf="res.label==newResource" >
                     <div *ngFor="let props of res.properties" >
                         <div *ngIf="props.checked==true" >
-                            <br><b> {{props.label}} </b>
-                            <md-select class="card-style" placeholder="Occurance" ngModel="propCardinality" name="Cardinality"> <!--this doesn't work for each cardinality, because the name value is only saved here, before we go through the list of cardinalities and properties-->
-                                <md-option *ngFor="let card of cardinality" [value]="card.id">
-                                    {{card.label}}
-                                </md-option>
-                            </md-select>
-                            <md-select class="perm-style" placeholder="Permissions" ngModel name="Permissions">
-                                <md-option *ngFor="let perm of perms" [value]="perm.id">
-                                    {{perm.label}}
-                                </md-option>
-                            </md-select>
+                            <table class="perm-style">
+                                <tr><td>
+                                    <br><b> {{props.label}} </b>   <br><small>(occurance: {{props.cardinality}})</small>
+                                </td><td>
+                                    <md-select class="perm-style"
+                                               placeholder="Permissions"
+                                               required
+                                               [(ngModel)]="props.id" [name]="props.label" #permis="ngModel">
+                                        <md-option *ngFor="let perm of perms" [value]="perm.id">
+                                            {{perm.label}}
+                                        </md-option>
+                                    </md-select>
+                                    <div [hidden]="permis.valid || permis.pristine" class="alert alert-danger">
+                                        Permissions are required
+                                    </div>
+                                </td></tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -73,8 +83,9 @@
         </section>
 
 
+<!-- Step 5: Make a comment and save -->
         <section [ngClass]="{show: counter===4, hide: counter!==4}">
-            Fourth Element
+            <h3>Comments</h3>
             <md-input-container class="full-width">
                     <textarea md-input placeholder="Comments" rows="8" name="userComments"
                               ngModel></textarea>
@@ -84,6 +95,13 @@
     </md-dialog-content>
 
     <md-dialog-actions>
+
+        <button md-button
+                md-dialog-close
+                *ngIf="counter<5"
+                class="cancel-button">
+            Cancel
+        </button>
     <span class="back">
         <button md-button
                 *ngIf="counter<5 && counter >0"
@@ -92,23 +110,17 @@
             Back
         </button>
     </span>
-        <span class="next">
+    <span class="next">
         <button md-button
-                *ngIf="counter<5"
-                class="next-button"
+                *ngIf="counter<4"
+                class="next-button md-primary"
                 [disabled]="!uf.valid"
                 (click)="nextFormSection(counter, $event)">
             Next
         </button>
-        <button md-button
-                md-dialog-close
-                *ngIf="counter==5"
-                class="cancel-button">
-            Cancel
-        </button>
         <button type="submit"
                 md-raised-button
-                *ngIf="counter==5"
+                *ngIf="counter==4"
                 class="save-button md-primary">
             Save
         </button>
@@ -116,46 +128,3 @@
     </md-dialog-actions>
 
 </form>
-
-<!-- <form>
-    <md-dialog-content>
-        <div *ngIf="counter == 0">
-            <md-radio-group  class="resources-group" [(ngModel)]="newResource" name="resource">
-                <md-radio-button  class="resource-button" *ngFor="let item of knoraBase?.resourcetypes" [value]="item">
-                    {{item.label}}
-                </md-radio-button>
-                <span><hr/>New Resource (Advanced) </span>
-                <div class="resource-value">You selected: {{newResource}}</div>
-            </md-radio-group>
-        </div>
-
-        <div *ngIf="counter == 1" [(ngModel)]="newProperty" name="property">
-            <md-list *ngFor="let res of knoraBase?.resourcetypes" >
-                <md-list *ngFor="let props of res.properties" >
-                    <md-checkbox  [checked]="checked">
-                        {{props.label}}
-                    </md-checkbox>
-                </md-list>
-            </md-list>
-        </div>
-
-        <div *ngIf="counter == 2">
-             <md-radio-group>
-                 <md-radio-button>
-                     Finished!
-                 </md-radio-button>
-             </md-radio-group>
-        </div>
-     </md-dialog-content>
-
-     <md-dialog-actions>
-         <span>
-             <button md-button *ngIf="counter<3 && counter >0" class="back-button" (click)="goBack(counter)">Back</button>
-         </span>
-         <span>
-             <button md-button *ngIf="counter<3" class="next-button" (click)="nextDialogPage(counter, newResource)">Next</button>
-             <button md-button *ngIf="counter==3" class="save-button" (click)="saveInputData()">Save</button>
-         </span>
-     </md-dialog-actions>
- </form>
--->

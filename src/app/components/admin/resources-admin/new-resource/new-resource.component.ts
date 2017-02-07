@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MdDialog, MdDialogRef} from '@angular/material';
-import { OntologyComponent } from 'app/components/admin/ontology/ontology.component';
 import { BaseOntologyService } from 'app/components/admin/ontology/base-ontology.service';
-import { KnoraBaseJson } from 'app/components/admin/ontology/api-objects/knora-base-json';
 import { AnythingOntologyJson } from 'app/components/admin/ontology/api-objects/anything-ontology-json';
 
 @Component({
@@ -10,42 +8,18 @@ import { AnythingOntologyJson } from 'app/components/admin/ontology/api-objects/
   templateUrl: './new-resource.component.html',
   styleUrls: ['./new-resource.component.css']
 })
+
 export class NewResourceComponent implements OnInit {
   constructor(public dialog: MdDialog,
               public dialogRef: MdDialogRef<NewResourceComponent>,
               private _baseOntologyService: BaseOntologyService) { }
 
-    //counter
     private counter: number = 0;
     public newResource: any;
-    public newProperty: any;
-    public propCardinality: any;
+    public props: any;
 
-    // //save the data
-    // private resdata: string = undefined;
-    //
-    // //Open next Properties dialogue
-    // selectedOption: string;
-    //
-    //
-    //
-    // nextDialogPage(cntr: number, selectedResource: string) {
-    //     this.counter = cntr + 1;
-    //     this.resdata = selectedResource;
-    //     console.log(selectedResource);
-    //     console.log(cntr);
-    // }
-    //
-    // goBack(cntr: number) {
-    //     this.counter = cntr - 1;
-    // }
-    //
-    //
-    // saveInputData(){
-    //     let dialogRef = this.dialog.closeAll();
-    // }
 
-    //selector of cardinalities
+  //selector of cardinalities (don't need it now for the basic resource creation)
     cardinality = [
         {id: 'card-0', label: '1'},
         {id: 'card-1', label: '1 - n'},
@@ -60,6 +34,7 @@ export class NewResourceComponent implements OnInit {
         {id: 'perm-2', label: 'group 3'},
         {id: 'perm-3', label: 'group 4'}
     ];
+
 
 
     //form functions
@@ -92,7 +67,6 @@ export class NewResourceComponent implements OnInit {
 
     //Get data from base ontology json
     private errorMessage: string = undefined;
-//    public knoraBase: KnoraBaseJson = new KnoraBaseJson();
     public knoraBase: AnythingOntologyJson = new AnythingOntologyJson();
     public resourceTypes: any = undefined;
 

@@ -17,6 +17,7 @@ import { Http } from '@angular/http';
 import { BaseOntologyService } from './base-ontology.service';
 import { BaseOntologyJson } from './api-objects/base-ontology-json';
 import { KnoraBaseJson } from './api-objects/knora-base-json';
+import { AnythingOntologyJson } from './api-objects/anything-ontology-json';
 
 @Component({
   selector: 'salsah-ontology',
@@ -29,7 +30,7 @@ export class OntologyComponent implements OnInit {
 
     private errorMessage: string = undefined;
     // public baseOntology: BaseOntologyJson = new BaseOntologyJson();
-    public knoraBase: KnoraBaseJson = new KnoraBaseJson();
+    public knoraBase: AnythingOntologyJson = new AnythingOntologyJson();
     public res: any = undefined;
 
 
@@ -52,8 +53,8 @@ export class OntologyComponent implements OnInit {
             .subscribe(
                 data => {
                     this.knoraBase = data;
-                    console.log(data.classes.resource[13]);
-                    this.res = data.classes.resource[13];
+                    console.log(data.resourcetypes[0]);
+                    this.res = data.resourcetypes[0];
                 },
                 error => {
                     this.errorMessage = <any>error;

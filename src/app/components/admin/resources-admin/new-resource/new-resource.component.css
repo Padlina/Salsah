@@ -12,12 +12,17 @@
     color: #b2dfdb;
 }
 
-.card-style {
-    float: right;
+.perm-style {
+    /*float: right;*/
+    vertical-align: top;
+    /*text-align: left;*/
     margin: 0 10px;
 }
 
-.perm-style {
-    float: right;
-    margin: 0 10px;
+.ng-valid[required], .ng-valid.required  {
+    border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+    border-left: 5px solid #a94442; /* red */
 }

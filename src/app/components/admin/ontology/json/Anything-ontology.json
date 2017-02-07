@@ -6,55 +6,68 @@
             "properties": [
                 {
                     "id": "http://www.knora.org/ontology/anything#hasListItem",
-                    "label": "List element"
+                    "label": "List element",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasOtherThing",
-                    "label": "Another thing"
+                    "label": "Another thing",
+                    "cardinality":"1 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasText",
-                    "label": "Text"
+                    "label": "Text",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasDate",
-                    "label": "Date"
+                    "label": "Date",
+                    "cardinality":"1"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasInteger",
-                    "label": "Integer"
+                    "label": "Integer",
+                    "cardinality":"0 - 1"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasDecimal",
-                    "label": "Decimal number"
+                    "label": "Decimal number",
+                    "cardinality":"1"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasBoolean",
-                    "label": "Boolean value"
+                    "label": "Boolean value",
+                    "cardinality":"1 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasUri",
-                    "label": "URI"
+                    "label": "URI",
+                    "cardinality":"0 - 1"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasInterval",
-                    "label": "Time interval"
+                    "label": "Time interval",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasColor",
-                    "label": "Color"
+                    "label": "Color",
+                    "cardinality":"0 - 1"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasThingPicture",
-                    "label": "Picture of a thing"
+                    "label": "Picture of a thing",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#isPartOfOtherThing",
-                    "label": "is part of"
+                    "label": "is part of",
+                    "cardinality":"1 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasBlueThing",
-                    "label": "A blue thing"
+                    "label": "A blue thing",
+                    "cardinality":"0 - 1"
                 }
             ]
         },
@@ -64,11 +77,13 @@
             "properties": [
                 {
                     "id": "http://www.knora.org/ontology/anything#hasPictureTitle",
-                    "label": "Title"
+                    "label": "Title",
+                    "cardinality":"0 - 1"
                 },
                 {
                     "id": "http://www.knora.org/ontology/knora-base#hasStillImageFileValue",
-                    "label": "has image file"
+                    "label": "has image file",
+                    "cardinality":"0 - n"
                 }
             ]
         },
@@ -78,55 +93,68 @@
             "properties": [
                 {
                     "id": "http://www.knora.org/ontology/anything#hasListItem",
-                    "label": "List element"
+                    "label": "List element",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasOtherThing",
-                    "label": "Another thing"
+                    "label": "Another thing",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasText",
-                    "label": "Text"
+                    "label": "Text",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasDate",
-                    "label": "Date"
+                    "label": "Date",
+                    "cardinality":"1"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasInteger",
-                    "label": "Integer"
+                    "label": "Integer",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasDecimal",
-                    "label": "Decimal number"
+                    "label": "Decimal number",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasBoolean",
-                    "label": "Boolean value"
+                    "label": "Boolean value",
+                    "cardinality":"0 - 1"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasUri",
-                    "label": "URI"
+                    "label": "URI",
+                    "cardinality":"1 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasInterval",
-                    "label": "Time interval"
+                    "label": "Time interval",
+                    "cardinality":"1 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasColor",
-                    "label": "Color"
+                    "label": "Color",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasThingPicture",
-                    "label": "Picture of a thing"
+                    "label": "Picture of a thing",
+                    "cardinality":"0 - 1"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#isPartOfOtherThing",
-                    "label": "is part of"
+                    "label": "is part of",
+                    "cardinality":"0 - n"
                 },
                 {
                     "id": "http://www.knora.org/ontology/anything#hasBlueThing",
-                    "label": "A blue thing"
+                    "label": "A blue thing",
+                    "cardinality":"1"
                 }
             ]
         }

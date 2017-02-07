@@ -43,8 +43,8 @@ export class BaseOntologyService {
 
 //    getData(): Observable<KnoraBaseJson> {
     getData(): Observable<AnythingOntologyJson> {
-//        let ontologyData: string = 'http://localhost/Knora-base.json';
-        let ontologyData: string = 'http://localhost:3333/v1/resourcetypes?vocabulary=http%3A%2F%2Fwww.knora.org%2Fontology%2Fanything';
+        let ontologyData: string = 'http://localhost/Anything-ontology.json';
+//        let ontologyData: string = 'http://localhost:3333/v1/resourcetypes?vocabulary=http%3A%2F%2Fwww.knora.org%2Fontology%2Fanything';
         return this.http.get(ontologyData)
             .map(this.extractData)
             .catch(this.handleError);
