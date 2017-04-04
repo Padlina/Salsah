@@ -4,11 +4,17 @@ import {BaseOntology, PropertyObject, ResourceClass} from "../../../../model/cla
 import {ApiServiceResult} from "../../../../model/api/api-service-result";
 import {ApiServiceError} from "../../../../model/api/api-service-error";
 
+
+class ListInfo{
+    constructor(public description: string){}
+}
+
 @Component({
   selector: 'salsah-advanced-resource-class',
   templateUrl: './advanced-resource-class.component.html',
   styleUrls: ['./advanced-resource-class.component.css']
 })
+
 export class AdvancedResourceClassComponent implements OnInit {
 
     errorMessage: any;
@@ -73,13 +79,14 @@ export class AdvancedResourceClassComponent implements OnInit {
         ]
     };
 
+    listItems = [];
 
     constructor(private _baseOntologyService: BaseOntologyService) { }
 
-  ngOnInit() {
-      this.newResource.id = undefined;
+    ngOnInit() {
+        this.newResource.id = undefined;
 
-      this._baseOntologyService.getBaseOntology()
+        this._baseOntologyService.getBaseOntology()
           .subscribe(
               (result: ApiServiceResult) => {
                   this.baseOntology = result.getBody(BaseOntology);
@@ -89,15 +96,20 @@ export class AdvancedResourceClassComponent implements OnInit {
                   this.errorMessage = <any>error;
               }
           );
-  }
+    }
 
-  public newListItem = false;
 
-  addListItem(e) {
-      e.preventDefault();
-      this.newListItem = true;
-      console.log(this.newListItem);
-      console.log(e);
-  }
+
+    public newListItem = false;
+
+    addListItem(newItem: string, e) {
+        e.preventDefault();
+        this.newListItem = true;
+        if (newItem){
+            this.listItems.push(new ListInfo(newItem));
+        }
+//        console.log(this.newItem);
+        console.log(e);
+    }
 
 }
