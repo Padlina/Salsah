@@ -14,6 +14,7 @@
 
 import {Component, EventEmitter, OnInit, Input, Output} from '@angular/core';
 import {Search} from "../../../../model/webapi/knora/";
+import {ReadResourcesSequence} from "../../../../model/webapi/knora/v2/read-resources-sequence";
 
 @Component({
     selector: 'salsah-resource-list',
@@ -24,7 +25,7 @@ export class ResourceListComponent implements OnInit {
 
     selectedRow: number;
 
-    @Input() result: Search = new Search();
+    @Input() result: ReadResourcesSequence = new ReadResourcesSequence([], 0);
 //    @Input() size: String = undefined;
     @Output() openResource = new EventEmitter<any>();
 
@@ -32,7 +33,6 @@ export class ResourceListComponent implements OnInit {
     }
 
     ngOnInit() {
-
     }
 
     open(id: string, index: number) {

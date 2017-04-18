@@ -1,13 +1,12 @@
 <md-list class="salsah-list">
-    <md-list-item *ngFor="let res of result.subjects; let i = index"
-                  (click)="open(res.obj_id, i)"
-                  [id]="res.obj_id"
+    <md-list-item *ngFor="let res of result.resources; let i = index"
+                  (click)="open(res.id, i)"
+                  [id]="res.id"
                   class="salsah-link"
                   [class.highlight]="i == selectedRow">
-        <img md-list-avatar [src]="res.preview_path" />
-        <p md-line *ngFor="let val of res.value">
-            {{val}}
-        </p>
+        <!--<p md-line *ngFor="let prop of res.properties">
+            {{prop}}
+        </p>-->
 
     </md-list-item>
 </md-list>

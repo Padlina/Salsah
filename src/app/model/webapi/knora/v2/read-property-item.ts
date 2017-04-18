@@ -12,17 +12,27 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
 
-import {ApiService} from "./api.service";
+import {AppConfig} from "../../../../app.config";
+export interface ReadPropertyItem {
 
-@Injectable()
-export class SearchService extends ApiService {
+    id: string;
 
-    doSearch(query, type = 'fulltext'): Observable<any> {
+}
 
-        return this.httpGetV2("/search/" + query);
+
+export class ReadTextValue implements ReadPropertyItem {
+
+    constructor(id:string, html:string) {
+        this.id = id;
+
+        this.html = html;
     }
+
+    id:string;
+
+    type = AppConfig.TextValue;
+
+    html:string;
 
 }

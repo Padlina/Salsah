@@ -13,6 +13,10 @@
  * */
 
 import {JsonConvert} from "json2typescript";
+import {ReadResourcesSequence} from "../webapi/knora/v2/read-resources-sequence";
+import {ConvertJSONLD} from "../webapi/knora/v2/convert-jsonld";
+
+
 
 /**
  * Result class used as API url response in ApiService
@@ -52,6 +56,16 @@ export class ApiServiceResult {
             console.log(e);
         }
         return null;
+    }
+
+    getJSONLD(readResourcesJSONLD: Object): ReadResourcesSequence {
+
+       let readResources = ConvertJSONLD.createReadResourcesSequenceFromJsonLD(readResourcesJSONLD);
+
+       console.log(readResources);
+
+       return readResources;
+
     }
 
 }

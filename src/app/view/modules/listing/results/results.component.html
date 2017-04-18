@@ -1,6 +1,6 @@
 <div class="salsah-module with-header">
     <md-toolbar class="salsah-module-header">
-        <span>Results: {{result.nhits}}</span>
+        <span>Results: {{result.numberOfResources}}</span>
         <span class="fill-remaining-space"><!-- This fills the remaining space of the current row --></span>
         <!-- menu to switch the view: list, grid, table -->
         <md-button-toggle-group name="alignment" [(ngModel)]="selectedView">
@@ -18,20 +18,40 @@
         <salsah-api-error *ngIf="errorMessage" [error]="errorMessage"></salsah-api-error>
 
         <div class="salsah-list salsah-module-content" [ngClass]="[position.preview, size]">
+
+            <md-list class="salsah-list">
+                <md-list-item *ngFor="let res of result.resources; let i = index"
+                              (click)="open(res.id, i)"
+                              [id]="res.id"
+                              class="salsah-link"
+                              [class.highlight]="i == selectedRow">
+                    {{res.label}}
+
+                    {{res.type}}
+
+                    <div md-line *ngFor="let prop of res.properties | key">
+                        {{prop.key}} -> <ul><li *ngFor="let val of prop.value | key">{{val.value['html']}}</li></ul>
+                    </div>
+
+                </md-list-item>
+            </md-list>
+
             <!-- show the results in a simple list -->
-            <salsah-resource-list *ngIf="selectedView=='list' && result"
+            <!-- <salsah-resource-list *ngIf="selectedView=='list' && result"
                                   class="list-view"
                                   [result]="result"
                                   (openResource)="openResource($event, $event)">
-            </salsah-resource-list>
+            </salsah-resource-list>-->
 
             <!-- show the results in a grid list -->
+            <!--
             <salsah-resource-grid-list *ngIf="selectedView=='grid' && result"
                                        class="grid-view"
                                        [result]="result"
                                        [cols]="cols"
                                        (openResource)="openResource($event)">
             </salsah-resource-grid-list>
+            -->
         </div>
 
         <!-- resource detail view on the right hand side -->

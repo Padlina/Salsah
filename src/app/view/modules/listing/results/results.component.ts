@@ -18,6 +18,9 @@ import {ApiServiceResult} from "../../../../model/services/api-service-result";
 import {ApiServiceError} from "../../../../model/services/api-service-error";
 import {SearchService} from "../../../../model/services/search.service";
 import {Search} from "../../../../model/webapi/knora/";
+import {ReadResourcesSequence} from "../../../../model/webapi/knora/v2/read-resources-sequence";
+
+
 
 @Component({
     selector: 'salsah-results',
@@ -32,7 +35,7 @@ export class ResultsComponent implements OnInit {
 
     selectedView: string = 'list';
 
-    result: Search = new Search();
+    result: ReadResourcesSequence = new ReadResourcesSequence([], 0);
 
     viewOptions = [
         {
@@ -77,11 +80,14 @@ export class ResultsComponent implements OnInit {
             this._searchService.doSearch(query)
                 .subscribe(
                     (result: ApiServiceResult) => {
-                        this.result = result.getBody(Search);
+
+                        this.result = result.getJSONLD(result.body);
+
                         this.isLoading = false;
                     },
                     (error: ApiServiceError) => {
                         this.errorMessage = <any>error;
+
                         this.isLoading = false;
                     }
                 );
