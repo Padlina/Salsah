@@ -62,7 +62,7 @@ export class ApiServiceResult {
 
        let readResources = ConvertJSONLD.createReadResourcesSequenceFromJsonLD(readResourcesJSONLD);
 
-       console.log(readResources);
+       //console.log(readResources);
 
        return readResources;
 

@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ObjectComponent } from './object.component';
+import {MJD} from "../../../mathjax.directive";
 
 describe('ObjectComponent', () => {
   let component: ObjectComponent;
@@ -11,7 +12,7 @@ describe('ObjectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ObjectComponent ]
+      declarations: [ ObjectComponent, MJD ]
     })
     .compileComponents();
   }));

@@ -19,22 +19,26 @@
 
         <div class="salsah-list salsah-module-content" [ngClass]="[position.preview, size]">
 
-            <md-list class="salsah-list">
-                <md-list-item *ngFor="let res of result.resources; let i = index"
-                              (click)="open(res.id, i)"
+            <ul class="salsah-list">
+                <li *ngFor="let res of result.resources; let i = index"
+                              (click)="openResource(res.id, i)"
                               [id]="res.id"
                               class="salsah-link"
                               [class.highlight]="i == selectedRow">
-                    {{res.label}}
-
-                    {{res.type}}
-
-                    <div md-line *ngFor="let prop of res.properties | key">
-                        {{prop.key}} -> <ul><li *ngFor="let val of prop.value | key">{{val.value['html']}}</li></ul>
+                    <div>
+                        <div>
+                            <div>
+                                {{res.label}}
+                            </div>
+                            <div md-line *ngFor="let prop of res.properties | key">
+                                <span>{{prop.key}}</span> <ul><li *ngFor="let val of prop.value | key">{{val.value['html']}}</li></ul>
+                            </div>
+                        </div>
                     </div>
 
-                </md-list-item>
-            </md-list>
+
+                </li>
+            </ul>
 
             <!-- show the results in a simple list -->
             <!-- <salsah-resource-list *ngIf="selectedView=='list' && result"

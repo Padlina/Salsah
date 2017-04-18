@@ -97,10 +97,10 @@ export class ResultsComponent implements OnInit {
 
     }
 
-    openResource($event) {
+    openResource(resourceIri: string) {
         if(this.size === 'large') this.size = 'small'; this.cols = 1;
         this.isLoadingSubModule = true;
-        this.resource = $event.id;
+        this.resource = resourceIri;
         this.isLoadingSubModule = false;
     }
 

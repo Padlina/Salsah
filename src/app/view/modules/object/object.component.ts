@@ -1,9 +1,9 @@
-import {Component, OnInit, Input, OnChanges} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, Directive, ElementRef} from "@angular/core";
 import {ActivatedRoute, Params} from "@angular/router";
 import {ResourceService} from "../../../model/services/resource.service";
 import {ApiServiceResult} from "../../../model/services/api-service-result";
 import {ApiServiceError} from "../../../model/services/api-service-error";
-import {Resource} from "../../../model/webapi/knora/";
+import {ReadResourcesSequence} from "../../../model/webapi/knora/v2/read-resources-sequence";
 
 @Component({
     selector: 'salsah-object',
@@ -17,8 +17,7 @@ export class ObjectComponent implements OnChanges, OnInit {
     isLoading: boolean = true;
     errorMessage: any;
 
-    resource: Resource = new Resource();
-
+    resource: ReadResourcesSequence = new ReadResourcesSequence([], 0);
 
     constructor(private _route: ActivatedRoute,
                 private _resourceService: ResourceService) {
@@ -28,7 +27,10 @@ export class ObjectComponent implements OnChanges, OnInit {
         this._resourceService.getResource(this.iri)
             .subscribe(
                 (result: ApiServiceResult) => {
-                    this.resource = result.getBody(Resource);
+                    this.resource = result.getJSONLD(result.body);
+
+                    console.log(this.resource);
+
                     this.isLoading = false;
                 },
                 (error: ApiServiceError) => {
@@ -44,7 +46,8 @@ export class ObjectComponent implements OnChanges, OnInit {
             this._resourceService.getResource(resIri)
                 .subscribe(
                     (result: ApiServiceResult) => {
-                        this.resource = result.getBody(Resource);
+                        this.resource = result.getJSONLD(result.body);
+
                         this.isLoading = false;
                     },
                     (error: ApiServiceError) => {

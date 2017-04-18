@@ -63,6 +63,7 @@ export module ConvertJSONLD {
                             break;
 
                         default:
+                            // unsupported value type
                             valueSpecificProp = genericProp;
                             break;
                     }
@@ -76,13 +77,15 @@ export module ConvertJSONLD {
                 properties[propName] = propValues;
             }
 
-            // add the resource to the resources
-            resources.push({
+            let resource: ReadResource = {
                 id: resourceJSONLD['@id'],
                 type: resourceJSONLD['@type'],
                 label: resourceJSONLD['name'],
                 properties: properties
-            });
+            };
+
+            // add the resource to the resources array
+            resources.push(resource);
         }
 
         return new ReadResourcesSequence(resources, numberOfResources);

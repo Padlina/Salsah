@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { ProjectComponent } from './project.component';
+import {MJD} from "../../../mathjax.directive";
 
 describe('ProjectComponent', () => {
   let component: ProjectComponent;
