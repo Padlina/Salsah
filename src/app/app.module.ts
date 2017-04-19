@@ -81,6 +81,7 @@ import { ProgressIndicatorComponent } from './view/modules/other/progress-indica
 import { ProgressStepperComponent } from './view/modules/other/progress-stepper/progress-stepper.component';
 import { AdvancedResourceClassComponent } from './view/modules/form/advanced-resource-class/advanced-resource-class.component';
 import { DeveloperHintComponent } from './view/modules/error/developer-hint/developer-hint.component';
+import {MJDirective} from './mathjax.directive';
 
 
 @NgModule({
@@ -126,7 +127,8 @@ import { DeveloperHintComponent } from './view/modules/error/developer-hint/deve
         ProgressIndicatorComponent,
         ProgressStepperComponent,
         AdvancedResourceClassComponent,
-        DeveloperHintComponent
+        DeveloperHintComponent,
+        MJDirective
     ],
     imports: [
         BrowserModule,

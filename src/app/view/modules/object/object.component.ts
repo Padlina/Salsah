@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, Directive, ElementRef} from "@angular/core";
+import {Component, OnInit, Input, OnChanges} from "@angular/core";
 import {ActivatedRoute, Params} from "@angular/router";
 import {ResourceService} from "../../../model/services/resource.service";
 import {ApiServiceResult} from "../../../model/services/api-service-result";

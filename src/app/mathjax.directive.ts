@@ -6,10 +6,12 @@ declare var MathJax: {
     }
 };
 @Directive({selector: '[mathJax]'})
-export class MJD implements OnChanges {
+export class MJDirective implements OnChanges {
     @Input("mathJax") private value: string = "";
     constructor(private element: ElementRef) {}
+
     ngOnChanges() {
+        console.log("MJDirective on change");
         this.element.nativeElement.innerHTML = this.value;
         MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.element.nativeElement]);
     }
