@@ -15,7 +15,7 @@
 import {ReadResourcesSequence} from "./read-resources-sequence";
 import {ReadResource} from "./read-resource";
 import {ReadProperties} from "./read-properties";
-import {ReadPropertyItem, ReadTextValue} from "./read-property-item";
+import {ReadPropertyItem, ReadTextValue, ReadDateValue, ReadLinkValue} from "./read-property-item";
 import {AppConfig} from "../../../../app.config";
 
 export module ConvertJSONLD {
@@ -47,29 +47,48 @@ export module ConvertJSONLD {
                 for (let propValue of resourceJSONLD[propName]) {
 
                     // convert a JSON-LD property value to a `ReadPropertyItem`
-                    let genericProp: ReadPropertyItem = {
-                        id: propValue['@id']
-                    };
 
                     let valueSpecificProp: ReadPropertyItem;
 
                     // check for the property's value type
                     switch (propValue['@type']) {
                         case AppConfig.TextValue:
-                            let textValue = new ReadTextValue(genericProp.id, propValue['html']);
+                            let textValue = new ReadTextValue(propValue['@id'], propValue[AppConfig.HasTextValueAsHtml]);
 
                             valueSpecificProp = textValue;
+                            break;
 
+                        case AppConfig.DateValue:
+                            let dateValue = new ReadDateValue(propValue['@id'], "", propValue[AppConfig.HasDateValueStart], propValue[AppConfig.HasDateValueEnd]);
+
+                            valueSpecificProp = dateValue;
+                            break;
+
+                        case AppConfig.LinkValue:
+
+                            let referredResource: ReadResource;
+
+                            // check if there is information about the referred resource
+                            if (propValue[AppConfig.HasReferredResource] !== undefined) {
+                                referredResource = {
+                                    id: propValue[AppConfig.HasLinkTo],
+                                    type: propValue[AppConfig.HasReferredResource][AppConfig.HasType],
+                                    label: propValue[AppConfig.HasReferredResource][AppConfig.HasLabel],
+                                };
+                            }
+
+                            let linkValue = new ReadLinkValue(propValue['@id'], propValue[AppConfig.HasSubject], propValue[AppConfig.HasPredicate], propValue[AppConfig.HasLinkTo], referredResource);
+
+                            valueSpecificProp = linkValue;
                             break;
 
                         default:
                             // unsupported value type
-                            valueSpecificProp = genericProp;
                             break;
                     }
 
                     // add the property value to the array of property values
-                    propValues.push(valueSpecificProp);
+                    if (valueSpecificProp !== undefined) propValues.push(valueSpecificProp);
 
                 }
 

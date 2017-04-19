@@ -27,9 +27,11 @@ export class ObjectComponent implements OnChanges, OnInit {
         this._resourceService.getResource(this.iri)
             .subscribe(
                 (result: ApiServiceResult) => {
+                    //console.log(result.body);
+
                     this.resource = result.getJSONLD(result.body);
 
-                    console.log(this.resource);
+                    //console.log(this.resource);
 
                     this.isLoading = false;
                 },

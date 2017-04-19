@@ -34,4 +34,15 @@ export class AppConfig {
     public static MovingImageFileValue: string = "http://www.knora.org/ontology/knora-base#MovingImageFileValue";
     public static TextFileValue: string = "http://www.knora.org/ontology/knora-base#TextFileValue";
 
+    public static HasTextValueAsHtml: string = "html";
+    public static HasDateValueStart: string = "valueHasStartDate";
+    public static HasDateValueEnd: string = "valueHasEndDate";
+    public static HasSubject: string = "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject";
+    public static HasPredicate: string = "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate";
+    public static HasLinkTo: string = "http://www.knora.org/ontology/knora-base#hasLinkTo";
+    public static HasReferredResource: string = "referredResource";
+    public static HasLabel: string = "ReferredResourceLabel";
+    public static HasType: string = "ReferredResourceType";
+
+
 }

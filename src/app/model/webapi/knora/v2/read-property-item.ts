@@ -14,16 +14,21 @@
 
 
 import {AppConfig} from "../../../../app.config";
+import {ReadResource} from "./read-resource";
+
 export interface ReadPropertyItem {
 
     id: string;
 
-}
+    type:string;
 
+    toHtml:() => string;
+}
 
 export class ReadTextValue implements ReadPropertyItem {
 
     constructor(id:string, html:string) {
+
         this.id = id;
 
         this.html = html;
@@ -33,6 +38,71 @@ export class ReadTextValue implements ReadPropertyItem {
 
     type = AppConfig.TextValue;
 
+    toHtml = function(): string {
+        return this.html;
+    };
+
     html:string;
+
+}
+
+export class ReadDateValue implements ReadPropertyItem {
+
+    constructor(id:string, calendar:string, dateStart:string, dateEnd:string) {
+
+        this.id = id;
+
+        this.calendar = calendar;
+
+        this.dateStart = dateStart;
+
+        this.dateEnd = dateEnd;
+    }
+
+    id:string;
+
+    type = AppConfig.DateValue;
+
+    toHtml = function(): string {
+        return this.dateStart + ' - ' + this.dateEnd;
+    };
+
+    calendar:string;
+
+    dateStart:string;
+
+    dateEnd:string;
+}
+
+export class ReadLinkValue implements ReadPropertyItem {
+
+    constructor(id:string, subject:string, predicate: string, object:string, referredResource?: ReadResource) {
+
+        this.id = id;
+
+        this.subject = subject;
+
+        this.predicate = predicate;
+
+        this.object = object;
+
+        if (referredResource !== undefined) this.referredResource = referredResource;
+    }
+
+    id:string;
+
+    type = AppConfig.LinkValue;
+
+    subject:string;
+
+    predicate:string;
+
+    object:string;
+
+    referredResource?: ReadResource;
+
+    toHtml = function():string {
+        return (this.referredResource !== undefined) ? this.referredResource.label : this.object;
+    }
 
 }
