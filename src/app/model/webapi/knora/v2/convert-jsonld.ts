@@ -21,7 +21,7 @@ import {AppConfig} from "../../../../app.config";
 export module ConvertJSONLD {
 
     /**
-     * Turns an API response in JSONLD representing a sequence of resources into a [[ReadResourcesSequence]].
+     * Turns an API response in JSON-LD representing a sequence of resources into a [[ReadResourcesSequence]].
      *
      * @param resourcesResponseJSONLD   a sequence of resources, represented as a JSON-LD object.
      * @returns {ReadResourcesSequence} a [[ReadResourcesSequence]].

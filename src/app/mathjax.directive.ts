@@ -1,4 +1,4 @@
-import {Directive, ElementRef, Input, OnChanges} from '@angular/core';
+import {Directive, ElementRef, Input, OnChanges, OnInit} from '@angular/core';
 
 declare var MathJax: {
     Hub: {
@@ -10,12 +10,12 @@ declare var MathJax: {
  * This directive makes MathJax re-render the page after an update (mathematical notation was inserted).
  */
 @Directive({selector: '[mathJax]'})
-export class MathJaxDirective implements OnChanges {
+export class MathJaxDirective implements OnInit {
     @Input("mathJax") private value: string = "";
     constructor(private el: ElementRef) {
     }
 
-    ngOnChanges() {
+    ngOnInit() {
         //console.log("MathJaxJDirective");
         this.el.nativeElement.innerHTML = this.value;
         // http://docs.mathjax.org/en/latest/advanced/typeset.html#typeset-math
