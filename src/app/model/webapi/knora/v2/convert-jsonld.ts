@@ -15,7 +15,10 @@
 import {ReadResourcesSequence} from "./read-resources-sequence";
 import {ReadResource} from "./read-resource";
 import {ReadProperties} from "./read-properties";
-import {ReadPropertyItem, ReadTextValue, ReadDateValue, ReadLinkValue} from "./read-property-item";
+import {
+    ReadPropertyItem, ReadTextValueAsHtml, ReadDateValue, ReadLinkValue,
+    ReadTextValueAsString, ReadTextValueAsXml
+} from "./read-property-item";
 import {AppConfig} from "../../../../app.config";
 
 export module ConvertJSONLD {
@@ -53,31 +56,46 @@ export module ConvertJSONLD {
                     // check for the property's value type
                     switch (propValue['@type']) {
                         case AppConfig.TextValue:
-                            let textValue = new ReadTextValue(propValue['@id'], propValue[AppConfig.HasTextValueAsHtml]);
+                            // a text value might be given as plain string, html or xml.
+                            let textValue: ReadPropertyItem;
+
+                            if (propValue[AppConfig.valueAsString] !== undefined) {
+                                textValue = new ReadTextValueAsString(propValue['@id'], propValue[AppConfig.valueAsString]);
+                            } else if (propValue[AppConfig.textValueAsHtml] !== undefined) {
+                                textValue = new ReadTextValueAsHtml(propValue['@id'], propValue[AppConfig.textValueAsHtml]);
+                            } else if (propValue[AppConfig.textValueAsXml] !== undefined && propValue[AppConfig.textValueHasMapping] !== undefined) {
+                                textValue = new ReadTextValueAsXml(propValue['@id'], propValue[AppConfig.textValueAsXml], propValue[AppConfig.textValueHasMapping]);
+                            } else {
+                                // expected text value members not defined
+                                console.log("ERROR: Invalid text value: " + JSON.stringify(propValue))
+
+                            }
 
                             valueSpecificProp = textValue;
                             break;
 
                         case AppConfig.DateValue:
-                            let dateValue = new ReadDateValue(propValue['@id'], "", propValue[AppConfig.HasDateValueStart], propValue[AppConfig.HasDateValueEnd]);
+                            let dateValue = new ReadDateValue(propValue['@id'],
+                                propValue[AppConfig.dateValueHasCalendar],
+                                propValue[AppConfig.dateValueHasStartYear],
+                                propValue[AppConfig.dateValueHasEndYear],
+                                propValue[AppConfig.dateValueHasStartMonth],
+                                propValue[AppConfig.dateValueHasEndMonth],
+                                propValue[AppConfig.dateValueHasStartDay],
+                                propValue[AppConfig.dateValueHasEndDay]);
 
                             valueSpecificProp = dateValue;
                             break;
 
                         case AppConfig.LinkValue:
 
-                            let referredResource: ReadResource;
+                            let referredResource: ReadResource = {
+                                id: propValue[AppConfig.linkValueHasTarget]['@id'],
+                                type: propValue[AppConfig.linkValueHasTarget]['@type'],
+                                label: propValue[AppConfig.linkValueHasTarget]['name']
+                            };
 
-                            // check if there is information about the referred resource
-                            if (propValue[AppConfig.HasReferredResource] !== undefined) {
-                                referredResource = {
-                                    id: propValue[AppConfig.HasLinkTo],
-                                    type: propValue[AppConfig.HasReferredResource][AppConfig.HasType],
-                                    label: propValue[AppConfig.HasReferredResource][AppConfig.HasLabel],
-                                };
-                            }
-
-                            let linkValue = new ReadLinkValue(propValue['@id'], propValue[AppConfig.HasSubject], propValue[AppConfig.HasPredicate], propValue[AppConfig.HasLinkTo], referredResource);
+                            let linkValue = new ReadLinkValue(propValue['@id'], referredResource);
 
                             valueSpecificProp = linkValue;
                             break;

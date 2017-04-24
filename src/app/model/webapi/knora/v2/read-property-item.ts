@@ -15,6 +15,7 @@
 
 import {AppConfig} from "../../../../app.config";
 import {ReadResource} from "./read-resource";
+import {escape} from "querystring";
 
 export interface ReadPropertyItem {
 
@@ -25,7 +26,30 @@ export interface ReadPropertyItem {
     toHtml:() => string;
 }
 
-export class ReadTextValue implements ReadPropertyItem {
+export class ReadTextValueAsString implements ReadPropertyItem {
+
+    constructor(id:string, str:string) {
+
+        this.id = id;
+
+        this.str = str;
+    }
+
+    id:string;
+
+    type = AppConfig.TextValue;
+
+    toHtml = function(): string {
+
+        return this.str;
+    };
+
+    str:string;
+
+}
+
+
+export class ReadTextValueAsHtml implements ReadPropertyItem {
 
     constructor(id:string, html:string) {
 
@@ -46,63 +70,126 @@ export class ReadTextValue implements ReadPropertyItem {
 
 }
 
+export class ReadTextValueAsXml implements ReadPropertyItem {
+
+    constructor(id:string, xml:string, mappingIri:string) {
+
+        this.id = id;
+
+        this.xml = xml;
+
+        this.mappingIri = mappingIri;
+    }
+
+    id:string;
+
+    type = AppConfig.TextValue;
+
+    toHtml = function(): string {
+        return escape(this.html);
+    };
+
+    xml:string;
+
+    mappingIri:string;
+
+}
+
 export class ReadDateValue implements ReadPropertyItem {
 
-    constructor(id:string, calendar:string, dateStart:string, dateEnd:string) {
+    constructor(id:string, calendar:string, startYear:number, endYear:number, startMonth?:number, endMonth?:number, startDay?:number, endDay?:number) {
 
         this.id = id;
 
         this.calendar = calendar;
 
-        this.dateStart = dateStart;
+        this.startYear = startYear;
 
-        this.dateEnd = dateEnd;
+        this.endYear = endYear;
+
+        this.startMonth = startMonth;
+
+        this.endMonth = endMonth;
+
+        this.startDay = startDay;
+
+        this.endDay = endDay;
     }
 
     id:string;
 
     type = AppConfig.DateValue;
 
+    separator = "-";
+
     toHtml = function(): string {
-        return this.dateStart + ' - ' + this.dateEnd;
+        // consider precision
+
+        let startDate:string;
+
+        if (this.startMonth === undefined) {
+            // year precision
+            startDate = this.startYear;
+        } else if (this.startDay === undefined) {
+            // month precision
+            startDate = this.startYear + this.separator + this.startMonth
+        } else {
+            // day precision
+            startDate = this.startYear + this.separator + this.startMonth + this.separator + this.startDay;
+        }
+
+        let endDate:string;
+
+        if (this.endMonth === undefined) {
+            // year precision
+            endDate = this.endYear;
+        } else if (this.endDay === undefined) {
+            // month precision
+            endDate = this.endYear + this.separator + this.endMonth
+        } else {
+            // day precision
+            endDate = this.endYear + this.separator + this.endMonth + this.separator + this.endDay;
+        }
+
+        if (startDate == endDate) {
+            return this.calendar + ":" + startDate
+        } else {
+            return this.calendar + ":" + startDate + this.separator + endDate;
+        }
     };
 
     calendar:string;
 
-    dateStart:string;
+    startYear:number;
 
-    dateEnd:string;
+    endYear:number;
+
+    startMonth?:number;
+
+    endMonth?:number;
+
+    startDay?:number;
+
+    endDay?:number;
 }
 
 export class ReadLinkValue implements ReadPropertyItem {
 
-    constructor(id:string, subject:string, predicate: string, object:string, referredResource?: ReadResource) {
+    constructor(id:string, referredResource: ReadResource) {
 
         this.id = id;
 
-        this.subject = subject;
-
-        this.predicate = predicate;
-
-        this.object = object;
-
-        if (referredResource !== undefined) this.referredResource = referredResource;
+        this.referredResource = referredResource;
     }
 
     id:string;
 
     type = AppConfig.LinkValue;
 
-    subject:string;
-
-    predicate:string;
-
-    object:string;
-
-    referredResource?: ReadResource;
+    referredResource: ReadResource;
 
     toHtml = function():string {
-        return (this.referredResource !== undefined) ? this.referredResource.label : this.object;
+        return this.referredResource.label;
     }
 
 }

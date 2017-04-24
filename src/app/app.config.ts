@@ -14,35 +14,39 @@
 
 export class AppConfig {
 
-    public static TextValue: string = "http://www.knora.org/ontology/knora-base#TextValue";
-    public static IntValue: string = "http://www.knora.org/ontology/knora-base#IntValue";
-    public static BooleanValue: string = "http://www.knora.org/ontology/knora-base#BooleanValue";
-    public static UriValue: string = "http://www.knora.org/ontology/knora-base#UriValue";
-    public static DecimalValue: string = "http://www.knora.org/ontology/knora-base#DecimalValue";
-    public static DateValue: string = "http://www.knora.org/ontology/knora-base#DateValue";
-    public static ColorValue: string = "http://www.knora.org/ontology/knora-base#ColorValue";
-    public static GeomValue: string = "http://www.knora.org/ontology/knora-base#GeomValue";
-    public static ListValue: string = "http://www.knora.org/ontology/knora-base#ListValue";
-    public static IntervalValue: string = "http://www.knora.org/ontology/knora-base#IntervalValue";
-    public static LinkValue: string = "http://www.knora.org/ontology/knora-base#LinkValue";
-    public static GeonameValue: string = "http://www.knora.org/ontology/knora-base#GeonameValue";
-    public static FileValue: string = "http://www.knora.org/ontology/knora-base#FileValue";
-    public static AudioFileValue: string = "http://www.knora.org/ontology/knora-base#AudioFileValue";
-    public static DDDFileValue: string = "http://www.knora.org/ontology/knora-base#DDDFileValue";
-    public static DocumentFileValue: string = "http://www.knora.org/ontology/knora-base#DocumentFileValue";
-    public static StillImageFileValue: string = "http://www.knora.org/ontology/knora-base#StillImageFileValue";
-    public static MovingImageFileValue: string = "http://www.knora.org/ontology/knora-base#MovingImageFileValue";
-    public static TextFileValue: string = "http://www.knora.org/ontology/knora-base#TextFileValue";
+    public static TextValue: string = "http://www.knora.org/ontology/knora-api#TextValue";
+    public static IntValue: string = "http://www.knora.org/ontology/knora-api#IntValue";
+    public static BooleanValue: string = "http://www.knora.org/ontology/knora-api#BooleanValue";
+    public static UriValue: string = "http://www.knora.org/ontology/knora-api#UriValue";
+    public static DecimalValue: string = "http://www.knora.org/ontology/knora-api#DecimalValue";
+    public static DateValue: string = "http://www.knora.org/ontology/knora-api#DateValue";
+    public static ColorValue: string = "http://www.knora.org/ontology/knora-api#ColorValue";
+    public static GeomValue: string = "http://www.knora.org/ontology/knora-api#GeomValue";
+    public static ListValue: string = "http://www.knora.org/ontology/knora-api#ListValue";
+    public static IntervalValue: string = "http://www.knora.org/ontology/knora-api#IntervalValue";
+    public static LinkValue: string = "http://www.knora.org/ontology/knora-api#LinkValue";
+    public static GeonameValue: string = "http://www.knora.org/ontology/knora-api#GeonameValue";
+    public static FileValue: string = "http://www.knora.org/ontology/knora-api#FileValue";
+    public static AudioFileValue: string = "http://www.knora.org/ontology/knora-api#AudioFileValue";
+    public static DDDFileValue: string = "http://www.knora.org/ontology/knora-api#DDDFileValue";
+    public static DocumentFileValue: string = "http://www.knora.org/ontology/knora-api#DocumentFileValue";
+    public static StillImageFileValue: string = "http://www.knora.org/ontology/knora-api#StillImageFileValue";
+    public static MovingImageFileValue: string = "http://www.knora.org/ontology/knora-api#MovingImageFileValue";
+    public static TextFileValue: string = "http://www.knora.org/ontology/knora-api#TextFileValue";
 
-    public static HasTextValueAsHtml: string = "html";
-    public static HasDateValueStart: string = "valueHasStartDate";
-    public static HasDateValueEnd: string = "valueHasEndDate";
-    public static HasSubject: string = "http://www.w3.org/1999/02/22-rdf-syntax-ns#subject";
-    public static HasPredicate: string = "http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate";
-    public static HasLinkTo: string = "http://www.knora.org/ontology/knora-base#hasLinkTo";
-    public static HasReferredResource: string = "referredResource";
-    public static HasLabel: string = "ReferredResourceLabel";
-    public static HasType: string = "ReferredResourceType";
+    public static valueAsString: string = "http://www.knora.org/ontology/knora-api#valueAsString";
 
+    public static textValueAsHtml: string = "http://www.knora.org/ontology/knora-api#textValueAsHtml";
+    public static textValueAsXml: string = "http://www.knora.org/ontology/knora-api#textValueAsXml";
+    public static textValueHasMapping: string = "http://www.knora.org/ontology/knora-api#textValueHasMapping";
 
+    public static dateValueHasStartYear: string = "http://www.knora.org/ontology/knora-api#dateValueHasStartYear";
+    public static dateValueHasEndYear: string = "http://www.knora.org/ontology/knora-api#dateValueHasEndYear";
+    public static dateValueHasStartMonth = "http://www.knora.org/ontology/knora-api#dateValueHasStartMonth";
+    public static dateValueHasEndMonth = "http://www.knora.org/ontology/knora-api#dateValueHasEndMonth";
+    public static dateValueHasStartDay = "http://www.knora.org/ontology/knora-api#dateValueHasStartDay";
+    public static dateValueHasEndDay = "http://www.knora.org/ontology/knora-api#dateValueHasEndDay";
+    public static dateValueHasCalendar = "http://www.knora.org/ontology/knora-api#dateValueHasCalendar";
+
+    public static linkValueHasTarget = "http://www.knora.org/ontology/knora-api#linkValueHasTarget";
 }
