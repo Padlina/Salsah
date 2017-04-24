@@ -54,5 +54,8 @@ export class AppConfig {
 
     public static decimalValueAsDecimal = "http://www.knora.org/ontology/knora-api#decimalValueAsDecimal";
 
+    public static fileValueAsUrl = "http://www.knora.org/ontology/knora-api#fileValueAsUrl";
+    public static fileValueIsPreview = "http://www.knora.org/ontology/knora-api#fileValueIsPreview";
+
 
 }

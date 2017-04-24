@@ -17,7 +17,7 @@ import {ReadResource} from "./read-resource";
 import {ReadProperties} from "./read-properties";
 import {
     ReadPropertyItem, ReadTextValueAsHtml, ReadDateValue, ReadLinkValue,
-    ReadTextValueAsString, ReadTextValueAsXml, ReadIntegerValue, ReadDecimalValue
+    ReadTextValueAsString, ReadTextValueAsXml, ReadIntegerValue, ReadDecimalValue, ReadStillImageFileValue
 } from "./read-property-item";
 import {AppConfig} from "../../../../app.config";
 
@@ -111,6 +111,13 @@ export module ConvertJSONLD {
 
                             let decimalValue = new ReadDecimalValue(propValue['@id'], propValue[AppConfig.decimalValueAsDecimal]);
                             valueSpecificProp = decimalValue;
+
+                            break;
+
+                        case AppConfig.StillImageFileValue:
+
+                            let stillImageFileValue = new ReadStillImageFileValue(propValue['@id'], propValue[AppConfig.fileValueAsUrl], propValue[AppConfig.fileValueIsPreview]);
+                            valueSpecificProp = stillImageFileValue;
 
                             break;
 

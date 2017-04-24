@@ -239,3 +239,29 @@ export class ReadDecimalValue implements ReadPropertyItem {
 
 
 }
+
+export class ReadStillImageFileValue {
+
+    constructor(id:string, pathToImage:string, isPreview: boolean) {
+
+        this.id = id;
+
+        this.pathToImage = pathToImage;
+
+        this.isPreview = isPreview
+
+    }
+
+    id:string;
+
+    type = AppConfig.StillImageFileValue;
+
+    pathToImage: string;
+
+    isPreview: boolean;
+
+    toHtml = function(): string {
+        return '<img src="' + this.pathToImage + '"/>';
+    }
+
+}
