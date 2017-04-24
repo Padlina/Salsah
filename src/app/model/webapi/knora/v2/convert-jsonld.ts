@@ -17,7 +17,7 @@ import {ReadResource} from "./read-resource";
 import {ReadProperties} from "./read-properties";
 import {
     ReadPropertyItem, ReadTextValueAsHtml, ReadDateValue, ReadLinkValue,
-    ReadTextValueAsString, ReadTextValueAsXml
+    ReadTextValueAsString, ReadTextValueAsXml, ReadIntegerValue, ReadDecimalValue
 } from "./read-property-item";
 import {AppConfig} from "../../../../app.config";
 
@@ -98,6 +98,20 @@ export module ConvertJSONLD {
                             let linkValue = new ReadLinkValue(propValue['@id'], referredResource);
 
                             valueSpecificProp = linkValue;
+                            break;
+
+                        case AppConfig.IntValue:
+
+                            let intValue = new ReadIntegerValue(propValue['@id'], propValue[AppConfig.integerValueAsInteger]);
+                            valueSpecificProp = intValue;
+
+                            break;
+
+                        case AppConfig.DecimalValue:
+
+                            let decimalValue = new ReadDecimalValue(propValue['@id'], propValue[AppConfig.decimalValueAsDecimal]);
+                            valueSpecificProp = decimalValue;
+
                             break;
 
                         default:

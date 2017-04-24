@@ -193,3 +193,49 @@ export class ReadLinkValue implements ReadPropertyItem {
     }
 
 }
+
+export class ReadIntegerValue implements ReadPropertyItem {
+
+    constructor(id:string, integer:number) {
+
+        this.id = id;
+
+        this.integer = integer;
+
+    }
+
+    id:string;
+
+    type = AppConfig.IntValue;
+
+    integer: number;
+
+    toHtml = function():string {
+        return this.integer;
+    }
+
+
+}
+
+export class ReadDecimalValue implements ReadPropertyItem {
+
+    constructor(id:string, decimal:number) {
+
+        this.id = id;
+
+        this.decimal = decimal;
+
+    }
+
+    id:string;
+
+    type = AppConfig.DecimalValue;
+
+    decimal: number;
+
+    toHtml = function():string {
+        return this.decimal;
+    }
+
+
+}

@@ -49,4 +49,10 @@ export class AppConfig {
     public static dateValueHasCalendar = "http://www.knora.org/ontology/knora-api#dateValueHasCalendar";
 
     public static linkValueHasTarget = "http://www.knora.org/ontology/knora-api#linkValueHasTarget";
+
+    public static integerValueAsInteger = "http://www.knora.org/ontology/knora-api#integerValueAsInteger";
+
+    public static decimalValueAsDecimal = "http://www.knora.org/ontology/knora-api#decimalValueAsDecimal";
+
+
 }
