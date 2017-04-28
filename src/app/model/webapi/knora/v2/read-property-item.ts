@@ -12,16 +12,15 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-
 import {AppConfig} from "../../../../app.config";
 import {ReadResource} from "./read-resource";
 import {escape} from "querystring";
 
 export interface ReadPropertyItem {
 
-    id: string;
+    readonly id: string;
 
-    type:string;
+    readonly type:string;
 
     toHtml:() => string;
 }
@@ -35,16 +34,16 @@ export class ReadTextValueAsString implements ReadPropertyItem {
         this.str = str;
     }
 
-    id:string;
+    readonly id:string;
 
-    type = AppConfig.TextValue;
+    readonly type = AppConfig.TextValue;
 
-    toHtml = function(): string {
+    public toHtml = function(): string {
 
         return this.str;
     };
 
-    str:string;
+    readonly str:string;
 
 }
 
@@ -58,15 +57,15 @@ export class ReadTextValueAsHtml implements ReadPropertyItem {
         this.html = html;
     }
 
-    id:string;
+    readonly id:string;
 
-    type = AppConfig.TextValue;
+    readonly type = AppConfig.TextValue;
 
-    toHtml = function(): string {
+    public toHtml = function(): string {
         return this.html;
     };
 
-    html:string;
+    readonly html:string;
 
 }
 
@@ -81,17 +80,17 @@ export class ReadTextValueAsXml implements ReadPropertyItem {
         this.mappingIri = mappingIri;
     }
 
-    id:string;
+    readonly id:string;
 
-    type = AppConfig.TextValue;
+    readonly type = AppConfig.TextValue;
 
-    toHtml = function(): string {
+    public toHtml = function(): string {
         return escape(this.html);
     };
 
-    xml:string;
+    readonly xml:string;
 
-    mappingIri:string;
+    readonly mappingIri:string;
 
 }
 
@@ -116,13 +115,13 @@ export class ReadDateValue implements ReadPropertyItem {
         this.endDay = endDay;
     }
 
-    id:string;
+    readonly id:string;
 
-    type = AppConfig.DateValue;
+    readonly type = AppConfig.DateValue;
 
-    separator = "-";
+    private separator = "-";
 
-    toHtml = function(): string {
+    public toHtml = function(): string {
         // consider precision
 
         let startDate:string;
@@ -158,38 +157,47 @@ export class ReadDateValue implements ReadPropertyItem {
         }
     };
 
-    calendar:string;
+    readonly calendar:string;
 
-    startYear:number;
+    readonly startYear:number;
 
-    endYear:number;
+    readonly endYear:number;
 
-    startMonth?:number;
+    readonly startMonth?:number;
 
-    endMonth?:number;
+    readonly endMonth?:number;
 
-    startDay?:number;
+    readonly startDay?:number;
 
-    endDay?:number;
+    readonly endDay?:number;
 }
 
 export class ReadLinkValue implements ReadPropertyItem {
 
-    constructor(id:string, referredResource: ReadResource) {
+    constructor(id:string, referredResourceIri: string, referredResource?: ReadResource) {
 
         this.id = id;
+
+        this.referredResourceIri = referredResourceIri;
 
         this.referredResource = referredResource;
     }
 
-    id:string;
+    readonly id:string;
 
-    type = AppConfig.LinkValue;
+    readonly type = AppConfig.LinkValue;
 
-    referredResource: ReadResource;
+    readonly referredResourceIri: string;
 
-    toHtml = function():string {
-        return this.referredResource.label;
+    readonly referredResource?: ReadResource;
+
+    public toHtml = function():string {
+        if (this.referredResource !== undefined) {
+            return this.referredResource.label;
+        } else {
+            // TODO: try to find information about the resource identified by the given Iri
+            return this.referredResourceIri;
+        }
     }
 
 }
@@ -204,13 +212,13 @@ export class ReadIntegerValue implements ReadPropertyItem {
 
     }
 
-    id:string;
+    readonly id:string;
 
-    type = AppConfig.IntValue;
+    readonly type = AppConfig.IntValue;
 
-    integer: number;
+    readonly integer: number;
 
-    toHtml = function():string {
+    public toHtml = function():string {
         return this.integer;
     }
 
@@ -229,39 +237,69 @@ export class ReadDecimalValue implements ReadPropertyItem {
 
     id:string;
 
-    type = AppConfig.DecimalValue;
+    readonly type = AppConfig.DecimalValue;
 
-    decimal: number;
+    readonly decimal: number;
 
-    toHtml = function():string {
+    public toHtml = function():string {
         return this.decimal;
     }
 
 
 }
 
-export class ReadStillImageFileValue {
+export class ReadStillImageFileValue implements ReadPropertyItem {
 
-    constructor(id:string, pathToImage:string, isPreview: boolean) {
+    constructor(id:string, imageFilename:string, imageServerIIIFBaseURL:string, imagePath: string, dimX:number, dimY:number, isPreview?: boolean) {
 
         this.id = id;
 
-        this.pathToImage = pathToImage;
+        this.imageFilename = imageFilename;
 
-        this.isPreview = isPreview
+        this.imageServerIIIFBaseURL = imageServerIIIFBaseURL;
+
+        this.imagePath = imagePath;
+
+        this.dimX = dimX;
+
+        this.dimY = dimY;
+
+        this.isPreview = isPreview === undefined ? false : isPreview;
 
     }
 
-    id:string;
+    readonly id:string;
 
-    type = AppConfig.StillImageFileValue;
+    readonly type = AppConfig.StillImageFileValue;
 
-    pathToImage: string;
+    readonly imageFilename:string;
 
-    isPreview: boolean;
+    readonly imageServerIIIFBaseURL: string;
 
-    toHtml = function(): string {
-        return '<img src="' + this.pathToImage + '"/>';
+    readonly imagePath: string;
+
+    readonly dimX:number;
+
+    readonly dimY:number;
+
+    readonly isPreview: boolean;
+
+    private makeIIIFUrl = function(reduceFactor:number):string {
+
+        if (this.isPreview) {
+            return this.imagePath;
+        } else {
+            let percentage = Math.floor(100 / reduceFactor);
+
+            percentage = (percentage > 0 && percentage <= 100) ? percentage : 50;
+
+            return this.imageServerIIIFBaseURL + "/" + this.imageFilename + "/full/pct:" + percentage.toString() + "/0/default.jpg";
+        }
+
+    };
+
+    public toHtml = function(): string {
+        return '<img src="' + this.makeIIIFUrl(4) + '"/>';
     }
 
 }

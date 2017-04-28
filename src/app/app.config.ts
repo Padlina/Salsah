@@ -49,6 +49,7 @@ export class AppConfig {
     public static dateValueHasCalendar = "http://www.knora.org/ontology/knora-api#dateValueHasCalendar";
 
     public static linkValueHasTarget = "http://www.knora.org/ontology/knora-api#linkValueHasTarget";
+    public static linkValueHasTargetIri = "http://www.knora.org/ontology/knora-api#linkValueHasTargetIri";
 
     public static integerValueAsInteger = "http://www.knora.org/ontology/knora-api#integerValueAsInteger";
 
@@ -56,6 +57,11 @@ export class AppConfig {
 
     public static fileValueAsUrl = "http://www.knora.org/ontology/knora-api#fileValueAsUrl";
     public static fileValueIsPreview = "http://www.knora.org/ontology/knora-api#fileValueIsPreview";
+    public static fileValueHasFilename = "http://www.knora.org/ontology/knora-api#fileValueHasFilename";
+
+    public static stillImageFileValueHasDimX = "http://www.knora.org/ontology/knora-api#stillImageFileValueHasDimX";
+    public static stillImageFileValueHasDimY = "http://www.knora.org/ontology/knora-api#stillImageFileValueHasDimY";
+    public static stillImageFileValueHasIIIFBaseUrl = "http://www.knora.org/ontology/knora-api#stillImageFileValueHasIIIFBaseUrl";
 
 
 }

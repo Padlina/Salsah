@@ -104,9 +104,22 @@ export module ConvertJSONLD {
 
                     case AppConfig.LinkValue:
 
-                        let referredResource: ReadResource = constructReadResource(propValue[AppConfig.linkValueHasTarget]);
+                        let linkValue: ReadLinkValue;
 
-                        let linkValue = new ReadLinkValue(propValue['@id'], referredResource);
+                        // check if the referred resource is given as an object or just as an IRI
+                        if (propValue[AppConfig.linkValueHasTarget] !== undefined) {
+                            // linkValueHasTarget contains the object
+
+                            let referredResource: ReadResource = constructReadResource(propValue[AppConfig.linkValueHasTarget]);
+
+                            linkValue = new ReadLinkValue(propValue['@id'], referredResource.id, referredResource);
+                        } else {
+                            // linkValueHasTargetIri contains the resource's Iri
+
+                            let referredResourceIri = propValue[AppConfig.linkValueHasTargetIri];
+
+                            linkValue = new ReadLinkValue(propValue['@id'], referredResourceIri);
+                        }
 
                         valueSpecificProp = linkValue;
                         break;
@@ -127,7 +140,16 @@ export module ConvertJSONLD {
 
                     case AppConfig.StillImageFileValue:
 
-                        let stillImageFileValue = new ReadStillImageFileValue(propValue['@id'], propValue[AppConfig.fileValueAsUrl], propValue[AppConfig.fileValueIsPreview]);
+                        let stillImageFileValue: ReadStillImageFileValue = new ReadStillImageFileValue(
+                            propValue['@id'],
+                            propValue[AppConfig.fileValueHasFilename],
+                            propValue[AppConfig.stillImageFileValueHasIIIFBaseUrl],
+                            propValue[AppConfig.fileValueAsUrl],
+                            propValue[AppConfig.stillImageFileValueHasDimX],
+                            propValue[AppConfig.stillImageFileValueHasDimY],
+                            propValue[AppConfig.fileValueIsPreview] // optional (may be undefined)
+                        );
+
                         valueSpecificProp = stillImageFileValue;
 
                         break;
