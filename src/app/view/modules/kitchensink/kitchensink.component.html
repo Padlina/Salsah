@@ -8,7 +8,7 @@
             <nav>
                 <h3>First heading</h3>
                 <ul>
-                    <li> Some content here?</li>
+                    <li><a href="dummysink">Dummy sink</a></li>
                     <li> And here?</li>
                 </ul>
                 <h3>Second heading</h3>
@@ -22,9 +22,22 @@
 
         <div cdk-scrollable="" class="mat-sidenav-content"
              style="margin-left: 240px; margin-right: 0; transform: translate3d(0, 0, 0);">
+            <router-outlet></router-outlet>
             <div class="nie-ks-sidenav-content">
-                <h1>Greetings from the Kitchensink!</h1>
-                <p>Now we need some action here.</p>
+                <md-tab-group>
+                    <md-tab label="Overview">
+                        <h1>Some tab content</h1>
+                        <p>...</p>
+                    </md-tab>
+                    <md-tab label="API Reference">
+                        <h1>Some more tab content</h1>
+                        <p>...</p>
+                    </md-tab>
+                    <md-tab label="Examples">
+                        <h1>Some more tab content</h1>
+                        <p>...</p>
+                    </md-tab>
+                </md-tab-group>
             </div>
         </div>
 

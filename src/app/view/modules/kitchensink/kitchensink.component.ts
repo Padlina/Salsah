@@ -5,7 +5,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'salsah-kitchensink',
+    selector: 'salsah-nie-kitchensink',
     templateUrl: './kitchensink.component.html',
     styleUrls: [ './kitchensink.component.css' ]
 })
