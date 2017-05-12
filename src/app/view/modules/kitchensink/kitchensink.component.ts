@@ -9,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: './kitchensink.component.html',
     styleUrls: [ './kitchensink.component.css' ]
 })
-export class KitchensinkComponent implements OnInit {
-    ngOnInit(): void {
+export class KitchensinkComponent /*implements OnInit */ {
+    //ngOnInit(): void {
         // throw new Error('Method not implemented.');
-    }
+    //}
 
 
 }

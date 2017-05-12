@@ -12,34 +12,32 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import {Routes, RouterModule} from "@angular/router";
-import {NgModule} from "@angular/core";
+import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
 
-import {LoginComponent} from "./view/login/login.component";
-import {DashboardComponent} from "./view/dashboard/dashboard.component";
-import {UserComponent} from "./view/dashboard/user/user.component";
+import { LoginComponent } from './view/login/login.component';
+import { DashboardComponent } from './view/dashboard/dashboard.component';
+import { UserComponent } from './view/dashboard/user/user.component';
 
-import {ProjectComponent} from "./view/dashboard/project/project.component";
-import {ProjectSettingsComponent} from "./view/dashboard/project/project-settings/project-settings.component";
-import {PageNotFoundComponent} from "./view/modules/error/page-not-found/page-not-found.component";
-import {ProjectProfileComponent} from "./view/dashboard/project/project-profile/project-profile.component";
-import {AccessDeniedComponent} from "./view/modules/error/access-denied/access-denied.component";
-import {ResultsComponent} from "./view/modules/listing/results/results.component";
-import {ProjectTeamComponent} from "./view/dashboard/project/project-team/project-team.component";
-import {ProjectResourcesComponent} from "./view/dashboard/project/project-resources/project-resources.component";
-import {ProjectFormComponent} from "./view/modules/form/project-form/project-form.component";
-import {DocumentationComponent} from "./view/documentation/documentation.component";
+import { ProjectComponent } from './view/dashboard/project/project.component';
+import { ProjectSettingsComponent } from './view/dashboard/project/project-settings/project-settings.component';
+import { PageNotFoundComponent } from './view/modules/error/page-not-found/page-not-found.component';
+import { ProjectProfileComponent } from './view/dashboard/project/project-profile/project-profile.component';
+import { AccessDeniedComponent } from './view/modules/error/access-denied/access-denied.component';
+import { ResultsComponent } from './view/modules/listing/results/results.component';
+import { ProjectTeamComponent } from './view/dashboard/project/project-team/project-team.component';
+import { ProjectResourcesComponent } from './view/dashboard/project/project-resources/project-resources.component';
+import { ProjectFormComponent } from './view/modules/form/project-form/project-form.component';
+import { DocumentationComponent } from './view/documentation/documentation.component';
 
-import {ProjectAdvancedComponent} from "./view/dashboard/project/project-advanced/project-advanced.component";
-import {ObjectComponent} from "./view/modules/object/object.component";
-import { KitchensinkComponent } from './view/modules/kitchensink/kitchensink.component';
-
+import { ProjectAdvancedComponent } from './view/dashboard/project/project-advanced/project-advanced.component';
+import { ObjectComponent } from './view/modules/object/object.component';
 
 
 const appRoutes: Routes = [
     {
         path: '',
-        component: DashboardComponent,
+        component: DashboardComponent
     },
     {
         path: 'login',
@@ -53,11 +51,11 @@ const appRoutes: Routes = [
         // Public user profile
         path: 'user/:uid', component: UserComponent
         /*
-        children: [
-            { path: '', component: UserProfileComponent },
-            { path: '**', component: PageNotFoundComponent }
-        ]
-        */
+         children: [
+         { path: '', component: UserProfileComponent },
+         { path: '**', component: PageNotFoundComponent }
+         ]
+         */
     },
     {
         // User profile = Dashboard for logged in users
@@ -113,9 +111,6 @@ const appRoutes: Routes = [
         path: 'documentation', component: DocumentationComponent
     },
     {
-        path: 'kitchensink', component: KitchensinkComponent
-    },
-    {
         path: 'denied',
         component: AccessDeniedComponent
     },
@@ -123,8 +118,9 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule]
+    imports: [ RouterModule.forRoot(appRoutes) ],
+    exports: [ RouterModule ]
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

@@ -32,21 +32,32 @@
     font-weight: 400;
     margin: 0;
     padding: 0 16px;
-    background-color: rgba(00,69,92,0.7)
+    background-color: rgba(00, 69, 92, 0.7);
 }
 
 .nie-ks-sidenav ul {
     list-style-type: none;
     padding: 0;
-    margin:0;
+    margin: 0;
 }
 
 .nie-ks-sidenav li {
     padding: 10px 3px;
+    cursor: pointer;
 }
 
 .nie-ks-sidenav li:hover, li:active {
     background-color: #cccccc;
+}
+
+h1.nie-ks-title {
+    font-size:20px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 600;
+    width: 100%;
+    height: 30px;
+    background-color: rgba(00, 69, 92, 0.7);
 }
 
 .nie-ks-sidenav-content {

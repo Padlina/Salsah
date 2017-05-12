@@ -136,10 +136,10 @@ import { UserSelectComponent } from './view/modules/form/user-select/user-select
         HttpModule,
         RouterModule,
         AppMaterialModule,
-        AppRoutingModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
-        KitchensinkModule
+        KitchensinkModule, // Order is important: AppRoutingModule must come AFTER KitchensinkModule!
+        AppRoutingModule
     ],
     // we need the entryComponents for every component inside of a md-dialog module
     entryComponents: [

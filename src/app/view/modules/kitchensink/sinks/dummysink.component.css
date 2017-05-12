@@ -1,3 +1,19 @@
 /**
  * Created by Sebastian Schüpbach (sebastian.schuepbach@unibas.ch) on 5/12/17.
  */
+
+div.nie-ks-titlebar {
+    width:100%;
+    height: 100px;
+    vertical-align: middle;
+    padding-left:30px;
+    padding-top:20px;
+    background-color: rgba(00, 69, 92, 0.7);
+}
+
+h1.nie-ks-title {
+    font-size:30px;
+    text-transform: capitalize;
+    color: white;
+    font-weight: 200;
+}

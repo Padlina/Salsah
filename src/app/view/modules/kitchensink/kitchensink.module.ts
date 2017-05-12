@@ -3,22 +3,24 @@
  */
 
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppMaterialModule } from '../../../app-material.module';
-import { AppRoutingModule } from '../../../app-routing.module';
+
+import { KitchensinkRoutingModule } from './kitchensink-routing.module';
 
 import { KitchensinkComponent } from './kitchensink.component';
+import { DummySinkComponent } from './sinks/dummysink.component';
 
 @NgModule({
     declarations: [
-        KitchensinkComponent
+        KitchensinkComponent,
+        DummySinkComponent
     ],
     imports: [
         AppMaterialModule,
-        AppRoutingModule
-    ],
-    exports: [
-        KitchensinkComponent
+        CommonModule,
+        KitchensinkRoutingModule
     ]
 })
 export class KitchensinkModule {
