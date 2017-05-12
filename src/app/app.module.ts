@@ -60,6 +60,7 @@ import {PageNotFoundComponent} from './view/modules/error/page-not-found/page-no
 import {ApiErrorComponent} from './view/modules/error/api-error/api-error.component';
 import {AccessDeniedComponent} from './view/modules/error/access-denied/access-denied.component';
 import {ProjectsListComponent} from './view/modules/listing/projects-list/projects-list.component';
+import {KitchensinkComponent} from './view/modules/kitchensink/kitchensink.component';
 
 import {GravatarDirective} from './view/modules/other/gravatar.directive';
 import {OverlayDirective} from './view/modules/other/overlay.directive';
@@ -131,7 +132,8 @@ import { UserSelectComponent } from './view/modules/form/user-select/user-select
         ProgressStepperComponent,
         AdvancedResourceClassComponent,
         DeveloperHintComponent,
-        UserSelectComponent
+        UserSelectComponent,
+        KitchensinkComponent
     ],
     imports: [
         BrowserModule,

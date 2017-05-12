@@ -32,6 +32,7 @@ import {DocumentationComponent} from "./view/documentation/documentation.compone
 
 import {ProjectAdvancedComponent} from "./view/dashboard/project/project-advanced/project-advanced.component";
 import {ObjectComponent} from "./view/modules/object/object.component";
+import { KitchensinkComponent } from './view/modules/kitchensink/kitchensink.component';
 
 
 
@@ -110,6 +111,9 @@ const appRoutes: Routes = [
     },
     {
         path: 'documentation', component: DocumentationComponent
+    },
+    {
+        path: 'kitchensink', component: KitchensinkComponent
     },
     {
         path: 'denied',

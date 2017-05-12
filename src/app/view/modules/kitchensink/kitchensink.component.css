@@ -1,0 +1,62 @@
+.mat-sidenav {
+    position: relative;
+    /*transform: translate3d(0,0,0);*/
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 3;
+    min-width: 5vw;
+    outline: 0;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
+    /*transform: translate3d(-100%,0,0);*/
+}
+
+.nie-ks-sidenav {
+    padding-bottom: 72px;
+    width: 240px;
+    bottom: 0;
+    overflow: auto;
+    height: 100%;
+    font-size: 12px;
+}
+
+.nie-ks-sidenav h3 {
+    border: none;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 24px;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin: 0;
+    padding: 0 16px;
+    background-color: rgba(00,69,92,0.7)
+}
+
+.nie-ks-sidenav ul {
+    list-style-type: none;
+    padding: 0;
+    margin:0;
+}
+
+.nie-ks-sidenav li {
+    padding: 10px 3px;
+}
+
+.nie-ks-sidenav li:hover, li:active {
+    background-color: #cccccc;
+}
+
+.nie-ks-sidenav-content {
+    min-height: 100%;
+    margin-left: 40px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}

@@ -12,21 +12,20 @@
  * License along with SALSAH.  If not, see <http://www.gnu.org/licenses/>.
  * */
 
-import {Component, OnInit} from '@angular/core';
-import {SessionService} from "./model/services/session.service";
+import { Component, OnInit } from '@angular/core';
+import { SessionService } from './model/services/session.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: [ './app.component.css' ]
 })
 export class AppComponent implements OnInit {
 
     activeSession: boolean;
 
-    constructor(
-        private _sessionService: SessionService
-    ){}
+    constructor(private _sessionService: SessionService) {
+    }
 
     ngOnInit() {
 //        this.activeSession = this._sessionService.checkSession();
