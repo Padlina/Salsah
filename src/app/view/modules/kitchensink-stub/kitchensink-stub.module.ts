@@ -4,27 +4,18 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { Routes } from '@angular/router';
 
 import { AppMaterialModule } from '../../../app-material.module';
 
 import { KitchensinkStubOverviewComponent } from './kitchensink/kitchensink-stub-overview.component';
 import { KitchensinkStubApiComponent } from './kitchensink/kitchensink-stub-api.component';
 import { KitchensinkStubExamplesComponent } from './kitchensink/kitchensink-stub-examples.component';
+import { KitchensinkStubComponent } from './kitchensink-stub.component';
 
-// import { KitchensinkRoutingModule } from './kitchensink-stub-routing.module';
-
-/*const routes: Routes = [
-    {
-        path: 'kitchensink-stub', component: KitchensinkStubOverviewComponent,
-        children: [
-            { path: 'api', component: KitchensinkStubApiComponent }
-        ]
-    }
-]*/
 
 @NgModule({
     declarations: [
+        KitchensinkStubComponent,
         KitchensinkStubOverviewComponent,
         KitchensinkStubApiComponent,
         KitchensinkStubExamplesComponent

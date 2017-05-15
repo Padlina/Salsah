@@ -4,7 +4,11 @@
 
 import { Component } from '@angular/core';
 
-@Component({})
+@Component({
+    selector: 'salsah-nie-kitchensink-stub-api',
+    templateUrl: './kitchensink-stub-api.component.html',
+    styleUrls: ['./styles.css']
+})
 export class KitchensinkStubApiComponent {
 
 }

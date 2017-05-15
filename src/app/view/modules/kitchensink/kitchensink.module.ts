@@ -10,17 +10,17 @@ import { AppMaterialModule } from '../../../app-material.module';
 import { KitchensinkRoutingModule } from './kitchensink-routing.module';
 
 import { KitchensinkComponent } from './kitchensink.component';
-import { KitchensinkStubComponent } from '../kitchensink-stub/kitchensink-stub.component';
+import { KitchensinkStubModule } from '../kitchensink-stub/kitchensink-stub.module';
 
 @NgModule({
     declarations: [
         KitchensinkComponent,
-        KitchensinkStubComponent
     ],
     imports: [
         AppMaterialModule,
         CommonModule,
-        KitchensinkRoutingModule
+        KitchensinkRoutingModule,
+        KitchensinkStubModule,
     ]
 })
 export class KitchensinkModule {
