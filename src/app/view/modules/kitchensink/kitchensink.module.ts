@@ -10,12 +10,12 @@ import { AppMaterialModule } from '../../../app-material.module';
 import { KitchensinkRoutingModule } from './kitchensink-routing.module';
 
 import { KitchensinkComponent } from './kitchensink.component';
-import { DummySinkComponent } from './sinks/dummysink.component';
+import { KitchensinkStubComponent } from '../kitchensink-stub/kitchensink-stub.component';
 
 @NgModule({
     declarations: [
         KitchensinkComponent,
-        DummySinkComponent
+        KitchensinkStubComponent
     ],
     imports: [
         AppMaterialModule,

@@ -5,14 +5,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { DummySinkComponent } from './sinks/dummysink.component';
 import { KitchensinkComponent } from './kitchensink.component';
+import { KitchensinkStubComponent } from '../kitchensink-stub/kitchensink-stub.component';
 
 const kitchensinkRoutes: Routes = [
     {
         path: 'kitchensink', component: KitchensinkComponent,
         children: [
-            { path: 'dummysink', component: DummySinkComponent }
+            { path: 'stub', component: KitchensinkStubComponent }
         ]
     }
 ];

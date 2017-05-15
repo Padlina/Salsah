@@ -1,23 +1,24 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import {
-    MdCoreModule,
-    MdCheckboxModule,
     MdAutocompleteModule,
-    MdInputModule,
-    MdSelectModule,
-    MdMenuModule,
-    MdToolbarModule,
-    MdListModule,
-    MdGridListModule,
-    MdCardModule,
-    MdTabsModule,
     MdButtonModule,
     MdButtonToggleModule,
+    MdCardModule,
+    MdCheckboxModule,
     MdChipsModule,
-    MdIconModule,
-    MdProgressSpinnerModule,
-    MdProgressBarModule,
+    MdCoreModule,
     MdDialogModule,
+    MdGridListModule,
+    MdIconModule,
+    MdInputModule,
+    MdListModule,
+    MdMenuModule,
+    MdProgressBarModule,
+    MdProgressSpinnerModule,
+    MdSelectModule,
+    MdSnackBarModule,
+    MdTabsModule,
+    MdToolbarModule,
     MdTooltipModule
 } from '@angular/material';
 
@@ -41,7 +42,8 @@ import {
         MdProgressSpinnerModule,
         MdProgressBarModule,
         MdDialogModule,
-        MdTooltipModule
+        MdTooltipModule,
+        MdSnackBarModule
     ],
 
     exports: [
@@ -63,7 +65,8 @@ import {
         MdProgressSpinnerModule,
         MdProgressBarModule,
         MdDialogModule,
-        MdTooltipModule
+        MdTooltipModule,
+        MdSnackBarModule
     ]
 })
 export class AppMaterialModule {
