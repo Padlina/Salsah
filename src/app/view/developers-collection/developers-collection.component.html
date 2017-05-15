@@ -1,0 +1,28 @@
+<md-tab-group>
+    <md-tab label="Search">
+        <h2>Lombardus search</h2>
+
+        <salsah-plo-extended-search></salsah-plo-extended-search>
+
+        <h2>Category search</h2>
+        <p>
+            <md-chip-list>
+                <md-chip *ngFor="let chip of scpaceScreens">
+                    <span>{{chip.description}}</span>
+                    <span (click)="removeChip(chip)">x</span>
+                </md-chip>
+                <md-basic-chip disabled="true">
+                    // Insert autocomplete example here
+                </md-basic-chip>
+            </md-chip-list>
+        </p>
+        <p id="lombardus-category-search-results"></p>
+        <h2>Results</h2>
+        <md-list class="salsah-list"></md-list>
+        <p>Test</p>
+    </md-tab>
+
+    <md-tab label="View">
+        <p>test</p>
+    </md-tab>
+</md-tab-group>
