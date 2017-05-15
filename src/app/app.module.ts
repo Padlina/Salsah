@@ -85,6 +85,8 @@ import {ProgressStepperComponent} from './view/modules/other/progress-stepper/pr
 import {AdvancedResourceClassComponent} from './view/modules/form/advanced-resource-class/advanced-resource-class.component';
 import {DeveloperHintComponent} from './view/modules/error/developer-hint/developer-hint.component';
 import { UserSelectComponent } from './view/modules/form/user-select/user-select.component';
+import {DevelopersCollectionComponent} from './view/developers-collection/developers-collection.component';
+import {PloSearchComponent} from './view/modules/nie-ine/plo-extended-search.component';
 
 
 @NgModule({
@@ -122,6 +124,7 @@ import { UserSelectComponent } from './view/modules/form/user-select/user-select
         ResourceClassFormComponent,
         ResourceFormComponent,
         DocumentationComponent,
+        DevelopersCollectionComponent,
         UserProjectsComponent,
         UserCollectionsComponent,
         ProjectAdvancedComponent,
@@ -131,7 +134,8 @@ import { UserSelectComponent } from './view/modules/form/user-select/user-select
         ProgressStepperComponent,
         AdvancedResourceClassComponent,
         DeveloperHintComponent,
-        UserSelectComponent
+        UserSelectComponent,
+        PloSearchComponent
     ],
     imports: [
         BrowserModule,
