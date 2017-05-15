@@ -1,0 +1,85 @@
+<!-- the next element -- div.extended-search-panel -- is a hidden dropdown filter menu -->
+
+
+<div class="search-panel" [class.active]="searchPanelFocus">
+    <div>
+        <button class="prefix" (click)="doSearch(search)">
+            <md-icon>search</md-icon>
+        </button>
+    </div>
+
+    <div class="input-field">
+        <input #search autocomplete="off"
+               type="search" [placeholder]="searchLabel"
+               [(ngModel)]="searchQuery" name="search"
+               (keyup.esc)="resetSearch(search)"
+               (keyup)="onKey(search, $event)"
+               (click)="setFocus()"
+               (focus)="toggleMenu('simpleSearch')" [disabled]="focusOnExtended === 'active'"/>
+    </div>
+
+    <!-- switch button:
+            - default button is the filter button;
+            - but on some focus we need a close button for the simple or extended panel
+    -->
+    <div>
+        <button class="suffix" *ngIf="focusOnSimple === 'active'" (click)="resetSearch(search)">
+            <md-icon class="md-24">close</md-icon>
+        </button>
+        <button class="suffix" *ngIf="focusOnSimple === 'inactive'" (click)="toggleMenu('extendedSearch')">
+            <md-icon>filter_list</md-icon>
+        </button>
+    </div>
+</div>
+
+<!-- the search panel has two "dropdown" menus: one for simple search and another one for the extended search -->
+<div class="salsah-menu simple-search" [@simpleSearchMenu]="focusOnSimple">
+    <button md-button class="right" (click)="resetPrevSearch()" *ngIf="prevSearch">Clear</button>
+    <md-list class="salsah-previous-search-list">
+        <md-list-item *ngFor="let item of prevSearch | reverse; let i=index">
+            <md-icon md-list-icon (click)="resetPrevSearch(item)">close</md-icon>
+            <h4 md-line *ngIf="i<10" (click)="doPrevSearch(item)">{{item}}</h4>
+        </md-list-item>
+    </md-list>
+</div>
+
+<div class="salsah-menu extended-search" [@extendedSearchMenu]="focusOnExtended">
+    <div class="salsah-menu-header">
+        <span class="salsah-menu-title">
+            Extended search
+        </span>
+        <span class="salsah-menu-action">
+            <button md-icon-button (click)="toggleMenu('extendedSearch')">
+                <md-icon>close</md-icon>
+            </button>
+        </span>
+    </div>
+    <div class="input-field">
+        <input #search autocomplete="off"
+               type="search" [placeholder]="searchLabel"
+               [(ngModel)]="searchQuery" name="extendedSearch"/>
+    </div>
+    <div class="year-selection">
+        <md-input-container>
+            <input mdInput placeholder="von" name="yearFrom"
+                   type="number" step="1" [(ngModel)]="yearFrom">
+        </md-input-container>
+        <md-input-container>
+            <input mdInput placeholder="bis" name="yearTo"
+                   type="number" step="1" [(ngModel)]="yearTo">
+        </md-input-container>
+    </div>
+    <md-chip-list>
+        <md-chip>Personen</md-chip>
+        <md-chip>Kommentare</md-chip>
+        <md-chip>Manifestationen</md-chip>
+    </md-chip-list>
+
+
+    <div class="buttons">
+        <button md-button (click)="resetSearch(search)">Clear</button>
+        <button md-button (click)="doExtendedSearch(search)">Search</button>
+
+    </div>
+
+</div>
