@@ -69,16 +69,16 @@
                    type="number" step="1" [(ngModel)]="yearTo">
         </md-input-container>
     </div>
-    <md-chip-list>
-        <md-chip>Personen</md-chip>
-        <md-chip>Kommentare</md-chip>
-        <md-chip>Manifestationen</md-chip>
-    </md-chip-list>
-
+    <md-button-toggle-group class="resource-selection" [(ngModel)]="resourceType">
+        <md-button-toggle value="all">Alle Typen</md-button-toggle>
+        <md-button-toggle value="person">Personen</md-button-toggle>
+        <md-button-toggle value="comment">Kommentare</md-button-toggle>
+        <md-button-toggle value="manifestation">Manifestationen</md-button-toggle>
+    </md-button-toggle-group>
 
     <div class="buttons">
-        <button md-button (click)="resetSearch(search)">Clear</button>
-        <button md-button (click)="doExtendedSearch(search)">Search</button>
+        <button md-button id="reset_search" (click)="resetSearch(search)">Clear</button>
+        <button md-button id="do_extended_search" (click)="doExtendedSearch(search)">Search</button>
 
     </div>
 

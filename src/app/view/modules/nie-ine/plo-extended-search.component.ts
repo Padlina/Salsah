@@ -60,6 +60,8 @@ export class PloSearchComponent implements OnInit {
     yearFrom: number;
     yearTo: number;
 
+    resourceType: string;
+
     searchPanelFocus: boolean = false;
 
     prevSearch: string[] = JSON.parse(localStorage.getItem('prevSearch'));
@@ -103,11 +105,11 @@ export class PloSearchComponent implements OnInit {
             // push the search query into the local storage prevSearch array (previous search)
             // to have a list of recent search requests
             let existingPrevSearch: string[] = JSON.parse(localStorage.getItem('prevSearch'));
-            if(existingPrevSearch === null) existingPrevSearch = [];
+            if (existingPrevSearch === null) { existingPrevSearch = [] };
             let i: number = 0;
-            for(let entry of existingPrevSearch) {
+            for (let entry of existingPrevSearch) {
                 // remove entry, if exists already
-                if(this.searchQuery === entry) existingPrevSearch.splice(i, 1);
+                if (this.searchQuery === entry) { existingPrevSearch.splice(i, 1) };
                 i++;
             }
 
@@ -115,8 +117,7 @@ export class PloSearchComponent implements OnInit {
             localStorage.setItem('prevSearch', JSON.stringify(existingPrevSearch));
             // TODO: save the previous search queries somewhere in the user's profile
 
-        }
-        else {
+        } else {
             search_ele.focus();
             this.prevSearch = JSON.parse(localStorage.getItem('prevSearch'));
         }
@@ -126,7 +127,7 @@ export class PloSearchComponent implements OnInit {
 
         let yearRestriction = '';
         let wordRestriction = '';
-        //let typeRestrcition = '';
+        let typeRestriction = '';
 
         // Perform fulltext search if a keyword is entered. Else perform extended search
         if (this.searchQuery !== undefined && this.searchQuery !== null) {
@@ -148,13 +149,22 @@ export class PloSearchComponent implements OnInit {
                 + this.yearFrom + '-01-01%2F' + this.yearTo + '-12-31';
         }
 
-        // if (this.resType !== undefined && this.searchQuery !== null) {
-        //    typeRestriction = '&filter_by_restype=' this.resType;
-        // }
+        // Restrict to one resource type
+        if (this.resourceType !== undefined && this.searchQuery !== null) {
+            if (this.resourceType === 'person') {
+                typeRestriction = '&filter_by_restype=http%3A%2F%2Fwww.knora.org%2Fontology%2Fincunabula%23page'
+            } else if (this.resourceType === 'comment') {
+                typeRestriction = '&filter_by_restype=http%3A%2F%2Fwww.knora.org%2Fontology%2Fincunabula%23page'
+            } else if (this.resourceType === 'manifestation') {
+                typeRestriction = '&filter_by_restype=http%3A%2F%2Fwww.knora.org%2Fontology%2Fincunabula%23page'
+            } else {
+                typeRestriction = '';
+            }
+        }
 
         this.toggleMenu('simpleSearch');
         console.log(['/search/' + wordRestriction + yearRestriction]);
-        this._router.navigate(['/search/' + wordRestriction + yearRestriction], {relativeTo: this._route});
+        this._router.navigate(['/search/' + wordRestriction + yearRestriction + typeRestriction], {relativeTo: this._route});
     }
 
     resetSearch(search_ele: HTMLElement) {
@@ -173,13 +183,12 @@ export class PloSearchComponent implements OnInit {
     }
 
     resetPrevSearch(name: string = null) {
-        if(name) {
+        if (name) {
             // delete only this item with the name ...
             let i: number = this.prevSearch.indexOf(name);
             this.prevSearch.splice(i, 1);
             localStorage.setItem('prevSearch', JSON.stringify(this.prevSearch));
-        }
-        else {
+        } else {
             // delete the whole "previous search" array
             localStorage.removeItem('prevSearch');
         }
