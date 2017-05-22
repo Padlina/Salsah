@@ -150,7 +150,7 @@ export class PloSearchComponent implements OnInit {
         }
 
         // Restrict to one resource type
-        if (this.resourceType !== undefined && this.searchQuery !== null) {
+        if (this.resourceType !== undefined && this.resourceType !== null) {
             if (this.resourceType === 'person') {
                 typeRestriction = '&filter_by_restype=http%3A%2F%2Fwww.knora.org%2Fontology%2Fincunabula%23page'
             } else if (this.resourceType === 'comment') {
@@ -162,9 +162,24 @@ export class PloSearchComponent implements OnInit {
             }
         }
 
+        // execute the search query
         this.toggleMenu('simpleSearch');
-        console.log(['/search/' + wordRestriction + yearRestriction]);
         this._router.navigate(['/search/' + wordRestriction + yearRestriction + typeRestriction], {relativeTo: this._route});
+
+        // push the search query into the local storage prevSearch array (previous search)
+        // to have a list of recent search requests
+        let existingPrevSearch: string[] = JSON.parse(localStorage.getItem('prevSearch'));
+        if (existingPrevSearch === null) { existingPrevSearch = [] };
+        let i: number = 0;
+        for (let entry of existingPrevSearch) {
+            // remove entry, if exists already
+            if (wordRestriction + yearRestriction + typeRestriction === entry) { existingPrevSearch.splice(i, 1) };
+            i++;
+        }
+
+        existingPrevSearch.push(wordRestriction + yearRestriction + typeRestriction);
+        localStorage.setItem('prevSearch', JSON.stringify(existingPrevSearch));
+        // TODO: save the previous search queries somewhere in the user's profile
     }
 
     resetSearch(search_ele: HTMLElement) {
@@ -212,5 +227,19 @@ export class PloSearchComponent implements OnInit {
                 this.focusOnExtended = (this.focusOnExtended === 'active' ? 'inactive' : 'active');
                 break;
         }
+    }
+
+    readableHistory(historyEntry: string): string {
+        let readableHistoryText = historyEntry;
+        // more beautiful year restriction summary
+        readableHistoryText = readableHistoryText.replace('&property_id=http%3A%2F%2Fwww.knora.org%2Fontology%2Fincunabula%23pubdate&compop=EQ&searchval=', '');
+        readableHistoryText = readableHistoryText.replace(/(GREGORIAN|JULIAN)%2F([0-9]+)-[0-1][0-9]-[0-3][0-9]%2F([0-9]+)-[0-1][0-9]-[0-3][0-9]/, ' $2–$3');
+
+        // more beautiful type restriction summary
+        readableHistoryText = readableHistoryText.replace('&filter_by_restype=http%3A%2F%2Fwww.knora.org%2Fontology%2Fincunabula%23page', ' Kategorie: Person');
+        readableHistoryText = readableHistoryText.replace('&filter_by_restype=http%3A%2F%2Fwww.knora.org%2Fontology%2Fincunabula%23page', ' Kategorie: Kommentar');
+        readableHistoryText = readableHistoryText.replace('&filter_by_restype=http%3A%2F%2Fwww.knora.org%2Fontology%2Fincunabula%23page', ' Kategorie: Manifestation');
+
+        return readableHistoryText;
     }
 }

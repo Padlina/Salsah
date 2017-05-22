@@ -38,7 +38,7 @@
     <md-list class="salsah-previous-search-list">
         <md-list-item *ngFor="let item of prevSearch | reverse; let i=index">
             <md-icon md-list-icon (click)="resetPrevSearch(item)">close</md-icon>
-            <h4 md-line *ngIf="i<10" (click)="doPrevSearch(item)">{{item}}</h4>
+            <h4 md-line *ngIf="i<10" (click)="doPrevSearch(item)">{{readableHistory(item)}}</h4>
         </md-list-item>
     </md-list>
 </div>
