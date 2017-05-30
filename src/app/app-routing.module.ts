@@ -27,6 +27,7 @@ import {ProjectTeamComponent} from "./view/dashboard/project/project-team/projec
 import {ProjectResourcesComponent} from "./view/dashboard/project/project-resources/project-resources.component";
 import {ProjectFormComponent} from "./view/modules/form/project-form/project-form.component";
 import {DocumentationComponent} from "./view/documentation/documentation.component";
+import {DevelopersCollectionComponent} from "./view/developers-collection/developers-collection.component"
 
 import {ProjectAdvancedComponent} from "./view/dashboard/project/project-advanced/project-advanced.component";
 import {ObjectComponent} from "./view/modules/object/object.component";
@@ -110,6 +111,9 @@ const appRoutes: Routes = [
     },
     {
         path: 'documentation', component: DocumentationComponent
+    },
+    {
+        path: 'developers_collection', component: DevelopersCollectionComponent
     },
     {
         path: 'denied',

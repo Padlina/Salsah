@@ -81,10 +81,10 @@ import {KeyPipe} from './view/modules/other/key.pipe';
 import {ProgressIndicatorComponent} from './view/modules/other/progress-indicator/progress-indicator.component';
 import {ProgressStepperComponent} from './view/modules/other/progress-stepper/progress-stepper.component';
 import {AdvancedResourceClassComponent} from './view/modules/form/advanced-resource-class/advanced-resource-class.component';
-
 import { UserSelectComponent } from './view/modules/form/user-select/user-select.component';
+import {DevelopersCollectionComponent} from './view/developers-collection/developers-collection.component';
+import {PloSearchComponent} from './view/modules/nie-ine/plo-extended-search.component';
 import { DevelopmentComponent } from './view/test/development/development.component';
-
 import { MessageComponent } from './view/modules/message/message.component';
 
 
@@ -120,6 +120,7 @@ import { MessageComponent } from './view/modules/message/message.component';
         ResourceClassFormComponent,
         ResourceFormComponent,
         DocumentationComponent,
+        DevelopersCollectionComponent,
         UserProjectsComponent,
         UserCollectionsComponent,
         ProjectAdvancedComponent,
@@ -128,6 +129,9 @@ import { MessageComponent } from './view/modules/message/message.component';
         ProgressIndicatorComponent,
         ProgressStepperComponent,
         AdvancedResourceClassComponent,
+        DeveloperHintComponent,
+        UserSelectComponent,
+        PloSearchComponent
         UserSelectComponent,
         DevelopmentComponent,
         MessageComponent
